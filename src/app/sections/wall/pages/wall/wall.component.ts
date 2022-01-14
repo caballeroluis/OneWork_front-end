@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStorageService } from '@core/services';
 
 @Component({
   selector: 'app-wall',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WallComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public userStoreService: UserStorageService
+  ) { }
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit() {
+    if (this.userStoreService.user?.length === 0) {
+      this.userStoreService.apiUser();
+    }
+  }
+
+  getIdTrackFn = (i: number, item: any) => item.id;
 
 }

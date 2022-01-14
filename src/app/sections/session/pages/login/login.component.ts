@@ -13,20 +13,19 @@ export class LoginComponent implements OnInit {
   public isSubmitted = false;
   
   constructor(
-    private _sessionStoreService: SessionStorageService,
+    private sessionStoreService: SessionStorageService,
     private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
-    this._formatReactiveForm();
+    this.formatReactiveForm();
   }
 
-  private _formatReactiveForm() {
+  formatReactiveForm() {
     this.reactiveForm = this.formBuilder.group(
       {
         email: [''],
-        password: [''],
-        rememberUser: [null],
+        password: ['']
       }
     );
   }
@@ -36,12 +35,11 @@ export class LoginComponent implements OnInit {
     
     const session = <Session>{
       email: this.reactiveForm.get('email')!.value,
-      password: this.reactiveForm.get('password')!.value,
-      rememberUser: this.reactiveForm.get('rememberUser')!.value
+      password: this.reactiveForm.get('password')!.value
     };
 
     if (this.reactiveForm.valid) {
-      this._sessionStoreService.login(session);
+      this.sessionStoreService.login(session);
     } else {
       throw new Error('Form error');
     }

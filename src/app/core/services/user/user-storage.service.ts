@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '@core/models';
+import { User, UserApiResponse } from '@core/models';
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from '..';
 
@@ -12,7 +12,7 @@ export class UserStorageService {
   public readonly user$ = this._user.asObservable();
 
   constructor(
-    private _userService: UserService
+    private userService: UserService
   ) { }
   
   get user(): User[] {
@@ -24,9 +24,14 @@ export class UserStorageService {
   }
 
   apiUser() {
-    this._userService.apiUser().subscribe(
-      (response: User) => {
+    this.userService.apiUser().subscribe(
+      (response: UserApiResponse) => {
         console.log(response);
+        if (response.ok) {
+          this.user = <User[]>response.user;
+        } else {
+          throw new Error(response.err.message);
+        }
       },
       (error: any) => {
         throw new Error(error);

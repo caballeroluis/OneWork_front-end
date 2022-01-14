@@ -3,3 +3,10 @@
 <button routerLink="/session/login">
     login
 </button>
+
+<div *ngFor="let user of userStoreService.user$ | async; trackBy: getIdTrackFn">
+  <p>{{ user.email }}</p>
+  <p>{{ user.role }}</p>
+  <p>{{ user.state }}</p>
+  <p>{{ user.creationDate }}</p>
+</div>

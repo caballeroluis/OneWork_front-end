@@ -11,16 +11,16 @@ export class AppComponent {
   environmentProduction = environment.production;
 
   constructor(
-    private _userStoreService: UserStorageService,
-    private _sessionStoreService: SessionStorageService
+    private userStoreService: UserStorageService,
+    private sessionStoreService: SessionStorageService
   ) { }
 
   test() {
-    console.log('📂user', this._userStoreService.user);
-    console.log('📂session', this._sessionStoreService.session);
+    console.log('📂user', this.userStoreService.user);
+    console.log('📂session', this.sessionStoreService.session);
 
-    console.log('👀user', this._userStoreService.user$['source']);
-    console.log('👀session', this._sessionStoreService.session$['source']);
+    console.log('👀user', this.userStoreService.user$['source']);
+    console.log('👀session', this.sessionStoreService.session$['source']);
   }
 
 }

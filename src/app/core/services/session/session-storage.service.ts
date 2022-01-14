@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Session } from '@core/models';
+import { Session, SessionApiResponse } from '@core/models';
 import { BehaviorSubject } from 'rxjs';
 import { SessionService } from '..';
 
@@ -13,7 +13,7 @@ export class SessionStorageService {
   readonly session$ = this._session.asObservable();
 
   constructor(
-    private _sessionService: SessionService,
+    private sessionService: SessionService,
     private router: Router
   ) { }
 
@@ -26,22 +26,16 @@ export class SessionStorageService {
   }
 
   login(session: Session) {
-    this._sessionService.login(session.email, session.password).subscribe(
-      (response: Session) => {
+    this.sessionService.login(session.email, session.password).subscribe(
+      (response: SessionApiResponse) => {
         if (!response.ok) {
-          throw new Error('error');
+          throw new Error(response.err.message);
         } else if (response.token?.length > 0) {
           this.addSessionAttr(<Session>{
             email: session.email,
             token: response.token
           });
-
-          if (session.rememberUser) {
-            localStorage.setItem('remember_email', session.email);
-          } else {
-            localStorage.removeItem('remember_email');
-          }
-
+          
           this.router.navigate(['session', 'profile']);
         }
       },

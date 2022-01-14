@@ -26,7 +26,6 @@ export class UserStorageService {
   apiUser() {
     this.userService.apiUser().subscribe(
       (response: UserApiResponse) => {
-        console.log(response);
         if (response.ok) {
           this.user = <User[]>response.user;
         } else {

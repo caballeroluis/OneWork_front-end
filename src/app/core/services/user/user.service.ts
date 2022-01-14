@@ -17,7 +17,7 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        Authorization: this.sessionStoreService.session.token
+        Authorization: this.sessionStoreService.session?.token
       })
     };
 

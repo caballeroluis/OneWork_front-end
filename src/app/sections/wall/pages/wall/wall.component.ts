@@ -24,4 +24,8 @@ export class WallComponent implements OnInit {
 
   getIdTrackFn = (i: number, item: any) => item.id;
 
+  apiUser() {
+    this.userStoreService.apiUser();
+  }
+
 }

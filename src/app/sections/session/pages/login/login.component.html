@@ -1,0 +1,34 @@
+<p>login works!</p>
+
+<button routerLink="/session/register">
+    register
+</button>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
+    <label>
+      <span>email</span>
+      <input
+        type="text"
+        placeholder="Your email"
+        formControlName="email">
+    </label>
+  
+    <label>
+      <span>password</span>
+      <input
+        type="password"
+        placeholder="Your password"
+        formControlName="password">
+    </label>
+  
+    <label>
+      <span>remember me</span>
+      <input
+        type="checkbox"
+        formControlName="rememberUser">
+    </label>
+  
+    <button color="secondary" type="submit">
+      Login
+    </button>
+  </form>

@@ -1,1 +1,8 @@
 <router-outlet></router-outlet>
+
+
+<div *ngIf="!environmentProduction" style="position: absolute; top: 0px; left: 38%">
+    <button (click)="test()">
+        👁
+    </button>
+</div>

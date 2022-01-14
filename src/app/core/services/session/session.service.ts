@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
+
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class SessionService {
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  apiUser(): Observable<any> {
-    return this.http.get(
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(
       environment.apiUrl +
-      '/user'
+      '/login',
+      {
+        email: email,
+        password: password
+      }
     );
   }
-  
 }

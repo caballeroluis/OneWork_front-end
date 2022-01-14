@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { SinginComponent } from './pages/singin/singin.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
-    path: 'singin', component: SinginComponent
+    path: 'login', component: LoginComponent
   },
   {
     path: 'register', component: RegisterComponent
@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'profile', component: ProfileComponent
   },
   {
-    path: '', redirectTo: 'singin'
+    path: '', redirectTo: 'login'
   }
 ];
 

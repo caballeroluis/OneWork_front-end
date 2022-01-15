@@ -7,3 +7,24 @@
 <p *ngIf="(sessionStorageService.session$ | async)?.email">
     Loged as:  {{ (sessionStorageService.session$ | async)?.email }}
 </p>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
+    <label>
+        <span>email</span>
+        <input type="text" placeholder="Your email" formControlName="email">
+    </label>
+  
+    <label>
+        <span>password</span>
+        <input type="password" placeholder="Your password" formControlName="password">
+    </label>
+
+    <label>
+        <span>role</span>
+        <input type="text" placeholder="Your role" formControlName="role">
+    </label>
+  
+    <button color="secondary" type="submit">
+        Update
+    </button>
+</form>

@@ -30,5 +30,17 @@ export class UserService {
       }
     );
   }
+
+  update(user: User): Observable<any> {
+    return this.http.put(
+      environment.apiUrl +
+      '/user',
+      {
+        email: user.email,
+        password: user.password,
+        role: user.role
+      }
+    );
+  }
   
 }

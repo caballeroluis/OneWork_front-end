@@ -33,7 +33,8 @@ export class SessionStorageService {
         } else if (response.token?.length > 0) {
           this.addSessionAttr(<Session>{
             email: session.email,
-            token: response.token
+            token: response.token,
+            role: response.role
           });
           
           this.router.navigate(['session', 'profile']);

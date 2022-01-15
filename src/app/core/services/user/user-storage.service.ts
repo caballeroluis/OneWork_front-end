@@ -56,4 +56,20 @@ export class UserStorageService {
     );
   }
 
+  update(user: User) {
+    this.userService.register(user).subscribe(
+      (response: UserApiResponse) => {
+        if (response.ok) {
+          this.user = <User[]>response.user;
+          this.router.navigate(['session', 'login']);
+        } else {
+          throw new Error(response.err.message);
+        }
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
 }

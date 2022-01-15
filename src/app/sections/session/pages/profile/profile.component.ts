@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionStorageService } from '@core/services';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { User } from '@core/models';
+import { SessionStorageService, UserStorageService } from '@core/services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -8,11 +11,51 @@ import { SessionStorageService } from '@core/services';
 })
 export class ProfileComponent implements OnInit {
 
+  public reactiveForm!: FormGroup;
+  public isSubmitted = false;
+  private detailSubscription!: Subscription;
+  
   constructor(
-    public sessionStorageService: SessionStorageService
+    private formBuilder: FormBuilder,
+    private userStoreService: UserStorageService,
+    public sessionStoreService: SessionStorageService,
   ) { }
 
   ngOnInit(): void {
+    this.formatReactiveForm();
   }
 
+  formatReactiveForm() {
+    this.reactiveForm = this.formBuilder.group(
+      {
+        email: [''],
+        password: [''],
+        role: ['']
+      }
+    );
+
+    this.detailSubscription = this.sessionStoreService.session$.subscribe(session => {
+      this.reactiveForm.controls.email.setValue(session.email);
+      this.reactiveForm.controls.password.setValue(session.password);
+      this.reactiveForm.controls.role.setValue(session.role);
+    });
+  }
+
+  submitForm() {
+    this.isSubmitted = true;
+    
+    const user = <User>{
+      email: this.reactiveForm.get('email')!.value,
+      password: this.reactiveForm.get('password')!.value,
+      role: this.reactiveForm.get('role')!.value
+    };
+
+    if (this.reactiveForm.valid) {
+      this.userStoreService.register(user);
+      this.detailSubscription.unsubscribe();
+    } else {
+      throw new Error('Form error');
+    }
+  }
+  
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { User } from '@core/models';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,28 +18,4 @@ export class UserService {
     );
   }
 
-  register(user: User): Observable<any> {
-    return this.http.post(
-      environment.apiUrl +
-      '/user',
-      {
-        email: user.email,
-        password: user.password,
-        role: user.role
-      }
-    );
-  }
-
-  update(user: User): Observable<any> {
-    return this.http.put(
-      environment.apiUrl +
-      '/user',
-      {
-        email: user.email,
-        password: user.password,
-        role: user.role
-      }
-    );
-  }
-  
 }

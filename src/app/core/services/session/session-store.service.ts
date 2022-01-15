@@ -25,18 +25,57 @@ export class SessionStoreService {
     this._session.next(val);
   }
 
+  register(session: Session) {
+    this.sessionService.register(session).subscribe(
+      (response: SessionApiResponse) => {
+        if (response.ok) {
+          this.addSessionAttr(<Session>{
+            user: {
+              _id: response.user._id,
+              email: response.user.email,
+              role: response.user.role
+            }
+          });
+          
+          this.router.navigate(['session', 'login']);
+        } else {
+          throw new Error(response.err.message);
+        }
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
   login(session: Session) {
-    this.sessionService.login(session.user).subscribe(
+    this.sessionService.login(session).subscribe(
       (response: SessionApiResponse) => {
         if (!response.ok) {
           throw new Error(response.err.message);
         } else if (response.token?.length > 0) {
           this.addSessionAttr(<Session>{
-            user: {
-              email: response.user.email,
-              role: response.user.role
-            },
+            user: response.user,
             token: response.token
+          });
+          
+          this.router.navigate(['session', 'profile']);
+        }
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
+  update(session: Session) {
+    this.sessionService.update(session).subscribe(
+      (response: SessionApiResponse) => {
+        if (!response.ok) {
+          throw new Error(response.err.message);
+        } else if (response.token?.length > 0) {
+          this.addSessionAttr(<Session>{
+            user: response.user
           });
           
           this.router.navigate(['session', 'profile']);

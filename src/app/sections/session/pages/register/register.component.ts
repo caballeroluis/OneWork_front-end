@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { User } from '@core/models';
-import { UserStoreService } from '@core/services';
+import { Session } from '@core/models';
+import { SessionStoreService } from '@core/services';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   public isSubmitted = false;
   
   constructor(
-    private userStoreService: UserStoreService,
+    private sessionStoreService: SessionStoreService,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -34,14 +34,16 @@ export class RegisterComponent implements OnInit {
   submitForm() {
     this.isSubmitted = true;
     
-    const user = <User>{
-      email: this.reactiveForm.get('email')!.value,
-      password: this.reactiveForm.get('password')!.value,
-      role: this.reactiveForm.get('role')!.value
+    const session = <Session>{
+      user: {
+        email: this.reactiveForm.get('email')!.value,
+        password: this.reactiveForm.get('password')!.value,
+        role: this.reactiveForm.get('role')!.value
+      }
     };
 
     if (this.reactiveForm.valid) {
-      this.userStoreService.register(user);
+      this.sessionStoreService.register(session);
     } else {
       throw new Error('Form error');
     }

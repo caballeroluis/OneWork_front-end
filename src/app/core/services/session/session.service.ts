@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
-import { User } from '@core/models';
+import { Session } from '@core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +13,39 @@ export class SessionService {
     private http: HttpClient,
   ) { }
 
-  login(user: User): Observable<any> {
+  register(session: Session): Observable<any> {
+    return this.http.post(
+      environment.apiUrl +
+      '/user',
+      {
+        email: session.user.email,
+        password: session.user.password,
+        role: session.user.role
+      }
+    );
+  }
+
+  login(session: Session): Observable<any> {
     return this.http.post(
       environment.apiUrl +
       '/login',
       {
-        email: user.email,
-        password: user.password
+        email: session.user.email,
+        password: session.user.password
       }
     );
   }
+
+  update(session: Session): Observable<any> {
+    return this.http.put(
+      environment.apiUrl +
+      '/user/' +
+      session.user._id,
+      {
+        email: session.user.email,
+        password: session.user.password,
+      }
+    );
+  }
+
 }

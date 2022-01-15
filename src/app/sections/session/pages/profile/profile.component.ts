@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { User } from '@core/models';
-import { SessionStoreService, UserStoreService } from '@core/services';
+import { Session } from '@core/models';
+import { SessionStoreService } from '@core/services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -13,12 +13,12 @@ export class ProfileComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
-  private detailSubscription!: Subscription;
+  public sessionDetailSubscription!: Subscription;
+  public sessionDetail!: Session;
   
   constructor(
     private formBuilder: FormBuilder,
-    private userStoreService: UserStoreService,
-    public sessionStoreService: SessionStoreService,
+    public sessionStoreService: SessionStoreService
   ) { }
 
   ngOnInit(): void {
@@ -29,30 +29,31 @@ export class ProfileComponent implements OnInit {
     this.reactiveForm = this.formBuilder.group(
       {
         email: [''],
-        password: [''],
-        role: ['']
+        password: ['']
       }
     );
 
-    this.detailSubscription = this.sessionStoreService.session$.subscribe(session => {
+    this.sessionDetailSubscription = this.sessionStoreService.session$.subscribe(session => {
+      this.sessionDetail = session;
       this.reactiveForm.controls.email.setValue(session.user.email);
       this.reactiveForm.controls.password.setValue(session.user.password);
-      this.reactiveForm.controls.role.setValue(session.user.role);
     });
   }
 
   submitForm() {
     this.isSubmitted = true;
     
-    const user = <User>{
-      email: this.reactiveForm.get('email')!.value,
-      password: this.reactiveForm.get('password')!.value,
-      role: this.reactiveForm.get('role')!.value
+    const session = <Session>{
+      user: {
+        _id: this.sessionDetail.user._id,
+        email: this.reactiveForm.get('email')!.value,
+        password: this.reactiveForm.get('password')!.value,
+      }
     };
 
     if (this.reactiveForm.valid) {
-      this.userStoreService.register(user);
-      this.detailSubscription.unsubscribe();
+      this.sessionStoreService.update(session);
+      this.sessionDetailSubscription.unsubscribe();
     } else {
       throw new Error('Form error');
     }

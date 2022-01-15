@@ -4,9 +4,9 @@
     wall
 </button>
 
-<!-- <p *ngIf="(sessionStoreService.session$ | async)?.user">
-    Loged as:  {{ (sessionStoreService.session$ | async)?.user.email }}
-</p> -->
+<p *ngIf="(sessionStoreService.session$ | async)?.user">
+    Loged as: {{ sessionDetail.user.email }}
+</p>
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
     <label>
@@ -17,11 +17,6 @@
     <label>
         <span>password</span>
         <input type="password" placeholder="Your password" formControlName="password">
-    </label>
-
-    <label>
-        <span>role</span>
-        <input type="text" placeholder="Your role" formControlName="role">
     </label>
   
     <button color="secondary" type="submit">

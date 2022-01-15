@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
     this.isSubmitted = true;
     
     const session = <Session>{
-      email: this.reactiveForm.get('email')!.value,
-      password: this.reactiveForm.get('password')!.value
+      user: {
+        email: this.reactiveForm.get('email')!.value,
+        password: this.reactiveForm.get('password')!.value
+      }
     };
 
     if (this.reactiveForm.valid) {

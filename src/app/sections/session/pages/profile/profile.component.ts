@@ -35,9 +35,9 @@ export class ProfileComponent implements OnInit {
     );
 
     this.detailSubscription = this.sessionStoreService.session$.subscribe(session => {
-      this.reactiveForm.controls.email.setValue(session.email);
-      this.reactiveForm.controls.password.setValue(session.password);
-      this.reactiveForm.controls.role.setValue(session.role);
+      this.reactiveForm.controls.email.setValue(session.user.email);
+      this.reactiveForm.controls.password.setValue(session.user.password);
+      this.reactiveForm.controls.role.setValue(session.user.role);
     });
   }
 

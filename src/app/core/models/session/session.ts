@@ -1,6 +1,6 @@
+import { User } from '@core/models';
+
 export class Session {
-  email!: string;
-  password!: string;
-  role!: string;
+  user!: User;
   token!: string;
 }

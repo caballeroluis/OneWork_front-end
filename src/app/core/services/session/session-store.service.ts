@@ -26,15 +26,17 @@ export class SessionStoreService {
   }
 
   login(session: Session) {
-    this.sessionService.login(session.email, session.password).subscribe(
+    this.sessionService.login(session.user).subscribe(
       (response: SessionApiResponse) => {
         if (!response.ok) {
           throw new Error(response.err.message);
         } else if (response.token?.length > 0) {
           this.addSessionAttr(<Session>{
-            email: session.email,
-            token: response.token,
-            role: response.role
+            user: {
+              email: response.user.email,
+              role: response.user.role
+            },
+            token: response.token
           });
           
           this.router.navigate(['session', 'profile']);

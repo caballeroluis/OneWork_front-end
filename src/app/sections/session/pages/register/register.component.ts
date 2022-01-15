@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '@core/models';
-import { UserStorageService } from '@core/services';
+import { UserStoreService } from '@core/services';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   public isSubmitted = false;
   
   constructor(
-    private userStoreService: UserStorageService,
+    private userStoreService: UserStoreService,
     private formBuilder: FormBuilder,
   ) { }
 

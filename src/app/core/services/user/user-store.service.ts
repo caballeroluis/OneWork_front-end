@@ -7,7 +7,7 @@ import { UserService } from '..';
 @Injectable({
   providedIn: 'root'
 })
-export class UserStorageService {
+export class UserStoreService {
 
   private readonly _user = new BehaviorSubject<User[]>([]);
   public readonly user$ = this._user.asObservable();

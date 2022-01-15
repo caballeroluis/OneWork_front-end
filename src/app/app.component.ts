@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SessionStorageService, UserStorageService } from '@core/services';
+import { SessionStoreService, UserStoreService } from '@core/services';
 import { environment } from '@env/environment';
 
 @Component({
@@ -11,8 +11,8 @@ export class AppComponent {
   environmentProduction = environment.production;
 
   constructor(
-    private userStoreService: UserStorageService,
-    private sessionStoreService: SessionStorageService
+    private userStoreService: UserStoreService,
+    private sessionStoreService: SessionStoreService
   ) { }
 
   test() {

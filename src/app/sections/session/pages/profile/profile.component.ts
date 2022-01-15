@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '@core/models';
-import { SessionStorageService, UserStorageService } from '@core/services';
+import { SessionStoreService, UserStoreService } from '@core/services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,8 +17,8 @@ export class ProfileComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private userStoreService: UserStorageService,
-    public sessionStoreService: SessionStorageService,
+    private userStoreService: UserStoreService,
+    public sessionStoreService: SessionStoreService,
   ) { }
 
   ngOnInit(): void {

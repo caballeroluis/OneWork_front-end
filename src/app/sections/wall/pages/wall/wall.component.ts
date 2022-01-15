@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionStorageService, UserStorageService } from '@core/services';
+import { SessionStoreService, UserStoreService } from '@core/services';
 
 @Component({
   selector: 'app-wall',
@@ -9,8 +9,8 @@ import { SessionStorageService, UserStorageService } from '@core/services';
 export class WallComponent implements OnInit {
 
   constructor(
-    public userStoreService: UserStorageService,
-    public sessionStoreService: SessionStorageService
+    public userStoreService: UserStoreService,
+    public sessionStoreService: SessionStoreService
   ) { }
 
   ngOnInit(): void {

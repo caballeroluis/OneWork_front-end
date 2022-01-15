@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Session } from '@core/models';
-import { SessionStorageService } from '@core/services';
+import { SessionStoreService } from '@core/services';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   public isSubmitted = false;
   
   constructor(
-    private sessionStoreService: SessionStorageService,
+    private sessionStoreService: SessionStoreService,
     private formBuilder: FormBuilder,
   ) { }
 

@@ -7,7 +7,7 @@ import { SessionService } from '..';
 @Injectable({
   providedIn: 'root'
 })
-export class SessionStorageService {
+export class SessionStoreService {
 
   private readonly _session = new BehaviorSubject<Session>(null!);
   readonly session$ = this._session.asObservable();

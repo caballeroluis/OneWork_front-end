@@ -6,23 +6,16 @@
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
     <label>
-      <span>email</span>
-      <input
-        type="text"
-        placeholder="Your email"
-        formControlName="email">
+        <span>email</span>
+        <input type="text" placeholder="Your email" formControlName="email">
     </label>
-  
-    <label>
-      <span>password</span>
-      <input
-        type="password"
-        placeholder="Your password"
-        formControlName="password">
-    </label>
-  
-    <button color="secondary" type="submit">
-      Login
-    </button>
 
-  </form>
+    <label>
+        <span>password</span>
+        <input type="password" placeholder="Your password" formControlName="password">
+    </label>
+
+    <button color="secondary" type="submit">
+        Login
+    </button>
+</form>

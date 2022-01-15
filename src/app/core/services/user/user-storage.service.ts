@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { User, UserApiResponse } from '@core/models';
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from '..';
@@ -12,6 +13,7 @@ export class UserStorageService {
   public readonly user$ = this._user.asObservable();
 
   constructor(
+    private router: Router,
     private userService: UserService
   ) { }
   
@@ -28,6 +30,22 @@ export class UserStorageService {
       (response: UserApiResponse) => {
         if (response.ok) {
           this.user = <User[]>response.user;
+        } else {
+          throw new Error(response.err.message);
+        }
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
+  register(user: User) {
+    this.userService.register(user).subscribe(
+      (response: UserApiResponse) => {
+        if (response.ok) {
+          this.user = <User[]>response.user;
+          this.router.navigate(['session', 'login']);
         } else {
           throw new Error(response.err.message);
         }

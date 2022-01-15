@@ -1,30 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { SessionStorageService } from '..';
+import { User } from '@core/models';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
   constructor(
-    private http: HttpClient,
-    private sessionStoreService: SessionStorageService
+    private http: HttpClient
   ) { }
 
   apiUser(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: this.sessionStoreService.session?.token
-      })
-    };
-
     return this.http.get(
       environment.apiUrl +
+      '/user'
+    );
+  }
+
+  register(user: User): Observable<any> {
+    return this.http.post(
+      environment.apiUrl +
       '/user',
-      httpOptions
+      {
+        email: user.email,
+        password: user.password,
+        role: user.role
+      }
     );
   }
   

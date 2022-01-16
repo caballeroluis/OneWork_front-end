@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@core/models';
 import { SessionStoreService, UserStoreService } from '@core/services';
 
 @Component({
@@ -26,6 +27,10 @@ export class WallComponent implements OnInit {
 
   apiUser() {
     this.userStoreService.apiUser();
+  }
+
+  removeUser(user: User) {
+    this.userStoreService.removeUser(user);
   }
 
 }

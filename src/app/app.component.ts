@@ -18,9 +18,11 @@ export class AppComponent {
   test() {
     console.log('📂user', this.userStoreService.user);
     console.log('📂session', this.sessionStoreService.session);
+    console.log('📂state', this.sessionStoreService.state);
 
     console.log('👀user', this.userStoreService.user$['source']);
     console.log('👀session', this.sessionStoreService.session$['source']);
+    console.log('👀state', this.sessionStoreService.state$['source']);
   }
 
 }

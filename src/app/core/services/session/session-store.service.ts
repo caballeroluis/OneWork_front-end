@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Session, SessionApiResponse } from '@core/models';
-import { BehaviorSubject } from 'rxjs';
+import { Session, SessionApiResponse, State, User } from '@core/models';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { SessionService } from '..';
 
 @Injectable({
@@ -11,6 +11,12 @@ export class SessionStoreService {
 
   private readonly _session = new BehaviorSubject<Session>(null!);
   readonly session$ = this._session.asObservable();
+
+  private readonly _state = new BehaviorSubject<State>(null!);
+  readonly state$ = this._state.asObservable();
+  
+  public stateDetailSubscription!: Subscription;
+  public stateDetail!: State;
 
   constructor(
     private sessionService: SessionService,
@@ -25,17 +31,21 @@ export class SessionStoreService {
     this._session.next(val);
   }
 
+  get state(): State {
+    return this._state.getValue();
+  }
+
+  set state(val: State) {
+    this._state.next(val);
+  }
+
   register(session: Session) {
     this.sessionService.register(session).subscribe(
       (response: SessionApiResponse) => {
         if (response.ok) {
-          this.addSessionAttr(<Session>{
-            user: {
-              _id: response.user._id,
-              email: response.user.email,
-              role: response.user.role
-            }
-          });
+          this.addSessionAttr({
+            user: response.user,
+          } as Session);
           
           this.router.navigate(['session', 'login']);
         } else {
@@ -54,12 +64,22 @@ export class SessionStoreService {
         if (!response.ok) {
           throw new Error(response.err.message);
         } else if (response.token?.length > 0) {
-          this.addSessionAttr(<Session>{
+          this.addSessionAttr({
             user: response.user,
             token: response.token
-          });
+          } as Session);
+          
+          this.addStateAttr({
+            session: {
+              user: response.user as User
+            }
+          } as State);
           
           this.router.navigate(['session', 'profile']);
+
+          this.stateDetailSubscription = this.state$.subscribe(state => {
+            this.stateDetail = state;
+          });
         }
       },
       (error: any) => {
@@ -74,9 +94,9 @@ export class SessionStoreService {
         if (!response.ok) {
           throw new Error(response.err.message);
         } else if (response.token?.length > 0) {
-          this.addSessionAttr(<Session>{
+          this.addSessionAttr({
             user: response.user
-          });
+          } as Session);
           
           this.router.navigate(['session', 'profile']);
         }
@@ -92,6 +112,13 @@ export class SessionStoreService {
       ...this.session,
       ...val
     }
+  }
+
+  addStateAttr(val: State) {
+    this.state = {
+      ...this.state,
+      ...val
+    } as State
   }
 
 }

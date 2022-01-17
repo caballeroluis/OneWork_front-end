@@ -13,8 +13,8 @@ export class UserStoreService {
     private stateStoreService: StateStoreService,
   ) { }
   
-  apiUser() {
-    this.userService.apiUser().subscribe(
+  getUser() {
+    this.userService.getUser().subscribe(
       (response: UserApiResponse) => {
         if (response.ok) {
           this.stateStoreService.update({
@@ -31,8 +31,23 @@ export class UserStoreService {
     );
   }
 
-  removeUser(user: User) {
+  deleteUser(user: User) {
     this.stateStoreService.state.user = this.stateStoreService.state.user.filter(_user => _user._id !== user._id);
+
+    this.userService.deleteUser(user).subscribe(
+      (response: UserApiResponse) => {
+        if (response.ok) {
+          console.log(response);
+        } else {
+          this.stateStoreService.state.user = [...this.stateStoreService.state.user, user];
+          throw new Error(response.err.message);
+        }
+      },
+      (error: any) => {
+        this.stateStoreService.state.user = [...this.stateStoreService.state.user, user];
+        throw new Error(error);
+      }
+    );
   }
 
 }

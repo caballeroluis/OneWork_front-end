@@ -24,18 +24,18 @@ export class WallComponent implements OnInit {
       this.stateStoreService.state.session?.token!.length > 0 &&
       !this.stateStoreService.state?.user!
     ) {
-      this.userStoreService.apiUser();
+      this.userStoreService.getUser();
     }
   }
 
   getIdTrackFn = (i: number, item: any) => item.id;
 
-  apiUser() {
-    this.userStoreService.apiUser();
+  getUser() {
+    this.userStoreService.getUser();
   }
 
-  removeUser(user: User) {
-    this.userStoreService.removeUser(user);
+  deleteUser(user: User) {
+    this.userStoreService.deleteUser(user);
   }
 
 }

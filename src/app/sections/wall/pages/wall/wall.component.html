@@ -4,16 +4,19 @@
     login
 </button>
 
-<div *ngFor="let user of stateStoreService.state?.user; trackBy: getIdTrackFn">
-  <p>{{ user.email }}</p>
-  <p>{{ user.role }}</p>
-  <p>{{ user.state }}</p>
-  <p>{{ user.creationDate }}</p>
-  <button (click)="removeUser(user)">
-    XX
-  </button>
-</div>
-
-<button (click)="apiUser()">
-  force reload
+<button (click)="getUser()">
+  getUser()
 </button>
+
+<div *ngFor="let user of stateStoreService.state?.user; trackBy: getIdTrackFn">
+  <div style="background-color: blanchedalmond;">
+    <p>{{ user.email }}</p>
+    <p>{{ user.role }}</p>
+    <p *ngIf="!user.state" style="background-color: palevioletred;">{{ user.state }}</p>
+    <p *ngIf="user.state" style="background-color: palegreen;">{{ user.state }}</p>
+    <p>{{ user.creationDate }}</p>
+    <button (click)="deleteUser(user)">
+      X
+    </button>
+  </div>
+</div>

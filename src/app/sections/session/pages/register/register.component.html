@@ -17,7 +17,11 @@
 
     <label>
         <span>role</span>
-        <input type="text" placeholder="Your role" formControlName="role">
+        <select formControlName="role">
+            <option value="ADMIN_ROLE">ADMIN_ROLE</option>
+            <option value="RECRUITER_ROLE">RECRUITER_ROLE</option>
+            <option value="WORKER_ROLE">WORKER_ROLE</option>
+        </select>
     </label>
   
     <button color="secondary" type="submit">

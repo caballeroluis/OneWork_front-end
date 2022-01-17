@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
-import { Session } from '@core/models';
+import { Session } from '@sections/session/models';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class SessionService {
     );
   }
 
-  update(session: Session): Observable<any> {
+  updateUserProfile(session: Session): Observable<any> {
     return this.http.put(
       environment.apiUrl +
       '/user/' +

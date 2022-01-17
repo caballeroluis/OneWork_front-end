@@ -4,9 +4,8 @@
     wall
 </button>
 
-<p *ngIf="(sessionStoreService.session$ | async)?.user">
-    Loged as: {{ sessionDetail.user.email }}
-    Loged as: {{ stateDetail.session.user.email }}
+<p *ngIf="stateStoreService!">
+    Loged as: {{ (stateStoreService.state$ | async)?.session?.user?.email }}
 </p>
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>

@@ -4,30 +4,13 @@
     login
 </button>
 
-<div *ngFor="let user of userStoreService.user; trackBy: getIdTrackFn">
+<div *ngFor="let user of stateStoreService.state?.user; trackBy: getIdTrackFn">
   <p>{{ user.email }}</p>
   <p>{{ user.role }}</p>
   <p>{{ user.state }}</p>
   <p>{{ user.creationDate }}</p>
   <button (click)="removeUser(user)">
     XX
-  </button>
-</div>
-
-Loged as: {{ sessionStoreService.stateDetail.session.user.email }}
-Loged as: {{ sessionStoreService.session.user.email }}
-
-<div *ngFor="let user of userStoreService.stateDetail.user; trackBy: getIdTrackFn">
-  <p>{{ user.email }}</p>
-  <button (click)="removeUser(user)">
-    X
-  </button>
-</div>
-
-<div *ngFor="let user of userStoreService.state.user; trackBy: getIdTrackFn">
-  <p>{{ user.email }}</p>
-  <button (click)="removeUser(user)">
-    XXX
   </button>
 </div>
 

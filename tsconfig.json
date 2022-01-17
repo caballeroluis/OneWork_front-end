@@ -13,7 +13,8 @@
     "downlevelIteration": true,
     "paths": {
       "@env/*": ["src/environments/*"],
-      "@core/*": ["src/app/core/*"]
+      "@core/*": ["src/app/core/*"],
+      "@sections/*": ["src/app/sections/*"]
     },
     "experimentalDecorators": true,
     "moduleResolution": "node",

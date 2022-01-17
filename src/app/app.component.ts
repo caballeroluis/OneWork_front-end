@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SessionStoreService, UserStoreService } from '@core/services';
+import { StateStoreService } from '@core/services';
 import { environment } from '@env/environment';
 
 @Component({
@@ -11,18 +11,14 @@ export class AppComponent {
   environmentProduction = environment.production;
 
   constructor(
-    private userStoreService: UserStoreService,
-    private sessionStoreService: SessionStoreService
+    private stateStoreService: StateStoreService,
   ) { }
 
   test() {
-    console.log('📂user', this.userStoreService.user);
-    console.log('📂session', this.sessionStoreService.session);
-    console.log('📂state', this.sessionStoreService.state);
-
-    console.log('👀user', this.userStoreService.user$['source']);
-    console.log('👀session', this.sessionStoreService.session$['source']);
-    console.log('👀state', this.sessionStoreService.state$['source']);
+    console.log('📂 Session data', this.stateStoreService.state.session);
+    console.log('📂 User data', this.stateStoreService.state.user);
+    
+    console.log('👀 State observers', this.stateStoreService.state$['source']);
   }
 
 }

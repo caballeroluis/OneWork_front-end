@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Session, State } from '@core/models';
-import { SessionStoreService } from '@core/services';
-import { Subscription } from 'rxjs';
+import { StateStoreService } from '@core/services';
+import { Session } from '@sections/session/models';
+import { SessionStoreService } from '@sections/session/services';
 
 @Component({
   selector: 'app-profile',
@@ -13,14 +13,11 @@ export class ProfileComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
-  public sessionDetailSubscription!: Subscription;
-  public stateDetailSubscription!: Subscription;
-  public sessionDetail!: Session;
-  public stateDetail!: State;
   
   constructor(
     private formBuilder: FormBuilder,
-    public sessionStoreService: SessionStoreService
+    private sessionStoreService: SessionStoreService,
+    public stateStoreService: StateStoreService
   ) { }
 
   ngOnInit(): void {
@@ -35,15 +32,8 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.sessionDetailSubscription = this.sessionStoreService.session$.subscribe(session => {
-      this.sessionDetail = session;
-      this.reactiveForm.controls.email.setValue(session.user.email);
-      this.reactiveForm.controls.password.setValue(session.user.password);
-    });
-
-    this.stateDetailSubscription = this.sessionStoreService.state$.subscribe(state => {
-      this.stateDetail = state;
-    });
+    this.reactiveForm.controls.email.setValue(this.stateStoreService.state?.session?.user?.email);
+    this.reactiveForm.controls.password.setValue(this.stateStoreService.state?.session?.user?.password);
   }
 
   submitForm() {
@@ -51,16 +41,14 @@ export class ProfileComponent implements OnInit {
     
     const session = <Session>{
       user: {
-        _id: this.sessionDetail.user._id,
+        _id: this.stateStoreService.state?.session?.user?._id,
         email: this.reactiveForm.get('email')!.value,
         password: this.reactiveForm.get('password')!.value,
       }
     };
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.update(session);
-      this.sessionDetailSubscription.unsubscribe();
-      this.stateDetailSubscription.unsubscribe();
+      this.sessionStoreService.updateUserProfile(session);
     } else {
       throw new Error('Form error');
     }

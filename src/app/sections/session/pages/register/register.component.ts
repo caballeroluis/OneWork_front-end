@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Session } from '@core/models';
-import { SessionStoreService } from '@core/services';
+import { Session } from '@sections/session/models';
+import { SessionStoreService } from '@sections/session/services';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

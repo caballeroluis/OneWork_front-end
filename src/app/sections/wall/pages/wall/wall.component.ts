@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '@core/models';
-import { SessionStoreService, UserStoreService } from '@core/services';
+import { StateStoreService } from '@core/services';
+import { UserStoreService } from '@sections/wall/services';
 
 @Component({
   selector: 'app-wall',
@@ -10,15 +11,19 @@ import { SessionStoreService, UserStoreService } from '@core/services';
 export class WallComponent implements OnInit {
 
   constructor(
-    public userStoreService: UserStoreService,
-    public sessionStoreService: SessionStoreService
+    private userStoreService: UserStoreService,
+    public stateStoreService: StateStoreService
   ) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    if (this.sessionStoreService.session! && this.userStoreService.user?.length === 0) {
+    if (
+      this.stateStoreService.state! &&
+      this.stateStoreService.state.session?.token!.length > 0 &&
+      !this.stateStoreService.state?.user!
+    ) {
       this.userStoreService.apiUser();
     }
   }

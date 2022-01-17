@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { SessionStoreService } from '@core/services';
+import { StateStoreService } from '@core/services';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -16,15 +16,15 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private router: Router,
-    private sessionStoreService: SessionStoreService
+    private stateStoreService: StateStoreService
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = null;
 
-    if (this.sessionStoreService.session) {
-      this.sessionStoreService.session$.subscribe(session => {
-        token = session.token;
+    if (this.stateStoreService.state) {
+      this.stateStoreService.state$.subscribe(state => {
+        token = state.session.token;
       });
     }
     

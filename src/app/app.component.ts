@@ -15,10 +15,10 @@ export class AppComponent {
   ) { }
 
   test() {
-    console.log('📂 Session data', this.stateStoreService.state.session);
-    console.log('📂 User data', this.stateStoreService.state.user);
+    console.log('📂 Session data', this.stateStoreService!.state?.session);
+    console.log('📂 User data', this.stateStoreService!.state?.user);
     
-    console.log('👀 State observers', this.stateStoreService.state$['source']);
+    console.log('👀 State observers', this.stateStoreService!.state$['source']);
   }
 
 }

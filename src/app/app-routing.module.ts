@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./sections/wall/wall.module').then( m => m.WallModule)
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./sections/admin/admin.module').then( m => m.AdminModule)
+  },
+  {
     path: 'session',
     loadChildren: () => import('./sections/session/session.module').then( m => m.SessionModule)
   }

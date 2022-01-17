@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private sessionStoreService: SessionStoreService,
-    public stateStoreService: StateStoreService
+    private stateStoreService: StateStoreService
   ) { }
 
   ngOnInit(): void {

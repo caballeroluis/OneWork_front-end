@@ -1,12 +1,4 @@
-<p>profile works!</p>
-
-<button routerLink="/">
-    wall
-</button>
-
-<p *ngIf="stateStoreService!">
-    Loged as: {{ (stateStoreService.state$ | async)?.session?.user?.email }}
-</p>
+<session-header></session-header>
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
     <label>

@@ -1,22 +1,3 @@
+<wall-header></wall-header>
+
 <p>wall works!</p>
-
-<button routerLink="/session/login">
-    login
-</button>
-
-<button (click)="getUser()">
-  getUser()
-</button>
-
-<div *ngFor="let user of stateStoreService.state?.user; trackBy: getIdTrackFn">
-  <div style="background-color: blanchedalmond;">
-    <p>{{ user.email }}</p>
-    <p>{{ user.role }}</p>
-    <p *ngIf="!user.state" style="background-color: palevioletred;">{{ user.state }}</p>
-    <p *ngIf="user.state" style="background-color: palegreen;">{{ user.state }}</p>
-    <p>{{ user.creationDate }}</p>
-    <button (click)="deleteUser(user)">
-      X
-    </button>
-  </div>
-</div>

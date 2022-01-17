@@ -1,0 +1,7 @@
+<a routerLink="/session/login">login</a>&nbsp;<span *ngIf="stateStoreService.state!">
+  (session: {{ (stateStoreService.state$ | async)?.session?.user?.email }} )
+</span>&nbsp;
+<a routerLink="/session/register">register</a>&nbsp;
+<a routerLink="/session/profile">profile</a>&nbsp;
+<a routerLink="/wall">wall</a>&nbsp;
+<a routerLink="/admin">admin</a>&nbsp;

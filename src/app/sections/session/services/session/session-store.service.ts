@@ -22,11 +22,11 @@ export class SessionStoreService {
       (response: SessionApiResponse) => {
         if (response.ok) {
           this.stateStoreService.state.user = [
-            ...this.stateStoreService.state.user,
+            ...this.stateStoreService!.state?.user,
             response.user
           ];
           
-          this.router.navigate(['wall']);
+          // this.router.navigate(['session', 'profile']);
         } else {
           throw new Error(response.err.message);
         }
@@ -50,7 +50,7 @@ export class SessionStoreService {
             }
           } as State);
           
-          this.router.navigate(['session', 'profile']);
+          // this.router.navigate(['session', 'profile']);
         }
       },
       (error: any) => {

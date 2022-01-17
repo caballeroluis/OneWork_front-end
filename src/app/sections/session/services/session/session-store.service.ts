@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { State, User } from '@core/models';
+import { State } from '@core/models';
+import { User } from '@shared/models';
 import { StateStoreService } from '@core/services';
 import { SessionService } from '@sections/session/services';
 import { Session, SessionApiResponse } from '@sections/session/models';

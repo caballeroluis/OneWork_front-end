@@ -1,4 +1,4 @@
-import { User } from '@core/models';
+import { User } from '@shared/models';
 
 export class Session {
   user!: User;

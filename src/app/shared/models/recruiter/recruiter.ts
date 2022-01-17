@@ -1,4 +1,4 @@
-import { Offer } from '@core/models';
+import { Offer } from '@shared/models';
 
 export class Recruiter {
     corporationName?: string;

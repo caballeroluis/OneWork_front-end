@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { State, User, UserApiResponse } from '@core/models';
+import { State } from '@core/models';
+import { User, UserApiResponse } from '@shared/models';
 import { StateStoreService } from '@core/services';
-import { UserService } from './user.service';
+import { UserService } from '@shared/services';
 
 @Injectable({
   providedIn: 'root'

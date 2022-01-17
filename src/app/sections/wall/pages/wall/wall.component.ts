@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '@core/models';
+import { User } from '@shared/models';
 import { StateStoreService } from '@core/services';
-import { UserStoreService } from '@sections/wall/services';
+import { UserStoreService } from '@shared/services';
 
 @Component({
   selector: 'app-wall',

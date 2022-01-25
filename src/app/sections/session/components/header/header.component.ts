@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { StateStoreService } from '@core/services';
 
 @Component({
@@ -6,13 +6,14 @@ import { StateStoreService } from '@core/services';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements DoCheck {
 
   constructor(
     public stateStoreService: StateStoreService
   ) { }
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
+    console.log("🚀 ~ SESSION file: header.component.ts ~ line 16 ~ HeaderComponent ~ ngDoCheck ~ ngDoCheck", 'ngDoCheck')
   }
 
 }

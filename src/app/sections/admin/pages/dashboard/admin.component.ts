@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { User } from '@shared/models';
 import { StateStoreService } from '@core/services';
 import { UserStoreService } from '@shared/services';
@@ -8,15 +8,12 @@ import { UserStoreService } from '@shared/services';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements DoCheck {
 
   constructor(
     private userStoreService: UserStoreService,
     public stateStoreService: StateStoreService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit() {
     if (
@@ -26,6 +23,10 @@ export class AdminComponent implements OnInit {
     ) {
       this.userStoreService.getUser();
     }
+  }
+
+  ngDoCheck(): void {
+    console.log("🚀 ~ ADMIN COMPONENT file: admin.component.ts ~ line 29 ~ AdminComponent ~ ngDoCheck ~ ngDoCheck", 'ngDoCheck')
   }
 
   getIdTrackFn = (i: number, item: any) => item.id;

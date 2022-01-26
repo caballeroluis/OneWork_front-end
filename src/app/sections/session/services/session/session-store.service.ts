@@ -17,12 +17,32 @@ export class SessionStoreService {
     private stateStoreService: StateStoreService,
   ) { }
 
-  register(session: Session) {
-    this.sessionService.register(session).subscribe(
+  registerWorker(session: Session) {
+    this.sessionService.registerWorker(session).subscribe(
       (response: SessionApiResponse) => {
         if (response.ok) {
-          this.stateStoreService.state.user = [
-            ...this.stateStoreService!.state?.user,
+          this.stateStoreService.state.users = [
+            ...this.stateStoreService.state.users,
+            response.user
+          ];
+          
+          // this.router.navigate(['session', 'profile']);
+        } else {
+          throw new Error(response.err.message);
+        }
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
+  registerRecruiter(session: Session) {
+    this.sessionService.registerRecruiter(session).subscribe(
+      (response: SessionApiResponse) => {
+        if (response.ok) {
+          this.stateStoreService.state.users = [
+            ...this.stateStoreService.state.users,
             response.user
           ];
           

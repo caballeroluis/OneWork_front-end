@@ -1,11 +1,18 @@
+import { Offer } from '@shared/models';
 export class User {
+
   _id!: string;
-  creationDate?: string;
-  email?: string;
-  password?: string;
-  img?: string;
-  role?: string;
+  email!: string;
+  name?: string;
+  corporationName?: string;
   state?: string;
-  recruiterData?: string;
-  workerData?: string;
+  _type?: string;
+  creationDate?: string;
+  password?: string;
+  offers: Offer[];
+
+  constructor() {
+    this.offers = [];
+  }
+
 }

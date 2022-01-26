@@ -1,0 +1,22 @@
+<session-header></session-header>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
+    <label>
+        <span>email</span>
+        <input type="text" placeholder="Your email" formControlName="email">
+    </label>
+  
+    <label>
+        <span>password</span>
+        <input type="password" placeholder="Your password" formControlName="password">
+    </label>
+  
+    <label>
+        <span>name</span>
+        <input type="text" placeholder="Your name" formControlName="name">
+    </label>
+  
+    <button color="secondary" type="submit">
+        Register recruiter
+    </button>
+</form>

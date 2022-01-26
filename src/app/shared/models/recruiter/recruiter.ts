@@ -1,4 +1,4 @@
-import { Offer } from '@shared/models';
+import { Offer } from '@shared/models'; // TODO: borrar este modelo innecesario?
 
 export class Recruiter {
     corporationName?: string;

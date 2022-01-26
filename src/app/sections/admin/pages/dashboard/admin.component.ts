@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from '@shared/models';
 import { StateStoreService } from '@core/services';
 import { UserStoreService } from '@shared/services';
@@ -8,7 +8,7 @@ import { UserStoreService } from '@shared/services';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements DoCheck {
+export class AdminComponent {
 
   constructor(
     private userStoreService: UserStoreService,
@@ -16,23 +16,15 @@ export class AdminComponent implements DoCheck {
   ) { }
 
   ngAfterViewInit() {
-    if (
-      this.stateStoreService.state! &&
-      this.stateStoreService.state.session?.token!.length > 0 &&
-      !this.stateStoreService.state?.user!
-    ) {
-      this.userStoreService.getUser();
+    if (this.stateStoreService.state.session.token.length > 0) {
+      this.userStoreService.getUsers();
     }
-  }
-
-  ngDoCheck(): void {
-    console.log("🚀 ~ ADMIN COMPONENT file: admin.component.ts ~ line 29 ~ AdminComponent ~ ngDoCheck ~ ngDoCheck", 'ngDoCheck')
   }
 
   getIdTrackFn = (i: number, item: any) => item.id;
 
-  getUser() {
-    this.userStoreService.getUser();
+  getUsers() {
+    this.userStoreService.getUsers();
   }
 
   deleteUser(user: User) {

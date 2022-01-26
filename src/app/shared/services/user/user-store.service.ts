@@ -14,12 +14,12 @@ export class UserStoreService {
     private stateStoreService: StateStoreService,
   ) { }
   
-  getUser() {
-    this.userService.getUser().subscribe(
+  getUsers() {
+    this.userService.getUsers().subscribe(
       (response: UserApiResponse) => {
         if (response.ok) {
           this.stateStoreService.update({
-            user: response.user as User[]
+            users: response.users as User[]
           } as State);
           
         } else {
@@ -33,19 +33,18 @@ export class UserStoreService {
   }
 
   deleteUser(user: User) {
-    this.stateStoreService.state.user = this.stateStoreService!.state?.user.filter(_user => _user._id !== user._id);
+    this.stateStoreService.state.users = this.stateStoreService.state.users.filter(_user => _user._id !== user._id);
 
     this.userService.deleteUser(user).subscribe(
       (response: UserApiResponse) => {
         if (response.ok) {
-          console.log(response);
         } else {
-          this.stateStoreService.state.user = [...this.stateStoreService!.state?.user, user];
+          this.stateStoreService.state.users = [...this.stateStoreService.state.users, user];
           throw new Error(response.err.message);
         }
       },
       (error: any) => {
-        this.stateStoreService.state.user = [...this.stateStoreService!.state?.user, user];
+        this.stateStoreService.state.users = [...this.stateStoreService.state.users, user];
         throw new Error(error);
       }
     );

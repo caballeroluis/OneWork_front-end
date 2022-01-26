@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Session } from '@sections/session/models';
 import { SessionStoreService } from '@sections/session/services';
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-register-worker',
+  templateUrl: './register-worker.component.html',
+  styleUrls: ['./register-worker.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterWorkerComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
       {
         email: [''],
         password: [''],
-        role: ['']
+        name: ['']
       }
     );
   }
@@ -38,12 +38,12 @@ export class RegisterComponent implements OnInit {
       user: {
         email: this.reactiveForm.get('email')!.value,
         password: this.reactiveForm.get('password')!.value,
-        role: this.reactiveForm.get('role')!.value
+        name: this.reactiveForm.get('name')!.value
       }
     };
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.register(session);
+      this.sessionStoreService.registerWorker(session);
     } else {
       throw new Error('Form error');
     }

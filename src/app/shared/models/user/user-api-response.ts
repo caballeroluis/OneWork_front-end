@@ -2,7 +2,7 @@ import { User } from '@shared/models';
 
 export class UserApiResponse {
   _id!: string;
-  user!: User[];
+  users!: User[];
   ok!: boolean;
   err!: {
     message: string;

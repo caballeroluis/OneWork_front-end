@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SessionRoutingModule } from './session-routing.module';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterWorkerComponent } from './pages/register-worker/register-worker.component';
+import { RegisterRecruiterComponent } from './pages/register-recruiter/register-recruiter.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent, HeaderComponent } from '@sections/session/components';
@@ -11,7 +12,8 @@ import { FooterComponent, HeaderComponent } from '@sections/session/components';
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent,
+    RegisterWorkerComponent,
+    RegisterRecruiterComponent,
     ProfileComponent,
     HeaderComponent,
     FooterComponent

@@ -12,7 +12,7 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  getUser(): Observable<any> {
+  getUsers(): Observable<any> {
     return this.http.get(
       environment.apiUrl +
       '/user'

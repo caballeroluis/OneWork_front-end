@@ -38,7 +38,7 @@ export class SessionStoreService {
   }
 
   login(session: Session) {
-    this.sessionService.login(session).subscribe(
+    this.sessionService.loginMock(session).subscribe(
       (response: SessionApiResponse) => {
         if (!response.ok) {
           throw new Error(response.err.message);

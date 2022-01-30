@@ -38,6 +38,13 @@ export class SessionService {
     );
   }
 
+  loginMock(session: Session): Observable<any> {
+    return this.http.get(
+      environment.apiMockUrl +
+      '/api/session'
+    );
+  }
+
   updateUserProfile(session: Session): Observable<any> {
     return this.http.put(
       environment.apiUrl +

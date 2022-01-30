@@ -17,6 +17,7 @@ export class AppComponent {
   test() {
     console.log('📂 Session data', this.stateStoreService.state.session);
     console.log('📂 User data', this.stateStoreService.state.users);
+    console.log('📂 Offer data', this.stateStoreService.state.offers);
     
     console.log('👀 State observers', this.stateStoreService.state$['source']);
   }

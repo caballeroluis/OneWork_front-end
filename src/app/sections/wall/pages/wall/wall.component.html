@@ -1,3 +1,11 @@
 <wall-header></wall-header>
 
-<p>wall works!</p>
+<div *ngFor="let offer of stateStoreService.state.offers; trackBy: getIdTrackFn">
+  <div style="background-color: blanchedalmond;">
+    <p>Worker: {{ offer.worker?.name }}</p>
+    <p>Recruiter: {{ offer.recruiter?.name }}</p>
+    <p>Salary: {{ offer.salary }}</p>
+    <p>Date: {{ offer.creationDate }}</p>
+    <p>Description: {{ offer.description }}</p>
+  </div>
+</div>

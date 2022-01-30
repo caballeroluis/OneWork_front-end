@@ -1,6 +1,6 @@
 import { User } from '@shared/models';
 
-export class Offer {
+export class OfferApiResponse {
   
   creationDate?: Date;
   salary?: number;
@@ -11,5 +11,5 @@ export class Offer {
   status?: string;
   recruiter?: User;
   worker?: User;
-
+  
 }

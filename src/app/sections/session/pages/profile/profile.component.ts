@@ -28,12 +28,16 @@ export class ProfileComponent implements OnInit {
     this.reactiveForm = this.formBuilder.group(
       {
         email: [''],
-        password: ['']
+        password: [''],
+        name: [''],
+        role: ['']
       }
     );
 
     this.reactiveForm.controls.email.setValue(this.stateStoreService.state.session?.user?.email);
     this.reactiveForm.controls.password.setValue(this.stateStoreService.state.session?.user?.password);
+    this.reactiveForm.controls.name.setValue(this.stateStoreService.state.session?.user?.name);
+    this.reactiveForm.controls.role.setValue(this.stateStoreService.state.session?.user?.role);
   }
 
   submitForm() {
@@ -44,6 +48,8 @@ export class ProfileComponent implements OnInit {
         _id: this.stateStoreService.state.session?.user?._id,
         email: this.reactiveForm.get('email')!.value,
         password: this.reactiveForm.get('password')!.value,
+        name: this.reactiveForm.get('name')!.value,
+        role: this.reactiveForm.get('role')!.value
       }
     };
 

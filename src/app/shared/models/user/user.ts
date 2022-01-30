@@ -6,7 +6,7 @@ export class User {
   name?: string;
   corporationName?: string;
   state?: string;
-  _type?: string;
+  role?: string;
   creationDate?: string;
   password?: string;
   offers: Offer[];

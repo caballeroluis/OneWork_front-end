@@ -14,26 +14,15 @@ export class SessionService {
     private http: HttpClient,
   ) { }
 
-  registerWorker(session: Session): Observable<any> {
+  register(session: Session): Observable<any> {
     return this.http.post(
       environment.apiUrl +
-      '/api/users/worker',
+      '/api/users',
       {
         email: session.user.email,
         password: session.user.password,
-        name: session.user.name
-      }
-    );
-  }
-
-  registerRecruiter(session: Session): Observable<any> {
-    return this.http.post(
-      environment.apiUrl +
-      '/api/users/recruiter',
-      {
-        email: session.user.email,
-        password: session.user.password,
-        role: session.user.name
+        name: session.user.name,
+        role: session.user.role
       }
     );
   }
@@ -41,7 +30,7 @@ export class SessionService {
   login(session: Session): Observable<any> {
     return this.http.post(
       environment.apiUrl +
-      '/api/login',
+      '/api/session/login',
       {
         email: session.user.email,
         password: session.user.password
@@ -52,11 +41,13 @@ export class SessionService {
   updateUserProfile(session: Session): Observable<any> {
     return this.http.put(
       environment.apiUrl +
-      '/user/' +
+      '/api/users/' +
       session.user._id,
       {
         email: session.user.email,
         password: session.user.password,
+        name: session.user.name,
+        role: session.user.role
       }
     );
   }

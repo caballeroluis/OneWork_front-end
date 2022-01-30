@@ -1,0 +1,84 @@
+{
+  "session": {
+    "user": {
+      "_id": "61f32b5b259e0adac9b6f59b",
+      "email": "donrecruiter@fake.email",
+      "name": "Martín RRHH",
+      "corporationName": "Nuestra Casa",
+      "descriptionCorporate": "Nuestra casa es una empresa",
+      "international": false,
+      "surname1": "García",
+      "surname2": "Fernandez",
+      "contactData": "C/ Falsa 123",
+      "offers": [],
+      "role": "recruiter",
+      "creationDate": "2022-01-27T23:31:39.815Z",
+      "img": "/path/filename.jpg",
+      "__v": 0
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNjQzNTYzMDU5LCJleHAiOjE2NDM1NjY2NTl9.G9PB_0IZcF0gBkpkxXDCKqY_2jPNOPUW1ri1xHBNTd4"
+  },
+  "users": [
+    {
+      "_id": "61f32b5b259e0adac9b6f59b",
+      "email": "donrecruiter@fake.email",
+      "name": "Martín RRHH",
+      "corporationName": "Nuestra Casa",
+      "descriptionCorporate": "Nuestra casa es una empresa",
+      "international": false,
+      "surname1": "García",
+      "surname2": "Fernandez",
+      "contactData": "C/ Falsa 123",
+      "offers": [],
+      "role": "recruiter",
+      "creationDate": "2022-01-27T23:31:39.815Z",
+      "img": "/path/filename.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "61f32b5b259e0adac9b6f59b",
+      "email": "currito@fake.email",
+      "name": "Currito",
+      "surname1": "Garrido",
+      "surname2": "Fernanez",
+      "sex": "man",
+      "age": 22,
+      "DNI": "50333333Q",
+      "contactData": "C/ Muy falsa 321",
+      "offers": [],
+      "role": "worker",
+      "img": "/path/filename.jpg",
+      "__v": 0
+    }
+  ],
+  "offers": [
+    {
+      "_id": "61f4675d88ae171cd818248a",
+      "creationDate": "2022-01-27T23:31:39.815Z",
+      "salary": 34000,
+      "title": "",
+      "requirements": "",
+      "workplaceAdress": "",
+      "description": "",
+      "status": "",
+      "recruiter": {
+        "_id": "61f32b5b259e0adac9b6f59b",
+        "name": "Martín RRHH",
+        "corporationName": "Nuestra Casa",
+        "descriptionCorporate": "Nuestra casa es una empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-01-27T23:31:39.815Z",
+        "img": "/path/filename.jpg",
+        "__v": 0
+      },
+      "worker": {
+        "_id": "61f32b5b259e0adac9b6f59b",
+        "name": "Currito",
+        "role": "worker",
+        "img": "/path/filename.jpg",
+        "__v": 0
+      }
+    }
+  ]
+}

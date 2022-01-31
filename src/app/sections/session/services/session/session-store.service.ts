@@ -43,12 +43,14 @@ export class SessionStoreService {
         if (!response.ok) {
           throw new Error(response.err.message);
         } else if (response.token?.length > 0) {
-          this.stateStoreService.update({
-            session: {
-              user: response.user as User,
-              token: response.token
-            }
-          } as State);
+          this.stateStoreService.update(
+            {
+              session: {
+                user: response.user as User,
+                token: response.token
+              }
+            } as State
+          );
           
           // this.router.navigate(['session', 'profile']);
         }
@@ -65,11 +67,13 @@ export class SessionStoreService {
         if (!response.ok) {
           throw new Error(response.err.message);
         } else if (response.token?.length > 0) {
-          this.stateStoreService.update({
-            session: {
-              user: response.user as User
-            }
-          } as State);
+          this.stateStoreService.update(
+            {
+              session: {
+                user: response.user as User
+              }
+            } as State
+          );
         }
       },
       (error: any) => {

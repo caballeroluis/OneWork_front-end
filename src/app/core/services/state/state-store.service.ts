@@ -21,10 +21,10 @@ export class StateStoreService {
   constructor(
   ) { }
 
-  update(val: State) {
+  update(newState: State) {
     this.state = {
       ...this.state,
-      ...val
+      ...newState
     } as State
   }
 

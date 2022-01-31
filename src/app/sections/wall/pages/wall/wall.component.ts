@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StateStoreService } from '@core/services';
+import { Offer } from '@shared/models';
 import { OfferStoreService } from '@shared/services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-wall',
@@ -9,12 +11,18 @@ import { OfferStoreService } from '@shared/services';
 })
 export class WallComponent implements OnInit {
 
+  private state!: Subscription;
+  public offers!: Offer[];
+
   constructor(
     private offerStoreService: OfferStoreService,
     public stateStoreService: StateStoreService
   ) { }
 
   ngOnInit(): void {
+    this.state = this.stateStoreService.state$.subscribe(state => {
+      this.offers = state.offers;
+    });
   }
 
   ngAfterViewInit() {
@@ -24,6 +32,10 @@ export class WallComponent implements OnInit {
     ) {
       this.offerStoreService.getOffers();
     }
+  }
+
+  ngOnDestroy() {
+    this.state.unsubscribe();
   }
 
   getIdTrackFn = (i: number, item: any) => item.id;

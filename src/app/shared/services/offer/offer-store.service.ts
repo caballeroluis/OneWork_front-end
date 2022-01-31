@@ -18,9 +18,11 @@ export class OfferStoreService {
   getOffers() {
     this.offerService.getOffers().subscribe(
       (response: OfferApiResponse) => {
-        this.stateStoreService.update({
-          offers: response as Offer[]
-        } as State);
+        this.stateStoreService.update(
+          {
+            offers: response as Offer[]
+          } as State
+        );
       },
       (error: any) => {
         throw new Error(error);

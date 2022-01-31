@@ -18,9 +18,11 @@ export class UserStoreService {
     this.userService.getUsers().subscribe(
       (response: UserApiResponse) => {
         if (response.ok) {
-          this.stateStoreService.update({
-            users: response.users as User[]
-          } as State);
+          this.stateStoreService.update(
+            {
+              users: response.users as User[]
+            } as State
+          );
           
         } else {
           throw new Error(response.err.message);

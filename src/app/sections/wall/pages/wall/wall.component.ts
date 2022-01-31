@@ -18,7 +18,10 @@ export class WallComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    if (this.stateStoreService.state.session.token.length > 0) {
+    if (
+      this.stateStoreService.state.session.token.length > 0 &&
+      this.stateStoreService.state.offers.length === 0
+    ) {
       this.offerStoreService.getOffers();
     }
   }

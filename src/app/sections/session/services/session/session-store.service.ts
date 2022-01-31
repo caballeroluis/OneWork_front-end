@@ -4,7 +4,7 @@ import { State } from '@core/models';
 import { User } from '@shared/models';
 import { StateStoreService } from '@core/services';
 import { SessionService } from '@sections/session/services';
-import { Session, SessionApiResponse } from '@sections/session/models';
+import { Session } from '@sections/session/models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,17 +19,13 @@ export class SessionStoreService {
 
   register(session: Session) {
     this.sessionService.register(session).subscribe(
-      (response: SessionApiResponse) => {
-        if (response.ok) {
-          this.stateStoreService.state.users = [
-            ...this.stateStoreService.state.users,
-            response.user
-          ];
-          
-          // this.router.navigate(['session', 'profile']);
-        } else {
-          throw new Error(response.err.message);
-        }
+      (response: Session) => {
+        this.stateStoreService.state.users = [
+          ...this.stateStoreService.state.users,
+          response.user
+        ];
+        
+        // this.router.navigate(['session', 'profile']);
       },
       (error: any) => {
         throw new Error(error);
@@ -39,10 +35,8 @@ export class SessionStoreService {
 
   login(session: Session) {
     this.sessionService.loginMock(session).subscribe(
-      (response: SessionApiResponse) => {
-        if (!response.ok) {
-          throw new Error(response.err.message);
-        } else if (response.token?.length > 0) {
+      (response: Session) => {
+        if (response.token?.length > 0) {
           this.stateStoreService.update(
             {
               session: {
@@ -63,10 +57,8 @@ export class SessionStoreService {
 
   updateUserProfile(session: Session) {
     this.sessionService.updateUserProfile(session).subscribe(
-      (response: SessionApiResponse) => {
-        if (!response.ok) {
-          throw new Error(response.err.message);
-        } else if (response.token?.length > 0) {
+      (response: Session) => {
+        if (response.token?.length > 0) {
           this.stateStoreService.update(
             {
               session: {

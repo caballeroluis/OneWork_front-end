@@ -17,9 +17,8 @@ export class AdminComponent {
 
   ngAfterViewInit() {
     if (
-      this.stateStoreService.state.session.token.length > 0 ||
-      !this.stateStoreService.state.users ||
-      this.stateStoreService.state.users.length === 0
+      // this.stateStoreService.state.session.token.length > 0 && // TODO: descomentar esto cuando back pida session aquí
+      (!this.stateStoreService.state.users || this.stateStoreService.state.users.length === 0)
     ) {
       this.userStoreService.getUsers();
     }

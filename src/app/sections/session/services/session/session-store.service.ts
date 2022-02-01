@@ -77,5 +77,16 @@ export class SessionStoreService {
       }
     );
   }
+  
+  changePassword(user: User) {
+    this.sessionService.changePassword(user).subscribe(
+      (response: User) => {
+        
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
 
 }

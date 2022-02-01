@@ -5,11 +5,11 @@ import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ChangePassword implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
@@ -27,14 +27,11 @@ export class ProfileComponent implements OnInit {
   formatReactiveForm() {
     this.reactiveForm = this.formBuilder.group(
       {
-        email: [''],
-        name: [''],
+        password: [''],
         role: ['']
       }
     );
 
-    this.reactiveForm.controls.email.setValue(this.stateStoreService.state.session?.user?.email);
-    this.reactiveForm.controls.name.setValue(this.stateStoreService.state.session?.user?.name);
     this.reactiveForm.controls.role.setValue(this.stateStoreService.state.session?.user?.role);
   }
 
@@ -43,13 +40,11 @@ export class ProfileComponent implements OnInit {
     
     const user = {
       _id: this.stateStoreService.state.session?.user?._id,
-      email: this.reactiveForm.get('email')!.value,
-      name: this.reactiveForm.get('name')!.value,
-      role: this.reactiveForm.get('role')!.value
+      password: this.reactiveForm.get('password')!.value
     } as User;
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.updateUserProfile(user);
+      this.sessionStoreService.changePassword(user);
     } else {
       throw new Error('Form error');
     }

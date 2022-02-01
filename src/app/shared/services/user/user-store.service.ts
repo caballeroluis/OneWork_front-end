@@ -30,17 +30,16 @@ export class UserStoreService {
   }
 
   deleteUser(user: User) {
-    this.stateStoreService.state.users = this.stateStoreService.state.users.filter(_user => _user._id !== user._id);
-
     this.userService.deleteUser(user).subscribe(
       (response: User) => {
+        this.stateStoreService.state.users = this.stateStoreService.state.users.filter(_user => _user._id !== user._id);
+
         // if (this.stateStoreService.state.session.user._id === response._id) { // TODO: 
-          if (this.stateStoreService.state.session.user._id === user._id) {
+        if (this.stateStoreService.state.session.user._id === user._id) {
           this.stateStoreService.clear();
         }
       },
       (error: any) => {
-        this.stateStoreService.state.users = [...this.stateStoreService.state.users, user];
         throw new Error(error);
       }
     );

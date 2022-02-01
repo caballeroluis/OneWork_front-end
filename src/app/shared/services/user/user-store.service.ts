@@ -34,9 +34,9 @@ export class UserStoreService {
       (response: User) => {
         this.stateStoreService.state.users = this.stateStoreService.state.users.filter(_user => _user._id !== user._id);
 
-        // if (this.stateStoreService.state.session.user._id === response._id) { // TODO: 
+        // if (this.stateStoreService.state.session.user._id === response._id) { // TODO: que sea de la response no del user
         if (this.stateStoreService.state.session.user._id === user._id) {
-          this.stateStoreService.clear();
+          this.stateStoreService.clearSession();
         }
       },
       (error: any) => {

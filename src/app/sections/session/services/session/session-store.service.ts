@@ -40,7 +40,7 @@ export class SessionStoreService {
   login(user: User) {
     this.sessionService.login(user).subscribe(
       (response: Session) => {
-        this.stateStoreService.clear();
+        this.stateStoreService.clearState();
         if (response.token?.length > 0) {
           this.stateStoreService.update(
             {

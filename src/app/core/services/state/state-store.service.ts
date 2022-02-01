@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { State } from '@core/models';
+import { Session } from '@sections/session/models';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -28,8 +29,16 @@ export class StateStoreService {
     } as State;
   }
 
-  clear() {
+  clearState() {
     this.state = new State();
+  }
+
+  clearSession() {
+    this.update(
+      {
+        session: new Session()
+      } as State
+    );
   }
 
 }

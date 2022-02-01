@@ -15,14 +15,14 @@ export class UserService {
   getUsers(): Observable<any> {
     return this.http.get(
       environment.apiUrl +
-      '/user'
+      '/api/users'
     );
   }
 
   deleteUser(user: User): Observable<any> {
     return this.http.delete(
       environment.apiUrl +
-      '/user/' +
+      '/api/users/' +
       user._id
     );
   }

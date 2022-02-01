@@ -14,7 +14,7 @@ export class OfferService {
 
   getOffers(): Observable<any> {
     return this.http.get(
-      environment.apiMockUrl +
+      environment.apiUrl +
       '/api/offers'
     );
   }

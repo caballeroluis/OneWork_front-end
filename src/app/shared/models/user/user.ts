@@ -5,11 +5,11 @@ export class User {
   email!: string;
   name?: string;
   corporationName?: string;
-  state?: string;
+  active?: string;
   role?: string;
   creationDate?: string;
   password?: string;
-  offers: Offer[];
+  offers?: Offer[];
 
   constructor() {
     this.offers = [];

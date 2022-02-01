@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Session } from '@sections/session/models';
+import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
 @Component({
   selector: 'app-login',
@@ -33,15 +33,13 @@ export class LoginComponent implements OnInit {
   submitForm() {
     this.isSubmitted = true;
     
-    const session = <Session>{
-      user: {
-        email: this.reactiveForm.get('email')!.value,
-        password: this.reactiveForm.get('password')!.value
-      }
-    };
+    const user = {
+      email: this.reactiveForm.get('email')!.value,
+      password: this.reactiveForm.get('password')!.value
+    } as User;
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.login(session);
+      this.sessionStoreService.login(user);
     } else {
       throw new Error('Form error');
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { State } from '@core/models';
-import { User, UserApiResponse } from '@shared/models';
+import { User } from '@shared/models';
 import { StateStoreService } from '@core/services';
 import { UserService } from '@shared/services';
 
@@ -16,17 +16,12 @@ export class UserStoreService {
   
   getUsers() {
     this.userService.getUsers().subscribe(
-      (response: UserApiResponse) => {
-        if (response.ok) {
-          this.stateStoreService.update(
-            {
-              users: response.users as User[]
-            } as State
-          );
-          
-        } else {
-          throw new Error(response.err.message);
-        }
+      (response: User[]) => {
+        this.stateStoreService.update(
+          {
+            users: response as User[]
+          } as State
+        );
       },
       (error: any) => {
         throw new Error(error);
@@ -38,11 +33,10 @@ export class UserStoreService {
     this.stateStoreService.state.users = this.stateStoreService.state.users.filter(_user => _user._id !== user._id);
 
     this.userService.deleteUser(user).subscribe(
-      (response: UserApiResponse) => {
-        if (response.ok) {
-        } else {
-          this.stateStoreService.state.users = [...this.stateStoreService.state.users, user];
-          throw new Error(response.err.message);
+      (response: User) => {
+        // if (this.stateStoreService.state.session.user._id === response._id) { // TODO: 
+          if (this.stateStoreService.state.session.user._id === user._id) {
+          this.stateStoreService.clear();
         }
       },
       (error: any) => {

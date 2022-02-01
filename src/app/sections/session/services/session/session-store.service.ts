@@ -17,13 +17,17 @@ export class SessionStoreService {
     private stateStoreService: StateStoreService,
   ) { }
 
-  register(session: Session) {
-    this.sessionService.register(session).subscribe(
-      (response: Session) => {
-        this.stateStoreService.state.users = [
-          ...this.stateStoreService.state.users,
-          response.user
-        ];
+  register(user: User) {
+    this.sessionService.register(user).subscribe(
+      (response: User) => {
+        this.stateStoreService.update(
+          {
+            users: [
+              ...this.stateStoreService.state.users,
+              response
+            ]
+          } as State
+        );
         
         // this.router.navigate(['session', 'profile']);
       },
@@ -33,9 +37,10 @@ export class SessionStoreService {
     );
   }
 
-  login(session: Session) {
-    this.sessionService.loginMock(session).subscribe(
+  login(user: User) {
+    this.sessionService.login(user).subscribe(
       (response: Session) => {
+        this.stateStoreService.clear();
         if (response.token?.length > 0) {
           this.stateStoreService.update(
             {
@@ -55,18 +60,17 @@ export class SessionStoreService {
     );
   }
 
-  updateUserProfile(session: Session) {
-    this.sessionService.updateUserProfile(session).subscribe(
-      (response: Session) => {
-        if (response.token?.length > 0) {
-          this.stateStoreService.update(
-            {
-              session: {
-                user: response.user as User
-              }
-            } as State
-          );
-        }
+  updateUserProfile(user: User) {
+    this.sessionService.updateUserProfile(user).subscribe(
+      (response: User) => {
+        this.stateStoreService.update(
+          {
+            session: {
+              user: response as User
+            }
+            // TODO: cuando se actualize el usuario de sesión, que se actualize también el session.user y el users de state
+          } as State
+        );
       },
       (error: any) => {
         throw new Error(error);

@@ -25,7 +25,11 @@ export class StateStoreService {
     this.state = {
       ...this.state,
       ...newState
-    } as State
+    } as State;
+  }
+
+  clear() {
+    this.state = new State();
   }
 
 }

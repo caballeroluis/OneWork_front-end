@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StateStoreService } from '@core/services';
-import { Session } from '@sections/session/models';
+import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
 
 @Component({
@@ -43,18 +43,16 @@ export class ProfileComponent implements OnInit {
   submitForm() {
     this.isSubmitted = true;
     
-    const session = <Session>{
-      user: {
-        _id: this.stateStoreService.state.session?.user?._id,
-        email: this.reactiveForm.get('email')!.value,
-        password: this.reactiveForm.get('password')!.value,
-        name: this.reactiveForm.get('name')!.value,
-        role: this.reactiveForm.get('role')!.value
-      }
-    };
+    const user = {
+      _id: this.stateStoreService.state.session?.user?._id,
+      email: this.reactiveForm.get('email')!.value,
+      password: this.reactiveForm.get('password')!.value,
+      name: this.reactiveForm.get('name')!.value,
+      role: this.reactiveForm.get('role')!.value
+    } as User;
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.updateUserProfile(session);
+      this.sessionStoreService.updateUserProfile(user);
     } else {
       throw new Error('Form error');
     }

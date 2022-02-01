@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { State } from '@core/models';
-import { Offer, OfferApiResponse } from '@shared/models';
+import { Offer } from '@shared/models';
 import { StateStoreService } from '@core/services';
 import { OfferService } from '@shared/services';
 
@@ -17,7 +17,7 @@ export class OfferStoreService {
   
   getOffers() {
     this.offerService.getOffers().subscribe(
-      (response: OfferApiResponse) => {
+      (response: Offer) => {
         this.stateStoreService.update(
           {
             offers: response as Offer[]

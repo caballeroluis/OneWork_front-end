@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
-import { Session } from '@sections/session/models';
+import { User } from '@shared/models';
 
 
 @Injectable({
@@ -14,47 +14,40 @@ export class SessionService {
     private http: HttpClient,
   ) { }
 
-  register(session: Session): Observable<any> {
+  register(user: User): Observable<any> {
     return this.http.post(
       environment.apiUrl +
       '/api/users',
       {
-        email: session.user.email,
-        password: session.user.password,
-        name: session.user.name,
-        role: session.user.role
+        ...user
       }
     );
   }
 
-  login(session: Session): Observable<any> {
+  login(user: User): Observable<any> {
     return this.http.post(
       environment.apiUrl +
       '/api/session/login',
       {
-        email: session.user.email,
-        password: session.user.password
+        ...user
       }
     );
   }
 
-  loginMock(session: Session): Observable<any> {
-    return this.http.get(
-      environment.apiMockUrl +
-      '/api/session'
-    );
-  }
+  // loginMock(session: Session): Observable<any> {
+  //   return this.http.get(
+  //     environment.apiMockUrl +
+  //     '/api/session'
+  //   );
+  // }
 
-  updateUserProfile(session: Session): Observable<any> {
+  updateUserProfile(user: User): Observable<any> {
     return this.http.put(
       environment.apiUrl +
       '/api/users/' +
-      session.user._id,
+      user._id,
       {
-        email: session.user.email,
-        password: session.user.password,
-        name: session.user.name,
-        role: session.user.role
+        ...user
       }
     );
   }

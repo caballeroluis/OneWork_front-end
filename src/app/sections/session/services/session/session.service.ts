@@ -42,10 +42,9 @@ export class SessionService {
   // }
 
   updateUserProfile(user: User): Observable<any> {
-    return this.http.put(
+    return this.http.patch(
       environment.apiUrl +
-      '/api/users/' +
-      user._id,
+      '/api/users/' + user._id,
       {
         ...user
       }
@@ -55,8 +54,17 @@ export class SessionService {
   changePassword(user: User): Observable<any> {
     return this.http.patch(
       environment.apiUrl +
-      '/api/users/' +
-      user._id,
+      '/api/users/' + user._id,
+      {
+        ...user
+      }
+    );
+  }
+
+  changeEmail(user: User): Observable<any> {
+    return this.http.patch(
+      environment.apiUrl +
+      '/api/users/' + user._id,
       {
         ...user
       }

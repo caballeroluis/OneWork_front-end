@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ChangePassword } from './pages/change-password/change-password.component';
+import { ChangeEmail } from './pages/change-email/change-email.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent, HeaderComponent } from '@sections/session/components';
 
@@ -15,6 +16,7 @@ import { FooterComponent, HeaderComponent } from '@sections/session/components';
     RegisterComponent,
     ProfileComponent,
     ChangePassword,
+    ChangeEmail,
     HeaderComponent,
     FooterComponent
   ],

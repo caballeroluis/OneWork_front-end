@@ -6,13 +6,20 @@
 
 <div *ngFor="let user of stateStoreService.state.users; trackBy: getIdTrackFn">
   <div style="background-color: blanchedalmond;">
-    <p>{{ user.email }}</p>
-    <p>{{ user.name }}</p>
-    <p *ngIf="!user.active" style="background-color: palevioletred;">{{ user.active }}</p>
-    <p *ngIf="user.active" style="background-color: palegreen;">{{ user.active }}</p>
-    <p>{{ user.creationDate }}</p>
+    <p>Role: {{ user.role }}</p>
+    <p>Active:
+      <span *ngIf="user.active" style="background-color: palegreen">{{ user.active }}</span>
+    </p>
+    <p>Email: {{ user.email }}</p>
+    <p>Name: {{ user.name }}</p>
+    <p>Corporation name: {{ user.corporationName }}</p>
+    <p>Creation date: {{ user.creationDate }}</p>
     <button (click)="deleteUser(user)">
       X
     </button>
+    <button (click)="editUser(user)">
+      Edit
+    </button>
+    <app-edit-user></app-edit-user>
   </div>
 </div>

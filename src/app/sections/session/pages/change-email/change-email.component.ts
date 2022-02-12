@@ -5,11 +5,11 @@ import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+  selector: 'app-change-email',
+  templateUrl: './change-email.component.html',
+  styleUrls: ['./change-email.component.scss']
 })
-export class ChangePassword implements OnInit {
+export class ChangeEmail implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
@@ -27,9 +27,11 @@ export class ChangePassword implements OnInit {
   formatReactiveForm() {
     this.reactiveForm = this.formBuilder.group(
       {
-        password: ['']
+        email: ['']
       }
     );
+
+    this.reactiveForm.controls.email.setValue(this.stateStoreService.state.session?.user?.email);
   }
 
   submitForm() {
@@ -37,11 +39,11 @@ export class ChangePassword implements OnInit {
     
     const user = {
       _id: this.stateStoreService.state.session?.user?._id,
-      password: this.reactiveForm.get('password')!.value
+      email: this.reactiveForm.get('email')!.value
     } as User;
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.changePassword(user);
+      this.sessionStoreService.changeEmail(user);
     } else {
       throw new Error('Form error');
     }

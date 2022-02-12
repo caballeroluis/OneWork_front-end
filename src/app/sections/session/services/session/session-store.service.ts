@@ -88,5 +88,16 @@ export class SessionStoreService {
       }
     );
   }
+  
+  changeEmail(user: User) {
+    this.sessionService.changeEmail(user).subscribe(
+      (response: User) => {
+        
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
 
 }

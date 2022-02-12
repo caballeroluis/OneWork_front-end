@@ -5,6 +5,9 @@ export class User {
   email!: string;
   name?: string;
   corporationName?: string;
+  descriptionCorporate?: string;
+  international?: boolean;
+  recruiterName?: string;
   active?: string;
   role?: string;
   creationDate?: string;

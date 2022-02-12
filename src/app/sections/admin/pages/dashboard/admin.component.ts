@@ -30,6 +30,10 @@ export class AdminComponent {
     this.userStoreService.getUsers();
   }
 
+  editUser(user: User) { // TODO: hacer
+    this.userStoreService.editUser(user);
+  }
+
   deleteUser(user: User) {
     this.userStoreService.deleteUser(user);
   }

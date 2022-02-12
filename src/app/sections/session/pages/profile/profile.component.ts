@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     this.reactiveForm = this.formBuilder.group(
       {
         name: [''],
-        corporationName: [''],
+        corporationName: [''], // TODO: el resto de campos
         role: ['']
       }
     );

@@ -19,6 +19,17 @@ export class UserService {
     );
   }
 
+  editUser(user: User): Observable<any> {
+    return this.http.put(
+      environment.apiUrl +
+      '/api/users/' +
+      user._id,
+      {
+        ...user
+      }
+    );
+  }
+
   deleteUser(user: User): Observable<any> {
     return this.http.delete(
       environment.apiUrl +

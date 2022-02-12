@@ -29,6 +29,17 @@ export class UserStoreService {
     );
   }
 
+  editUser(user: User) {
+    this.userService.editUser(user).subscribe(
+      (response: User) => {
+        // TODO: actualizar este user en users
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(
       (response: User) => {

@@ -4,7 +4,7 @@
   getUsers()
 </button>
 
-<div *ngFor="let user of stateStoreService.state.users; trackBy: getIdTrackFn">
+<div *ngFor="let user of state.users; trackBy: getIdTrackFn">
   <div style="background-color: blanchedalmond;">
     <p>Role: <span style="background-color: lightblue">{{ user.role }}</span></p>
     <p>Active:

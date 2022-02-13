@@ -19,7 +19,10 @@ export class AppComponent {
     console.log('📂 User data', this.stateStoreService.state.users);
     console.log('📂 Offer data', this.stateStoreService.state.offers);
     
-    console.log('👀 State observers', this.stateStoreService.state$['source']);
+    // console.log('👀 State observers', this.stateStoreService.state$['source']);
+    console.log('👀 State observers', this.stateStoreService.state$['source']['observers']); // TODO: set "strict": true in tsconfig
+    console.log('👀 State observers', this.stateStoreService.state$['source']['observers'].length); // For use this set "strict": false in tsconfig
+
   }
 
 }

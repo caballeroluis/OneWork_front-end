@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Session } from '@sections/session/models';
 import { SessionStoreService } from '@sections/session/services';
 import { User } from '@shared/models';
 @Component({
@@ -39,7 +38,7 @@ export class RegisterComponent implements OnInit {
   submitForm() {
     this.isSubmitted = true;
 
-    const user = this.reactiveForm.getRawValue();
+    const user: User = this.reactiveForm.getRawValue();
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.register(user);

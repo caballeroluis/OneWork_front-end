@@ -34,10 +34,10 @@ export class WallComponent implements OnInit {
     }
   }
 
+  getIdTrackFn = (i: number, item: any) => item._id;
+
   ngOnDestroy() {
     this.state.unsubscribe();
   }
-
-  getIdTrackFn = (i: number, item: any) => item.id;
 
 }

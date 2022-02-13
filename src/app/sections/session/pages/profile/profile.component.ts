@@ -4,7 +4,7 @@ import { StateStoreService } from '@core/services';
 import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
 import { Subscription } from 'rxjs';
-import { Session } from '@sections/session/models';
+import { State } from '@core/models';
 
 @Component({
   selector: 'app-profile',
@@ -15,8 +15,8 @@ export class ProfileComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
-  private state!: Subscription;
-  public session!: Session;
+  private stateSubscription!: Subscription;
+  public state!: State;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -25,10 +25,10 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.formatReactiveForm();
-    this.state = this.stateStoreService.state$.subscribe(state => {
-      this.session = state.session;
+    this.stateSubscription = this.stateStoreService.state$.subscribe(state => {
+      this.state = state;
     });
+    this.formatReactiveForm();
   }
 
   formatReactiveForm() {
@@ -42,14 +42,14 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.stateStoreService.state.session?.user);
+    this.reactiveForm.patchValue(this.state?.session.user);
   }
 
   submitForm() {
     this.isSubmitted = true;
 
-    const user = this.reactiveForm.getRawValue();
-    user._id = this.stateStoreService.state.session?.user?._id
+    const user: User = this.reactiveForm.getRawValue();
+    user._id = this.state?.session.user._id
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.updateUserProfile(user);
@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.state.unsubscribe();
+    this.stateSubscription.unsubscribe();
   }
   
 }

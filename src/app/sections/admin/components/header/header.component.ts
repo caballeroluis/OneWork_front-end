@@ -1,30 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { State } from '@core/models';
-import { StateStoreService } from '@core/services';
-import { Subscription } from 'rxjs';
+
+import { Component } from '@angular/core';
+import { SessionStoreService } from '@sections/session/services';
 
 @Component({
   selector: 'admin-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
-  private stateSubscription!: Subscription;
-  public state!: State;
+export class HeaderComponent {
 
   constructor(
-    public stateStoreService: StateStoreService
+    public sessionStoreService: SessionStoreService
   ) { }
 
-  ngOnInit(): void {
-    this.stateSubscription = this.stateStoreService.state$.subscribe(state => {
-      this.state = state;
-    });
-  }
-
-  ngOnDestroy() {
-    this.stateSubscription.unsubscribe();
-  }
-  
 }

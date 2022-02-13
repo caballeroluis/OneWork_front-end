@@ -1,6 +1,6 @@
 <wall-header></wall-header>
 
-<div *ngFor="let offer of offers; trackBy: getIdTrackFn">
+<div *ngFor="let offer of offerStoreService.offers$ | async; trackBy: getIdTrackFn">
   <div style="background-color: blanchedalmond;">
     <p>Worker: {{ offer.status }}</p>
     <p>Worker: {{ offer.worker?.name }}</p>

@@ -1,6 +1,7 @@
+
 <a routerLink="/session/login">LOGIN</a>&nbsp;
-<span *ngIf="state.session.user.email!">
-    (session: {{ state?.session?.user?.email }} )&nbsp;
+<span *ngIf="((sessionStoreService.session$ | async).token?.length > 0)">
+    session: {{ (sessionStoreService.session$ | async).user.email }}
 </span>
 <a routerLink="/session/register">REGISTER</a>&nbsp;
 <a routerLink="/session/profile">PROFILE</a>&nbsp;

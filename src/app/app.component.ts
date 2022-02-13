@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { StateStoreService } from '@core/services';
 import { environment } from '@env/environment';
+import { SessionStoreService } from '@sections/session/services';
+import { UserStoreService } from '@shared/services';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +12,22 @@ export class AppComponent {
   environmentProduction = environment.production;
 
   constructor(
-    private stateStoreService: StateStoreService,
+    private sessionStoreService: SessionStoreService,
+    private userStoreService: UserStoreService,
   ) { }
 
   test() {
-    console.log('📂 Session data', this.stateStoreService.state.session);
-    console.log('📂 User data', this.stateStoreService.state.users);
-    console.log('📂 Offer data', this.stateStoreService.state.offers);
+    console.log('📂 User data', this.userStoreService.users);
+    console.log('📂 Session data', this.sessionStoreService.session);
     
-    // console.log('👀 State observers', this.stateStoreService.state$['source']);
-    console.log('👀 State observers', this.stateStoreService.state$['source']['observers']); // TODO: set "strict": true in tsconfig
-    console.log('👀 State observers', this.stateStoreService.state$['source']['observers'].length); // For use this set "strict": false in tsconfig
+    // console.log('👀 User observers', this.userStoreService.users$['source']);
+    console.log('👀 User observers', this.userStoreService.users$['source']['observers']); // TODO: set "strict": true in tsconfig
+    console.log('👀 User observers', this.userStoreService.users$['source']['observers'].length); // For use this set "strict": false in tsconfig
+  
+      
+    // console.log('👀 Session observers', this.sessionStoreService.session$['source']);
+    console.log('👀 Session observers', this.sessionStoreService.session$['source']['observers']); // TODO: set "strict": true in tsconfig
+    console.log('👀 Session observers', this.sessionStoreService.session$['source']['observers'].length); // For use this set "strict": false in tsconfig
 
   }
 

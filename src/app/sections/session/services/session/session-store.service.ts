@@ -1,33 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { State } from '@core/models';
 import { User } from '@shared/models';
-import { StateStoreService } from '@core/services';
 import { SessionService } from '@sections/session/services';
 import { Session } from '@sections/session/models';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionStoreService {
 
+  private readonly _session = new BehaviorSubject<Session>(new Session());
+  readonly session$ = this._session.asObservable();
+
   constructor(
     private router: Router,
-    private sessionService: SessionService,
-    private stateStoreService: StateStoreService,
+    private sessionService: SessionService
   ) { }
+
+  get session(): Session {
+    return this._session.getValue();
+  }
+
+  set session(val: Session) {
+    this._session.next(val);
+  }
 
   register(user: User) {
     this.sessionService.register(user).subscribe(
       (response: User) => {
-        this.stateStoreService.update(
-          {
-            users: [
-              ...this.stateStoreService.state.users,
-              response
-            ]
-          } as State
-        );
+        this.session.user = response as User
         
         // this.router.navigate(['session', 'profile']);
       },
@@ -40,16 +42,13 @@ export class SessionStoreService {
   login(user: User) {
     this.sessionService.login(user).subscribe(
       (response: Session) => {
-        this.stateStoreService.clearState();
+        this.clear();
         if (response.token?.length > 0) {
-          this.stateStoreService.update(
-            {
-              session: {
-                user: response.user as User,
-                token: response.token
-              }
-            } as State
-          );
+          this.session = {
+            ...this.session,
+            user: response.user as User,
+            token: response.token
+          } as Session
           
           // this.router.navigate(['session', 'profile']);
         }
@@ -63,14 +62,7 @@ export class SessionStoreService {
   updateUserProfile(user: User) {
     this.sessionService.updateUserProfile(user).subscribe(
       (response: User) => {
-        this.stateStoreService.update(
-          {
-            session: {
-              user: response as User
-            }
-            // TODO: cuando se actualize el usuario de sesión, que se actualize también el session.user y el users de state
-          } as State
-        );
+        this.session.user = response as User;
       },
       (error: any) => {
         throw new Error(error);
@@ -81,7 +73,7 @@ export class SessionStoreService {
   changePassword(user: User) {
     this.sessionService.changePassword(user).subscribe(
       (response: User) => {
-        
+        this.session.user = response as User;
       },
       (error: any) => {
         throw new Error(error);
@@ -92,12 +84,16 @@ export class SessionStoreService {
   changeEmail(user: User) {
     this.sessionService.changeEmail(user).subscribe(
       (response: User) => {
-        
+        this.session.user = response as User;
       },
       (error: any) => {
         throw new Error(error);
       }
     );
+  }
+
+  clear() {
+    this.session = new Session();
   }
 
 }

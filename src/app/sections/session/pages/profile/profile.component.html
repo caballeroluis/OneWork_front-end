@@ -4,18 +4,28 @@
   
     <label *ngIf="session.user.role == 'worker'">
         <span>name</span>
-        <input type="text" placeholder="Your name" formControlName="name">
+        <input type="text" placeholder="Your name" formControlName="name"><br>
     </label>
   
     <label *ngIf="session.user.role == 'recruiter'">
         <span>corporation name</span>
-        <input type="text" placeholder="Your corporation name" formControlName="corporationName">
+        <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
+    </label>
+
+    <label *ngIf="session.user.role == 'recruiter'">
+        <span>description corporate</span>
+        <input type="text" placeholder="Your description corporate" formControlName="descriptionCorporate"><br>
     </label>
   
+    <label *ngIf="session.user.role == 'recruiter'">
+        <span>international</span>
+        <input type="checkbox" formControlName="international"><br>
+    </label>
+
     <label>
         <span>role</span>
         <input type="text" placeholder="Your role" formControlName="role">
-    </label>
+    </label><br>
   
     <button color="secondary" type="submit">
         Update

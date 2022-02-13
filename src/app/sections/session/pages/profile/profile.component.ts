@@ -35,25 +35,21 @@ export class ProfileComponent implements OnInit {
     this.reactiveForm = this.formBuilder.group(
       {
         name: [''],
-        corporationName: [''], // TODO: el resto de campos
+        corporationName: [''],
+        descriptionCorporate: [''],
+        international: [false],
         role: ['']
       }
     );
 
-    this.reactiveForm.controls.name.setValue(this.stateStoreService.state.session?.user?.name);
-    this.reactiveForm.controls.corporationName.setValue(this.stateStoreService.state.session?.user?.corporationName);
-    this.reactiveForm.controls.role.setValue(this.stateStoreService.state.session?.user?.role);
+    this.reactiveForm.patchValue(this.stateStoreService.state.session?.user);
   }
 
   submitForm() {
     this.isSubmitted = true;
-    
-    const user = {
-      _id: this.stateStoreService.state.session?.user?._id,
-      name: this.reactiveForm.get('name')!.value,
-      corporationName: this.reactiveForm.get('corporationName')!.value,
-      role: this.reactiveForm.get('role')!.value
-    } as User;
+
+    const user = this.reactiveForm.getRawValue();
+    user._id = this.stateStoreService.state.session?.user?._id
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.updateUserProfile(user);

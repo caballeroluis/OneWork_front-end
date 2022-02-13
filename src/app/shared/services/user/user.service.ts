@@ -14,27 +14,20 @@ export class UserService {
 
   getUsers(): Observable<any> {
     return this.http.get(
-      environment.apiUrl +
-      '/api/users'
+      environment.apiUrl + '/api/users'
     );
   }
 
   editUser(user: User): Observable<any> {
     return this.http.put(
-      environment.apiUrl +
-      '/api/users/' +
-      user._id,
-      {
-        ...user
-      }
+      environment.apiUrl + '/api/users/' + user._id,
+      user
     );
   }
 
   deleteUser(user: User): Observable<any> {
     return this.http.delete(
-      environment.apiUrl +
-      '/api/users/' +
-      user._id
+      environment.apiUrl + '/api/users/' + user._id
     );
   }
 

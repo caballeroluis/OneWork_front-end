@@ -28,6 +28,9 @@ export class RegisterComponent implements OnInit {
         email: [''],
         password: [''],
         name: [''],
+        corporationName: [''],
+        descriptionCorporate: [''],
+        international: [false],
         role: ['recruiter']
       }
     );
@@ -35,13 +38,8 @@ export class RegisterComponent implements OnInit {
 
   submitForm() {
     this.isSubmitted = true;
-    
-    const user = {
-      email: this.reactiveForm.get('email')!.value,
-      password: this.reactiveForm.get('password')!.value,
-      name: this.reactiveForm.get('name')!.value,
-      role: this.reactiveForm.get('role')!.value
-    } as User;
+
+    const user = this.reactiveForm.getRawValue();
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.register(user);

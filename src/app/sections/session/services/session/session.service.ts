@@ -16,58 +16,42 @@ export class SessionService {
 
   register(user: User): Observable<any> {
     return this.http.post(
-      environment.apiUrl +
-      '/api/users',
-      {
-        ...user
-      }
+      environment.apiUrl + '/api/users',
+      user
     );
   }
 
   login(user: User): Observable<any> {
     return this.http.post(
-      environment.apiUrl +
-      '/api/session/login',
-      {
-        ...user
-      }
+      environment.apiUrl + '/api/session/login',
+      user
     );
   }
 
   // loginMock(session: Session): Observable<any> {
   //   return this.http.get(
-  //     environment.apiMockUrl +
-  //     '/api/session'
+  //     environment.apiMockUrl + '/api/session'
   //   );
   // }
 
   updateUserProfile(user: User): Observable<any> {
     return this.http.patch(
-      environment.apiUrl +
-      '/api/users/' + user._id,
-      {
-        ...user
-      }
+      environment.apiUrl + '/api/users/' + user._id,
+      user
     );
   }
 
   changePassword(user: User): Observable<any> {
     return this.http.patch(
-      environment.apiUrl +
-      '/api/users/' + user._id,
-      {
-        ...user
-      }
+      environment.apiUrl + '/api/users/' + user._id,
+      user
     );
   }
 
   changeEmail(user: User): Observable<any> {
     return this.http.patch(
-      environment.apiUrl +
-      '/api/users/' + user._id,
-      {
-        ...user
-      }
+      environment.apiUrl + '/api/users/' + user._id,
+      user
     );
   }
 

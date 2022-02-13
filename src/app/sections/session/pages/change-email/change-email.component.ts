@@ -31,16 +31,14 @@ export class ChangeEmail implements OnInit {
       }
     );
 
-    this.reactiveForm.controls.email.setValue(this.stateStoreService.state.session?.user?.email);
+    this.reactiveForm.patchValue(this.stateStoreService.state.session?.user);
   }
 
   submitForm() {
     this.isSubmitted = true;
     
-    const user = {
-      _id: this.stateStoreService.state.session?.user?._id,
-      email: this.reactiveForm.get('email')!.value
-    } as User;
+    const user = this.reactiveForm.getRawValue();
+    user._id = this.stateStoreService.state.session?.user?._id
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.changeEmail(user);

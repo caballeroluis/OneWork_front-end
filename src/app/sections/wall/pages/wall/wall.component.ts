@@ -23,6 +23,10 @@ export class WallComponent {
     }
   }
 
+  getOffers() {
+    this.offerStoreService.getOffers();
+  }
+
   getIdTrackFn = (i: number, item: any) => item._id;
 
 }

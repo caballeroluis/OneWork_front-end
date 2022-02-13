@@ -1,5 +1,9 @@
 <wall-header></wall-header>
 
+<button (click)="getOffers()">
+  getOffers()
+</button>
+
 <div *ngFor="let offer of offerStoreService.offers$ | async; trackBy: getIdTrackFn">
   <div style="background-color: blanchedalmond;">
     <p>Worker: {{ offer.status }}</p>

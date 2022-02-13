@@ -6,6 +6,7 @@ export class Offer {
   salary?: number;
   title?: string;
   requirements?: string;
+  abandoned?: boolean;
   workplaceAdress?: string;
   description?: string;
   status?: string;

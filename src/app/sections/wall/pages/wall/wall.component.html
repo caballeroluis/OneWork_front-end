@@ -1,16 +1,34 @@
 <wall-header></wall-header>
 
 <button (click)="getOffers()">
-  getOffers()
+    getOffers()
 </button>
 
 <div *ngFor="let offer of offerStoreService.offers$ | async; trackBy: getIdTrackFn">
-  <div style="background-color: blanchedalmond;">
-    <p>Worker: {{ offer.status }}</p>
-    <p>Worker: {{ offer.worker?.name }}</p>
-    <p>Recruiter: {{ offer.recruiter?.name }}</p>
-    <p>Salary: {{ offer.salary }}</p>
-    <p>Date: {{ offer.creationDate }}</p>
-    <p>Description: {{ offer.description }}</p>
-  </div>
+    <div style="background-color: blanchedalmond;">
+        <p>status: {{ offer.status }}</p>
+        <p>abandoned: {{ offer.abandoned }}</p>
+        <p>title: {{ offer.title }}</p>
+        <p>workplaceAdress: {{ offer.workplaceAdress }}</p>
+        <p>requirements: {{ offer.requirements }}</p>
+        <p>Worker name: {{ offer.worker?.name }}</p>
+        <p>Worker role: {{ offer.worker?.role }}</p>
+        <p>Worker creationDate: {{ offer.worker?.creationDate }}</p>
+        <p>Recruiter name: {{ offer.recruiter?.recruiterName }}</p>
+        <p>Recruiter role: {{ offer.recruiter?.role }}</p>
+        <p>Recruiter creationDate: {{ offer.recruiter?.creationDate }}</p>
+        <p>corporationName: {{ offer.recruiter?.corporationName }}</p>
+        <p>descriptionCorporate: {{ offer.recruiter?.descriptionCorporate }}</p>
+        <p>international: {{ offer.recruiter?.international }}</p>
+        <p>Salary: {{ offer.salary }}</p>
+        <p>Date: {{ offer.creationDate }}</p>
+        <p>Description: {{ offer.description }}</p>
+    </div>
+</div>
+
+<div>
+    <p>Offers:</p>
+    <pre>
+        {{ (offerStoreService.offers$ | async) | json }}
+    </pre>
 </div>

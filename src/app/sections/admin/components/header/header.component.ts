@@ -1,6 +1,5 @@
-
 import { Component } from '@angular/core';
-import { SessionStoreService } from '@sections/session/services';
+import { StateStoreService } from '@core/services';
 
 @Component({
   selector: 'admin-header',
@@ -10,7 +9,7 @@ import { SessionStoreService } from '@sections/session/services';
 export class HeaderComponent {
 
   constructor(
-    public sessionStoreService: SessionStoreService
+    public stateStoreService: StateStoreService
   ) { }
 
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SessionStoreService } from '@sections/session/services';
 import { User } from '@shared/models';
+import { StateStoreService } from '@core/services';
 import { UserStoreService } from '@shared/services';
 
 @Component({
@@ -11,27 +11,24 @@ import { UserStoreService } from '@shared/services';
 export class AdminComponent {
 
   constructor(
-    public userStoreService: UserStoreService,
-    public sessionStoreService: SessionStoreService
+    private userStoreService: UserStoreService,
+    public stateStoreService: StateStoreService
   ) { }
 
   ngAfterViewInit() {
     if (
-      // this.sessionStoreService.token.length > 0 && // TODO: descomentar esto cuando back pida session aquí
-      (!this.userStoreService.users || this.userStoreService.users.length === 0)
+      // this.stateStoreService.state.session.token.length > 0 && // TODO: descomentar esto cuando back pida session aquí
+      (!this.stateStoreService.state.users || this.stateStoreService.state.users.length === 0)
     ) {
       this.userStoreService.getUsers();
     }
   }
 
-  getIdTrackFn = (i: number, item: any) => item._id;
+  getIdTrackFn = (i: number, item: any) => item.id;
 
   getUsers() {
+    console.log(this.stateStoreService.state.session.token)
     this.userStoreService.getUsers();
-  }
-
-  editUser(user: User) { // TODO: hacer
-    this.userStoreService.editUser(user);
   }
 
   deleteUser(user: User) {

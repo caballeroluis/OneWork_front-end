@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
+import { StateStoreService } from 'src/app/services';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,8 @@ export class ProfileComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    public sessionStoreService: SessionStoreService
+    public sessionStoreService: SessionStoreService,
+    public stateStoreService: StateStoreService
   ) { }
 
   ngOnInit(): void {
@@ -33,14 +35,14 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.sessionStoreService?.session.user);
+    this.reactiveForm.patchValue(this.stateStoreService?.state?.session.user);
   }
 
   submitForm() {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.sessionStoreService?.session.user._id
+    user._id = this.stateStoreService?.state?.session.user._id
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.updateUserProfile(user);

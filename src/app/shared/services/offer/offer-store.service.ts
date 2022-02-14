@@ -1,42 +1,32 @@
 import { Injectable } from '@angular/core';
+import { State } from '@core/models';
 import { Offer } from '@shared/models';
 import { OfferService } from '@shared/services';
-import { BehaviorSubject } from 'rxjs';
-
+import { StateStoreService } from 'src/app/services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OfferStoreService {
 
-  private readonly _offers = new BehaviorSubject<Offer[]>([]);
-  readonly offers$ = this._offers.asObservable();
-
   constructor(
-    private offerService: OfferService
+    private offerService: OfferService,
+    private stateStoreService: StateStoreService
   ) { }
 
-  get offers(): Offer[] {
-    return this._offers.getValue();
-  }
-
-  set offers(val: Offer[]) {
-    this._offers.next(val);
-  }
-  
   getOffers() {
     this.offerService.getOffers().subscribe(
       (response: Offer) => {
-        this.offers = response as Offer[];
+        this.stateStoreService.update(
+          {
+            offers: response as Offer[]
+          } as State
+        );
       },
       (error: any) => {
         throw new Error(error);
       }
     );
-  }
-
-  clear() {
-    this.offers = [];
   }
 
 }

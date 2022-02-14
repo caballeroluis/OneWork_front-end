@@ -1,34 +1,31 @@
 import { Injectable } from '@angular/core';
-import { SessionStoreService } from '@sections/session/services';
+import { SessionStoreService } from '../../../sections/session/services';
 import { User } from '@shared/models';
 import { UserService } from '@shared/services';
-import { BehaviorSubject } from 'rxjs';
+import { State } from '@core/models';
+import { StateStoreService } from '@core/services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserStoreService {
 
-  private readonly _users = new BehaviorSubject<User[]>([]);
-  readonly users$ = this._users.asObservable();
-
   constructor(
     private userService: UserService,
-    private sessionStoreService: SessionStoreService
+    private sessionStoreService: SessionStoreService,
+    private stateStoreService: StateStoreService
   ) { }
-
-  get users(): User[] {
-    return this._users.getValue();
-  }
-
-  set users(val: User[]) {
-    this._users.next(val);
-  }
   
   getUsers() {
     this.userService.getUsers().subscribe(
       (response: User[]) => {
-        this.users = response as User[];
+        this.stateStoreService.update(
+          {
+            users: response as User[]
+          } as State
+        );
+        
+        // this.users = response as User[];
       },
       (error: any) => {
         throw new Error(error);
@@ -50,21 +47,17 @@ export class UserStoreService {
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(
       (response: User) => {
-        this.users = this.users.filter(_user => _user._id !== user._id);
+        this.stateStoreService.state.users = this.stateStoreService.state.users.filter(_user => _user._id !== user._id);
 
         // if (this.sessionStoreService.user._id === response._id) { // TODO: que sea de la response no del user
-        if (this.sessionStoreService.session.user._id === user._id) {
-          this.sessionStoreService.clear();
+        if (this.stateStoreService.state.session.user._id === user._id) {
+          this.stateStoreService.clearState();
         }
       },
       (error: any) => {
         throw new Error(error);
       }
     );
-  }
-
-  clear() {
-    this.users = [];
   }
 
 }

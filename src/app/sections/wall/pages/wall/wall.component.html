@@ -4,7 +4,7 @@
     getOffers()
 </button>
 
-<div *ngFor="let offer of offerStoreService.offers$ | async; trackBy: getIdTrackFn">
+<div *ngFor="let offer of (stateStoreService.state$ | async)?.offers; trackBy: getIdTrackFn">
     <div style="background-color: blanchedalmond;">
         <p>status: {{ offer.status }}</p>
         <p>abandoned: {{ offer.abandoned }}</p>
@@ -29,6 +29,6 @@
 <div>
     <p>Offers:</p>
     <pre>
-        {{ (offerStoreService.offers$ | async) | json }}
+        {{ (stateStoreService.state$ | async)?.offers | json }}
     </pre>
 </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SessionStoreService } from '@sections/session/services';
 import { OfferStoreService } from '@shared/services';
+import { StateStoreService } from 'src/app/services';
 
 @Component({
   selector: 'app-wall',
@@ -10,15 +10,12 @@ import { OfferStoreService } from '@shared/services';
 export class WallComponent {
 
   constructor(
-    public offerStoreService: OfferStoreService,
-    private sessionStoreService: SessionStoreService
+    private offerStoreService: OfferStoreService,
+    public stateStoreService: StateStoreService
   ) { }
 
   ngAfterViewInit() {
-    if (
-      this.sessionStoreService.session.token.length > 0 &&
-      (!this.offerStoreService.offers || this.offerStoreService.offers.length === 0)
-    ) {
+    if (!this.stateStoreService.state.offers || this.stateStoreService.state.offers.length === 0) {
       this.offerStoreService.getOffers();
     }
   }

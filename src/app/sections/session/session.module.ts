@@ -5,8 +5,8 @@ import { SessionRoutingModule } from './session-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { ChangePassword } from './pages/change-password/change-password.component';
-import { ChangeEmail } from './pages/change-email/change-email.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ChangeEmailComponent } from './pages/change-email/change-email.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent, HeaderComponent } from '@sections/session/components';
 
@@ -15,8 +15,8 @@ import { FooterComponent, HeaderComponent } from '@sections/session/components';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ChangePassword,
-    ChangeEmail,
+    ChangePasswordComponent,
+    ChangeEmailComponent,
     HeaderComponent,
     FooterComponent
   ],

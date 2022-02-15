@@ -9,7 +9,7 @@ import { StateStoreService } from '@core/services';
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.scss']
 })
-export class ChangePassword implements OnInit {
+export class ChangePasswordComponent implements OnInit {
   
   public reactiveForm!: FormGroup;
   public isSubmitted = false;

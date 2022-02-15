@@ -9,7 +9,7 @@ import { StateStoreService } from '@core/services';
   templateUrl: './change-email.component.html',
   styleUrls: ['./change-email.component.scss']
 })
-export class ChangeEmail implements OnInit {
+export class ChangeEmailComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;

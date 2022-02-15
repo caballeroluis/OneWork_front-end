@@ -15,8 +15,8 @@ export class AppComponent {
   ) { }
 
   test() {
-    console.log('📂 state', this.stateStoreService.state);
-    console.log('👀 state', this.stateStoreService.state$['source']);
+    console.log('📂 Store data', this.stateStoreService.state);
+    console.log('👀 Store observers', this.stateStoreService.state$['source']);
   }
 
 }

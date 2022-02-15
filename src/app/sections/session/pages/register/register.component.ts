@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
         corporationName: [''],
         descriptionCorporate: [''],
         international: [false],
-        role: ['recruiter']
+        role: ['']
       }
     );
   }

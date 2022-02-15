@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "mock": "json-server --watch ./api-mock/state.json --config ./api-mock/config.json",
+    "mockClient": "ng serve --port 4201 --configuration=localMock",
+    "mockServer": "json-server --watch ./api-mock/state.json --config ./api-mock/config.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

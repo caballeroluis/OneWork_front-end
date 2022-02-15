@@ -28,12 +28,6 @@ export class SessionService {
     );
   }
 
-  // loginMock(session: Session): Observable<any> {
-  //   return this.http.get(
-  //     environment.apiMockUrl + '/api/session'
-  //   );
-  // }
-
   updateUserProfile(user: User): Observable<any> {
     return this.http.patch(
       environment.apiUrl + '/api/users/' + user._id,

@@ -27,7 +27,6 @@ export class AdminComponent {
   getIdTrackFn = (i: number, item: any) => item.id;
 
   getUsers() {
-    console.log(this.stateStoreService.state.session.token)
     this.userStoreService.getUsers();
   }
 

@@ -6,23 +6,23 @@
 
 <div *ngFor="let offer of (stateStoreService.state$ | async)?.offers; trackBy: getIdTrackFn">
     <div style="background-color: blanchedalmond;">
-        <p>status: {{ offer.status }}</p>
-        <p>abandoned: {{ offer.abandoned }}</p>
-        <p>title: {{ offer.title }}</p>
-        <p>workplaceAdress: {{ offer.workplaceAdress }}</p>
-        <p>requirements: {{ offer.requirements }}</p>
-        <p>Worker name: {{ offer.worker?.name }}</p>
-        <p>Worker role: {{ offer.worker?.role }}</p>
-        <p>Worker creationDate: {{ offer.worker?.creationDate }}</p>
-        <p>Recruiter name: {{ offer.recruiter?.recruiterName }}</p>
-        <p>Recruiter role: {{ offer.recruiter?.role }}</p>
-        <p>Recruiter creationDate: {{ offer.recruiter?.creationDate }}</p>
-        <p>corporationName: {{ offer.recruiter?.corporationName }}</p>
-        <p>descriptionCorporate: {{ offer.recruiter?.descriptionCorporate }}</p>
-        <p>international: {{ offer.recruiter?.international }}</p>
-        <p>Salary: {{ offer.salary }}</p>
-        <p>Date: {{ offer.creationDate }}</p>
-        <p>Description: {{ offer.description }}</p>
+        <p>status: <span style="background-color: aquamarine">{{ offer.status }}</span></p>
+        <p>abandoned: <span style="background-color: aquamarine">{{ offer.abandoned }}</span></p>
+        <p>title: <span style="background-color: aquamarine">{{ offer.title }}</span></p>
+        <p>workplaceAdress: <span style="background-color: aquamarine">{{ offer.workplaceAdress }}</span></p>
+        <p>requirements: <span style="background-color: aquamarine">{{ offer.requirements }}</span></p>
+        <p>Worker name: <span style="background-color: aquamarine">{{ offer.worker?.name }}</span></p>
+        <p>Worker role: <span style="background-color: aquamarine">{{ offer.worker?.role }}</span></p>
+        <p>Worker creationDate: <span style="background-color: aquamarine">{{ offer.worker?.creationDate }}</span></p>
+        <p>Recruiter name: <span style="background-color: aquamarine">{{ offer.recruiter?.recruiterName }}</span></p>
+        <p>Recruiter role: <span style="background-color: aquamarine">{{ offer.recruiter?.role }}</span></p>
+        <p>Recruiter creationDate: <span style="background-color: aquamarine">{{ offer.recruiter?.creationDate }}</span></p>
+        <p>corporationName: <span style="background-color: aquamarine">{{ offer.recruiter?.corporationName }}</span></p>
+        <p>descriptionCorporate: <span style="background-color: aquamarine">{{ offer.recruiter?.descriptionCorporate }}</span></p>
+        <p>international: <span style="background-color: aquamarine">{{ offer.recruiter?.international }}</span></p>
+        <p>Salary: <span style="background-color: aquamarine">{{ offer.salary }}</span></p>
+        <p>Date: <span style="background-color: aquamarine">{{ offer.creationDate }}</span></p>
+        <p>Description: <span style="background-color: aquamarine">{{ offer.description }}</span></p>
     </div>
 </div>
 

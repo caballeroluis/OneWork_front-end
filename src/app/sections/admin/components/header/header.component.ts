@@ -12,4 +12,6 @@ export class HeaderComponent {
     public stateStoreService: StateStoreService
   ) { }
 
+  getIdTrackFn = (i: number, item: any) => item.id;
+
 }

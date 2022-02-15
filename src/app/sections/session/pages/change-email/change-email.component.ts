@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SessionStoreService } from '@sections/session/services';
 import { User } from '@shared/models';
-import { StateStoreService } from 'src/app/services';
+import { StateStoreService } from '@core/services';
 
 @Component({
   selector: 'app-change-email',
@@ -31,14 +31,14 @@ export class ChangeEmail implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.stateStoreSercice?.state?.session.user);
+    this.reactiveForm.patchValue(this.stateStoreSercice?.state.session?.user);
   }
 
   submitForm() {
     this.isSubmitted = true;
     
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateStoreSercice?.state?.session?.user?._id
+    user._id = this.stateStoreSercice?.state.session?.user?._id
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.changeEmail(user);

@@ -3,13 +3,12 @@
 <button (click)="getUsers()">
     getUsers()
 </button>
-
-<div *ngFor="let user of (stateStoreService.state$ | async)?.users; trackBy: getIdTrackFn">
-<!-- // TODO: arreglar problema observers infinitos -->
+<div *ngFor="let user of (stateStoreService.state$ | async)?.users">
     <div style="background-color: blanchedalmond;">
         <p>Role: <span style="background-color: lightblue">{{ user.role }}</span></p>
-        <p>Active:
-        <span *ngIf="user.active" style="background-color: palegreen;">{{ user.active }}</span>
+        <p>
+            Active:
+            <span *ngIf="user.active" style="background-color: palegreen;">{{ user.active }}</span>
         </p>
         <p>Email: <span style="background-color: lightblue">{{ user.email }}</span></p>
         <p>Name: <span style="background-color: lightblue">{{ user.name }}</span></p>
@@ -18,10 +17,7 @@
         <p>International: <span style="background-color: lightblue">{{ user.international }}</span></p>
         <p>Corporation name: <span style="background-color: lightblue">{{ user.corporationName }}</span></p>
         <p>Creation date: <span style="background-color: lightblue">{{ user.creationDate }}</span></p>
-        <!-- <button (click)="deleteUser(user)" *ngIf="sessionStoreService.session$ | async && (sessionStoreService.session$ | async).role == 'admin'"> -->
-        <!-- <button (click)="deleteUser(user)" *ngIf="!(stateStoreService.state.session.token === '')"> -->
-        <!-- <button (click)="deleteUser(user)" *ngIf="!((stateStoreService.state$ | async)?.session?.token === '')"> -->
-        <button (click)="deleteUser(user)" *ngIf="(stateStoreService.state$ | async)?.session?.token">
+        <button (click)="deleteUser(user)" *ngIf="!((stateStoreService.state$ | async)?.session?.token === '')">
             X
         </button>
         <!-- <button (click)="editUser(user)">

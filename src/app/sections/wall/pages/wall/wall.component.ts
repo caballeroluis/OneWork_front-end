@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { StateStoreService } from '@core/services';
 import { OfferStoreService } from '@shared/services';
-import { StateStoreService } from 'src/app/services';
 
 @Component({
   selector: 'app-wall',

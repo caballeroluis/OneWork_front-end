@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
-import { StateStoreService } from 'src/app/services';
+import { StateStoreService } from '@core/services';
 
 @Component({
   selector: 'app-change-password',
@@ -10,7 +10,7 @@ import { StateStoreService } from 'src/app/services';
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePassword implements OnInit {
-// TODO: hacer que funcione esto, cambiar pass y profile de nuevo con stateStoreService
+  
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
   
@@ -36,7 +36,7 @@ export class ChangePassword implements OnInit {
     this.isSubmitted = true;
     
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateStoreService?.state?.session.user._id
+    user._id = this.stateStoreService?.state.session?.user._id
 
     if (this.reactiveForm.valid) {
       this.sessionStoreService.changePassword(user);

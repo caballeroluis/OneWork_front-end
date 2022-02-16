@@ -53,15 +53,9 @@ export class NewOfferComponent implements OnInit {
     let offer: Offer = this.reactiveForm.getRawValue();
 
     offer.recruiter = this.stateSS.session.user;
-    if (environment.mock) { // TODO: esperar cambio de ids en back-end
-      offer.worker = this.stateSS.users.find(
-        user => user._id === this.reactiveForm.controls.worker.value._id
-      )
-    } else {
-      offer.worker = this.stateSS.users.find(
-        user => user.id === this.reactiveForm.controls.worker.value.id
-      )
-    } 
+    offer.worker = this.stateSS.users.find(
+      user => user._id === this.reactiveForm.controls.worker.value._id
+    )
 
     if (this.reactiveForm.valid) {
       this.offerSS.newOffer(offer);

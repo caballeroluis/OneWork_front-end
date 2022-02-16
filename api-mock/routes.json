@@ -1,4 +1,5 @@
 {
   "/api/*": "/$1",
-  "/session/login": "/session"
+  "/session/login": "/session",
+  "/offers/*": "/offers"
 }

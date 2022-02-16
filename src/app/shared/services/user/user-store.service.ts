@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from '@shared/models';
 import { UserService } from '@shared/services';
 import { StateStoreService } from '@core/services';
-import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -39,21 +38,11 @@ export class UserStoreService {
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(
       (response: User) => {
-        if (environment.mock) { // TODO: esperar cambio de ids en back-end
-          this.stateSS.users = this.stateSS.users.filter(_user => _user.id !== user.id);
+        this.stateSS.users = this.stateSS.users.filter(_user => _user._id !== user._id);
 
-          if (this.stateSS.session.user.id === response.id) {
-            this.stateSS.clear();
-          }
-        } else {
-          this.stateSS.users = this.stateSS.users.filter(_user => _user._id !== user._id);
-
-          if (this.stateSS.session.user._id === response._id) {
-            this.stateSS.clear();
-          }
+        if (this.stateSS.session.user._id === response._id) {
+          this.stateSS.clear();
         }
-        
-       
       },
       (error: any) => {
         throw new Error(error);

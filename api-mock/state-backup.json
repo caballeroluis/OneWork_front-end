@@ -1,7 +1,6 @@
 {
   "session": {
     "user": {
-      "id": "ezYm8-1",
       "_id": "6209490cf9a8fc2c209ee45a",
       "corporationName": "Empresa S.A.",
       "descriptionCorporate": "Me describo la empresa",
@@ -20,14 +19,12 @@
   },
   "users": [
     {
-      "id": "ezYm8-2",
       "_id": "620906c3f9a8fc2c209ee3f4",
       "name": "workersico",
       "role": "worker",
       "creationDate": "2022-02-13T13:25:23.014Z"
     },
     {
-      "id": "ezYm8-3",
       "_id": "62094471f9a8fc2c209ee43f",
       "corporationName": "",
       "descriptionCorporate": "",
@@ -35,14 +32,12 @@
       "creationDate": "2022-02-13T17:48:33.820Z"
     },
     {
-      "id": "ezYm8-4",
       "_id": "62094479f9a8fc2c209ee443",
       "name": "workersito",
       "role": "worker",
       "creationDate": "2022-02-13T17:48:41.687Z"
     },
     {
-      "id": "ezYm8-5",
       "_id": "6209490cf9a8fc2c209ee45a",
       "corporationName": "Empresa S.A.",
       "descriptionCorporate": "Me describo la empresa",
@@ -50,7 +45,6 @@
       "creationDate": "2022-02-13T18:08:12.241Z"
     },
     {
-      "id": "ezYm8-6",
       "_id": "62094deef9a8fc2c209ee47b",
       "corporationName": "",
       "descriptionCorporate": "",
@@ -58,7 +52,6 @@
       "creationDate": "2022-02-13T18:29:02.247Z"
     },
     {
-      "id": "ezYm8-7",
       "_id": "620a3cab9dd13dedc5327411",
       "corporationName": "",
       "descriptionCorporate": "",
@@ -66,7 +59,6 @@
       "creationDate": "2022-02-14T11:27:39.022Z"
     },
     {
-      "id": "ezYm8-8",
       "_id": "620ae678ddd54f721e3a3f9e",
       "corporationName": "",
       "descriptionCorporate": "",
@@ -74,35 +66,30 @@
       "creationDate": "2022-02-14T23:32:08.485Z"
     },
     {
-      "id": "ezYm8-9",
       "_id": "620b0600ddd54f721e3a4270",
       "name": "workersito",
       "role": "worker",
       "creationDate": "2022-02-15T01:46:40.324Z"
     },
     {
-      "id": "ezYm810",
       "_id": "620b064eddd54f721e3a4282",
       "name": "workersito2",
       "role": "worker",
       "creationDate": "2022-02-15T01:47:58.244Z"
     },
     {
-      "id": "ezYm811",
       "_id": "620b06a0ddd54f721e3a428f",
       "name": "workersito4",
       "role": "worker",
       "creationDate": "2022-02-15T01:49:20.477Z"
     },
     {
-      "id": "",
       "_id": "620b06daddd54f721e3a429b",
       "name": "workersito5",
       "role": "worker",
       "creationDate": "2022-02-15T01:50:18.237Z"
     },
     {
-      "id": "ezYm812",
       "_id": "620b0756ddd54f721e3a42a3",
       "corporationName": "asdf2",
       "descriptionCorporate": "",
@@ -112,7 +99,6 @@
   ],
   "offers": [
     {
-      "id": "ezYm813",
       "_id": "62094934f9a8fc2c209ee467",
       "creationDate": "2022-02-13T18:08:52.742Z",
       "salary": 180000,
@@ -122,7 +108,6 @@
       "description": "Tenemos un puesto calentito calentito.",
       "status": "created",
       "workerAssigned": {
-        "id": "ezYm814",
         "_id": "62094479f9a8fc2c209ee443",
         "name": "workersito",
         "role": "worker",
@@ -130,7 +115,6 @@
         "__v": 2
       },
       "recruiterAssigned": {
-        "id": "ezYm815",
         "_id": "6209490cf9a8fc2c209ee45a",
         "corporationName": "Empresa S.A.",
         "descriptionCorporate": "Me describo la empresa",
@@ -142,7 +126,6 @@
       "__v": 0
     },
     {
-      "id": "ezYm816",
       "_id": "62094f81f9a8fc2c209ee496",
       "creationDate": "2022-02-13T18:35:45.202Z",
       "salary": 180000,
@@ -152,7 +135,6 @@
       "description": "Tenemos un puesto calentito calentito.",
       "status": "created",
       "workerAssigned": {
-        "id": "ezYm817",
         "_id": "620906c3f9a8fc2c209ee3f4",
         "name": "workersico",
         "role": "worker",
@@ -160,7 +142,6 @@
         "__v": 1
       },
       "recruiterAssigned": {
-        "id": "ezYm818",
         "_id": "6209490cf9a8fc2c209ee45a",
         "corporationName": "Empresa S.A.",
         "descriptionCorporate": "Me describo la empresa",

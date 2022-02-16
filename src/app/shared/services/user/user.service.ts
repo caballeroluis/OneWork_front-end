@@ -27,8 +27,7 @@ export class UserService {
 
   deleteUser(user: User): Observable<any> {
     return this.http.delete(
-      environment.apiUrl + '/api/users/' + environment.mock? user.id: user.id
-      // environment.apiUrl + '/api/users/' + user.id // TODO: esperar cambio de ids en back-end
+      environment.apiUrl + '/api/users/' + user._id
     );
   }
 

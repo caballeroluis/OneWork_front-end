@@ -9,7 +9,7 @@ import { StateStoreService } from '@core/services';
 export class HeaderComponent {
 
   constructor(
-    public stateStoreService: StateStoreService
+    public stateSS: StateStoreService
   ) { }
 
 

@@ -2,22 +2,22 @@
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
   
-    <label *ngIf="true">
+    <label *ngIf="stateSS.state.session.user.role == 'worker'">
         <span>name</span>
         <input type="text" placeholder="Your name" formControlName="name"><br>
     </label>
   
-    <label *ngIf="true">
+    <label *ngIf="stateSS.state.session.user.role == 'recruiter'">
         <span>corporation name</span>
         <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
     </label>
 
-    <label *ngIf="true">
+    <label *ngIf="stateSS.state.session.user.role == 'recruiter'">
         <span>description corporate</span>
         <input type="text" placeholder="Your description corporate" formControlName="descriptionCorporate"><br>
     </label>
   
-    <label *ngIf="true">
+    <label *ngIf="stateSS.state.session.user.role == 'recruiter'">
         <span>international</span>
         <input type="checkbox" formControlName="international"><br>
     </label>
@@ -31,37 +31,3 @@
         Update
     </button>
 </form>
-
-<!-- <session-header></session-header>
-
-<form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
-  
-    <label *ngIf="session.user.role == 'worker'">
-        <span>name</span>
-        <input type="text" placeholder="Your name" formControlName="name"><br>
-    </label>
-  
-    <label *ngIf="session.user.role == 'recruiter'">
-        <span>corporation name</span>
-        <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
-    </label>
-
-    <label *ngIf="session.user.role == 'recruiter'">
-        <span>description corporate</span>
-        <input type="text" placeholder="Your description corporate" formControlName="descriptionCorporate"><br>
-    </label>
-  
-    <label *ngIf="session.user.role == 'recruiter'">
-        <span>international</span>
-        <input type="checkbox" formControlName="international"><br>
-    </label>
-
-    <label>
-        <span>role</span>
-        <input type="text" placeholder="Your role" formControlName="role">
-    </label><br>
-  
-    <button color="secondary" type="submit">
-        Update
-    </button>
-</form> -->

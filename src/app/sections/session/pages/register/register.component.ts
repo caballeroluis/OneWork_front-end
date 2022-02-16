@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   public isSubmitted = false;
   
   constructor(
-    private sessionStoreService: SessionStoreService,
+    private sessionSS: SessionStoreService,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     const user: User = this.reactiveForm.getRawValue();
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.register(user);
+      this.sessionSS.register(user);
     } else {
       throw new Error('Form error');
     }

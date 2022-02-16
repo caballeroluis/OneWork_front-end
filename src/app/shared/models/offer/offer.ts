@@ -7,7 +7,7 @@ export class Offer {
   title?: string;
   requirements?: string;
   abandoned?: boolean;
-  workplaceAdress?: string;
+  workplaceAddress?: string;
   description?: string;
   status?: string;
   recruiter?: User;

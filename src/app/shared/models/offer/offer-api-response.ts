@@ -6,7 +6,7 @@ export class OfferApiResponse {
   salary?: number;
   title?: string;
   requirements?: string;
-  workplaceAdress?: string;
+  workplaceAddress?: string;
   description?: string;
   status?: string;
   recruiter?: User;

@@ -17,7 +17,7 @@ export class ChangeEmailComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private stateStoreSercice: StateStoreService,
-    private sessionStoreService: SessionStoreService
+    private sessionSS: SessionStoreService
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class ChangeEmailComponent implements OnInit {
     user._id = this.stateStoreSercice?.state.session?.user?._id
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.changeEmail(user);
+      this.sessionSS.changeEmail(user);
     } else {
       throw new Error('Form error');
     }

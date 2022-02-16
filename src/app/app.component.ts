@@ -11,12 +11,14 @@ export class AppComponent {
   environmentProduction = environment.production;
 
   constructor(
-    private stateStoreService: StateStoreService,
+    private stateSS: StateStoreService,
   ) { }
 
   test() {
-    console.log('📂 Store data', this.stateStoreService.state);
-    console.log('👀 Store observers', this.stateStoreService.state$['source']);
+    console.log('📂 Store data', this.stateSS.state);
+    console.log('📂 Users data', this.stateSS.users);
+    console.log('👀 Store observers', this.stateSS.state$['source']);
+    console.log('👀 Users observers', this.stateSS.users$['source']);
   }
 
 }

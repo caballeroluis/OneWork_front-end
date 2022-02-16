@@ -4,12 +4,14 @@
     getOffers()
 </button>
 
-<div *ngFor="let offer of (stateStoreService.state$ | async)?.offers; trackBy: getIdTrackFn">
+&nbsp;<a routerLink="/wall/new-offer">New offer</a>
+
+<div *ngFor="let offer of (stateSS.state$ | async)?.offers; trackBy: getIdTrackFn">
     <div style="background-color: blanchedalmond;">
         <p>status: <span style="background-color: aquamarine">{{ offer.status }}</span></p>
         <p>abandoned: <span style="background-color: aquamarine">{{ offer.abandoned }}</span></p>
         <p>title: <span style="background-color: aquamarine">{{ offer.title }}</span></p>
-        <p>workplaceAdress: <span style="background-color: aquamarine">{{ offer.workplaceAdress }}</span></p>
+        <p>workplaceAddress: <span style="background-color: aquamarine">{{ offer.workplaceAddress }}</span></p>
         <p>requirements: <span style="background-color: aquamarine">{{ offer.requirements }}</span></p>
         <p>Worker name: <span style="background-color: aquamarine">{{ offer.worker?.name }}</span></p>
         <p>Worker role: <span style="background-color: aquamarine">{{ offer.worker?.role }}</span></p>
@@ -29,6 +31,6 @@
 <div>
     <p>Offers:</p>
     <pre>
-        {{ (stateStoreService.state$ | async)?.offers | json }}
+        {{ (stateSS.state$ | async)?.offers | json }}
     </pre>
 </div>

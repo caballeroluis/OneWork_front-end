@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   public isSubmitted = false;
   
   constructor(
-    private sessionStoreService: SessionStoreService,
+    private sessionSS: SessionStoreService,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     const user: User = this.reactiveForm.getRawValue();
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.login(user);
+      this.sessionSS.login(user);
     } else {
       throw new Error('Form error');
     }

@@ -16,8 +16,8 @@ export class ProfileComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    public sessionStoreService: SessionStoreService,
-    public stateStoreService: StateStoreService
+    public sessionSS: SessionStoreService,
+    public stateSS: StateStoreService
   ) { }
 
   ngOnInit(): void {
@@ -35,17 +35,17 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.stateStoreService?.state.session.user);
+    this.reactiveForm.patchValue(this.stateSS?.state.session.user);
   }
 
   submitForm() {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateStoreService?.state.session?.user._id
+    user._id = this.stateSS?.state.session?.user._id
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.updateUserProfile(user);
+      this.sessionSS.updateUserProfile(user);
     } else {
       throw new Error('Form error');
     }

@@ -16,14 +16,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private router: Router,
-    private stateStoreService: StateStoreService
+    private stateSS: StateStoreService
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = null;
 
-    if (this.stateStoreService.state.session.token) {
-      token = this.stateStoreService.state.session.token;
+    if (this.stateSS.state.session.token) {
+      token = this.stateSS.state.session.token;
     }
     
     let request = req;

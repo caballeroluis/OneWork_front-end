@@ -11,27 +11,27 @@ import { UserStoreService } from '@shared/services';
 export class AdminComponent {
 
   constructor(
-    private userStoreService: UserStoreService,
-    public stateStoreService: StateStoreService
+    private userSS: UserStoreService,
+    public stateSS: StateStoreService
   ) { }
 
   ngAfterViewInit() {
     if (
-      // this.stateStoreService.state.session.token.length > 0 && // TODO: descomentar esto cuando back pida session aquí
-      (!this.stateStoreService.state.users || this.stateStoreService.state.users.length === 0)
+      // this.stateSS.state.session.token.length > 0 && // TODO: descomentar esto cuando back pida session aquí
+      (!this.stateSS.users || this.stateSS.users.length === 0)
     ) {
-      this.userStoreService.getUsers();
+      this.userSS.getUsers();
     }
   }
 
   getIdTrackFn = (i: number, item: any) => item.id;
 
   getUsers() {
-    this.userStoreService.getUsers();
+    this.userSS.getUsers();
   }
 
   deleteUser(user: User) {
-    this.userStoreService.deleteUser(user);
+    this.userSS.deleteUser(user);
   }
 
 }

@@ -13,18 +13,16 @@ export class SessionStoreService {
   constructor(
     private router: Router,
     private sessionService: SessionService,
-    private stateStoreService: StateStoreService
+    private stateSS: StateStoreService
   ) { }
 
   register(user: User) {
     this.sessionService.register(user).subscribe(
       (response: User) => {
-        if (this.stateStoreService.state.users.length > 0) {
-          this.stateStoreService.state.users = [
-            ...this.stateStoreService.state.users,
-            response as User
-          ];
-        }
+        this.stateSS.users = [
+          ...this.stateSS.users,
+          response as User
+        ];
         
         // this.router.navigate(['session', 'profile']);
       },
@@ -37,9 +35,9 @@ export class SessionStoreService {
   login(user: User) {
     this.sessionService.login(user).subscribe(
       (response: Session) => {
-        this.stateStoreService.clear();
+        this.stateSS.clear();
         if (response.token?.length > 0) {
-          this.stateStoreService.state.session = response as Session;
+          this.stateSS.state.session = response as Session;
           
           // this.router.navigate(['session', 'profile']);
         }
@@ -53,10 +51,10 @@ export class SessionStoreService {
   updateUserProfile(user: User) {
     this.sessionService.updateUserProfile(user).subscribe(
       (response: User) => {
-        this.stateStoreService.state.session.user = response as User;
+        this.stateSS.state.session.user = response as User;
 
-        this.stateStoreService.state.users[
-          this.stateStoreService.state.users.findIndex(_user => _user._id == user._id)
+        this.stateSS.users[
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
       },
       (error: any) => {
@@ -68,10 +66,10 @@ export class SessionStoreService {
   changePassword(user: User) {
     this.sessionService.changePassword(user).subscribe(
       (response: User) => {
-        this.stateStoreService.state.session.user = response as User;
+        this.stateSS.state.session.user = response as User;
         
-        this.stateStoreService.state.users[
-          this.stateStoreService.state.users.findIndex(_user => _user._id == user._id)
+        this.stateSS.users[
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
       },
       (error: any) => {
@@ -83,10 +81,10 @@ export class SessionStoreService {
   changeEmail(user: User) {
     this.sessionService.changeEmail(user).subscribe(
       (response: User) => {
-        this.stateStoreService.state.session.user = response as User;
+        this.stateSS.state.session.user = response as User;
 
-        this.stateStoreService.state.users[
-          this.stateStoreService.state.users.findIndex(_user => _user._id == user._id)
+        this.stateSS.users[
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
       },
       (error: any) => {

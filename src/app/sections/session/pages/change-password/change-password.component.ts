@@ -16,8 +16,8 @@ export class ChangePasswordComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private sessionStoreService: SessionStoreService,
-    private stateStoreService: StateStoreService
+    private sessionSS: SessionStoreService,
+    private stateSS: StateStoreService
   ) { }
 
   ngOnInit(): void {
@@ -36,10 +36,10 @@ export class ChangePasswordComponent implements OnInit {
     this.isSubmitted = true;
     
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateStoreService?.state.session?.user._id
+    user._id = this.stateSS?.state.session?.user._id
 
     if (this.reactiveForm.valid) {
-      this.sessionStoreService.changePassword(user);
+      this.sessionSS.changePassword(user);
     } else {
       throw new Error('Form error');
     }

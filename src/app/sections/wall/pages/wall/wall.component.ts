@@ -10,18 +10,18 @@ import { OfferStoreService } from '@shared/services';
 export class WallComponent {
 
   constructor(
-    private offerStoreService: OfferStoreService,
-    public stateStoreService: StateStoreService
+    private offerSS: OfferStoreService,
+    public stateSS: StateStoreService
   ) { }
 
   ngAfterViewInit() {
-    if (!this.stateStoreService.state.offers || this.stateStoreService.state.offers.length === 0) {
-      this.offerStoreService.getOffers();
+    if (!this.stateSS.state.offers || this.stateSS.state.offers.length === 0) {
+      this.offerSS.getOffers();
     }
   }
 
   getOffers() {
-    this.offerStoreService.getOffers();
+    this.offerSS.getOffers();
   }
 
   getIdTrackFn = (i: number, item: any) => item._id;

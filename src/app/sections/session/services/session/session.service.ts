@@ -30,21 +30,21 @@ export class SessionService {
 
   updateUserProfile(user: User): Observable<any> {
     return this.http.patch(
-      environment.apiUrl + '/api/users/' + user.id,
+      environment.apiUrl + '/api/users/' + user._id,
       user
     );
   }
 
   changePassword(user: User): Observable<any> {
     return this.http.patch(
-      environment.apiUrl + '/api/users/' + user.id,
+      environment.apiUrl + '/api/users/' + user._id,
       user
     );
   }
 
   changeEmail(user: User): Observable<any> {
     return this.http.patch(
-      environment.apiUrl + '/api/users/' + user.id,
+      environment.apiUrl + '/api/users/' + user._id,
       user
     );
   }

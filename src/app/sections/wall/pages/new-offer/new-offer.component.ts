@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { StateStoreService } from '@core/services';
 import { Offer } from '@shared/models';
 import { OfferStoreService, UserStoreService } from '@shared/services';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-new-offer',
@@ -51,13 +52,16 @@ export class NewOfferComponent implements OnInit {
 
     let offer: Offer = this.reactiveForm.getRawValue();
 
-    offer = {
-      ...offer,
-      recruiter: this.stateSS.session.user,
-      worker: this.stateSS.users.find(
+    offer.recruiter = this.stateSS.session.user;
+    if (environment.mock) { // TODO: esperar cambio de ids en back-end
+      offer.worker = this.stateSS.users.find(
+        user => user._id === this.reactiveForm.controls.worker.value._id
+      )
+    } else {
+      offer.worker = this.stateSS.users.find(
         user => user.id === this.reactiveForm.controls.worker.value.id
       )
-    };
+    } 
 
     if (this.reactiveForm.valid) {
       this.offerSS.newOffer(offer);
@@ -66,6 +70,6 @@ export class NewOfferComponent implements OnInit {
     }
   }
 
-  getIdTrackFn = (i: number, item: any) => item.id;
+  getIdTrackFn = (i: number, item: any) => item._id;
 
 }

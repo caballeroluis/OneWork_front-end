@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user.id = this.stateSS.session?.user.id
+    user._id = this.stateSS.session?.user._id
 
     if (this.reactiveForm.valid) {
       this.sessionSS.updateUserProfile(user);

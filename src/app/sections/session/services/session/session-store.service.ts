@@ -54,7 +54,7 @@ export class SessionStoreService {
         this.stateSS.session.user = response as User;
 
         this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user.id == user.id)
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
       },
       (error: any) => {
@@ -69,7 +69,7 @@ export class SessionStoreService {
         this.stateSS.session.user = response as User;
         
         this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user.id == user.id)
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
       },
       (error: any) => {
@@ -84,7 +84,7 @@ export class SessionStoreService {
         this.stateSS.session.user = response as User;
 
         this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user.id == user.id)
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
       },
       (error: any) => {

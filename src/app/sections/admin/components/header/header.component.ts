@@ -12,6 +12,6 @@ export class HeaderComponent {
     public stateSS: StateStoreService
   ) { }
 
-  getIdTrackFn = (i: number, item: any) => item.id;
+  getIdTrackFn = (i: number, item: any) => item._id;
 
 }

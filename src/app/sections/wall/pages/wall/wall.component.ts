@@ -24,6 +24,6 @@ export class WallComponent {
     this.offerSS.getOffers();
   }
 
-  getIdTrackFn = (i: number, item: any) => item.id;
+  getIdTrackFn = (i: number, item: any) => item._id;
 
 }

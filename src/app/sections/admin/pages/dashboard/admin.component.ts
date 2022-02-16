@@ -24,7 +24,7 @@ export class AdminComponent {
     }
   }
 
-  getIdTrackFn = (i: number, item: any) => item.id;
+  getIdTrackFn = (i: number, item: any) => item._id;
 
   getUsers() {
     this.userSS.getUsers();

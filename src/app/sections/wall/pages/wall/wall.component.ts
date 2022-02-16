@@ -15,7 +15,7 @@ export class WallComponent {
   ) { }
 
   ngAfterViewInit() {
-    if (!this.stateSS.state.offers || this.stateSS.state.offers.length === 0) {
+    if (!this.stateSS.offers || this.stateSS.offers.length === 0) {
       this.offerSS.getOffers();
     }
   }

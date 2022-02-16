@@ -34,14 +34,14 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.stateSS?.state.session.user);
+    this.reactiveForm.patchValue(this.stateSS.session.user);
   }
 
   submitForm() {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user.id = this.stateSS?.state.session?.user.id
+    user.id = this.stateSS.session?.user.id
 
     if (this.reactiveForm.valid) {
       this.sessionSS.updateUserProfile(user);

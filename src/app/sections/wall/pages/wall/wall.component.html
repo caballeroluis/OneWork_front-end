@@ -6,7 +6,7 @@
 
 &nbsp;<a routerLink="/wall/new-offer">New offer</a>
 
-<div *ngFor="let offer of (stateSS.state$ | async)?.offers; trackBy: getIdTrackFn">
+<div *ngFor="let offer of stateSS.offers$ | async; trackBy: getIdTrackFn">
     <div style="background-color: blanchedalmond;">
         <p>status: <span style="background-color: aquamarine">{{ offer.status }}</span></p>
         <p>abandoned: <span style="background-color: aquamarine">{{ offer.abandoned }}</span></p>
@@ -31,6 +31,6 @@
 <div>
     <p>Offers:</p>
     <pre>
-        {{ (stateSS.state$ | async)?.offers | json }}
+        {{ stateSS.offers$ | async | json }}
     </pre>
 </div>

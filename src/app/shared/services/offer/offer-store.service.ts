@@ -16,7 +16,7 @@ export class OfferStoreService {
   getOffers() {
     this.offerService.getOffers().subscribe(
       (response: Offer) => {
-        this.stateSS.state.offers = response as Offer[];
+        this.stateSS.offers = response as Offer[];
       },
       (error: any) => {
         throw new Error(error);
@@ -27,8 +27,8 @@ export class OfferStoreService {
   newOffer(offer: Offer) {
     this.offerService.newOffer(offer).subscribe(
       (response: Offer) => {
-        this.stateSS.state.offers = [ // TODO: hacer q se guarden bien
-          ...this.stateSS.state.offers,
+        this.stateSS.offers = [ // TODO: hacer q se guarden bien
+          ...this.stateSS.offers,
           response as Offer
         ];
         

@@ -2,22 +2,22 @@
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
   
-    <label *ngIf="stateSS.state.session.user.role == 'worker'">
+    <label *ngIf="stateSS.session.user.role == 'worker'">
         <span>name</span>
         <input type="text" placeholder="Your name" formControlName="name"><br>
     </label>
   
-    <label *ngIf="stateSS.state.session.user.role == 'recruiter'">
+    <label *ngIf="stateSS.session.user.role == 'recruiter'">
         <span>corporation name</span>
         <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
     </label>
 
-    <label *ngIf="stateSS.state.session.user.role == 'recruiter'">
+    <label *ngIf="stateSS.session.user.role == 'recruiter'">
         <span>description corporate</span>
         <input type="text" placeholder="Your description corporate" formControlName="descriptionCorporate"><br>
     </label>
   
-    <label *ngIf="stateSS.state.session.user.role == 'recruiter'">
+    <label *ngIf="stateSS.session.user.role == 'recruiter'">
         <span>international</span>
         <input type="checkbox" formControlName="international"><br>
     </label>

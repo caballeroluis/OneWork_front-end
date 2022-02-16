@@ -22,8 +22,8 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = null;
 
-    if (this.stateSS.state.session.token) {
-      token = this.stateSS.state.session.token;
+    if (this.stateSS.session.token) {
+      token = this.stateSS.session.token;
     }
     
     let request = req;

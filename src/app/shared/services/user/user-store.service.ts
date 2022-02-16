@@ -40,7 +40,7 @@ export class UserStoreService {
       (response: User) => {
         this.stateSS.users = this.stateSS.users.filter(_user => _user.id !== user.id);
 
-        if (this.stateSS.state.session.user.id === response.id) {
+        if (this.stateSS.session.user.id === response.id) {
           this.stateSS.clear();
         }
       },

@@ -17,7 +17,7 @@ export class AdminComponent {
 
   ngAfterViewInit() {
     if (
-      // this.stateSS.state.session.token.length > 0 && // TODO: descomentar esto cuando back pida session aquí
+      // this.stateSS.session.token.length > 0 && // TODO: descomentar esto cuando back pida session aquí
       (!this.stateSS.users || this.stateSS.users.length === 0)
     ) {
       this.userSS.getUsers();

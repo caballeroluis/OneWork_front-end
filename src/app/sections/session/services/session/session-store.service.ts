@@ -37,7 +37,7 @@ export class SessionStoreService {
       (response: Session) => {
         this.stateSS.clear();
         if (response.token?.length > 0) {
-          this.stateSS.state.session = response as Session;
+          this.stateSS.session = response as Session;
           
           // this.router.navigate(['session', 'profile']);
         }
@@ -51,7 +51,7 @@ export class SessionStoreService {
   updateUserProfile(user: User) {
     this.sessionService.updateUserProfile(user).subscribe(
       (response: User) => {
-        this.stateSS.state.session.user = response as User;
+        this.stateSS.session.user = response as User;
 
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user.id == user.id)
@@ -66,7 +66,7 @@ export class SessionStoreService {
   changePassword(user: User) {
     this.sessionService.changePassword(user).subscribe(
       (response: User) => {
-        this.stateSS.state.session.user = response as User;
+        this.stateSS.session.user = response as User;
         
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user.id == user.id)
@@ -81,7 +81,7 @@ export class SessionStoreService {
   changeEmail(user: User) {
     this.sessionService.changeEmail(user).subscribe(
       (response: User) => {
-        this.stateSS.state.session.user = response as User;
+        this.stateSS.session.user = response as User;
 
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user.id == user.id)

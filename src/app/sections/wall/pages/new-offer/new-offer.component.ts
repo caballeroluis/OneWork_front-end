@@ -53,7 +53,7 @@ export class NewOfferComponent implements OnInit {
 
     offer = {
       ...offer,
-      recruiter: this.stateSS.state.session.user,
+      recruiter: this.stateSS.session.user,
       worker: this.stateSS.users.find(
         user => user.id === this.reactiveForm.controls.worker.value.id
       )

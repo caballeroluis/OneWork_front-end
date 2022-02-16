@@ -1,7 +1,7 @@
 import { Offer } from '@shared/models';
 export class User {
 
-  _id!: string;
+  id!: string;
   email!: string;
   name?: string;
   corporationName?: string;

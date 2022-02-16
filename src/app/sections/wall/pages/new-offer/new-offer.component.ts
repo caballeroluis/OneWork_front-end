@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StateStoreService } from '@core/services';
-import { Offer, User } from '@shared/models';
+import { Offer } from '@shared/models';
 import { OfferStoreService, UserStoreService } from '@shared/services';
 
 @Component({
@@ -55,7 +55,7 @@ export class NewOfferComponent implements OnInit {
       ...offer,
       recruiter: this.stateSS.state.session.user,
       worker: this.stateSS.users.find(
-        user => user._id === this.reactiveForm.controls.worker.value._id
+        user => user.id === this.reactiveForm.controls.worker.value.id
       )
     };
 
@@ -66,6 +66,6 @@ export class NewOfferComponent implements OnInit {
     }
   }
 
-  getIdTrackFn = (i: number, item: any) => item._id;
+  getIdTrackFn = (i: number, item: any) => item.id;
 
 }

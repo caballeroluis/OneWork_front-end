@@ -36,7 +36,7 @@ export class ChangePasswordComponent implements OnInit {
     this.isSubmitted = true;
     
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateSS?.state.session?.user._id
+    user.id = this.stateSS?.state.session?.user.id
 
     if (this.reactiveForm.valid) {
       this.sessionSS.changePassword(user);

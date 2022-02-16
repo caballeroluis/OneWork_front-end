@@ -20,10 +20,13 @@ export class OfferService {
   }
 
   newOffer(offer: Offer): Observable<any> {
-    return this.http.post(
-      environment.apiUrl +
-        "/api/offers/worker/" + offer.worker?._id +
-        "/recruiter/" + offer.recruiter?._id,
+    return this.http.post( // TODO: esperar cambio en back-end
+      // environment.apiUrl +
+      //   "/api/offers/worker/" + offer.worker?.id +
+      //   "/recruiter/" + offer.recruiter?.id,
+        environment.apiUrl +
+        "/api/offers?worker=" + offer.worker?.id +
+        "&recruiter=" + offer.recruiter?.id,
       offer
     );
   }

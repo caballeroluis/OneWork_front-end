@@ -38,9 +38,9 @@ export class UserStoreService {
   deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe(
       (response: User) => {
-        this.stateSS.users = this.stateSS.users.filter(_user => _user._id !== user._id);
+        this.stateSS.users = this.stateSS.users.filter(_user => _user.id !== user.id);
 
-        if (this.stateSS.state.session.user._id === response._id) {
+        if (this.stateSS.state.session.user.id === response.id) {
           this.stateSS.clear();
         }
       },

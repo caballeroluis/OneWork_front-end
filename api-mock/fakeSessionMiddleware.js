@@ -2,7 +2,7 @@ module.exports = (req, res, next) => {
 
   let sessionUser = {
     "user": {
-        "_id": "6209490cf9a8fc2c209ee45a",
+        "id": "6209490cf9a8fc2c209ee45a",
         "corporationName": "Empresa S.A.",
         "descriptionCorporate": "Me describo la empresa",
         "international": false,

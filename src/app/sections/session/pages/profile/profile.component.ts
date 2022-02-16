@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
         corporationName: [''],
         descriptionCorporate: [''],
         international: [false],
-        role: ['']
       }
     );
 
@@ -42,7 +41,7 @@ export class ProfileComponent implements OnInit {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateSS?.state.session?.user._id
+    user.id = this.stateSS?.state.session?.user.id
 
     if (this.reactiveForm.valid) {
       this.sessionSS.updateUserProfile(user);

@@ -18,6 +18,8 @@ export class StateStoreService {
     map(users => users.filter(user => user.role === 'worker'))
   );
 
+  // TODO: crear tb los behaviorsubjects de session y offers
+
   constructor() { }
 
   get state(): State {

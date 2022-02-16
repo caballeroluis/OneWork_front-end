@@ -27,7 +27,7 @@ export class OfferStoreService {
   newOffer(offer: Offer) {
     this.offerService.newOffer(offer).subscribe(
       (response: Offer) => {
-        this.stateSS.state.offers = [
+        this.stateSS.state.offers = [ // TODO: hacer q se guarden bien
           ...this.stateSS.state.offers,
           response as Offer
         ];

@@ -38,7 +38,7 @@ export class ChangeEmailComponent implements OnInit {
     this.isSubmitted = true;
     
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateStoreSercice?.state.session?.user?._id
+    user.id = this.stateStoreSercice?.state.session?.user?.id
 
     if (this.reactiveForm.valid) {
       this.sessionSS.changeEmail(user);

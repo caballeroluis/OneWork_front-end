@@ -1,8 +1,22 @@
-<div *ngIf="!environment.production">
-    <button (click)="showState()">
-        👁 State
-    </button>
-</div>
 
 
-<router-outlet></router-outlet>
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <p><button mat-raised-button routerLink="/session">Session</button></p>
+        <p><button mat-raised-button routerLink="/wall">Wall</button></p>
+        <p><button mat-raised-button routerLink="/admin">Admin</button></p>
+    </mat-drawer>
+  
+    <div class="sidenav-content">
+        <button mat-raised-button type="button" mat-button (click)="drawer.toggle()">
+            Menu
+        </button>
+
+        <button mat-raised-button (click)="showState()" *ngIf="!environment.production">
+            👁 State
+        </button>
+        
+        <router-outlet></router-outlet>
+    </div>
+  
+</mat-drawer-container>

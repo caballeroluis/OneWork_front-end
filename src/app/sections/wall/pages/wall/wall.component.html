@@ -1,10 +1,12 @@
 <wall-header></wall-header>
 
-<button (click)="getOffers()">
+<button mat-raised-button (click)="getOffers()">
     getOffers()
 </button>
 
-&nbsp;<a routerLink="/wall/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">New offer</a>
+<button routerLink="/wall/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'" mat-raised-button type="button" mat-button>
+    New offer
+</button>
 
 <div *ngFor="let offer of stateSS.offers$ | async; trackBy: getIdTrackFn">
     <div style="background-color: blanchedalmond;">

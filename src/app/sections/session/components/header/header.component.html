@@ -2,10 +2,8 @@
     <a routerLink="/session/login">login</a>&nbsp;
     <a routerLink="/session/register">register</a>&nbsp;
     <span *ngIf="(stateSS.session$ | async)?.token"><a routerLink="/session/profile">profile</a>&nbsp;</span>
-    <span *ngIf="(stateSS.session$ | async)?.token"><a routerLink="/session/change-password">change-password</a>&nbsp;</span>
-    <span *ngIf="(stateSS.session$ | async)?.token"><a routerLink="/session/change-email">change-email</a>&nbsp;</span>
-    <a routerLink="/wall">wall</a>&nbsp;
-    <a routerLink="/admin">admin</a>&nbsp;
+    <span *ngIf="(stateSS.session$ | async)?.token"><a routerLink="/session/change-password" *ngIf="(stateSS.session$ | async)?.token">change-password</a>&nbsp;</span>
+    <span *ngIf="(stateSS.session$ | async)?.token"><a routerLink="/session/change-email" *ngIf="(stateSS.session$ | async)?.token">change-email</a>&nbsp;</span>
     <p *ngIf="!((stateSS.session$ | async)?.token === '')">
         user session: {{ (stateSS.session$ | async)?.user?.email }}
     </p>    

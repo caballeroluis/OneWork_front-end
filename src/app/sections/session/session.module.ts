@@ -9,6 +9,8 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { ChangeEmailComponent } from './pages/change-email/change-email.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent, HeaderComponent } from '@sections/session/components';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { FooterComponent, HeaderComponent } from '@sections/session/components';
     CommonModule,
     SessionRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
   ]
 })
 export class SessionModule { }

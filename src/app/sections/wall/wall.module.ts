@@ -6,7 +6,7 @@ import { WallComponent } from './pages/wall/wall.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent, HeaderComponent } from '@sections/wall/components';
 import { NewOfferComponent } from './pages/new-offer/new-offer.component';
-
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { NewOfferComponent } from './pages/new-offer/new-offer.component';
     CommonModule,
     WallRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
   ]
 })
 export class WallModule { }

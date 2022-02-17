@@ -4,7 +4,7 @@
     getOffers()
 </button>
 
-&nbsp;<a routerLink="/wall/new-offer">New offer</a>
+&nbsp;<a routerLink="/wall/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">New offer</a>
 
 <div *ngFor="let offer of stateSS.offers$ | async; trackBy: getIdTrackFn">
     <div style="background-color: blanchedalmond;">

@@ -8,13 +8,14 @@ import { environment } from '@env/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  environmentProduction = environment.production;
+  
+  environment = environment;
 
   constructor(
     private stateSS: StateStoreService,
   ) { }
 
-  test() {
+  showState() {
     console.log('📂 Session data', this.stateSS.session);
     console.log('📂 Users data', this.stateSS.users);
     console.log('📂 Offers data', this.stateSS.offers);

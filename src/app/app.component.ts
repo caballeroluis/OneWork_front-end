@@ -9,13 +9,14 @@ import { environment } from '@env/environment';
 })
 export class AppComponent {
   
-  environment = environment;
+  env = environment;
+  smallScreen: boolean = window.innerWidth < 480;
 
   constructor(
-    private stateSS: StateStoreService,
+    private stateSS: StateStoreService
   ) { }
 
-  showState() {
+  printState() {
     console.log('📂 Session data', this.stateSS.session);
     console.log('📂 Users data', this.stateSS.users);
     console.log('📂 Offers data', this.stateSS.offers);

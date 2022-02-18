@@ -8,6 +8,7 @@ export class Offer {
   requirements?: string;
   abandoned?: boolean;
   workplaceAddress?: string;
+  videoCallLink?: string;
   description?: string;
   status?: string;
   recruiter?: User;

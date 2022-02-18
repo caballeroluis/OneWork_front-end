@@ -17,7 +17,11 @@
         <p>International: <span style="background-color: lightblue">{{ user.international }}</span></p>
         <p>Corporation name: <span style="background-color: lightblue">{{ user.corporationName }}</span></p>
         <p>Creation date: <span style="background-color: lightblue">{{ user.creationDate }}</span></p>
-        <button mat-raised-button (click)="deleteUser(user)" *ngIf="!((stateSS.session$ | async)?.token === '') && (stateSS.session$ | async)?.user?._id === user._id">
+        <button mat-raised-button (click)="deleteUser(user)" *ngIf="
+            !((stateSS.session$ | async)?.token === '') &&
+            (stateSS.session$ | async)?.user?._id === user._id ||
+            (stateSS.session$ | async)?.user?.role === 'admin'
+        ">
             X
         </button>
         <!-- <button mat-raised-button (click)="editUser(user)">

@@ -1,22 +1,32 @@
+<mat-toolbar>
+    <button mat-icon-button class="icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>OneWork</span>
+    <span class="spacer"></span>
+    <button mat-raised-button (click)="printState()" *ngIf="!env.production">
+        👁 State
+    </button>
+</mat-toolbar>
 
-
-<mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
-        <p><button mat-raised-button routerLink="/session">Session</button></p>
-        <p><button mat-raised-button routerLink="/wall">Wall</button></p>
-        <p><button mat-raised-button routerLink="/admin">Admin</button></p>
+<mat-drawer-container class="sidenav-container" [hasBackdrop]="smallScreen" autosize>
+    <mat-drawer #drawer class="sidenav" [mode]="smallScreen? 'over' : 'side'" [opened]="!smallScreen">
+        <div >
+            <div *ngIf="smallScreen; else buttonsWithoutToggleMenu">
+                <p><button mat-raised-button routerLink="/session" (click)="drawer.toggle()">Session</button></p>
+                <p><button mat-raised-button routerLink="/wall" (click)="drawer.toggle()">Wall</button></p>
+                <p><button mat-raised-button routerLink="/admin" (click)="drawer.toggle()">Admin</button></p>
+            </div>
+              
+            <ng-template #buttonsWithoutToggleMenu>
+                <p><button mat-raised-button routerLink="/session">Session</button></p>
+                <p><button mat-raised-button routerLink="/wall">Wall</button></p>
+                <p><button mat-raised-button routerLink="/admin">Admin</button></p>
+            </ng-template>
+        </div>
     </mat-drawer>
   
     <div class="sidenav-content">
-        <button mat-raised-button type="button" mat-button (click)="drawer.toggle()">
-            Menu
-        </button>
-
-        <button mat-raised-button (click)="showState()" *ngIf="!environment.production">
-            👁 State
-        </button>
-        
         <router-outlet></router-outlet>
     </div>
-  
 </mat-drawer-container>

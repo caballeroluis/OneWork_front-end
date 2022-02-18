@@ -1,18 +1,21 @@
-.container {
-  // width: 500px;
-  // height: 300px;
-  width: 100vw;
-  height: 100vh;
-  // border: 1px solid rgba(0, 0, 0, 0.5);
+$tool-bar-heigth: 64px;
+
+mat-toolbar {
+  height: $tool-bar-heigth;
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+
+.sidenav-container {
+  height: calc(100vh - #{$tool-bar-heigth})
+}
+
+.sidenav {
+  padding: 12px;
 }
 
 .sidenav-content {
-  // display: flex;
-  // height: 100%;
-  // align-items: center;
-  // justify-content: center;
-}
-
-.sidenav, .sidenav-content {
-  padding: 20px;
+  height: 100%;
 }

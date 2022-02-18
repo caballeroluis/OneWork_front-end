@@ -6,5 +6,5 @@
     <span *ngIf="(stateSS.session$ | async)?.token"><a routerLink="/session/change-email" *ngIf="(stateSS.session$ | async)?.token">change-email</a>&nbsp;</span>
     <p *ngIf="!((stateSS.session$ | async)?.token === '')">
         user session: {{ (stateSS.session$ | async)?.user?.email }}
-    </p>    
+    </p>
 </header>

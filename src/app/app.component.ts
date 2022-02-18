@@ -13,7 +13,7 @@ export class AppComponent {
   smallScreen: boolean = window.innerWidth < 480;
 
   constructor(
-    private stateSS: StateStoreService
+    public stateSS: StateStoreService
   ) { }
 
   printState() {

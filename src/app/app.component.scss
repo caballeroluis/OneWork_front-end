@@ -9,13 +9,19 @@ mat-toolbar {
 }
 
 .sidenav-container {
-  height: calc(100vh - #{$tool-bar-heigth})
+  height: calc(100vh - #{$tool-bar-heigth});
 }
 
 .sidenav {
   padding: 12px;
+  width: calc(144px + 12px * 2);
+  button {
+    width: calc(100% - 8px);
+    margin-left: 4px;
+  }
 }
 
 .sidenav-content {
   height: 100%;
+  padding: 12px;
 }

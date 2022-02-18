@@ -28,7 +28,7 @@
             <p><button mat-raised-button routerLink="/session/change-password" *ngIf="(stateSS.session$ | async)?.token">change password</button></p>
             <p><button mat-raised-button routerLink="/session/change-email" *ngIf="(stateSS.session$ | async)?.token">change email</button></p>
             <p><button mat-raised-button routerLink="/wall">Wall</button></p>
-            <p><button mat-raised-button routerLink="/admin" [disabled]="(stateSS.session$ | async)?.user?.role !== 'admin'">Admin</button></p>
+            <p><button mat-raised-button routerLink="/admin">Admin</button></p>
         </ng-template>
     </mat-drawer>
   

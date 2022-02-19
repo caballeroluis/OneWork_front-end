@@ -55,9 +55,9 @@
     </mat-menu>
 </mat-toolbar>
 
-<mat-drawer-container class="sidenav-container" [hasBackdrop]="smallScreen" autosize>
-    <mat-drawer #drawer class="sidenav" [mode]="smallScreen? 'over' : 'side'" [opened]="!smallScreen">
-        <div *ngIf="smallScreen; else buttonsWithoutToggleMenu" (click)="drawer.toggle()">
+<mat-drawer-container class="sidenav-container" [hasBackdrop]="(stateSS.smallScreen$ | async)" autosize>
+    <mat-drawer #drawer class="sidenav" [mode]="(stateSS.smallScreen$ | async) ? 'over' : 'side'" [opened]="!(stateSS.smallScreen$ | async)">
+        <div *ngIf="(stateSS.smallScreen$ | async); else buttonsWithoutToggleMenu" (click)="drawer.toggle()">
             <p><button mat-raised-button routerLink="/wall">Wall</button></p>
             <p><button mat-raised-button routerLink="/admin">Admin</button></p>
         </div>

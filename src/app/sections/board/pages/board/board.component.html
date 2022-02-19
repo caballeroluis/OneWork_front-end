@@ -1,14 +1,14 @@
-<wall-header></wall-header>
+<board-header></board-header>
 
 <button mat-raised-button (click)="getOffers()">
     getOffers()
 </button>
 
-<button routerLink="/wall/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'" mat-raised-button type="button" mat-button>
+<button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'" mat-raised-button type="button" mat-button>
     New offer
 </button>
 
-<div *ngFor="let offer of stateSS.offers$ | async; trackBy: getIdTrackFn">
+<!-- <div *ngFor="let offer of stateSS.offers$ | async; trackBy: getIdTrackFn">
     <div style="background-color: blanchedalmond;">
         <p>status: <span style="background-color: aquamarine">{{ offer.status }}</span></p>
         <p>abandoned: <span style="background-color: aquamarine">{{ offer.abandoned }}</span></p>
@@ -28,7 +28,7 @@
         <p>Date: <span style="background-color: aquamarine">{{ offer.creationDate }}</span></p>
         <p>Description: <span style="background-color: aquamarine">{{ offer.description }}</span></p>
     </div>
-</div>
+</div> -->
 
 <div>
     <p>Offers:</p>

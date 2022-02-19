@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { StateStoreService } from '@core/services';
 
 @Component({
-  selector: 'wall-header',
+  selector: 'board-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

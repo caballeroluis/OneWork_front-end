@@ -3,11 +3,11 @@ import { StateStoreService } from '@core/services';
 import { OfferStoreService } from '@shared/services';
 
 @Component({
-  selector: 'app-wall',
-  templateUrl: './wall.component.html',
-  styleUrls: ['./wall.component.scss']
+  selector: 'app-board',
+  templateUrl: './board.component.html',
+  styleUrls: ['./board.component.scss']
 })
-export class WallComponent {
+export class BoardComponent {
 
   constructor(
     private offerSS: OfferStoreService,

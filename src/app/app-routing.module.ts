@@ -4,12 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [ // TODO: meter role guards
   {
     path: '',
-    redirectTo: 'wall',
+    redirectTo: 'board',
     pathMatch: 'full'
   },
   {
-    path: 'wall',
-    loadChildren: () => import('./sections/wall/wall.module').then( m => m.WallModule)
+    path: 'board',
+    loadChildren: () => import('./sections/board/board.module').then( m => m.BoardModule)
   },
   {
     path: 'admin',

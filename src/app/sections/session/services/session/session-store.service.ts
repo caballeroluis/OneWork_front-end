@@ -39,7 +39,7 @@ export class SessionStoreService {
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
           
-          this.router.navigate(['session', 'profile']);
+          this.router.navigate(['board']);
         }
       },
       (error: any) => {

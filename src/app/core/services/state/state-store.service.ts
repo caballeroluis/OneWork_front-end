@@ -53,7 +53,6 @@ export class StateStoreService {
   }
 
   get smallScreen(): boolean {
-    console.log("alguien haciendo un get");
     return this._smallScreen.getValue();
   }
   set smallScreen(val: boolean) {
@@ -61,7 +60,6 @@ export class StateStoreService {
   }
 
   get session(): Session {
-    console.log("alguien haciendo un get");
     return this._session.getValue();
   }
   set session(val: Session) {
@@ -69,7 +67,6 @@ export class StateStoreService {
   }
   
   get offers(): Offer[] {
-    console.log("alguien haciendo un get");
     return this._offers.getValue();
   }
   set offers(val: Offer[]) {
@@ -77,7 +74,6 @@ export class StateStoreService {
   }
 
   get users(): User[] {
-    console.log("alguien haciendo un get");
     return this._users.getValue();
   }
   set users(val: User[]) {

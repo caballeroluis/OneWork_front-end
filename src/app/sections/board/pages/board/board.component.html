@@ -93,6 +93,10 @@
             
                     <span class="spacer"></span>
             
+                    <button mat-icon-button (click)="getOffers()">
+                        <mat-icon>sync</mat-icon>
+                    </button>
+            
                     <button mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
                         <mat-icon>add_circle</mat-icon>
                     </button>

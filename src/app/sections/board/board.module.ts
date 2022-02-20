@@ -7,6 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent, HeaderComponent } from '@sections/board/components';
 import { NewOfferComponent } from './pages/new-offer/new-offer.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { MatButtonModule } from '@angular/material/button';
     BoardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule
   ]
 })
 export class BoardModule { }

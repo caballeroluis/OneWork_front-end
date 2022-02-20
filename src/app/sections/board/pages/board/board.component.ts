@@ -20,10 +20,6 @@ export class BoardComponent {
     }
   }
 
-  getOffers() {
-    this.offerSS.getOffers();
-  }
-
   getIdTrackFn = (i: number, item: any) => item._id;
 
 }

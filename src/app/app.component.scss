@@ -1,4 +1,5 @@
 $tool-bar-heigth: 64px;
+$app-padding: 12px;
 
 mat-toolbar {
   height: $tool-bar-heigth;
@@ -13,7 +14,7 @@ mat-toolbar {
 }
 
 .sidenav {
-  padding: 12px;
+  padding: #{$app-padding};
   width: calc(144px + 12px * 2);
   button {
     width: calc(100% - 8px);
@@ -22,6 +23,5 @@ mat-toolbar {
 }
 
 .sidenav-content {
-  height: 100%;
-  padding: 12px;
+  height: calc(100vh - #{$tool-bar-heigth});
 }

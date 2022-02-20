@@ -19,8 +19,8 @@ export class AppComponent {
     console.log('📂 Session data', this.stateSS.session);
     console.log('📂 Users data', this.stateSS.users);
     console.log('📂 Offers data', this.stateSS.offers);
-    console.log('👀 Session observers', this.stateSS.session$['source']);
     console.log('👀 SmallScreen observers', this.stateSS.smallScreen$['source']);
+    console.log('👀 Session observers', this.stateSS.session$['source']);
     console.log('👀 Users observers', this.stateSS.users$['source']);
     console.log('👀 Offers observers', this.stateSS.offers$['source']);
   }

@@ -42,7 +42,6 @@ export class NewOfferComponent implements OnInit {
         workplaceAddress: [''],
         videoCallLink: [''],
         description: [''],
-        status: [''],
         worker: null
       }
     );

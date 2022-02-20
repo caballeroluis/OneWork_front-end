@@ -101,12 +101,12 @@
     {
       "_id": "62094934f9a8fc2c209ee467",
       "creationDate": "2022-02-13T18:08:52.742Z",
-      "salary": 180000,
+      "salary": 18000,
       "title": "Full Stack Developer",
       "requirements": "Angular",
       "workplaceAdress": "calle falsa 123",
       "description": "Tenemos un puesto calentito calentito.",
-      "status": "created",
+      "status": "opened",
       "workerAssigned": {
         "_id": "62094479f9a8fc2c209ee443",
         "name": "workersito",
@@ -128,12 +128,201 @@
     {
       "_id": "62094f81f9a8fc2c209ee496",
       "creationDate": "2022-02-13T18:35:45.202Z",
-      "salary": 180000,
+      "salary": 17000,
       "title": "Full Stack Developer",
       "requirements": "Angular",
       "workplaceAdress": "calle falsa 123",
       "description": "Tenemos un puesto calentito calentito.",
-      "status": "created",
+      "status": "incompleted",
+      "workerAssigned": {
+        "_id": "620906c3f9a8fc2c209ee3f4",
+        "name": "workersico",
+        "role": "worker",
+        "creationDate": "2022-02-13T13:25:23.014Z",
+        "__v": 1
+      },
+      "recruiterAssigned": {
+        "_id": "6209490cf9a8fc2c209ee45a",
+        "corporationName": "Empresa S.A.",
+        "descriptionCorporate": "Me describo la empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-02-13T18:08:12.241Z",
+        "__v": 4
+      },
+      "__v": 0
+    },
+    {
+      "_id": "62094f81f9a8fc2c209ee499",
+      "creationDate": "2022-02-13T18:35:45.202Z",
+      "salary": 29000,
+      "title": "Full Stack Developer",
+      "requirements": "Angular",
+      "workplaceAdress": "calle falsa 123",
+      "description": "Tenemos un puesto calentito calentito.",
+      "status": "opened",
+      "workerAssigned": {
+        "_id": "620906c3f9a8fc2c209ee3f4",
+        "name": "workersico",
+        "role": "worker",
+        "creationDate": "2022-02-13T13:25:23.014Z",
+        "__v": 1
+      },
+      "recruiterAssigned": {
+        "_id": "6209490cf9a8fc2c209ee45a",
+        "corporationName": "Empresa S.A.",
+        "descriptionCorporate": "Me describo la empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-02-13T18:08:12.241Z",
+        "__v": 4
+      },
+      "__v": 0
+    },
+    {
+      "_id": "62094f81f9a8fc2c209ee410",
+      "creationDate": "2022-02-13T18:35:45.202Z",
+      "salary": 19000,
+      "title": "Full Stack Developer",
+      "requirements": "Angular",
+      "workplaceAdress": "calle falsa 123",
+      "description": "Tenemos un puesto calentito calentito.",
+      "status": "opened",
+      "workerAssigned": {
+        "_id": "620906c3f9a8fc2c209ee3f4",
+        "name": "workersico",
+        "role": "worker",
+        "creationDate": "2022-02-13T13:25:23.014Z",
+        "__v": 1
+      },
+      "recruiterAssigned": {
+        "_id": "6209490cf9a8fc2c209ee45a",
+        "corporationName": "Empresa S.A.",
+        "descriptionCorporate": "Me describo la empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-02-13T18:08:12.241Z",
+        "__v": 4
+      },
+      "__v": 0
+    },
+    {
+      "_id": "62094f81f9a8fc2c209ee411",
+      "creationDate": "2022-02-13T18:35:45.202Z",
+      "salary": 23000,
+      "title": "Full Stack Developer",
+      "requirements": "Angular",
+      "workplaceAdress": "calle falsa 123",
+      "description": "Tenemos un puesto calentito calentito.",
+      "status": "opened",
+      "workerAssigned": {
+        "_id": "620906c3f9a8fc2c209ee3f4",
+        "name": "workersico",
+        "role": "worker",
+        "creationDate": "2022-02-13T13:25:23.014Z",
+        "__v": 1
+      },
+      "recruiterAssigned": {
+        "_id": "6209490cf9a8fc2c209ee45a",
+        "corporationName": "Empresa S.A.",
+        "descriptionCorporate": "Me describo la empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-02-13T18:08:12.241Z",
+        "__v": 4
+      },
+      "__v": 0
+    },
+    {
+      "_id": "62094f81f9a8fc2c209ee412",
+      "creationDate": "2022-02-13T18:35:45.202Z",
+      "salary": 24000,
+      "title": "Full Stack Developer",
+      "requirements": "Angular",
+      "workplaceAdress": "calle falsa 123",
+      "description": "Tenemos un puesto calentito calentito.",
+      "status": "opened",
+      "workerAssigned": {
+        "_id": "620906c3f9a8fc2c209ee3f4",
+        "name": "workersico",
+        "role": "worker",
+        "creationDate": "2022-02-13T13:25:23.014Z",
+        "__v": 1
+      },
+      "recruiterAssigned": {
+        "_id": "6209490cf9a8fc2c209ee45a",
+        "corporationName": "Empresa S.A.",
+        "descriptionCorporate": "Me describo la empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-02-13T18:08:12.241Z",
+        "__v": 4
+      },
+      "__v": 0
+    },
+    {
+      "_id": "62094f81f9a8fc2c209ee413",
+      "creationDate": "2022-02-13T18:35:45.202Z",
+      "salary": 23000,
+      "title": "Full Stack Developer",
+      "requirements": "Angular",
+      "workplaceAdress": "calle falsa 123",
+      "description": "Tenemos un puesto calentito calentito.",
+      "status": "opened",
+      "workerAssigned": {
+        "_id": "620906c3f9a8fc2c209ee3f4",
+        "name": "workersico",
+        "role": "worker",
+        "creationDate": "2022-02-13T13:25:23.014Z",
+        "__v": 1
+      },
+      "recruiterAssigned": {
+        "_id": "6209490cf9a8fc2c209ee45a",
+        "corporationName": "Empresa S.A.",
+        "descriptionCorporate": "Me describo la empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-02-13T18:08:12.241Z",
+        "__v": 4
+      },
+      "__v": 0
+    },
+    {
+      "_id": "62094f81f9a8fc2c209ee414",
+      "creationDate": "2022-02-13T18:35:45.202Z",
+      "salary": 22000,
+      "title": "Full Stack Developer",
+      "requirements": "Angular",
+      "workplaceAdress": "calle falsa 123",
+      "description": "Tenemos un puesto calentito calentito.",
+      "status": "videoconferenceSet",
+      "workerAssigned": {
+        "_id": "620906c3f9a8fc2c209ee3f4",
+        "name": "workersico",
+        "role": "worker",
+        "creationDate": "2022-02-13T13:25:23.014Z",
+        "__v": 1
+      },
+      "recruiterAssigned": {
+        "_id": "6209490cf9a8fc2c209ee45a",
+        "corporationName": "Empresa S.A.",
+        "descriptionCorporate": "Me describo la empresa",
+        "international": false,
+        "role": "recruiter",
+        "creationDate": "2022-02-13T18:08:12.241Z",
+        "__v": 4
+      },
+      "__v": 0
+    },
+    {
+      "_id": "62094f81f9a8fc2c209ee415",
+      "creationDate": "2022-02-13T18:35:45.202Z",
+      "salary": 21000,
+      "title": "Full Stack Developer",
+      "requirements": "Angular",
+      "workplaceAdress": "calle falsa 123",
+      "description": "Tenemos un puesto calentito calentito.",
+      "status": "videoconferenceSet",
       "workerAssigned": {
         "_id": "620906c3f9a8fc2c209ee3f4",
         "name": "workersico",

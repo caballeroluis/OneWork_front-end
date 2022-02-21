@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserInterface } from '@core/models';
 import { Session } from '@sections/session/models';
 import { Offer, User } from '@shared/models';
 import { BehaviorSubject, fromEvent, Observable, Subject } from 'rxjs';
@@ -9,9 +10,9 @@ import { map } from 'rxjs/operators';
 })
 export class StateStoreService {
 
-  // smallScreen
-  private readonly _smallScreen = new BehaviorSubject<boolean>(window.innerWidth < 480);
-  public readonly smallScreen$ = this._smallScreen.asObservable();
+  // userInterface
+  private readonly _userInterface = new BehaviorSubject<UserInterface>(new UserInterface());
+  public readonly userInterface$ = this._userInterface.asObservable();
 
   // session
   private readonly _session = new BehaviorSubject<Session>(new Session());
@@ -52,11 +53,11 @@ export class StateStoreService {
     this.onInit();
   }
 
-  get smallScreen(): boolean {
-    return this._smallScreen.getValue();
+  get userInterface(): UserInterface {
+    return this._userInterface.getValue();
   }
-  set smallScreen(val: boolean) {
-    this._smallScreen.next(val);
+  set userInterface(val: UserInterface) {
+    this._userInterface.next(val);
   }
 
   get session(): Session {
@@ -88,7 +89,10 @@ export class StateStoreService {
     fromEvent(window, 'resize').pipe(
       map((event: any) => event.target.innerWidth < 480)
     ).subscribe(async (smallScreen: boolean) => {
-      this.smallScreen = smallScreen
+      this.userInterface = {
+        ...this.userInterface,
+        smallScreen: smallScreen
+      };
     });
   }
 

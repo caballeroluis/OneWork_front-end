@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { StateStoreService } from '@core/services';
 import { environment } from '@env/environment';
 

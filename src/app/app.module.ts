@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from '@core/core.module';
-import { FooterComponent, SidenavComponent, HeaderComponent } from '@core/components';
+import { FooterComponent, SidenavComponent, HeaderComponent, SectionComponent } from '@core/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,7 +17,8 @@ import { MatListModule } from '@angular/material/list';
     AppComponent,
     FooterComponent,
     SidenavComponent,
-    HeaderComponent
+    HeaderComponent,
+    SectionComponent
   ],
   imports: [
     BrowserModule,

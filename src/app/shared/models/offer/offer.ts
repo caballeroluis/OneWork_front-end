@@ -11,7 +11,7 @@ export class Offer {
   videoCallLink?: string;
   description?: string;
   status?: string;
-  recruiter?: User;
-  worker?: User;
+  recruiterAssigned?: User;
+  workerAssigned?: User;
 
 }

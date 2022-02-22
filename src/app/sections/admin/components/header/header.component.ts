@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { StateStoreService } from '@core/services';
 
 @Component({
   selector: 'admin-header',
@@ -8,10 +7,6 @@ import { StateStoreService } from '@core/services';
 })
 export class HeaderComponent {
 
-  constructor(
-    public stateSS: StateStoreService
-  ) { }
-
-  getIdTrackFn = (i: number, item: any) => item._id;
+  constructor() { }
 
 }

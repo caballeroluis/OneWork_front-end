@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { StateStoreService } from '@core/services';
 
 @Component({
   selector: 'session-header',
@@ -8,9 +7,7 @@ import { StateStoreService } from '@core/services';
 })
 export class HeaderComponent {
 
-  constructor(
-    public stateSS: StateStoreService
-  ) { }
+  constructor() { }
 
 
 }

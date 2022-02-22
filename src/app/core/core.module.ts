@@ -7,7 +7,7 @@ import { AuthInterceptor } from '@core/interceptors';
   declarations: [],
   imports: [
     HttpClientModule,
-    CommonModule,
+    CommonModule
   ],
   providers: [
     {

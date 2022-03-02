@@ -2,23 +2,23 @@
 
 <main>
     <div class="columns-container" cdkDropListGroup>
-        <div class="acepted">
+        <div class="accepted">
             <div class="colum">
                 <div class="colum-header">
                     <mat-toolbar>
-                        <span mat-menu-item>Acepted</span>
+                        <span mat-menu-item>Accepted</span>
                     </mat-toolbar>
                 </div>
                 <div
                     class="colum-body"
                     cdkDropList
-                    id="acepted"
-                    [cdkDropListData]="stateSS.offersAcepted$ | async"
+                    id="accepted"
+                    [cdkDropListData]="stateSS.offersAccepted$ | async"
                     (cdkDropListDropped)="dropCard($event)"
                 >
                     <board-offer-card
                         class="example-box"
-                        *ngFor="let offer of stateSS.offersAcepted$ | async; trackBy: getIdTrackFn"
+                        *ngFor="let offer of stateSS.offersAccepted$ | async; trackBy: getIdTrackFn"
                         [offer]="offer"
                         cdkDrag
                     >

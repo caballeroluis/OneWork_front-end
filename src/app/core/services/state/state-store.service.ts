@@ -21,8 +21,8 @@ export class StateStoreService {
   // offers
   private readonly _offers = new BehaviorSubject<Offer[]>([]);
   public readonly offers$ = this._offers.asObservable();
-  public readonly offersAcepted$: Observable<Offer[]> = this.offers$.pipe(
-    map(offers => offers.filter(offer => offer.status === 'acepted'))
+  public readonly offersAccepted$: Observable<Offer[]> = this.offers$.pipe(
+    map(offers => offers.filter(offer => offer.status === 'accepted'))
   ).pipe(
     map(offers => offers.sort(this.sortBySalary))
   );

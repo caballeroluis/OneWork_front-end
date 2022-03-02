@@ -5,12 +5,12 @@ $app-padding: 12px;
   flex: 1 1 auto;
 }
 
-.backlog, .ready, .in-progress, .video-set, .technician-checked, .acepted  {
+.backlog, .ready, .in-progress, .video-set, .technician-checked, .accepted  {
   padding: $app-padding;
 }
 
-.acepted {
-  grid-area: acepted;
+.accepted {
+  grid-area: accepted;
 }
 .technician-checked {
   grid-area: technician-checked;
@@ -52,7 +52,7 @@ $app-padding: 12px;
   grid-template-columns: minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px); 
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: "backlog ready in-progress video-set technician-checked acepted";
+  grid-template-areas: "backlog ready in-progress video-set technician-checked accepted";
 }
 
 .example-box {

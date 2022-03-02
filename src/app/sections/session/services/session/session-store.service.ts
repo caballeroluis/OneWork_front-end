@@ -48,13 +48,13 @@ export class SessionStoreService {
     );
   }
 
-  updateUserProfile(user: User) {
+  updateUserProfile(user: User) { // TODO: arreglar
     this.sessionService.updateUserProfile(user).subscribe(
       (response: User) => {
         this.stateSS.session.user = response as User;
 
         this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user._id == user._id)
+          this.stateSS.users.findIndex(_user => _user._id === user._id)
         ] = user;
       },
       (error: any) => {

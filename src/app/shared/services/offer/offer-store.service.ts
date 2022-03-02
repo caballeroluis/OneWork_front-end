@@ -41,4 +41,19 @@ export class OfferStoreService {
     );
   }
 
+  updateOffer(offer: Offer) {
+    this.offerService.updateOffer(offer).subscribe(
+      (response: CustomResponses) => {
+        this.stateSS.offers[
+          this.stateSS.offers.findIndex(_offer => _offer._id === offer._id)
+        ] = offer;
+
+        this.stateSS.offers = this.stateSS.offers;
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
 }

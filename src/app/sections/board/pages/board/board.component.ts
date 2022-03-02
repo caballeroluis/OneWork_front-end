@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { StateStoreService } from '@core/services';
 import { OfferStoreService } from '@shared/services';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Offer } from '@shared/models';
 
 @Component({
   selector: 'app-board',
@@ -22,12 +23,15 @@ export class BoardComponent {
   }
   
   dropCard(event: CdkDragDrop<string[] | any>) {
+    const offer = {
+      ...event.previousContainer.data[event.previousIndex],
+      status: event.container.id
+    } as Offer;
     
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      console.log("🚀 ~ file: board.component.ts ~ line 29 ~ BoardComponent ~ drop ~ event.previousContainer", event.previousContainer.data[event.previousIndex])
-      console.log("🚀 ~ file: board.component.ts ~ line 31 ~ BoardComponent ~ drop ~ event.container.data", event.container.id)
+      this.offerSS.updateOffer(offer);
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

@@ -23,7 +23,15 @@ export class OfferService {
     return this.http.post(
       environment.apiUrl +
         "/api/offers/worker/" + offer.workerAssigned?._id +
-        "/recruiter/" + offer.recruiterAssigned?._id, 
+        "/recruiter/" + offer.recruiterAssigned?._id,
+      offer
+    );
+  }
+
+  updateOffer(offer: Offer): Observable<any> {
+    return this.http.patch(
+      environment.apiUrl +
+        "/api/offers/" + offer._id,
       offer
     );
   }

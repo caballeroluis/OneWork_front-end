@@ -18,6 +18,4 @@ export class OfferCardComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  getIdTrackFn = (i: number, item: any) => item._id;
-
 }

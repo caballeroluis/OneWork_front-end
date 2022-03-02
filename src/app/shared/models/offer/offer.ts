@@ -2,6 +2,7 @@ import { User } from '@shared/models';
 
 export class Offer {
   
+  _id!: string;
   creationDate?: Date;
   salary?: number;
   title?: string;
@@ -13,5 +14,8 @@ export class Offer {
   status?: string;
   recruiterAssigned?: User;
   workerAssigned?: User;
+
+  constructor() {
+  }
 
 }

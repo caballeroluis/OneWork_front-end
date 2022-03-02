@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon';
 import { OfferCardComponent } from './components/offer-card/offer-card.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OfferCardComponent } from './components/offer-card/offer-card.component
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    DragDropModule
   ]
 })
 export class BoardModule { }

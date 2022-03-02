@@ -1,112 +1,168 @@
 <board-header></board-header>
 
-<main class="columns-container">
-    <div class="acepted">
-        <div class="colum">
-            <div class="colum-header">
-                <mat-toolbar>
-                    <span mat-menu-item>Acepted</span>
-                </mat-toolbar>
-            </div>
-            <div class="colum-body">
-                <board-offer-card
-                    *ngFor="let offer of stateSS.offersAcepted$ | async; trackBy: getIdTrackFn"
-                    [offer]="offer"
-                ></board-offer-card>
+<main>
+    <div class="columns-container" cdkDropListGroup>
+        <div class="acepted">
+            <div class="colum">
+                <div class="colum-header">
+                    <mat-toolbar>
+                        <span mat-menu-item>Acepted</span>
+                    </mat-toolbar>
+                </div>
+                <div
+                    class="colum-body"
+                    cdkDropList
+                    id="acepted"
+                    [cdkDropListData]="stateSS.offersAcepted$ | async"
+                    (cdkDropListDropped)="dropCard($event)"
+                >
+                    <board-offer-card
+                        class="example-box"
+                        *ngFor="let offer of stateSS.offersAcepted$ | async; trackBy: getIdTrackFn"
+                        [offer]="offer"
+                        cdkDrag
+                    >
+                    </board-offer-card>
+                </div>
             </div>
         </div>
-    </div>
+        
+        <div class="technician-checked">
+            <div class="colum">
+                <div class="colum-header">
+                    <mat-toolbar>
+                        <span mat-menu-item>Technician checked</span>
+                    </mat-toolbar>
+                </div>
+                <div
+                    class="colum-body"
+                    cdkDropList
+                    id="technicianChecked"
+                    [cdkDropListData]="stateSS.offersTechnicianChecked$ | async"
+                    (cdkDropListDropped)="dropCard($event)"
+                >
+                    <board-offer-card
+                        class="example-box"
+                        *ngFor="let offer of stateSS.offersTechnicianChecked$ | async; trackBy: getIdTrackFn"
+                        [offer]="offer"
+                        cdkDrag
+                    >
+                    </board-offer-card>
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-set">
+            <div class="colum">
+                <div class="colum-header">
+                    <mat-toolbar>
+                        <span mat-menu-item>VideoSet</span>
+                    </mat-toolbar>
+                </div>
+                <div
+                    class="colum-body"
+                    cdkDropList
+                    id="videoSet"
+                    [cdkDropListData]="stateSS.offersVideoSet$ | async"
+                    (cdkDropListDropped)="dropCard($event)"
+                >
+                    <board-offer-card
+                        class="example-box"
+                        *ngFor="let offer of stateSS.offersVideoSet$ | async; trackBy: getIdTrackFn"
+                        [offer]="offer"
+                        cdkDrag
+                    >
+                    </board-offer-card>
+                </div>
+            </div>
+        </div>
+        
+        <div class="in-progress">
+            <div class="colum">
+                <div class="colum-header">
+                    <mat-toolbar>
+                        <span mat-menu-item>In Progress</span>
+                    </mat-toolbar>
+                </div>
+                <div
+                    class="colum-body"
+                    cdkDropList
+                    id="inProgress"
+                    [cdkDropListData]="stateSS.offersInProgress$ | async"
+                    (cdkDropListDropped)="dropCard($event)"
+                >
+                    <board-offer-card
+                        class="example-box"
+                        *ngFor="let offer of stateSS.offersInProgress$ | async; trackBy: getIdTrackFn"
+                        [offer]="offer"
+                        cdkDrag
+                    >
+                    </board-offer-card>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ready">
+            <div class="colum">
+                <div class="colum-header">
+                    <mat-toolbar>
+                        <span mat-menu-item>Ready</span>
+                    </mat-toolbar>
+                </div>
+                <div
+                    class="colum-body"
+                    cdkDropList
+                    id="ready"
+                    [cdkDropListData]="stateSS.offersReady$ | async"
+                    (cdkDropListDropped)="dropCard($event)"
+                >
+                    <board-offer-card
+                        class="example-box"
+                        *ngFor="let offer of stateSS.offersReady$ | async; trackBy: getIdTrackFn"
+                        [offer]="offer"
+                        cdkDrag
+                    >
+                    </board-offer-card>
+                </div>
+            </div>
+        </div>
     
-    <div class="technician-checked">
-        <div class="colum">
-            <div class="colum-header">
-                <mat-toolbar>
-                    <span mat-menu-item>Technician checked</span>
-                </mat-toolbar>
-            </div>
-            <div class="colum-body">
-                <board-offer-card
-                    *ngFor="let offer of stateSS.offersTechnicianChecked$ | async; trackBy: getIdTrackFn"
-                    [offer]="offer"
-                ></board-offer-card>
-            </div>
-        </div>
-    </div>
-    
-    <div class="video-set">
-        <div class="colum">
-            <div class="colum-header">
-                <mat-toolbar>
-                    <span mat-menu-item>Has Video</span>
-                </mat-toolbar>
-            </div>
-            <div class="colum-body">
-                <board-offer-card
-                    *ngFor="let offer of stateSS.offersVideoSet$ | async; trackBy: getIdTrackFn"
-                    [offer]="offer"
-                ></board-offer-card>
-            </div>
-        </div>
-    </div>
-    
-    <div class="in-progress">
-        <div class="colum">
-            <div class="colum-header">
-                <mat-toolbar>
-                    <span mat-menu-item>In progress</span>
-                </mat-toolbar>
-            </div>
-            <div class="colum-body">
-                <board-offer-card
-                    *ngFor="let offer of stateSS.offersInProgress$ | async; trackBy: getIdTrackFn"
-                    [offer]="offer"
-                ></board-offer-card>
-            </div>
-        </div>
-    </div>
-    
-    <div class="ready">
-        <div class="colum">
-            <div class="colum-header">
-                <mat-toolbar>
-                    <span mat-menu-item>Ready</span>
-                </mat-toolbar>
-            </div>
-            <div class="colum-body">
-                <board-offer-card
-                    *ngFor="let offer of stateSS.offersReady$ | async; trackBy: getIdTrackFn"
-                    [offer]="offer"
-                ></board-offer-card>
-            </div>
-        </div>
-    </div>
-
-    <div class="backlog">
-        <div class="colum">
-            <div class="colum-header">
-                <mat-toolbar>
-                    <span mat-menu-item>Backlog</span>
-            
-                    <span class="spacer"></span>
-            
-                    <button mat-icon-button (click)="getOffers()">
-                        <mat-icon>sync</mat-icon>
-                    </button>
-            
-                    <button mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
-                        <mat-icon>add_circle</mat-icon>
-                    </button>
-                    
-                    <button mat-icon-button routerLink="/session" *ngIf="!((stateSS.session$ | async)?.token !== '')">
-                        <mat-icon>add_circle</mat-icon>
-                    </button>
-                </mat-toolbar>
-            </div>
-            <div class="colum-body">
-                <board-offer-card
-                    *ngFor="let offer of stateSS.offersBacklog$ | async; trackBy: getIdTrackFn"
-                    [offer]="offer"
-                ></board-offer-card>
+        <div class="backlog">
+            <div class="colum">
+                <div class="colum-header">
+                    <mat-toolbar>
+                        <span mat-menu-item>Backlog</span>
+                
+                        <span class="spacer"></span>
+                
+                        <button mat-icon-button (click)="getOffers()">
+                            <mat-icon>sync</mat-icon>
+                        </button>
+                
+                        <button mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+                            <mat-icon>add_circle</mat-icon>
+                        </button>
+                        
+                        <button mat-icon-button routerLink="/session" *ngIf="!((stateSS.session$ | async)?.token !== '')">
+                            <mat-icon>add_circle</mat-icon>
+                        </button>
+                    </mat-toolbar>
+                </div>
+                <div
+                    class="colum-body"
+                    cdkDropList
+                    id="backlog"
+                    [cdkDropListData]="stateSS.offersBacklog$ | async"
+                    (cdkDropListDropped)="dropCard($event)"
+                >
+                    <board-offer-card
+                        class="example-box"
+                        *ngFor="let offer of stateSS.offersBacklog$ | async; trackBy: getIdTrackFn"
+                        [offer]="offer"
+                        cdkDrag
+                    >
+                    </board-offer-card>
+                </div>
             </div>
         </div>
     </div>

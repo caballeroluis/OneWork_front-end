@@ -5,11 +5,6 @@ $app-padding: 12px;
   flex: 1 1 auto;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
 .incompleted, .opened, .video-conference-set, .acepted  {
   padding: $app-padding;
 }
@@ -43,10 +38,6 @@ $app-padding: 12px;
   padding: $app-padding;
   background-color: white;
   border-radius: 0 0 15px 15px;
-}
-
-.example-card:not(:first-of-type) {
-  margin-top: 12px;
 }
 
 .columns-container {

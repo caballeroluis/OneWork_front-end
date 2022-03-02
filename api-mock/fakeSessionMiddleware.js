@@ -26,3 +26,20 @@ module.exports = (req, res, next) => {
   }
   next();
 };
+
+// TODO: wrapper for new CustomResponses like this examples:
+
+  /*
+  router.render = (req, res) => {
+    let data = res.locals.data;
+    if (url === "/api/quotes" && req.method === "GET") {
+      data = data.map(toQuoteSummary);
+    }
+    res.jsonp(data);
+  };
+
+  https://chrissloan.info/2019/11/29/Local-development-with-json-server-and-JSON-API/
+  https://www.rahulpnath.com/blog/setting-up-a-fake-rest-api-using-json-server/
+
+  Remember to restore the part of the README.md that talks about the api mock, in a previous commit.
+  */

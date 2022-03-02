@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '@shared/models';
 import { UserService } from '@shared/services';
 import { StateStoreService } from '@core/services';
+import { CustomResponses } from '@core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class UserStoreService {
   
   getUsers() {
     this.userService.getUsers().subscribe(
-      (response: User[]) => {
-        this.stateSS.users = response as User[];
+      (response: CustomResponses) => {
+        this.stateSS.users = response.results as User[];
       },
       (error: any) => {
         throw new Error(error);
@@ -26,7 +27,7 @@ export class UserStoreService {
 
   editUser(user: User) {
     this.userService.editUser(user).subscribe(
-      (response: User) => {
+      (response: CustomResponses) => {
         
       },
       (error: any) => {

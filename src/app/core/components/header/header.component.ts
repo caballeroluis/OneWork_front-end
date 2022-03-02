@@ -21,7 +21,7 @@ export class HeaderComponent {
 
   printState() {
     console.log('--------------- 📂 STATE 👀 ---------------');
-    console.log('📱UserInterface:');
+    console.log('📱 UserInterface:');
     console.log('UserInterface data', this.stateSS.userInterface);
     console.log('UserInterace observers', this.stateSS.userInterface$['source']);
     console.log('🔐 Session:');
@@ -30,7 +30,7 @@ export class HeaderComponent {
     console.log('🧑‍💻 Users:');
     console.log('Users data', this.stateSS.users);
     console.log('Users observers', this.stateSS.users$['source']);
-    console.log('💼 ffers:');
+    console.log('💼 Offers:');
     console.log('Offers data', this.stateSS.offers);
     console.log('Offers observers', this.stateSS.offers$['source']);
   }

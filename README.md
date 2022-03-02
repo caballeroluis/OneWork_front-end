@@ -26,26 +26,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-
-
-
-# SimpleState
-
-The back-end mock server was made with [json-server](https://github.com/typicode/json-server) version 0.17.0.
-
-
 ## Dependencies
 
 Run `npm install` for get dependencies.
 
-## Development mock server
+## Development API
 
-Run `npm run mockCLient` for a dev client. Navigate to `http://localhost:4201/`. The app will automatically reload if you change any of the source files.
-
-
-Run `npm run mockServer` for a mock server in a port 3001.
-
-
+look at the server project README
+ 
 ## State Store
 
-Click the [👁 Status] button on the main screen to view the status in the browser console.
+Click the [👁] button on the main screen to view the status in the browser console.

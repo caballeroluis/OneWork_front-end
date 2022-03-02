@@ -46,11 +46,12 @@ export class OfferStoreService {
       (response: CustomResponses) => {
         this.stateSS.offers[
           this.stateSS.offers.findIndex(_offer => _offer._id === offer._id)
-        ] = offer;
+        ] = response.result as Offer;
 
         this.stateSS.offers = this.stateSS.offers;
       },
       (error: any) => {
+        this.getOffers(); // TODO: hacer que no sea necesario esto
         throw new Error(error);
       }
     );

@@ -23,7 +23,7 @@ export class BoardComponent {
   }
   
   dropCard(event: CdkDragDrop<string[] | any>) {
-    const offer = {
+    let offer = {
       ...event.previousContainer.data[event.previousIndex],
       status: event.container.id
     } as Offer;

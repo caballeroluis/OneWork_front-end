@@ -5,21 +5,27 @@ $app-padding: 12px;
   flex: 1 1 auto;
 }
 
-.incompleted, .opened, .video-conference-set, .acepted  {
+.backlog, .ready, .in-progress, .video-set, .technician-checked, .acepted  {
   padding: $app-padding;
 }
 
 .acepted {
   grid-area: acepted;
 }
-.video-conference-set {
-  grid-area: video-conference-set;
+.technician-checked {
+  grid-area: technician-checked;
 }
-.opened {
-  grid-area: opened;
+.video-set {
+  grid-area: video-set;
 }
-.incompleted {
-  grid-area: incompleted;
+.ready {
+  grid-area: ready;
+}
+.in-progress {
+  grid-area: in-progress;
+}
+.backlog {
+  grid-area: backlog;
 }
 
 .colum {
@@ -43,8 +49,8 @@ $app-padding: 12px;
 .columns-container {
   padding: $app-padding;
   display: grid;
-  grid-template-columns: minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px); 
+  grid-template-columns: minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px); 
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: "incompleted opened video-conference-set acepted";
+  grid-template-areas: "backlog ready in-progress video-set technician-checked acepted";
 }

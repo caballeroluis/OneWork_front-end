@@ -39,6 +39,7 @@ export class NewOfferComponent implements OnInit {
         title: [''],
         requirements: [''],
         abandoned: [false],
+        technicianChecked: [false],
         workplaceAddress: [''],
         videoCallLink: [''],
         description: [''],

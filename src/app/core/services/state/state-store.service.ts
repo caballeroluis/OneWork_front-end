@@ -21,23 +21,33 @@ export class StateStoreService {
   // offers
   private readonly _offers = new BehaviorSubject<Offer[]>([]);
   public readonly offers$ = this._offers.asObservable();
-  public readonly offersVideoConferenceSet$: Observable<Offer[]> = this.offers$.pipe(
-    map(offers => offers.filter(offer => offer.status === 'videoconferenceSet'))
+  public readonly offersAcepted$: Observable<Offer[]> = this.offers$.pipe(
+    map(offers => offers.filter(offer => offer.status === 'acepted'))
   ).pipe(
     map(offers => offers.sort(this.sortBySalary))
   );
-  public readonly offersIncompleted$: Observable<Offer[]> = this.offers$.pipe(
-    map(offers => offers.filter(offer => offer.status === 'incompleted'))
+  public readonly offersTechnicianChecked$: Observable<Offer[]> = this.offers$.pipe(
+    map(offers => offers.filter(offer => offer.status === 'technicianChecked'))
   ).pipe(
     map(offers => offers.sort(this.sortBySalary))
   );
-  public readonly offersOpened$: Observable<Offer[]> = this.offers$.pipe(
-    map(offers => offers.filter(offer => offer.status === 'opened')
+  public readonly offersVideoSet$: Observable<Offer[]> = this.offers$.pipe(
+    map(offers => offers.filter(offer => offer.status === 'videoSet'))
+  ).pipe(
+    map(offers => offers.sort(this.sortBySalary))
+  );
+  public readonly offersInProgress$: Observable<Offer[]> = this.offers$.pipe(
+    map(offers => offers.filter(offer => offer.status === 'inProgress'))
+  ).pipe(
+    map(offers => offers.sort(this.sortBySalary))
+  );
+  public readonly offersReady$: Observable<Offer[]> = this.offers$.pipe(
+    map(offers => offers.filter(offer => offer.status === 'ready')
   )).pipe(
     map(offers => offers.sort(this.sortBySalary))
   );
-  public readonly offersAcepted$: Observable<Offer[]> = this.offers$.pipe(
-    map(offers => offers.filter(offer => offer.status === 'acepted'))
+  public readonly offersBacklog$: Observable<Offer[]> = this.offers$.pipe(
+    map(offers => offers.filter(offer => offer.status === 'backlog'))
   ).pipe(
     map(offers => offers.sort(this.sortBySalary))
   );

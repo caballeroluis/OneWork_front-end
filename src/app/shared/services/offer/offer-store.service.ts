@@ -44,14 +44,15 @@ export class OfferStoreService {
   updateOffer(offer: Offer) {
     this.offerService.updateOffer(offer).subscribe(
       (response: CustomResponses) => {
-        this.stateSS.offers[
-          this.stateSS.offers.findIndex(_offer => _offer._id === offer._id)
-        ] = response.result as Offer;
+        // this.stateSS.offers[
+        //   this.stateSS.offers.findIndex(_offer => _offer._id === offer._id)
+        // ] = response.result as Offer;
 
-        this.stateSS.offers = this.stateSS.offers;
+        // this.stateSS.offers = this.stateSS.offers;
+        this.getOffers();
       },
       (error: any) => {
-        this.getOffers(); // TODO: hacer que no sea necesario esto
+        this.getOffers(); // TODO: hacer quizá que no sea necesario esto
         throw new Error(error);
       }
     );

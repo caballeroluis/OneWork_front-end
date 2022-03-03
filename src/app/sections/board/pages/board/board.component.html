@@ -13,12 +13,14 @@
                     class="colum-body"
                     cdkDropList
                     id="accepted"
-                    [cdkDropListData]="stateSS.offersAccepted$ | async"
+                    #acceptedList="cdkDropList"
+                    [cdkDropListData]="acceptedList$ | async"
+                    [cdkDropListConnectedTo]="[acceptedList, technicianCheckedList, videoSetList, inProgressList, readyList, backlogList]"
                     (cdkDropListDropped)="dropCard($event)"
                 >
                     <board-offer-card
                         class="example-box"
-                        *ngFor="let offer of stateSS.offersAccepted$ | async; trackBy: getIdTrackFn"
+                        *ngFor="let offer of acceptedList$ | async; trackBy: getIdTrackFn"
                         [offer]="offer"
                         cdkDrag
                     >
@@ -38,12 +40,14 @@
                     class="colum-body"
                     cdkDropList
                     id="technicianChecked"
-                    [cdkDropListData]="stateSS.offersTechnicianChecked$ | async"
+                    #technicianCheckedList="cdkDropList"
+                    [cdkDropListData]="technicianCheckedList$ | async"
+                    [cdkDropListConnectedTo]="[acceptedList, technicianCheckedList, videoSetList, inProgressList, readyList, backlogList]"
                     (cdkDropListDropped)="dropCard($event)"
                 >
                     <board-offer-card
                         class="example-box"
-                        *ngFor="let offer of stateSS.offersTechnicianChecked$ | async; trackBy: getIdTrackFn"
+                        *ngFor="let offer of technicianCheckedList$ | async; trackBy: getIdTrackFn"
                         [offer]="offer"
                         cdkDrag
                     >
@@ -63,12 +67,14 @@
                     class="colum-body"
                     cdkDropList
                     id="videoSet"
-                    [cdkDropListData]="stateSS.offersVideoSet$ | async"
+                    #videoSetList="cdkDropList"
+                    [cdkDropListData]="videoSetList$ | async"
+                    [cdkDropListConnectedTo]="[acceptedList, technicianCheckedList, videoSetList, inProgressList, readyList, backlogList]"
                     (cdkDropListDropped)="dropCard($event)"
                 >
                     <board-offer-card
                         class="example-box"
-                        *ngFor="let offer of stateSS.offersVideoSet$ | async; trackBy: getIdTrackFn"
+                        *ngFor="let offer of videoSetList$ | async; trackBy: getIdTrackFn"
                         [offer]="offer"
                         cdkDrag
                     >
@@ -88,12 +94,14 @@
                     class="colum-body"
                     cdkDropList
                     id="inProgress"
-                    [cdkDropListData]="stateSS.offersInProgress$ | async"
+                    #inProgressList="cdkDropList"
+                    [cdkDropListData]="inProgressList$ | async"
+                    [cdkDropListConnectedTo]="[acceptedList, technicianCheckedList, videoSetList, inProgressList, readyList, backlogList]"
                     (cdkDropListDropped)="dropCard($event)"
                 >
                     <board-offer-card
                         class="example-box"
-                        *ngFor="let offer of stateSS.offersInProgress$ | async; trackBy: getIdTrackFn"
+                        *ngFor="let offer of inProgressList$ | async; trackBy: getIdTrackFn"
                         [offer]="offer"
                         cdkDrag
                     >
@@ -113,12 +121,14 @@
                     class="colum-body"
                     cdkDropList
                     id="ready"
-                    [cdkDropListData]="stateSS.offersReady$ | async"
+                    #readyList="cdkDropList"
+                    [cdkDropListData]="readyList$ | async"
+                    [cdkDropListConnectedTo]="[acceptedList, technicianCheckedList, videoSetList, inProgressList, readyList, backlogList]"
                     (cdkDropListDropped)="dropCard($event)"
                 >
                     <board-offer-card
                         class="example-box"
-                        *ngFor="let offer of stateSS.offersReady$ | async; trackBy: getIdTrackFn"
+                        *ngFor="let offer of readyList$ | async; trackBy: getIdTrackFn"
                         [offer]="offer"
                         cdkDrag
                     >
@@ -152,12 +162,14 @@
                     class="colum-body"
                     cdkDropList
                     id="backlog"
-                    [cdkDropListData]="stateSS.offersBacklog$ | async"
+                    #backlogList="cdkDropList"
+                    [cdkDropListData]="backlogList$ | async"
+                    [cdkDropListConnectedTo]="[acceptedList, technicianCheckedList, videoSetList, inProgressList, readyList, backlogList]"
                     (cdkDropListDropped)="dropCard($event)"
                 >
                     <board-offer-card
                         class="example-box"
-                        *ngFor="let offer of stateSS.offersBacklog$ | async; trackBy: getIdTrackFn"
+                        *ngFor="let offer of backlogList$ | async; trackBy: getIdTrackFn"
                         [offer]="offer"
                         cdkDrag
                     >

@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon';
-import { OfferCardComponent } from './components/offer-card/offer-card.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -18,8 +17,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BoardComponent,
     HeaderComponent,
     FooterComponent,
-    NewOfferComponent,
-    OfferCardComponent
+    NewOfferComponent
   ],
   imports: [
     CommonModule,

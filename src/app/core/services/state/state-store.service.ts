@@ -22,40 +22,6 @@ export class StateStoreService {
   private readonly _offers = new BehaviorSubject<Offer[]>([] as Offer[]);
   public readonly offers$ = this._offers.asObservable();
 
-  // // offers2
-  // public readonly offers2$ = new BehaviorSubject<Offer[]>([] as Offer[]);
-
-  // public readonly offersAccepted$: Observable<Offer[]> = this.offers$.pipe(
-  //   map(offers => offers.filter(offer => offer.status === 'accepted'))
-  // ).pipe(
-  //   map(offers => offers.sort(this.sortBySalary))
-  // );
-  // public readonly offersTechnicianChecked$: Observable<Offer[]> = this.offers$.pipe(
-  //   map(offers => offers.filter(offer => offer.status === 'technicianChecked'))
-  // ).pipe(
-  //   map(offers => offers.sort(this.sortBySalary))
-  // );
-  // public readonly offersVideoSet$: Observable<Offer[]> = this.offers$.pipe(
-  //   map(offers => offers.filter(offer => offer.status === 'videoSet'))
-  // ).pipe(
-  //   map(offers => offers.sort(this.sortBySalary))
-  // );
-  // public readonly offersInProgress$: Observable<Offer[]> = this.offers$.pipe(
-  //   map(offers => offers.filter(offer => offer.status === 'inProgress'))
-  // ).pipe(
-  //   map(offers => offers.sort(this.sortBySalary))
-  // );
-  // public readonly offersReady$: Observable<Offer[]> = this.offers$.pipe(
-  //   map(offers => offers.filter(offer => offer.status === 'ready')
-  // )).pipe(
-  //   map(offers => offers.sort(this.sortBySalary))
-  // );
-  // public readonly offersBacklog$: Observable<Offer[]> = this.offers$.pipe(
-  //   map(offers => offers.filter(offer => offer.status === 'backlog'))
-  // ).pipe(
-  //   map(offers => offers.sort(this.sortBySalary))
-  // );
-
   // users
   private readonly _users = new BehaviorSubject<User[]>([]);
   public readonly users$ = this._users.asObservable();

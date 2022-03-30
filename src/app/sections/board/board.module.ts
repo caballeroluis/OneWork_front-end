@@ -11,13 +11,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSelectModule } from '@angular/material/select'; 
+import { EditOfferComponent } from './pages/edit-offer/edit-offer.component';
 
 @NgModule({
   declarations: [
     BoardComponent,
     HeaderComponent,
     FooterComponent,
-    NewOfferComponent
+    NewOfferComponent,
+    EditOfferComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule
   ]
 })
 export class BoardModule { }

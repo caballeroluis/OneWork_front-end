@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StateStoreService } from '@core/services';
 import { Offer } from '@shared/models';
-import { OfferStoreService, UserStoreService } from '@shared/services';
+import { OfferStoreService } from '@shared/services';
 
 @Component({
-  selector: 'app-new-offer',
-  templateUrl: './new-offer.component.html',
-  styleUrls: ['./new-offer.component.scss']
+  selector: 'app-edit-offer',
+  templateUrl: './edit-offer.component.html',
+  styleUrls: ['./edit-offer.component.scss']
 })
-export class NewOfferComponent implements OnInit {
+export class EditOfferComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
+  private offer: Offer = new Offer();
 
   constructor(
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private offerSS: OfferStoreService,
-    private userSS: UserStoreService,
     public stateSS: StateStoreService
   ) { }
 
   ngOnInit(): void {
-    if (
-      (!this.stateSS.users || this.stateSS.users.length === 0)
-    ) {
-      this.userSS.getUsers();
-    }
+    this.offer = this.stateSS.offers.find(
+      offer => offer._id === this.route.snapshot.paramMap.get('_id')
+    ) as Offer;
 
     this.formatReactiveForm();
   }
@@ -45,20 +45,20 @@ export class NewOfferComponent implements OnInit {
         worker: null
       }
     );
+
+    this.reactiveForm.patchValue(this.offer);
+    console.log(this.reactiveForm.getRawValue())
   }
 
   submitForm() {
     this.isSubmitted = true;
 
     let offer: Offer = this.reactiveForm.getRawValue();
-
-    offer.recruiterAssigned = this.stateSS.session.user;
-    offer.workerAssigned = this.stateSS.users.find(
-      user => user._id === this.reactiveForm.controls.worker.value._id
-    )
+    // offer.workerAssigned = offer.workerAssigned?._id; // TODO: hacer cuando cambie la api
+    // offer.recruiterAssigned = offer.recruiterAssigned?._id;
 
     if (this.reactiveForm.valid) {
-      this.offerSS.newOffer(offer);
+      this.offerSS.editOffer(offer);
     } else {
       throw new Error('Form error');
     }

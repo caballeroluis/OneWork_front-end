@@ -77,7 +77,6 @@ $app-padding: 12px;
   width: 100%;
   margin-bottom: 12px;
   display: flex;
-  cursor: move;
 }
 
 .drag-box:last-child {
@@ -104,4 +103,14 @@ $app-padding: 12px;
 
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.handle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ccc;
+  cursor: grab;
+  width: 24px;
+  height: 24px;
 }

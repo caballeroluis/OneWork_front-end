@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { User } from '@shared/models';
 
-
 @Injectable({
   providedIn: 'root'
 })

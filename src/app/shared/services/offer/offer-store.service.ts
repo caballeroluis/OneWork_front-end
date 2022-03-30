@@ -41,18 +41,24 @@ export class OfferStoreService {
     );
   }
 
-  updateOffer(offer: Offer) {
-    this.offerService.updateOffer(offer).subscribe(
+  editOffer(offer: Offer) {
+    this.offerService.editOffer(offer).subscribe(
       (response: CustomResponses) => {
-        // this.stateSS.offers[
-        //   this.stateSS.offers.findIndex(_offer => _offer._id === offer._id)
-        // ] = response.result as Offer;
-
-        // this.stateSS.offers = this.stateSS.offers;
-        this.getOffers();
+        // TODO: hacer
+        
       },
       (error: any) => {
-        this.getOffers(); // TODO: hacer quizá que no sea necesario esto
+        throw new Error(error);
+      }
+    );
+  }
+
+  deleteOffer(offer: Offer) {
+    this.offerService.deleteOffer(offer).subscribe(
+      (response: CustomResponses) => {
+        this.stateSS.offers = this.stateSS.offers.filter(_offer => _offer._id !== offer._id);
+      },
+      (error: any) => {
         throw new Error(error);
       }
     );

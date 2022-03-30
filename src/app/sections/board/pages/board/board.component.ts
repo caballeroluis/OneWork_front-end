@@ -71,7 +71,6 @@ export class BoardComponent implements OnInit {
   }
   
   dropCard(event: CdkDragDrop<string[] | any>) {
-
     const offer = {
       ...event.previousContainer.data[event.previousIndex],
       status: event.container.id
@@ -87,9 +86,16 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
       
-      this.offerSS.updateOffer(offer);
+      this.offerSS.editOffer(offer);
     }
+  }
 
+  getOffers() {
+    this.offerSS.getOffers();
+  }
+
+  deleteOffer(offer: Offer) {
+    this.offerSS.deleteOffer(offer);
   }
 
   ngOnDestroy() {
@@ -112,29 +118,5 @@ export class BoardComponent implements OnInit {
   }
 
   getIdTrackFn = (i: number, item: any) => item._id;
-
-  getOffers() {
-    this.offerSS.getOffers();
-  }
-
-
-
-
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
-  }
 
 }

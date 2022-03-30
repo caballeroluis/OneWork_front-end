@@ -86,7 +86,7 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
       
-      this.offerSS.editOffer(offer);
+      this.offerSS.updateOffer(offer);
     }
   }
 

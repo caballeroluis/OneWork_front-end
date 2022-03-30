@@ -28,6 +28,14 @@ export class OfferService {
     );
   }
 
+  updateOffer(offer: Offer): Observable<any> {
+    return this.http.patch(
+      environment.apiUrl +
+        "/api/offers/" + offer._id,
+      offer
+    );
+  }
+
   editOffer(offer: Offer): Observable<any> {
     return this.http.put(
       environment.apiUrl +

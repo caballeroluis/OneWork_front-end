@@ -22,9 +22,7 @@ export class NewOfferComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (
-      (!this.stateSS.users || this.stateSS.users.length === 0)
-    ) {
+    if (!this.stateSS.users || this.stateSS.users.length === 0) {
       this.userSS.getUsers();
     }
 

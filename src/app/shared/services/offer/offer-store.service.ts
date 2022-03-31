@@ -61,8 +61,7 @@ export class OfferStoreService {
   editOffer(offer: Offer) {
     this.offerService.editOffer(offer).subscribe(
       (response: CustomResponses) => {
-        // TODO: hacer
-        
+        this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
       },
       (error: any) => {
         throw new Error(error);

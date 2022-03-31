@@ -13,7 +13,9 @@ export class Offer {
   description?: string;
   status?: string;
   recruiterAssigned?: User;
+  recruiterAssignedId?: string;
   workerAssigned?: User;
+  workerAssignedId?: string;// TODO: hacer cuando cambie la api
 
   constructor() {
   }

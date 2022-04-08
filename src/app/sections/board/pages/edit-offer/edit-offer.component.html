@@ -3,18 +3,18 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
     <label>
-        <span>salary</span>
+        <p>salary</p>
         <input type="number" placeholder="Offer salary" formControlName="salary">
     </label><br>
     
     <label>
-        <span>title</span>
-        <input type="text" placeholder="Offer title" formControlName="title">
+        <p>title</p>
+        <textarea placeholder="Offer title" formControlName="title" rows="1"></textarea>
     </label><br>
     
     <label>
-        <span>requirements</span>
-        <input type="text" placeholder="Offer requirements" formControlName="requirements">
+        <p>requirements</p>
+        <textarea placeholder="Offer requirements" formControlName="requirements" rows="8"></textarea>
     </label><br>
   
     <label>
@@ -28,18 +28,18 @@
     </label>
     
     <label>
-        <span>workplaceAddress</span>
-        <input type="text" placeholder="Offer workplaceAddress" formControlName="workplaceAddress">
+        <p>workplaceAddress</p>
+        <textarea placeholder="Offer workplaceAddress" formControlName="workplaceAddress" rows="2"></textarea>
     </label><br>
 
     <label>
-        <span>videoCallLink</span>
-        <input type="text" placeholder="Offer videoCallLink" formControlName="videoCallLink">
+        <p>videoCallLink</p>
+        <textarea placeholder="Offer videoCallLink" formControlName="videoCallLink" rows="1"></textarea>
     </label><br>
     
     <label>
-        <span>description</span>
-        <input type="text" placeholder="Offer description" formControlName="description">
+        <p>description</p>
+        <textarea placeholder="Offer description" formControlName="description" rows="8"></textarea>
     </label><br>
 
     <mat-form-field appearance="fill">

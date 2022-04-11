@@ -28,6 +28,8 @@ export class ProfileComponent implements OnInit {
     this.reactiveForm = this.formBuilder.group(
       {
         name: [''],
+        recruiterName: [''],
+        contactData: [''],
         corporationName: [''],
         descriptionCorporate: [''],
         international: [false],

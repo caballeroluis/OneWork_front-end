@@ -8,8 +8,18 @@
     </label>
   
     <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+        <span>recruiter name</span>
+        <input type="text" placeholder="Your recruiter name" formControlName="recruiterName"><br>
+    </label>
+  
+    <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
         <span>corporation name</span>
         <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
+    </label>
+  
+    <label>
+        <span>contact data</span>
+        <input type="text" placeholder="Your contact data" formControlName="contactData"><br>
     </label>
 
     <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">

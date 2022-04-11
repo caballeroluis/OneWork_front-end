@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
         email: [''],
         password: [''],
         name: [''],
+        recruiterName: [''],
+        contactData: [''],
         corporationName: [''],
         descriptionCorporate: [''],
         international: [false],

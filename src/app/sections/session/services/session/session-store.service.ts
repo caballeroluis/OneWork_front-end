@@ -60,6 +60,7 @@ export class SessionStoreService {
         }
       },
       (error: any) => {
+        this.stateSS.clear(); // TODO: pendiente quitar esta línea cuando funcione en la API
         throw new Error(error);
       }
     );

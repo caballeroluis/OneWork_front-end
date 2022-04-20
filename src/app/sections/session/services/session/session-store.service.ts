@@ -4,6 +4,7 @@ import { User } from '@shared/models';
 import { SessionService } from '@sections/session/services';
 import { Session } from '@sections/session/models';
 import { StateStoreService } from '@core/services';
+import { CustomResponses } from '@core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,10 @@ export class SessionStoreService {
 
   register(user: User) {
     this.sessionService.register(user).subscribe(
-      (response: User) => {
+      (response: CustomResponses) => {
         this.stateSS.users = [
           ...this.stateSS.users,
-          response as User
+          response.result as User
         ];
         
         // this.router.navigate(['session', 'profile']);
@@ -64,10 +65,10 @@ export class SessionStoreService {
     );
   }
 
-  updateUserProfile(user: User) { // TODO: arreglar
+  updateUserProfile(user: User) {
     this.sessionService.updateUserProfile(user).subscribe(
-      (response: User) => {
-        this.stateSS.session.user = response as User;
+      (response: CustomResponses) => {
+        this.stateSS.session.user = response.result as User;
 
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id === user._id)
@@ -81,8 +82,8 @@ export class SessionStoreService {
   
   changePassword(user: User) {
     this.sessionService.changePassword(user).subscribe(
-      (response: User) => {
-        this.stateSS.session.user = response as User;
+      (response: CustomResponses) => {
+        this.stateSS.session.user = response.result as User;
         
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
@@ -96,8 +97,8 @@ export class SessionStoreService {
   
   changeEmail(user: User) {
     this.sessionService.changeEmail(user).subscribe(
-      (response: User) => {
-        this.stateSS.session.user = response as User;
+      (response: CustomResponses) => {
+        this.stateSS.session.user = response.result as User;
 
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)

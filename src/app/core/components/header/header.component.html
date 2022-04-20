@@ -48,7 +48,7 @@
                 <span>Change password</span>
             </button>
     
-            <button mat-menu-item routerLink="/session/login" *ngIf="(stateSS.session$ | async)?.token" (click)="stateSS.clear()">
+            <button mat-menu-item routerLink="/session/login" *ngIf="(stateSS.session$ | async)?.token" (click)="sessionSS.logout()">
                 <!-- // TODO: hacer llamada logout en sessionStoreService -->
                 <mat-icon>launch</mat-icon>
                 <span>Logout</span>

@@ -27,6 +27,13 @@ export class SessionService {
     );
   }
 
+  logout(): Observable<any> {
+    return this.http.post(
+      environment.apiUrl + '/api/session/logout',
+      {}
+    );
+  }
+
   updateUserProfile(user: User): Observable<any> {
     return this.http.patch(
       environment.apiUrl + '/api/users/' + user._id,

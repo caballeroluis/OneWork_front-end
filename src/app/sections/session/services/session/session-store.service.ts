@@ -48,6 +48,22 @@ export class SessionStoreService {
     );
   }
 
+  logout() { // TODO: pendiente testear cuando funcione en la API
+    this.sessionService.logout().subscribe(
+      (response: Session) => {
+        this.stateSS.clear();
+        if (response.token?.length > 0) {
+          this.stateSS.session = response as Session;
+          
+          this.router.navigate(['session/login']);
+        }
+      },
+      (error: any) => {
+        throw new Error(error);
+      }
+    );
+  }
+
   updateUserProfile(user: User) { // TODO: arreglar
     this.sessionService.updateUserProfile(user).subscribe(
       (response: User) => {

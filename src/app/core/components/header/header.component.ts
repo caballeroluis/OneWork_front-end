@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StateStoreService } from '@core/services';
 import { environment } from '@env/environment';
+import { SessionStoreService } from '@sections/session/services';
 
 @Component({
   selector: 'core-header',
@@ -12,7 +13,8 @@ export class HeaderComponent {
   env = environment;
 
   constructor(
-    public stateSS: StateStoreService
+    public stateSS: StateStoreService,
+    public sessionSS: SessionStoreService
   ) { }
 
   sidenavToggle() {

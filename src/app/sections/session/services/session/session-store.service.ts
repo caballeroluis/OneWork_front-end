@@ -5,6 +5,7 @@ import { SessionService } from '@sections/session/services';
 import { Session } from '@sections/session/models';
 import { StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class SessionStoreService {
   constructor(
     private router: Router,
     private sessionService: SessionService,
-    private stateSS: StateStoreService
+    private stateSS: StateStoreService,
+    public snackBar: MatSnackBar
   ) { }
 
   register(user: User) {
@@ -26,6 +28,7 @@ export class SessionStoreService {
         ];
         
         // this.router.navigate(['session', 'profile']);
+        this.showSnackBar('User has been registered');
       },
       (error: any) => {
         throw new Error(error);
@@ -42,6 +45,7 @@ export class SessionStoreService {
           
           this.router.navigate(['board']);
         }
+        this.showSnackBar('User has been loged');
       },
       (error: any) => {
         throw new Error(error);
@@ -58,6 +62,7 @@ export class SessionStoreService {
           
           this.router.navigate(['session/login']);
         }
+        this.showSnackBar('Session has been closed');
       },
       (error: any) => {
         this.stateSS.clear(); // TODO: pendiente quitar esta línea cuando funcione en la API
@@ -74,6 +79,7 @@ export class SessionStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id === user._id)
         ] = user;
+        this.showSnackBar('Profile has been updated');
       },
       (error: any) => {
         throw new Error(error);
@@ -89,6 +95,7 @@ export class SessionStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
+        this.showSnackBar('Password has been updated');
       },
       (error: any) => {
         throw new Error(error);
@@ -104,11 +111,21 @@ export class SessionStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
+        this.showSnackBar('Email has been updated');
       },
       (error: any) => {
         throw new Error(error);
       }
     );
+  }
+  
+  showSnackBar(text: string) {
+    this.snackBar.open(text, 'OK', {
+      duration: 2 * 1000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      // Todo: undo button
+    });
   }
 
 }

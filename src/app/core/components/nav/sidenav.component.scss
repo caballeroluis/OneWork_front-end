@@ -2,7 +2,7 @@ $tool-bar-heigth: 64px; // TODO: llevar a variables globales
 $app-padding: 12px;
 
 mat-drawer-content {
-  width: 100%;
+  width: auto;
   height: calc(100vh - #{$tool-bar-heigth});
 }
 

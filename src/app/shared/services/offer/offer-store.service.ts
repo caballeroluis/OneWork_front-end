@@ -20,7 +20,7 @@ export class OfferStoreService {
     this.offerService.getOffers().subscribe(
       (response: CustomResponses) => {
         this.stateSS.offers = response.results as Offer[];
-        this.showSnackBar('The board has been updated');
+        // this.showSnackBar('The board has been updated'); // Todo: arreglar que los snackbars de success "tapen" (hagan desaparecer) a los de error
       },
       (error: any) => {
         throw new Error(error);

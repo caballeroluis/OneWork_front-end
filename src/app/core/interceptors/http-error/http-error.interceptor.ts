@@ -24,22 +24,17 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           notifier.showError(error.error.message);
         } else { 
           // server-side error
-          if (error.status === 401) {
-            // refresh token function que contenga un...
-            return throwError(error); // ...como éste
-          } else {
-            if (error.error.message!) {
-              notifier.showError(error.error.message);
-            }
-
-            if (error.error.errors?.length > 0) {
-              error.error.errors.forEach((_error: { msg: string; }) => {
-                notifier.showError(_error.msg);
-              });
-            }
-            
-            return throwError(error);
+          if (error.error.message!) {
+            notifier.showError(error.error.message);
           }
+
+          if (error.error.errors?.length > 0) {
+            error.error.errors.forEach((_error: { msg: string; }) => {
+              notifier.showError(_error.msg);
+            });
+          }
+          
+          return throwError(error);
         }
         return throwError(error);
       })

@@ -3,12 +3,14 @@
         <nav>
             <div *ngIf="(stateSS.userInterface$ | async)?.smallScreen; else buttonsWithoutToggleMenu" (click)="sidenavToggle()">
                 <p><button mat-raised-button routerLink="/board">Board</button></p>
-                <p><button mat-raised-button routerLink="/admin">Admin</button></p>
+                <p><button mat-raised-button routerLink="/admin">Users</button></p>
+                <p><button mat-raised-button routerLink="/admin" *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">Admin</button></p>
             </div>
     
             <ng-template #buttonsWithoutToggleMenu>
                 <p><button mat-raised-button routerLink="/board">Board</button></p>
-                <p><button mat-raised-button routerLink="/admin">Admin</button></p>
+                <p><button mat-raised-button routerLink="/admin">Users</button></p>
+                <p><button mat-raised-button routerLink="/admin" *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">Admin</button></p>
             </ng-template>
         </nav>
     </mat-drawer>

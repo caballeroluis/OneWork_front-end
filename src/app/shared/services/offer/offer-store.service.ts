@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Offer } from '@shared/models';
 import { OfferService } from '@shared/services';
 import { StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +63,6 @@ export class OfferStoreService {
 
         // this.stateSS.offers = this.stateSS.offers;
         this.getOffers();
-        this.router.navigate(['board']);
         this.showSnackBar('Offer has been updated');
       },
       (error: any) => {
@@ -78,6 +77,7 @@ export class OfferStoreService {
       (response: CustomResponses) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
         this.showSnackBar('Offer has been updated');
+        this.router.navigate(['board']);
       },
       (error: any) => {
         throw new Error(error);

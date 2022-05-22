@@ -41,10 +41,10 @@ export class EditOfferComponent implements OnInit {
         salary: [''],
         title: [''],
         requirements: [''],
-        abandoned: [false],
         technicianChecked: [false],
         workplaceAddress: [''],
         videoCallLink: [''],
+        videoCallDate: [''],
         description: [''],
         workerAssignedId: ['']
       }

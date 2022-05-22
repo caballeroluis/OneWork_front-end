@@ -8,14 +8,18 @@ export class Offer {
   title?: string;
   requirements?: string;
   abandoned?: boolean;
+  technicianChecked?: boolean;
   workplaceAddress?: string;
   videoCallLink?: string;
+  videoCallDate?: string;
+  videoCallTrueDate?: string; // Todo: ternimar datepicker
+  videoCallTrueHour?: string;
   description?: string;
   status?: string;
   recruiterAssigned?: User;
   recruiterAssignedId?: string;
   workerAssigned?: User;
-  workerAssignedId?: string;// TODO: hacer cuando cambie la api
+  workerAssignedId?: string; // TODO: hacer cuando cambie la api
 
   constructor() {
   }

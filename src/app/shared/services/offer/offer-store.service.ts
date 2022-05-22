@@ -4,6 +4,7 @@ import { OfferService } from '@shared/services';
 import { StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class OfferStoreService {
 
   constructor(
+    private router: Router,
     private offerService: OfferService,
     private stateSS: StateStoreService,
     public snackBar: MatSnackBar
@@ -21,6 +23,13 @@ export class OfferStoreService {
       (response: CustomResponses) => {
         this.stateSS.offers = response.results as Offer[];
         // this.showSnackBar('The board has been updated'); // Todo: arreglar que los snackbars de success "tapen" (hagan desaparecer) a los de error
+        // this.stateSS.offers.forEach(offer => {
+        //   offer = {
+        //     ...offer, // Todo: ternimar datepicker
+        //     videoCallTrueDate: offer.videoCallDate?.substring(0, 9),
+        //     videoCallTrueHour: offer.videoCallDate?.substring(11, 15)
+        //   }
+        // });
       },
       (error: any) => {
         throw new Error(error);
@@ -54,6 +63,7 @@ export class OfferStoreService {
 
         // this.stateSS.offers = this.stateSS.offers;
         this.getOffers();
+        this.router.navigate(['board']);
         this.showSnackBar('Offer has been updated');
       },
       (error: any) => {
@@ -67,7 +77,7 @@ export class OfferStoreService {
     this.offerService.editOffer(offer).subscribe(
       (response: CustomResponses) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
-        this.showSnackBar('Offer has been moved');
+        this.showSnackBar('Offer has been updated');
       },
       (error: any) => {
         throw new Error(error);

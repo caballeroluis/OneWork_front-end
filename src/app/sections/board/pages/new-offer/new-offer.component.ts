@@ -38,6 +38,7 @@ export class NewOfferComponent implements OnInit {
         technicianChecked: [false],
         workplaceAddress: [''],
         videoCallLink: [''],
+        videoCallDate: ['2023-01-27T23:31:39.815Z'], // Todo: poner un datepicker
         description: [''],
         worker: null
       }

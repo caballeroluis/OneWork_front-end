@@ -6,6 +6,7 @@ import { Session } from '@sections/session/models';
 import { StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OfferStoreService } from '@shared/services';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class SessionStoreService {
   constructor(
     private router: Router,
     private sessionService: SessionService,
+    private offerSS: OfferStoreService,
     private stateSS: StateStoreService,
     public snackBar: MatSnackBar
   ) { }
@@ -80,6 +82,7 @@ export class SessionStoreService {
           this.stateSS.users.findIndex(_user => _user._id === user._id)
         ] = user;
         this.showSnackBar('Profile has been updated');
+        this.offerSS.getOffers();
       },
       (error: any) => {
         throw new Error(error);

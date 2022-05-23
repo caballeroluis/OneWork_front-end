@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
+  public user: User = new User();
   
   constructor(
     private sessionSS: SessionStoreService,
@@ -19,6 +20,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.formatReactiveForm();
+  }
+
+  roleChange(role: string) {
+    this.user.role = role;
   }
 
   formatReactiveForm() {
@@ -40,10 +45,10 @@ export class RegisterComponent implements OnInit {
   submitForm() {
     this.isSubmitted = true;
 
-    const user: User = this.reactiveForm.getRawValue();
+    this.user = this.reactiveForm.getRawValue();
 
     if (this.reactiveForm.valid) {
-      this.sessionSS.register(user);
+      this.sessionSS.register(this.user);
     } else {
       throw new Error('Form error');
     }

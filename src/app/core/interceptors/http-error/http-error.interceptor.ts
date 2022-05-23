@@ -32,6 +32,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             error.error.errors.forEach((_error: { msg: string; }) => {
               notifier.showError(_error.msg);
             });
+          } else {
+            notifier.showError(error.error.errors.msg);
           }
           
           return throwError(error);

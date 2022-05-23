@@ -12,6 +12,9 @@ const routes: Routes = [
     path: 'new-offer', component: NewOfferComponent
   },
   {
+    path: 'new-offer/:workerAssignedId', component: NewOfferComponent
+  },
+  {
     path: 'edit-offer/:_id', component: EditOfferComponent
   }
 ];

@@ -12,7 +12,7 @@ const routes: Routes = [ // TODO: meter role guards
     loadChildren: () => import('./sections/board/board.module').then( m => m.BoardModule)
   },
   {
-    path: 'admin',
+    path: 'users',
     loadChildren: () => import('./sections/admin/admin.module').then( m => m.AdminModule)
   },
   {

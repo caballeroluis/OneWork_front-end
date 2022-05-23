@@ -9,7 +9,7 @@
     
         <span class="spacer"></span>
     
-        <button mat-icon-button (click)="printState()" *ngIf="!env.production">
+        <button mat-icon-button (click)="printState()" *ngIf="(stateSS.userInterface$ | async)?.showDevTools">
             <mat-icon>remove_red_eye</mat-icon>
         </button>
         
@@ -53,6 +53,11 @@
                 <!-- // TODO: hacer llamada logout en sessionStoreService -->
                 <mat-icon>launch</mat-icon>
                 <span>Logout</span>
+            </button>
+    
+            <button mat-menu-item (click)="this.stateSS.userInterface.showDevTools = !this.stateSS.userInterface.showDevTools!">
+                <mat-icon>devices</mat-icon>
+                <span>Dev tools</span>
             </button>
         </mat-menu>
     </mat-toolbar>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { StateStoreService } from '@core/services';
-import { environment } from '@env/environment';
 import { SessionStoreService } from '@sections/session/services';
 
 @Component({
@@ -9,8 +8,6 @@ import { SessionStoreService } from '@sections/session/services';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
-  env = environment;
 
   constructor(
     public stateSS: StateStoreService,

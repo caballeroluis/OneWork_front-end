@@ -1,7 +1,7 @@
 <admin-header></admin-header>
 
-<button mat-raised-button (click)="getUsers()">
-    getUsers()
+<button mat-icon-button (click)="getUsers()">
+    <mat-icon>sync</mat-icon>
 </button>
 <div *ngFor="let user of (stateSS.users$ | async)">
     <div style="background-color: blanchedalmond;">

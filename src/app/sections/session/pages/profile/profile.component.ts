@@ -57,6 +57,9 @@ export class ProfileComponent implements OnInit {
       delete user.recruiterName;
       delete user.recruiterSurname1;
       delete user.recruiterSurname2;
+      delete user.corporationName;
+      delete user.descriptionCorporate;
+      delete user.international;
     } 
 
     if (this.reactiveForm.valid) {

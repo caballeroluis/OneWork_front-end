@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './pages/dashboard/admin.component';
 import { EditUserComponent, FooterComponent, HeaderComponent } from '@sections/admin/components';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class AdminModule { }

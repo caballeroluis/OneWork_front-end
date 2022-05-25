@@ -49,6 +49,7 @@ export class UserStoreService {
         this.notificationService.showSuccess('User has been deleted');
       },
       (error: any) => {
+        this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
         throw new Error(error);
       }
     );

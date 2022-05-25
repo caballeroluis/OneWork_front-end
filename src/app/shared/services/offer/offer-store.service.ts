@@ -89,6 +89,7 @@ export class OfferStoreService {
         this.notificationService.showSuccess('Offer has been deleted');
       },
       (error: any) => {
+        this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
         throw new Error(error);
       }
     );

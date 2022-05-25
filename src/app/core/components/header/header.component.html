@@ -9,8 +9,12 @@
     
         <span class="spacer"></span>
     
-        <button mat-icon-button (click)="printState()" *ngIf="(stateSS.userInterface$ | async)?.showDevTools">
+        <button title="Print app state in console" mat-icon-button (click)="printState()" *ngIf="(stateSS.userInterface$ | async)?.showDevTools">
             <mat-icon>remove_red_eye</mat-icon>
+        </button>
+    
+        <button title="Clean app state" mat-icon-button (click)="bin()" *ngIf="(stateSS.userInterface$ | async)?.showDevTools">
+            <mat-icon>restore_from_trash</mat-icon>
         </button>
         
         <span class="spacer"></span>

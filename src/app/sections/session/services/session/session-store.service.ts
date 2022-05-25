@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { User } from '@shared/models';
 import { SessionService } from '@sections/session/services';
 import { Session } from '@sections/session/models';
-import { StateStoreService } from '@core/services';
+import { NotificationService, StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { OfferStoreService } from '@shared/services';
 
 @Injectable({
@@ -18,7 +17,7 @@ export class SessionStoreService {
     private sessionService: SessionService,
     private offerSS: OfferStoreService,
     private stateSS: StateStoreService,
-    public snackBar: MatSnackBar
+    private notificationService: NotificationService
   ) { }
 
   register(user: User) {
@@ -30,7 +29,7 @@ export class SessionStoreService {
         ];
         
         // this.router.navigate(['session', 'profile']);
-        this.showSnackBar('User has been registered');
+        this.notificationService.showSuccess('User has been registered');
       },
       (error: any) => {
         throw new Error(error);
@@ -47,7 +46,7 @@ export class SessionStoreService {
           
           this.router.navigate(['board']);
         }
-        this.showSnackBar('User has been loged');
+        this.notificationService.showSuccess('User has been loged');
       },
       (error: any) => {
         throw new Error(error);
@@ -64,7 +63,7 @@ export class SessionStoreService {
           
           this.router.navigate(['session/login']);
         }
-        this.showSnackBar('Session has been closed');
+        this.notificationService.showSuccess('Session has been closed');
       },
       (error: any) => {
         this.stateSS.clear(); // TODO: pendiente quitar esta línea cuando funcione en la API
@@ -81,7 +80,7 @@ export class SessionStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id === user._id)
         ] = user;
-        this.showSnackBar('Profile has been updated');
+        this.notificationService.showSuccess('Profile has been updated');
         this.offerSS.getOffers();
       },
       (error: any) => {
@@ -98,7 +97,7 @@ export class SessionStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
-        this.showSnackBar('Password has been updated');
+        this.notificationService.showSuccess('Password has been updated');
       },
       (error: any) => {
         throw new Error(error);
@@ -114,21 +113,11 @@ export class SessionStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
-        this.showSnackBar('Email has been updated');
+        this.notificationService.showSuccess('Email has been updated');
       },
       (error: any) => {
         throw new Error(error);
       }
     );
   }
-  
-  showSnackBar(text: string) {
-    this.snackBar.open(text, 'OK', {
-      duration: 2 * 1000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      // Todo: undo button
-    });
-  }
-
 }

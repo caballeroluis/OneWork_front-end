@@ -12,8 +12,7 @@ export class Offer {
   workplaceAddress?: string;
   videoCallLink?: string;
   videoCallDate?: string;
-  videoCallTrueDate?: string; // Todo: ternimar datepicker
-  videoCallTrueHour?: string;
+  videoCallHour?: string;
   description?: string;
   status?: string;
   recruiterAssigned?: User;

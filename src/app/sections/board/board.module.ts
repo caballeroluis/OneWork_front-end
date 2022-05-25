@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSelectModule } from '@angular/material/select'; 
 import { EditOfferComponent } from './pages/edit-offer/edit-offer.component';
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { EditOfferComponent } from './pages/edit-offer/edit-offer.component';
     MatToolbarModule,
     MatIconModule,
     DragDropModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class BoardModule { }

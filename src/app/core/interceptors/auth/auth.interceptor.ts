@@ -39,7 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
-          this.stateSS.clear();
+          this.stateSS.clear(); // TODO: implementar refresh token y borrar esta línea
         }
 
         return throwError(err);

@@ -66,11 +66,6 @@
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                videoCallDate: {{ offer.videoCallTrueDate }} Hour: {{ offer.videoCallTrueHour }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
                                 videoCallLink: {{ offer.videoCallLink }}
                             </p>
                         </mat-card-content>
@@ -143,11 +138,6 @@
                         <mat-card-content>
                             <p>
                                 Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                videoCallDate: {{ offer.videoCallTrueDate }} Hour: {{ offer.videoCallTrueHour }}
                             </p>
                         </mat-card-content>
                         <mat-card-content>
@@ -228,11 +218,6 @@
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                videoCallDate: {{ offer.videoCallTrueDate }} Hour: {{ offer.videoCallTrueHour }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
                                 videoCallLink: {{ offer.videoCallLink }}
                             </p>
                         </mat-card-content>
@@ -305,11 +290,6 @@
                         <mat-card-content>
                             <p>
                                 Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                videoCallDate: {{ offer.videoCallTrueDate }} Hour: {{ offer.videoCallTrueHour }}
                             </p>
                         </mat-card-content>
                         <mat-card-content>
@@ -390,11 +370,6 @@
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                videoCallDate: {{ offer.videoCallTrueDate }} Hour: {{ offer.videoCallTrueHour }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
                                 videoCallLink: {{ offer.videoCallLink }}
                             </p>
                         </mat-card-content>
@@ -414,15 +389,15 @@
             
                     <span class="spacer"></span>
             
-                    <button mat-icon-button (click)="getOffers()">
+                    <button title="Update the board" mat-icon-button (click)="getOffers()">
                         <mat-icon>sync</mat-icon>
                     </button>
             
-                    <button mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+                    <button title="Add an offer" mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                     
-                    <button mat-icon-button routerLink="/session" *ngIf="!((stateSS.session$ | async)?.token !== '')">
+                    <button title="Add an offer" mat-icon-button routerLink="/session" *ngIf="!((stateSS.session$ | async)?.token !== '')">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                 </mat-toolbar>
@@ -481,11 +456,6 @@
                         <mat-card-content>
                             <p>
                                 Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                videoCallDate: {{ offer.videoCallTrueDate }} Hour: {{ offer.videoCallTrueHour }}
                             </p>
                         </mat-card-content>
                         <mat-card-content>

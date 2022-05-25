@@ -11,7 +11,7 @@ import { OfferStoreService, UserStoreService } from '@shared/services';
   styleUrls: ['./new-offer.component.scss']
 })
 export class NewOfferComponent implements OnInit {
-
+  
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
   public workerAssigned?: User;
@@ -41,24 +41,33 @@ export class NewOfferComponent implements OnInit {
 
   formatReactiveForm() {
     this.reactiveForm = this.formBuilder.group(
-      {
-        salary: [''],
-        title: [''],
-        requirements: [''],
-        technicianChecked: [false],
-        workplaceAddress: [''],
-        videoCallLink: [''],
-        videoCallDate: ['2023-01-27T23:31:39.815Z'], // Todo: poner un datepicker
-        description: [''],
-        worker: null
-      }
-    );
-  }
-
-  submitForm() {
-    this.isSubmitted = true;
-
-    let offer: Offer = this.reactiveForm.getRawValue();
+        {
+          salary: [''],
+          title: [''],
+          requirements: [''],
+          technicianChecked: [false],
+          workplaceAddress: [''],
+          videoCallLink: [''],
+          videoCallDate: [new Date().toISOString()],
+          videoCallHour: [new Date().getUTCHours() + ':' + new Date().getUTCMinutes()],
+          description: [''],
+          worker: null
+        }
+      );
+    }
+    
+    submitForm() {
+      this.isSubmitted = true;
+      
+      let offer: Offer = {
+        ...this.reactiveForm.getRawValue()
+      };
+      
+      offer.videoCallDate = 
+        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(0, 11) +
+        this.reactiveForm.controls.videoCallHour.value +
+        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(16, 24)
+      ;
 
     offer.recruiterAssigned = this.stateSS.session.user;
 
@@ -69,7 +78,7 @@ export class NewOfferComponent implements OnInit {
         user => user._id === this.reactiveForm.controls.worker.value._id
       )
     }
-
+    
     if (this.reactiveForm.valid) {
       this.offerSS.newOffer(offer);
     } else {

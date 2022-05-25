@@ -45,26 +45,40 @@ export class EditOfferComponent implements OnInit {
         workplaceAddress: [''],
         videoCallLink: [''],
         videoCallDate: [''],
+        videoCallHour: [''],
         description: [''],
         workerAssignedId: ['']
       }
     );
 
     this.reactiveForm.patchValue(this.offer);
-    this.reactiveForm.controls.workerAssignedId.setValue(this.offer.workerAssigned?._id);
+    this.reactiveForm.controls.videoCallHour.setValue(
+      this.offer.videoCallDate?.substring(11,16)
+    );
+    this.reactiveForm.controls.workerAssignedId.setValue(
+      this.offer.workerAssigned?._id
+    );
   }
 
   submitForm() {
     this.isSubmitted = true;
 
-    let offerEdited: Offer = this.offer;
-    offerEdited = {
-      ...offerEdited,
-      ...this.reactiveForm.getRawValue()
+    let offerEdited: Offer = {
+      ...this.offer,
+      ...this.reactiveForm.getRawValue(),
+      videoCallDate:
+        // this.reactiveForm.controls.videoCallDate.value.toISOString().substring(0, 10) +
+        // this.offer.videoCallDate?.substring(10, 11) +
+        // this.reactiveForm.controls.videoCallHour.value +
+        // this.offer.videoCallDate?.substring(16, 24) // TODO: aclarar q es la T y mier si esta forma o la de abajo
+        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(0, 11) +
+        this.reactiveForm.controls.videoCallHour.value +
+        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(16, 24)
     };
     offerEdited.workerAssignedId = this.reactiveForm.controls.workerAssignedId.value; // TODO: hacer cuando cambie la api
+    delete offerEdited.videoCallHour;
     offerEdited.recruiterAssignedId = this.offer.recruiterAssigned?._id;
-
+    
     if (this.reactiveForm.valid) {
       this.offerSS.editOffer(offerEdited);
     } else {

@@ -3,13 +3,18 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
     <label>
-        <span>salary</span>
+        <p>salary</p>
         <input type="number" placeholder="Offer salary" formControlName="salary">
     </label><br>
     
     <label>
-        <span>title</span>
-        <input type="text" placeholder="Offer title" formControlName="title">
+        <p>title</p>
+        <textarea placeholder="Offer title" formControlName="title" rows="1"></textarea>
+    </label><br>
+    
+    <label>
+        <p>requirements</p>
+        <textarea placeholder="Offer requirements" formControlName="requirements" rows="8"></textarea>
     </label><br>
   
     <label>
@@ -18,30 +23,30 @@
     </label>
     
     <label>
-        <span>workplaceAddress</span>
-        <input type="text" placeholder="Offer workplaceAddress" formControlName="workplaceAddress">
+        <p>workplaceAddress</p>
+        <textarea placeholder="Offer workplaceAddress" formControlName="workplaceAddress" rows="2"></textarea>
     </label><br>
 
     <label>
-        <span>videoCallLink</span>
-        <input type="text" placeholder="Offer videoCallLink" formControlName="videoCallLink">
+        <p>videoCallLink</p>
+        <textarea placeholder="Offer videoCallLink" formControlName="videoCallLink" rows="1"></textarea>
     </label><br>
+    
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-label>videoCallDate </mat-label>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <input matInput [matDatepicker]="picker" formControlName="videoCallDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    
+    <mat-label>and time</mat-label>
+    <input type="time" formControlName="videoCallHour" matInput name="week" min="09:00" max="18:00">
+    <br>
 
     <label>
-        <span>videoCallDate</span>
-        <input type="text" placeholder="Offer videoCallDate" formControlName="videoCallDate">
+        <p>description</p>
+        <textarea placeholder="Offer description" formControlName="description" rows="8"></textarea>
     </label><br>
-    
-    <label>
-        <span>requirements</span>
-        <textarea placeholder="Offer requirements" formControlName="requirements" rows="4"></textarea>
-    </label><br>
-    
-    <label>
-        <span>description</span>
-        <textarea placeholder="Offer description" formControlName="description" rows="4"></textarea>
-    </label><br>
-    
+
     <mat-form-field *ngIf="!workerAssignedId" appearance="fill">
         <mat-label>Worker</mat-label>
         <mat-select formControlName="worker">
@@ -53,5 +58,5 @@
   
     <button mat-raised-button color="secondary" type="submit">
         Create
-    </button>
+    </button><br><br><br>
 </form>

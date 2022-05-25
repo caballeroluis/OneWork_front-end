@@ -34,4 +34,8 @@ export class HeaderComponent {
     console.log('Offers observers', this.stateSS.offers$['source']);
   }
 
+  bin() {
+    this.stateSS.clear();
+  }
+
 }

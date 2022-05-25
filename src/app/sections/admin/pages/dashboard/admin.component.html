@@ -1,8 +1,9 @@
 <admin-header></admin-header>
 
-<button mat-icon-button (click)="getUsers()">
+<button title="Update the list" mat-icon-button (click)="getUsers()">
     <mat-icon>sync</mat-icon>
 </button>
+
 <div *ngFor="let user of (stateSS.users$ | async)">
     <div [ngClass]="{'recruiter-background': user?.role === 'recruiter', 'worker-background': user?.role === 'worker'}">
         <p>Role: <span >{{ user.role }}</span></p>

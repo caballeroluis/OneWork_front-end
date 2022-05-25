@@ -9,18 +9,17 @@ export class NotificationService {
   constructor(public snackBar: MatSnackBar) { }
   
   showSuccess(message: string) {
-    this.snackBar.open(message, 'X', {
+    this.snackBar.open(message, '', {
       panelClass: ['error'],
-      duration: 2 * 1000,
+      duration: 4 * 1000,
       horizontalPosition: 'center',
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
     });
   }
   
   showError(message: string) {
-    this.snackBar.open(message, 'X', {
+    this.snackBar.open(message, 'OK', {
       panelClass: ['error'],
-      duration: 2 * 1000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });

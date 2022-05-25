@@ -5,13 +5,17 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { NotificationService } from '@core/services';
+import { StateStoreService } from '@core/services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpErrorInterceptor implements HttpInterceptor {
   
-  constructor(private injector: Injector) { }
+  constructor(
+    private injector: Injector,
+    private stateSS: StateStoreService
+  ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const notifier = this.injector.get(NotificationService);
@@ -19,6 +23,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       retry(0),
       catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.stateSS.clear(); // TODO: implementar refresh token y borrar esta línea
+          return throwError(error);
+        }
+
         if (error.error instanceof ErrorEvent) {
           // client-side error
           notifier.showError(error.error.message);

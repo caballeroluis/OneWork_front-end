@@ -64,9 +64,9 @@ export class NewOfferComponent implements OnInit {
       };
       
       offer.videoCallDate = 
-        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(0, 11) +
+        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 11) +
         this.reactiveForm.controls.videoCallHour.value +
-        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(16, 24)
+        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(16, 24)
       ;
 
     offer.recruiterAssigned = this.stateSS.session.user;

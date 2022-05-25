@@ -71,9 +71,9 @@ export class EditOfferComponent implements OnInit {
         // this.offer.videoCallDate?.substring(10, 11) +
         // this.reactiveForm.controls.videoCallHour.value +
         // this.offer.videoCallDate?.substring(16, 24) // TODO: aclarar q es la T y mier si esta forma o la de abajo
-        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(0, 11) +
+        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 11) +
         this.reactiveForm.controls.videoCallHour.value +
-        this.reactiveForm.controls.videoCallDate.value.toISOString().substring(16, 24)
+        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(16, 24)
     };
     offerEdited.workerAssignedId = this.reactiveForm.controls.workerAssignedId.value; // TODO: hacer cuando cambie la api
     delete offerEdited.videoCallHour;

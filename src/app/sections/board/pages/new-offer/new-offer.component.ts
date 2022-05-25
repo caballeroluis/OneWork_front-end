@@ -49,7 +49,7 @@ export class NewOfferComponent implements OnInit {
           workplaceAddress: [''],
           videoCallLink: [''],
           videoCallDate: [new Date().toISOString()],
-          videoCallHour: [new Date().getUTCHours() + ':' + new Date().getUTCMinutes()],
+          videoCallHour: [new Date().getHours() + ':' + new Date().getMinutes()],
           description: [''],
           worker: null
         }

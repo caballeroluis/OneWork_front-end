@@ -77,6 +77,7 @@ export class OfferStoreService {
         this.router.navigate(['board']);
       },
       (error: any) => {
+        this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
         throw new Error(error);
       }
     );

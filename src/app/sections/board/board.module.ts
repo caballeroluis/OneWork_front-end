@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSelectModule } from '@angular/material/select'; 
 import { EditOfferComponent } from './pages/edit-offer/edit-offer.component';
-import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
@@ -35,7 +35,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule,
     DragDropModule,
     MatSelectModule,
-    MatDatepickerModule,
+    MatDatepickerModule, // TODO: reemplazar quizá mejor por @angular-material-components/datetime-picker
     MatNativeDateModule
   ]
 })

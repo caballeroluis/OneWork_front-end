@@ -11,7 +11,7 @@ export class NotificationService {
   showSuccess(message: string) {
     this.snackBar.open(message, '', {
       panelClass: ['error'],
-      duration: 4 * 1000,
+      duration: 3 * 1000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
     });

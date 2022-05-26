@@ -9,7 +9,7 @@ export class NotificationService {
   constructor(public snackBar: MatSnackBar) { }
   
   showSuccess(message: string) {
-    this.snackBar.open(message, '', {
+    this.snackBar.open(message, 'X', {
       panelClass: ['error'],
       duration: 3 * 1000,
       horizontalPosition: 'center',

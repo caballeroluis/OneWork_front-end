@@ -67,19 +67,24 @@ export class EditOfferComponent implements OnInit {
       ...this.offer,
       ...this.reactiveForm.getRawValue(),
       videoCallDate:
-        // this.reactiveForm.controls.videoCallDate.value.toISOString().substring(0, 10) +
-        // this.offer.videoCallDate?.substring(10, 11) +
-        // this.reactiveForm.controls.videoCallHour.value +
-        // this.offer.videoCallDate?.substring(16, 24) // TODO: aclarar q es la T y mier si esta forma o la de abajo
-        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 11) +
+        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 10) +
+        this.offer.videoCallDate?.substring(10, 11) +
         this.reactiveForm.controls.videoCallHour.value +
-        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(16, 24)
+        this.offer.videoCallDate?.substring(16, 24) // TODO: aclarar q es la T y mier si esta forma o la de abajo
+        // new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 11) +
+        // this.reactiveForm.controls.videoCallHour.value +
+        // new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(16, 24)
     };
     offerEdited.workerAssignedId = this.reactiveForm.controls.workerAssignedId.value; // TODO: hacer cuando cambie la api
     delete offerEdited.videoCallHour;
     offerEdited.recruiterAssignedId = this.offer.recruiterAssigned?._id;
 
-    if (this.offer.videoCallDate === this.reactiveForm.controls.videoCallDate.value) {
+    if (
+      this.offer.videoCallDate === new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 10) +
+      this.offer.videoCallDate?.substring(10, 11) +
+      this.reactiveForm.controls.videoCallHour.value +
+      this.offer.videoCallDate?.substring(16, 24)
+    ) {
       delete offerEdited.videoCallDate;
     }
     

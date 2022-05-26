@@ -78,6 +78,10 @@ export class EditOfferComponent implements OnInit {
     offerEdited.workerAssignedId = this.reactiveForm.controls.workerAssignedId.value; // TODO: hacer cuando cambie la api
     delete offerEdited.videoCallHour;
     offerEdited.recruiterAssignedId = this.offer.recruiterAssigned?._id;
+
+    if (this.offer.videoCallDate === this.reactiveForm.controls.videoCallDate.value) {
+      delete offerEdited.videoCallDate;
+    }
     
     if (this.reactiveForm.valid) {
       this.offerSS.editOffer(offerEdited);

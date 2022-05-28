@@ -61,7 +61,7 @@ export class SessionStoreService {
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
           
-          this.router.navigate(['session/login']);
+          // this.router.navigate(['session/login']);
         }
         this.notificationService.showSuccess('Session has been closed');
       },

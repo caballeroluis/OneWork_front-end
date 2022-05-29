@@ -41,34 +41,33 @@ export class NewOfferComponent implements OnInit {
 
   formatReactiveForm() {
     this.reactiveForm = this.formBuilder.group(
-        {
-          salary: [''],
-          title: [''],
-          requirements: [''],
-          technicianChecked: [false],
-          workplaceAddress: [''],
-          videoCallLink: [''],
-          videoCallDate: [new Date().toISOString()],
-          videoCallHour: [new Date().getHours() + ':' + new Date().getMinutes()],
-          description: [''],
-          worker: null
-        }
-      );
-    }
-    
-    submitForm() {
-      this.isSubmitted = true;
-      
-      let offer: Offer = {
-        ...this.reactiveForm.getRawValue()
-      };
-      
-      offer.videoCallDate = 
-        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 11) +
-        this.reactiveForm.controls.videoCallHour.value +
-        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(16, 24)
-      ;
+      {
+        salary: [''],
+        title: [''],
+        requirements: [''],
+        technicianChecked: [false],
+        workplaceAddress: [''],
+        videoCallLink: [''],
+        videoCallDate: [new Date()],
+        videoCallHour: [new Date().getHours() + ':' + new Date().getMinutes()],
+        description: [''],
+        worker: null
+      }
+    );
+  }
 
+  submitForm() {
+    this.isSubmitted = true;
+    
+    let offer: Offer = {
+      ...this.reactiveForm.getRawValue()
+    };
+
+    let isoUTCOutputDateTime = new Date(this.reactiveForm.controls.videoCallDate.value)
+    isoUTCOutputDateTime.setHours(this.reactiveForm.controls.videoCallHour.value.split(':')[0])
+    isoUTCOutputDateTime.setMinutes(this.reactiveForm.controls.videoCallHour.value.split(':')[1])
+    offer.videoCallDate = isoUTCOutputDateTime.toISOString();
+    
     offer.recruiterAssigned = this.stateSS.session.user;
 
     if (this.workerAssignedId) {

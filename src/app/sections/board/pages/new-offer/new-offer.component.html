@@ -34,12 +34,11 @@
     
     <mat-datepicker #picker></mat-datepicker>
     <mat-label>videoCallDate </mat-label>
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <input matInput [matDatepicker]="picker" formControlName="videoCallDate">
+        <input matInput [matDatepicker]="picker" formControlName="videoCallDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     
     <mat-label>and time</mat-label>
-    <input type="time" formControlName="videoCallHour" matInput name="week" min="09:00" max="18:00">
+        <input type="time" formControlName="videoCallHour" matInput>
     <br>
 
     <label>

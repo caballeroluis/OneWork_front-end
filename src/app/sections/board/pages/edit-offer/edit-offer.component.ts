@@ -11,13 +11,12 @@ import { OfferStoreService, UserStoreService } from '@shared/services';
   styleUrls: ['./edit-offer.component.scss']
 })
 export class EditOfferComponent implements OnInit {
-  
+
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
   public offer: Offer = this.stateSS.offers.find(
     offer => offer._id === this.route.snapshot.paramMap.get('_id')
   ) as Offer;
-  public workerSelected = this.offer.workerAssigned?._id;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,9 +51,11 @@ export class EditOfferComponent implements OnInit {
     );
 
     this.reactiveForm.patchValue(this.offer);
-    this.reactiveForm.controls.videoCallHour.setValue(
-      this.offer.videoCallDate?.substring(11,16)
-    );
+
+    // this.reactiveForm.controls.videoCallHour.setValue(
+    //   this.offer.videoCallDate?.substring(11,16) // TODO: reenplazar por this.datePipe.transform(this.offer.videoCallDate, 'HH:mm')
+    // );
+    
     this.reactiveForm.controls.workerAssignedId.setValue(
       this.offer.workerAssigned?._id
     );
@@ -63,33 +64,28 @@ export class EditOfferComponent implements OnInit {
   submitForm() {
     this.isSubmitted = true;
 
-    let offerEdited: Offer = {
+    let offer: Offer = {
       ...this.offer,
       ...this.reactiveForm.getRawValue(),
-      videoCallDate:
-        new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 10) +
-        this.offer.videoCallDate?.substring(10, 11) +
-        this.reactiveForm.controls.videoCallHour.value +
-        this.offer.videoCallDate?.substring(16, 24) // TODO: aclarar q es la T y mier si esta forma o la de abajo
-        // new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 11) +
-        // this.reactiveForm.controls.videoCallHour.value +
-        // new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(16, 24)
     };
-    offerEdited.workerAssignedId = this.reactiveForm.controls.workerAssignedId.value; // TODO: hacer cuando cambie la api
-    delete offerEdited.videoCallHour;
-    offerEdited.recruiterAssignedId = this.offer.recruiterAssigned?._id;
 
-    if (
-      this.offer.videoCallDate === new Date(this.reactiveForm.controls.videoCallDate.value).toISOString().substring(0, 10) +
-      this.offer.videoCallDate?.substring(10, 11) +
-      this.reactiveForm.controls.videoCallHour.value +
-      this.offer.videoCallDate?.substring(16, 24)
-    ) {
-      delete offerEdited.videoCallDate;
+    let isoUTCOutputDateTime = new Date(this.reactiveForm.controls.videoCallDate.value)
+    if (this.reactiveForm.controls.videoCallHour.value) {
+      isoUTCOutputDateTime.setHours(this.reactiveForm.controls.videoCallHour.value.split(':')[0])
+      isoUTCOutputDateTime.setMinutes(this.reactiveForm.controls.videoCallHour.value.split(':')[1])
+    } else {
+      isoUTCOutputDateTime.setHours(parseInt(('' + this.reactiveForm.controls.videoCallDate.value).substring(11, 13)) - (new Date().getTimezoneOffset() / 60));
+      isoUTCOutputDateTime.setMinutes(parseInt(('' + this.reactiveForm.controls.videoCallDate.value).substring(15, 17)));
     }
+    offer.videoCallDate = isoUTCOutputDateTime.toISOString();
+
+    offer.workerAssignedId = this.reactiveForm.controls.workerAssignedId.value; // TODO: hacer cuando cambie la api
+    offer.recruiterAssignedId = this.offer.recruiterAssigned?._id;
+
+    delete offer.videoCallHour;
     
     if (this.reactiveForm.valid) {
-      this.offerSS.editOffer(offerEdited);
+      this.offerSS.editOffer(offer);
     } else {
       throw new Error('Form error');
     }

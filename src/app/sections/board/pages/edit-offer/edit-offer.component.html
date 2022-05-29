@@ -34,13 +34,12 @@
     
     <mat-datepicker #picker></mat-datepicker>
     <mat-label>videoCallDate </mat-label>
-    <mat-hint>MM/DD/YYYY</mat-hint>
     <input matInput [matDatepicker]="picker" formControlName="videoCallDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     
-    <mat-label>and time</mat-label>
-        <input type="time" formControlName="videoCallHour" matInput>
-    <br>
+    <mat-label>at</mat-label>
+     {{ offer.videoCallDate | date:'HH:mm' }} or: 
+    <input type="time" formControlName="videoCallHour" matInput><br>
 
     <label>
         <p>description</p>
@@ -56,7 +55,7 @@
         </mat-select>
     </mat-form-field><br>
   
-    <button mat-raised-button color="secondary" type="submit">
+    <button *ngIf="((stateSS.session$ | async)?.token !== '')" mat-raised-button color="secondary" type="submit">
         Update
     </button><br><br><br>
 </form>

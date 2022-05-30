@@ -3,6 +3,10 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
     <label>
+        <p>creationDate: {{offer.creationDate | date}}</p>
+    </label><br>
+
+    <label>
         <p>salary</p>
         <input type="number" placeholder="Offer salary" formControlName="salary">
     </label><br>

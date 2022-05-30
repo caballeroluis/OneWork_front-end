@@ -27,7 +27,7 @@ export class BoardComponent implements OnInit {
     public stateSS: StateStoreService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() { // TODO: arreglar safari ios etc https://developer.chrome.com/blog/url-bar-resizing/
     this.initializeLists();
     
     if (!this.stateSS.offers || this.stateSS.offers.length === 0) {

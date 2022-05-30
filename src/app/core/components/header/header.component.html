@@ -25,7 +25,7 @@
     
         <mat-menu #menu="matMenu">
             <button mat-menu-item routerLink="/session/profile" *ngIf="!((stateSS.session$ | async)?.token === '')">
-                <mat-icon style="color: rgb(82, 189, 82)">fiber_manual_record</mat-icon>
+                <mat-icon>person</mat-icon>
                 <span>{{ (stateSS.session$ | async)?.user?.email }}</span>
             </button>
     

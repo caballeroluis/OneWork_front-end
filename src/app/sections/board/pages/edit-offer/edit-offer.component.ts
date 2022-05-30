@@ -74,7 +74,7 @@ export class EditOfferComponent implements OnInit {
       isoUTCOutputDateTime.setHours(this.reactiveForm.controls.videoCallHour.value.split(':')[0])
       isoUTCOutputDateTime.setMinutes(this.reactiveForm.controls.videoCallHour.value.split(':')[1])
     } else {
-      isoUTCOutputDateTime.setHours(parseInt(('' + this.reactiveForm.controls.videoCallDate.value).substring(11, 13)) - (new Date().getTimezoneOffset() / 60));
+      isoUTCOutputDateTime.setHours(parseInt(('' + this.reactiveForm.controls.videoCallDate.value).substring(11, 13)) - (new Date().getTimezoneOffset() / 60)); // TODO: arreglar que a cualquier hora esta operación funcione
       isoUTCOutputDateTime.setMinutes(parseInt(('' + this.reactiveForm.controls.videoCallDate.value).substring(15, 17)));
     }
     offer.videoCallDate = isoUTCOutputDateTime.toISOString();

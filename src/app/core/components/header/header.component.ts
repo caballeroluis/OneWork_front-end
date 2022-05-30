@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StateStoreService } from '@core/services';
-import { environment } from '@env/environment';
+import { SessionStoreService } from '@sections/session/services';
 
 @Component({
   selector: 'core-header',
@@ -9,10 +9,9 @@ import { environment } from '@env/environment';
 })
 export class HeaderComponent {
 
-  env = environment;
-
   constructor(
-    public stateSS: StateStoreService
+    public stateSS: StateStoreService,
+    public sessionSS: SessionStoreService
   ) { }
 
   sidenavToggle() {
@@ -33,6 +32,10 @@ export class HeaderComponent {
     console.log('💼 Offers:');
     console.log('Offers data', this.stateSS.offers);
     console.log('Offers observers', this.stateSS.offers$['source']);
+  }
+
+  bin() {
+    this.stateSS.clear();
   }
 
 }

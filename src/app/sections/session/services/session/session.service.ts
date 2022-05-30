@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { User } from '@shared/models';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +24,13 @@ export class SessionService {
     return this.http.post(
       environment.apiUrl + '/api/session/login',
       user
+    );
+  }
+
+  logout(): Observable<any> {
+    return this.http.post(
+      environment.apiUrl + '/api/session/logout',
+      {}
     );
   }
 

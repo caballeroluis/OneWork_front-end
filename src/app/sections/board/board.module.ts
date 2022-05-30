@@ -11,13 +11,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSelectModule } from '@angular/material/select'; 
+import { EditOfferComponent } from './pages/edit-offer/edit-offer.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     BoardComponent,
     HeaderComponent,
     FooterComponent,
-    NewOfferComponent
+    NewOfferComponent,
+    EditOfferComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +33,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule,
+    MatDatepickerModule, // TODO: reemplazar quizá mejor por @angular-material-components/datetime-picker
+    MatNativeDateModule
   ]
 })
 export class BoardModule { }

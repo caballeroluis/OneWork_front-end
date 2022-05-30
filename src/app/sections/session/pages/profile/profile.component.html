@@ -7,9 +7,39 @@
         <input type="text" placeholder="Your name" formControlName="name"><br>
     </label>
   
+    <label *ngIf="(stateSS.session$ | async)?.user?.role === 'worker'">
+        <span>surname1</span>
+        <input type="text" placeholder="Your surname1" formControlName="surname1"><br>
+    </label>
+  
+    <label *ngIf="(stateSS.session$ | async)?.user?.role === 'worker'">
+        <span>surname2</span>
+        <input type="text" placeholder="Your surname2" formControlName="surname2"><br>
+    </label>
+  
+    <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+        <span>recruiter name</span>
+        <input type="text" placeholder="Your recruiter name" formControlName="recruiterName"><br>
+    </label>
+  
+    <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+        <span>recruiter surname1</span>
+        <input type="text" placeholder="Your recruiter surname1" formControlName="recruiterSurname1"><br>
+    </label>
+  
+    <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+        <span>recruiter surname2</span>
+        <input type="text" placeholder="Your recruiter surname2" formControlName="recruiterSurname2"><br>
+    </label>
+  
     <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
         <span>corporation name</span>
         <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
+    </label>
+  
+    <label>
+        <span>contact data</span>
+        <input type="text" placeholder="Your contact data" formControlName="contactData"><br>
     </label>
 
     <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">

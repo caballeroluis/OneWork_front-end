@@ -23,19 +23,40 @@
                     cdkDrag
                 >
                     <mat-card>
+                        <div class="handle" cdkDragHandle>
+                            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                        </div>
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
                             <mat-card-title>{{ offer.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ offer.salary }}</mat-card-subtitle>
+                            <mat-card-subtitle>Salary: {{ offer.salary }}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                {{ offer.description }}
+                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Worker: {{ offer.workerAssigned?.name }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Address: {{ offer.workplaceAddress }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content><p>
+                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -63,19 +84,40 @@
                     cdkDrag
                 >
                     <mat-card>
+                        <div class="handle" cdkDragHandle>
+                            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                        </div>
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
                             <mat-card-title>{{ offer.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ offer.salary }}</mat-card-subtitle>
+                            <mat-card-subtitle>Salary: {{ offer.salary }}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                {{ offer.description }}
+                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Worker: {{ offer.workerAssigned?.name }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Address: {{ offer.workplaceAddress }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content><p>
+                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -103,19 +145,40 @@
                     cdkDrag
                 >
                     <mat-card>
+                        <div class="handle" cdkDragHandle>
+                            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                        </div>
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
                             <mat-card-title>{{ offer.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ offer.salary }}</mat-card-subtitle>
+                            <mat-card-subtitle>Salary: {{ offer.salary }}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                {{ offer.description }}
+                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Worker: {{ offer.workerAssigned?.name }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Address: {{ offer.workplaceAddress }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content><p>
+                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -143,19 +206,40 @@
                     cdkDrag
                 >
                     <mat-card>
+                        <div class="handle" cdkDragHandle>
+                            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                        </div>
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
                             <mat-card-title>{{ offer.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ offer.salary }}</mat-card-subtitle>
+                            <mat-card-subtitle>Salary: {{ offer.salary }}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                {{ offer.description }}
+                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Worker: {{ offer.workerAssigned?.name }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Address: {{ offer.workplaceAddress }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content><p>
+                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -183,19 +267,40 @@
                     cdkDrag
                 >
                     <mat-card>
+                        <div class="handle" cdkDragHandle>
+                            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                        </div>
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
                             <mat-card-title>{{ offer.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ offer.salary }}</mat-card-subtitle>
+                            <mat-card-subtitle>Salary: {{ offer.salary }}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                {{ offer.description }}
+                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Worker: {{ offer.workerAssigned?.name }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Address: {{ offer.workplaceAddress }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content><p>
+                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -209,15 +314,15 @@
             
                     <span class="spacer"></span>
             
-                    <button mat-icon-button (click)="getOffers()">
+                    <button title="Update the board" mat-icon-button (click)="getOffers()">
                         <mat-icon>sync</mat-icon>
                     </button>
             
-                    <button mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+                    <button title="Add an offer" mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                     
-                    <button mat-icon-button routerLink="/session" *ngIf="!((stateSS.session$ | async)?.token !== '')">
+                    <button title="Add an offer" mat-icon-button routerLink="/session" *ngIf="!((stateSS.session$ | async)?.token !== '')">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                 </mat-toolbar>
@@ -237,19 +342,40 @@
                     cdkDrag
                 >
                     <mat-card>
+                        <div class="handle" cdkDragHandle>
+                            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                        </div>
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
                             <mat-card-title>{{ offer.title }}</mat-card-title>
-                            <mat-card-subtitle>{{ offer.salary }}</mat-card-subtitle>
+                            <mat-card-subtitle>Salary: {{ offer.salary }}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                {{ offer.description }}
+                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Worker: {{ offer.workerAssigned?.name }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content>
+                            <p>
+                                Address: {{ offer.workplaceAddress }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content><p>
+                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -257,33 +383,3 @@
         </div>
     </div>
 </main>
-
-
-
-<!-- <div *ngFor="let offer of stateSS.offers$ | async; trackBy: getIdTrackFn">
-
-    <div style="background-color: blanchedalmond;">
-        <p>status: <span style="background-color: aquamarine">{{ offer.status }}</span></p>
-        <p>abandoned: <span style="background-color: aquamarine">{{ offer.abandoned }}</span></p>
-        <p>title: <span style="background-color: aquamarine">{{ offer.title }}</span></p>
-        <p>workplaceAddress: <span style="background-color: aquamarine">{{ offer.workplaceAddress }}</span></p>
-        <p>requirements: <span style="background-color: aquamarine">{{ offer.requirements }}</span></p>
-        <p>Worker name: <span style="background-color: aquamarine">{{ offer.worker?.name }}</span></p>
-        <p>Worker role: <span style="background-color: aquamarine">{{ offer.worker?.role }}</span></p>
-        <p>Worker creationDate: <span style="background-color: aquamarine">{{ offer.worker?.creationDate }}</span></p>
-        <p>Recruiter name: <span style="background-color: aquamarine">{{ offer.recruiter?.recruiterName }}</span></p>
-        <p>Recruiter role: <span style="background-color: aquamarine">{{ offer.recruiter?.role }}</span></p>
-        <p>Recruiter creationDate: <span style="background-color: aquamarine">{{ offer.recruiter?.creationDate }}</span></p>
-        <p>corporationName: <span style="background-color: aquamarine">{{ offer.recruiter?.corporationName }}</span></p>
-        <p>descriptionCorporate: <span style="background-color: aquamarine">{{ offer.recruiter?.descriptionCorporate }}</span></p>
-        <p>international: <span style="background-color: aquamarine">{{ offer.recruiter?.international }}</span></p>
-        <p>Salary: <span style="background-color: aquamarine">{{ offer.salary }}</span></p>
-        <p>Date: <span style="background-color: aquamarine">{{ offer.creationDate }}</span></p>
-        <p>Description: <span style="background-color: aquamarine">{{ offer.description }}</span></p>
-    </div>
-</div> -->
-
-<!-- <p>Offers:</p>
-<pre>
-    {{ stateSS.offers$ | async | json }}
-</pre> -->

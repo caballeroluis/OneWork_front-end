@@ -1,4 +1,5 @@
 <header>
+    <mat-progress-bar *ngIf="(stateSS.userInterface$ | async)?.showLoader" mode="indeterminate"></mat-progress-bar>
     <mat-toolbar>
         <button mat-icon-button class="icon" (click)="sidenavToggle()">
             <mat-icon>menu</mat-icon>
@@ -8,19 +9,23 @@
     
         <span class="spacer"></span>
     
-        <button mat-icon-button (click)="printState()" *ngIf="!env.production">
+        <button title="Print app state in console" mat-icon-button (click)="printState()" *ngIf="(stateSS.userInterface$ | async)?.showDevTools">
             <mat-icon>remove_red_eye</mat-icon>
+        </button>
+    
+        <button title="Clean app state" mat-icon-button (click)="bin()" *ngIf="(stateSS.userInterface$ | async)?.showDevTools">
+            <mat-icon>restore_from_trash</mat-icon>
         </button>
         
         <span class="spacer"></span>
     
-        <button mat-icon-button [matMenuTriggerFor]="menu">
+        <button [ngClass]="{'user-loged': !((stateSS.session$ | async)?.token === '')}" mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>person</mat-icon>
         </button>
     
         <mat-menu #menu="matMenu">
             <button mat-menu-item routerLink="/session/profile" *ngIf="!((stateSS.session$ | async)?.token === '')">
-                <mat-icon style="color: rgb(82, 189, 82)">fiber_manual_record</mat-icon>
+                <mat-icon>person</mat-icon>
                 <span>{{ (stateSS.session$ | async)?.user?.email }}</span>
             </button>
     
@@ -48,10 +53,15 @@
                 <span>Change password</span>
             </button>
     
-            <button mat-menu-item routerLink="/session/login" *ngIf="(stateSS.session$ | async)?.token" (click)="stateSS.clear()">
+            <button mat-menu-item routerLink="/session/login" *ngIf="(stateSS.session$ | async)?.token" (click)="sessionSS.logout()">
                 <!-- // TODO: hacer llamada logout en sessionStoreService -->
                 <mat-icon>launch</mat-icon>
                 <span>Logout</span>
+            </button>
+    
+            <button mat-menu-item (click)="this.stateSS.userInterface.showDevTools = !this.stateSS.userInterface.showDevTools!">
+                <mat-icon>devices</mat-icon>
+                <span>Dev tools</span>
             </button>
         </mat-menu>
     </mat-toolbar>

@@ -8,17 +8,18 @@ $app-padding: 12px;
 }
 
 .list {
-  padding: $app-padding;
+  padding-right: $app-padding;
 }
 
 .list-header {
   mat-toolbar {
+    height: $tool-bar-heigth;
     border-radius: 15px 15px 0 0;
   }
 }
 
 .list-body {
-  height: calc(100vh - #{$tool-bar-heigth} - 136px);
+  height: calc(100vh - #{$tool-bar-heigth} - 115px);
   overflow-y: scroll;
   padding: $app-padding;
   background-color: white;
@@ -29,17 +30,25 @@ $app-padding: 12px;
 
 .mat-card {
   width: 100%;
+  p {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+            line-clamp: 3; 
+    -webkit-box-orient: vertical;
+ }
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('/../../assets/images/people.svg');
   background-size: cover;
 }
 
 /* CSS Grid */
 
 .list-grid {
-  padding: $app-padding;
   display: grid;
   grid-template-columns: minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px) minmax(320px, 550px); 
   grid-template-rows: 1fr;
@@ -77,7 +86,6 @@ $app-padding: 12px;
   width: 100%;
   margin-bottom: 12px;
   display: flex;
-  cursor: move;
 }
 
 .drag-box:last-child {
@@ -104,4 +112,14 @@ $app-padding: 12px;
 
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.handle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ccc;
+  cursor: grab;
+  width: 24px;
+  height: 24px;
 }

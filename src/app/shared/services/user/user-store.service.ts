@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '@shared/models';
 import { UserService } from '@shared/services';
-import { StateStoreService } from '@core/services';
+import { NotificationService, StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
 
 @Injectable({
@@ -11,13 +11,15 @@ export class UserStoreService {
 
   constructor(
     private userService: UserService,
-    private stateSS: StateStoreService
+    private stateSS: StateStoreService,
+    private notificationService: NotificationService
   ) { }
   
   getUsers() {
     this.userService.getUsers().subscribe(
       (response: CustomResponses) => {
         this.stateSS.users = response.results as User[];
+        this.notificationService.showSuccess('User list has been updated');
       },
       (error: any) => {
         throw new Error(error);
@@ -28,7 +30,7 @@ export class UserStoreService {
   editUser(user: User) {
     this.userService.editUser(user).subscribe(
       (response: CustomResponses) => {
-        
+        this.notificationService.showSuccess('User has been updated');
       },
       (error: any) => {
         throw new Error(error);
@@ -44,11 +46,12 @@ export class UserStoreService {
         if (this.stateSS.session.user._id === user._id) {
           this.stateSS.clear();
         }
+        this.notificationService.showSuccess('User has been deleted');
       },
       (error: any) => {
+        this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
         throw new Error(error);
       }
     );
   }
-
 }

@@ -3,6 +3,10 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
     <label>
+        <p>creationDate: {{offer.creationDate | date}}</p>
+    </label><br>
+
+    <label>
         <p>salary</p>
         <input type="number" placeholder="Offer salary" formControlName="salary">
     </label><br>
@@ -34,28 +38,28 @@
     
     <mat-datepicker #picker></mat-datepicker>
     <mat-label>videoCallDate </mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="videoCallDate">
+    <input matInput [matDatepicker]="picker" formControlName="videoCallDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     
-    <mat-label>and time</mat-label>
-        <input type="time" formControlName="videoCallHour" matInput>
-    <br>
+    <mat-label>at</mat-label>
+     {{ offer.videoCallDate | date:'HH:mm' }} or: 
+    <input type="time" formControlName="videoCallHour" matInput><br>
 
     <label>
         <p>description</p>
         <textarea placeholder="Offer description" formControlName="description" rows="8"></textarea>
     </label><br>
 
-    <mat-form-field *ngIf="!workerAssignedId" appearance="fill">
+    <mat-form-field appearance="fill">
         <mat-label>Worker</mat-label>
-        <mat-select formControlName="worker">
-            <mat-option [value]="worker" *ngFor="let worker of (stateSS.workers$ | async); trackBy: getIdTrackFn" class="example-header-image">
+        <mat-select formControlName="workerAssignedId">
+            <mat-option [value]="worker._id" *ngFor="let worker of (stateSS.workers$ | async); trackBy: getIdTrackFn" class="example-header-image">
                 {{ worker.name }}
             </mat-option>
         </mat-select>
     </mat-form-field><br>
   
-    <button mat-raised-button color="secondary" type="submit">
-        Create
+    <button *ngIf="((stateSS.session$ | async)?.token !== '')" mat-raised-button color="secondary" type="submit">
+        Update
     </button><br><br><br>
 </form>

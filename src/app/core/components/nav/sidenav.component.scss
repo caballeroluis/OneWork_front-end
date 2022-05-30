@@ -1,13 +1,21 @@
 $tool-bar-heigth: 64px; // TODO: llevar a variables globales
 $app-padding: 12px;
 
-
-.sidenav-container {
+mat-drawer-content {
+  width: auto;
   height: calc(100vh - #{$tool-bar-heigth});
 }
 
-.sidenav {
-  padding: #{$app-padding};
+.mat-drawer-container {
+  height: calc(100vh - #{$tool-bar-heigth});
+}
+
+.mat-drawer-content {
+  padding: $app-padding;
+}
+
+.mat-drawer {
+  padding: $app-padding;
   width: calc(144px + 12px * 2);
   button {
     width: calc(100% - 8px);

@@ -28,6 +28,12 @@ export class ProfileComponent implements OnInit {
     this.reactiveForm = this.formBuilder.group(
       {
         name: [''],
+        surname1: [''],
+        surname2: [''],
+        recruiterName: [''],
+        recruiterSurname1: [''],
+        recruiterSurname2: [''],
+        contactData: [''],
         corporationName: [''],
         descriptionCorporate: [''],
         international: [false],
@@ -41,7 +47,20 @@ export class ProfileComponent implements OnInit {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateSS.session?.user._id
+    user._id = this.stateSS.session?.user._id;
+    if (this.stateSS.session.user?.role === 'recruiter') {
+      delete user.name;
+      delete user.surname1;
+      delete user.surname2;
+    }
+    if (this.stateSS.session.user?.role === 'worker') {
+      delete user.recruiterName;
+      delete user.recruiterSurname1;
+      delete user.recruiterSurname2;
+      delete user.corporationName;
+      delete user.descriptionCorporate;
+      delete user.international;
+    } 
 
     if (this.reactiveForm.valid) {
       this.sessionSS.updateUserProfile(user);

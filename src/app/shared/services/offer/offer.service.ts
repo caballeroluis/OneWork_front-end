@@ -36,4 +36,27 @@ export class OfferService {
     );
   }
 
+  editOffer(offer: Offer): Observable<any> {
+    let offerEdited: any;
+    offerEdited = {
+      ...offer,
+      recruiterAssigned: offer.recruiterAssignedId, // TODO: hacer cuando cambie la api
+      workerAssigned: offer.workerAssignedId
+    }
+    delete offerEdited.recruiterAssignedId;
+    delete offerEdited.workerAssignedId;
+
+    return this.http.put(
+      environment.apiUrl +
+        "/api/offers/" + offer._id,
+        offerEdited
+    );
+  }
+
+  deleteOffer(offer: Offer): Observable<any> {
+    return this.http.delete(
+      environment.apiUrl + '/api/offers/' + offer._id
+    );
+  }
+
 }

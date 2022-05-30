@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://onework-pre.servequake.net',
+  apiUrl: 'https://onework-pre.servequake.com',
   mock: false
 };

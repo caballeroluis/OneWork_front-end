@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://onework.sytes.net',
+  apiUrl: 'https://onework.sytes.net',
   mock: false
 };

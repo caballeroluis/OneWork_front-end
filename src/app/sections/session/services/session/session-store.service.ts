@@ -25,7 +25,7 @@ export class SessionStoreService {
       (response: CustomResponses) => {
         this.stateSS.users = [
           ...this.stateSS.users,
-          response.result as User
+          response.result as User // TODO: revisar, porque no parece actualizar el state
         ];
         
         // this.router.navigate(['session', 'profile']);

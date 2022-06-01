@@ -22,32 +22,28 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       retry(0),
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          this.stateSS.clear(); // TODO: implementar refresh token y borrar esta línea
-          return throwError(error);
+      catchError((errorResponse: HttpErrorResponse) => {
+        if (errorResponse.status === 401) {
+          notifier.showError(errorResponse.error.msg);
+          return throwError(errorResponse);
         }
 
-        if (error.error instanceof ErrorEvent) {
+        if (errorResponse.error instanceof ErrorEvent) {
           // client-side error
-          notifier.showError(error.error.message);
+          notifier.showError(errorResponse.error.message);
         } else { 
           // server-side error
-          if (error.error.message!) {
-            notifier.showError(error.error.message);
+          if (errorResponse.error.msg!) {
+            notifier.showError(errorResponse.error.msg);
           }
 
-          if (error.error.errors?.length > 0) {
-            error.error.errors.forEach((_error: { msg: string; }) => {
+          if (errorResponse.error.errors?.length > 0) {
+            errorResponse.error.errors.forEach((_error: { msg: string; }) => {
               notifier.showError(_error.msg);
             });
-          } else {
-            notifier.showError(error.error.errors.msg);
           }
-          
-          return throwError(error);
         }
-        return throwError(error);
+        return throwError(errorResponse);
       })
     )
   }

@@ -12,8 +12,9 @@ export class User {
   recruiterName?: string;
   recruiterSurname1?: string;
   recruiterSurname2?: string;
-  active?: string;
+  active?: boolean;
   role?: string;
+  verified?: boolean;
   contactData?: string;
   creationDate?: string;
   password?: string;

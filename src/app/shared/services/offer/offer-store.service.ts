@@ -29,7 +29,6 @@ export class OfferStoreService {
         // });
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -46,7 +45,6 @@ export class OfferStoreService {
         this.notificationService.showSuccess('Offer has been created');
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -64,7 +62,6 @@ export class OfferStoreService {
       },
       (error: any) => {
         this.getOffers(); // TODO: hacer quizá que no sea necesario esto
-        throw new Error(error);
       }
     );
   }
@@ -78,7 +75,6 @@ export class OfferStoreService {
       },
       (error: any) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
-        throw new Error(error);
       }
     );
   }
@@ -91,7 +87,6 @@ export class OfferStoreService {
       },
       (error: any) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
-        throw new Error(error);
       }
     );
   }

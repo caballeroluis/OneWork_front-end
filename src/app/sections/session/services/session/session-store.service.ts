@@ -32,7 +32,6 @@ export class SessionStoreService {
         this.notificationService.showSuccess('User has been registered');
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -49,7 +48,6 @@ export class SessionStoreService {
         this.notificationService.showSuccess('User has been loged');
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -67,7 +65,6 @@ export class SessionStoreService {
       },
       (error: any) => {
         this.stateSS.clear(); // TODO: pendiente quitar esta línea cuando funcione en la API
-        throw new Error(error);
       }
     );
   }
@@ -84,7 +81,6 @@ export class SessionStoreService {
         this.offerSS.getOffers();
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -100,7 +96,6 @@ export class SessionStoreService {
         this.notificationService.showSuccess('Password has been updated');
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -116,7 +111,6 @@ export class SessionStoreService {
         this.notificationService.showSuccess('Email has been updated');
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }

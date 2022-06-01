@@ -22,7 +22,6 @@ export class UserStoreService {
         // this.notificationService.showSuccess('User list has been updated');
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -33,7 +32,6 @@ export class UserStoreService {
         this.notificationService.showSuccess('User has been updated');
       },
       (error: any) => {
-        throw new Error(error);
       }
     );
   }
@@ -50,7 +48,6 @@ export class UserStoreService {
       },
       (error: any) => {
         this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
-        throw new Error(error);
       }
     );
   }

@@ -19,7 +19,7 @@ export class UserStoreService {
     this.userService.getUsers().subscribe(
       (response: CustomResponses) => {
         this.stateSS.users = response.results as User[];
-        this.notificationService.showSuccess('User list has been updated');
+        // this.notificationService.showSuccess('User list has been updated');
       },
       (error: any) => {
         throw new Error(error);

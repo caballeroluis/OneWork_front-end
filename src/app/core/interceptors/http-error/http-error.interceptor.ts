@@ -31,6 +31,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         if (errorResponse.error instanceof ErrorEvent) {
           // client-side error
           notifier.showError(errorResponse.error.message);
+          // notifier.showError(errorResponse.error.msg);
         } else { 
           // server-side error
           if (errorResponse.error.msg!) {

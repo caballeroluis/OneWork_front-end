@@ -28,7 +28,7 @@ const routes: Routes = [ // TODO: meter role guards
     loadChildren: () => import('./sections/project/project.module').then( m => m.ProjectModule)
   },
   {
-    path: 'privacy-policy',
+    path: 'terms-of-service',
     loadChildren: () => import('./sections/privacy/privacy.module').then( m => m.PrivacyModule)
   }
 ];

@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
+  host?: string;
+
   constructor( ) { }
+  
+  ngAfterViewInit() {
+    this.host = window.location.host;
+  }
 
 }

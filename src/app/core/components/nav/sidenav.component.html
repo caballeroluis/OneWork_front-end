@@ -16,7 +16,7 @@
                 <p><button mat-raised-button routerLink="/project">The project</button></p>
                 <p><button mat-raised-button routerLink="/users" *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">Admin</button></p>
             </ng-template>
-            <p routerLink="/privacy-policy" class="bottomLink">Privacy policy</p>
+            <p routerLink="/terms-of-service" class="bottomLink">Terms of service</p>
         </nav>
     </mat-drawer>
 

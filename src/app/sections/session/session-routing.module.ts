@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'change-password', component: ChangePasswordComponent
   },
   {
-    path: 'change-email', component: ChangeEmailComponent
+    path: 'change-username', component: ChangeEmailComponent
   },
   {
     path: '', redirectTo: 'login'

@@ -2,18 +2,18 @@
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
     <label>
-        <span>username</span>
+        <span>Username: </span>
         <input type="text" placeholder="Your username" formControlName="email">
     </label><br>
 
     <label>
-        <span>password</span>
+        <span>Password: </span>
         <input type="password" placeholder="Your password" formControlName="password">
-    </label><br>
+    </label><br><br>
 
     <button mat-raised-button color="secondary" type="submit">
         Login
-    </button>
+    </button><br><br>
 
     <p>
         New to Onework? <a routerLink="/session/register">Create an account</a>.

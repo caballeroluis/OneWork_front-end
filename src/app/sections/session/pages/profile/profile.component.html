@@ -3,12 +3,12 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
   
     <label *ngIf="(stateSS.session$ | async)?.user?.role === 'worker'">
-        <span>Name: </span>
+        <span>Pseudonym: </span>
         <input type="text" placeholder="Your name" formControlName="name"><br>
     </label>
   
     <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
-        <span>Name: </span>
+        <span>Pseudonym: </span>
         <input type="text" placeholder="Your name" formControlName="recruiterName"><br>
     </label>
   

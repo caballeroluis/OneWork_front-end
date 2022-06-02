@@ -14,7 +14,7 @@
         <p *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">Username: <span >{{ user.email }}</span></p>
         <!-- <p>Contact Data: <span >{{ user.contactData }}</span></p> -->
         <p *ngIf="user?.role === 'worker'">Pseudonym: <span >{{ user.name }}</span><img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
-        <p *ngIf="user?.role === 'recruiter'">Recruiter name: <span >{{ user.recruiterName }}</span><img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
+        <p *ngIf="user?.role === 'recruiter'">Pseudonym: <span >{{ user.recruiterName }}</span><img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
         <p *ngIf="user?.role === 'recruiter'">Description corporate: <span >{{ user.descriptionCorporate }}</span></p>
         <p *ngIf="user?.role === 'recruiter'">International: <span >{{ user.international }}</span></p>
         <p *ngIf="user?.role === 'recruiter'">Corporation name: <span >{{ user.corporationName }}</span></p>

@@ -5,7 +5,7 @@ import { SessionService } from '@sections/session/services';
 import { Session } from '@sections/session/models';
 import { NotificationService, StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
-import { OfferStoreService } from '@shared/services';
+import { OfferStoreService, UserStoreService } from '@shared/services';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class SessionStoreService {
   constructor(
     private router: Router,
     private sessionService: SessionService,
+    private userSS: UserStoreService,
     private offerSS: OfferStoreService,
     private stateSS: StateStoreService,
     private notificationService: NotificationService
@@ -23,11 +24,8 @@ export class SessionStoreService {
   register(user: User) {
     this.sessionService.register(user).subscribe(
       (response: CustomResponses) => {
-        this.stateSS.users = [
-          ...this.stateSS.users,
-          response.result as User // TODO: revisar, porque no parece actualizar el state
-        ];
-        
+        this.userSS.getUsers(); // this.stateSS.users.push(response.result as User); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
+
         // this.router.navigate(['session', 'profile']);
         this.notificationService.showSuccess('User has been registered');
       },

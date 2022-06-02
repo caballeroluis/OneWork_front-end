@@ -18,6 +18,18 @@ const routes: Routes = [ // TODO: meter role guards
   {
     path: 'session',
     loadChildren: () => import('./sections/session/session.module').then( m => m.SessionModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./sections/help/help.module').then( m => m.HelpModule)
+  },
+  {
+    path: 'project',
+    loadChildren: () => import('./sections/project/project.module').then( m => m.ProjectModule)
+  },
+  {
+    path: 'privacy-policy',
+    loadChildren: () => import('./sections/privacy/privacy.module').then( m => m.PrivacyModule)
   }
 ];
 @NgModule({

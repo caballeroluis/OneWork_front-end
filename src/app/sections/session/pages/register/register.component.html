@@ -1,5 +1,7 @@
 <session-header></session-header>
 
+<p *ngIf="!user.role!">Choose a role:</p>
+
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
     <mat-form-field appearance="fill">
         <mat-label>Role</mat-label>
@@ -12,72 +14,52 @@
             </mat-option>
         </mat-select>
     </mat-form-field><br>
+  
+    <div *ngIf="user.role === 'recruiter' || user.role === 'worker'">
+
+        <p>Please don't use personal information, use acronyms instead.</p>
+
+        <label>
+            <span>@username: </span>
+            <input type="text" placeholder="Your username" formControlName="email">
+        </label><br>
+        
+        <label>
+            <span>Password: </span>
+            <input type="password" placeholder="Your password" formControlName="password">
+        </label><br>
+    </div>
 
     <div *ngIf="user.role === 'recruiter'">
         <label>
-            <span>recruiterName</span>
-            <input type="text" placeholder="Your recruiterName" formControlName="recruiterName">
-        </label><br>
-        <label>
-            <span>surname1</span>
-            <input type="text" placeholder="Your surname1" formControlName="recruiterSurname1">
-        </label><br>
-        <label>
-            <span>surname2</span>
-            <input type="text" placeholder="Your surname2" formControlName="recruiterSurname2">
+            <span>Name: </span>
+            <input type="text" placeholder="Your name" formControlName="recruiterName">
         </label><br>
   
         <label>
-            <span>corporation name</span>
+            <span>Corporation name: </span>
             <input type="text" placeholder="Your corporation name" formControlName="corporationName">
         </label><br>
   
         <label>
-            <span>description corporate</span>
-            <input type="text" placeholder="Your description corporate" formControlName="descriptionCorporate">
+            <span>Corporate description: </span><br>
+            <textarea placeholder="Your description corporate" formControlName="descriptionCorporate" rows="2"></textarea>
         </label><br>
       
         <label>
-            <span>international</span>
+            <span>Is international: </span>
             <input type="checkbox" formControlName="international">
         </label><br>
     </div>
 
     <div *ngIf="user.role === 'worker'">
         <label>
-            <span>name</span>
+            <span>Name: </span>
             <input type="text" placeholder="Your name" formControlName="name">
         </label><br>
-
-        <label>
-            <span>surname1</span>
-            <input type="text" placeholder="Your surname1" formControlName="surname1">
-        </label><br>
-
-        <label>
-            <span>surname2</span>
-            <input type="text" placeholder="Your surname2" formControlName="surname2">
-        </label><br>
-    </div>
-  
-    <div *ngIf="user.role === 'recruiter' || user.role === 'worker'">
-        <label>
-            <span>email</span>
-            <input type="text" placeholder="Your email" formControlName="email">
-        </label><br>
-        
-        <label>
-            <span>password</span>
-            <input type="password" placeholder="Your password" formControlName="password">
-        </label><br>
+    </div><br>
       
-        <label>
-            <span>contactData</span>
-            <input type="text" placeholder="Your contactData" formControlName="contactData">
-        </label><br>
-      
-        <button mat-raised-button color="secondary" type="submit">
-            Register
-        </button>
-    </div>
+    <button *ngIf="user.role === 'recruiter' || user.role === 'worker'" mat-raised-button color="secondary" type="submit">
+        Register
+    </button>
 </form>

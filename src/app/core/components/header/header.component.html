@@ -43,9 +43,9 @@
     
             <mat-divider *ngIf="!((stateSS.session$ | async)?.token === '')"></mat-divider>
             
-            <button mat-menu-item routerLink="/session/change-email" *ngIf="(stateSS.session$ | async)?.token">
-                <mat-icon>mail</mat-icon>
-                <span>Change email</span>
+            <button mat-menu-item routerLink="/session/change-username" *ngIf="(stateSS.session$ | async)?.token">
+                <mat-icon>fingerprint</mat-icon>
+                <span>Change username</span>
             </button>
     
             <button mat-menu-item routerLink="/session/change-password" *ngIf="(stateSS.session$ | async)?.token">

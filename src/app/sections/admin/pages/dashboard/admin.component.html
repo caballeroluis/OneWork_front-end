@@ -11,7 +11,7 @@
             Active:
             <span *ngIf="user.active" style="background-color: palegreen;">{{ user.active }}</span>
         </p>
-        <p *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">Email: <span >{{ user.email }}</span></p>
+        <p *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">username: <span >{{ user.email }}</span></p>
         <!-- <p>Contact Data: <span >{{ user.contactData }}</span></p> -->
         <p *ngIf="user?.role === 'worker'">Name: <span >{{ user.name }}</span><img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
         <p *ngIf="user?.role === 'recruiter'">Recruiter name: <span >{{ user.recruiterName }}</span><img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>

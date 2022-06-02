@@ -108,7 +108,7 @@ export class SessionStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
-        this.notificationService.showSuccess('Email has been updated');
+        this.notificationService.showSuccess('Username has been updated');
       },
       (error: any) => {
       }

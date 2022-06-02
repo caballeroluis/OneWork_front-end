@@ -16,11 +16,6 @@
         <span>Corporation name: </span>
         <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
     </label>
-  
-    <label>
-        <span>Contact data: </span><br>
-        <textarea placeholder="Your contact data" formControlName="contactData" rows="2"></textarea>
-    </label><br>
 
     <label *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
         <span>Description corporate: </span><br>

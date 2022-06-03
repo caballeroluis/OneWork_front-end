@@ -35,15 +35,31 @@ export class SessionStoreService {
   }
 
   login(user: User) {
+    this.stateSS.clear();
     this.sessionService.login(user).subscribe(
       (response: Session) => {
-        this.stateSS.clear();
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
           
           this.router.navigate(['board']);
         }
         this.notificationService.showSuccess('User has been loged');
+      },
+      (error: any) => {
+      }
+    );
+  }
+
+  refreshToken() {
+    this.sessionService.refreshToken(this.stateSS.session).subscribe(
+      (response: Session) => {
+        if (response.token?.length > 0) {
+          this.stateSS.session = {
+            ...this.stateSS.session,
+            refreshToken: response.refreshToken? response.refreshToken : this.stateSS.session.refreshToken, // TODO: acomodar esto tras ver qué pasa con la API y el refreshtoken
+            token: response.token
+          };
+        }
       },
       (error: any) => {
       }

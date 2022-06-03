@@ -3,32 +3,32 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
     <label>
-        <p>salary: </p>
+        <p>Salary: </p>
         <input type="number" placeholder="Offer salary" formControlName="salary">
     </label><br>
     
     <label>
-        <p>title: </p>
+        <p>Title: </p>
         <textarea placeholder="Offer title" formControlName="title" rows="1"></textarea>
     </label><br>
     
     <label>
-        <p>requirements: </p>
-        <textarea placeholder="Offer requirements" formControlName="requirements" rows="8"></textarea>
+        <p>Requirements: </p>
+        <textarea placeholder="Offer requirements" formControlName="requirements" rows="4"></textarea>
     </label><br>
   
     <label>
-        <span>technicianChecked: </span>
+        <span>Technical interview conducted: </span>
         <input type="checkbox" formControlName="technicianChecked"><br>
     </label>
     
     <label>
-        <p>workplaceAddress: </p>
+        <p>Workplace address: </p>
         <textarea placeholder="Offer workplaceAddress" formControlName="workplaceAddress" rows="2"></textarea>
     </label><br>
 
     <label>
-        <p>videoCallLink: </p>
+        <p>Videocall link: </p>
         <input type="text" placeholder="Offer videoCallLink" formControlName="videoCallLink">
     </label><br>
 
@@ -38,7 +38,7 @@
     </label><br>
     
     <mat-datepicker #picker></mat-datepicker>
-    <mat-label>videoCallDate: </mat-label>
+    <mat-label>Videocall date: </mat-label>
         <input matInput [matDatepicker]="picker" formControlName="videoCallDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     
@@ -47,8 +47,8 @@
     <br>
 
     <label>
-        <p>description: </p>
-        <textarea placeholder="Offer description" formControlName="description" rows="8"></textarea>
+        <p>Description: </p>
+        <textarea placeholder="Offer description" formControlName="description" rows="4"></textarea>
     </label><br>
 
     <mat-form-field *ngIf="!workerAssignedId" appearance="fill">

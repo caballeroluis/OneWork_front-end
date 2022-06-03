@@ -7,12 +7,14 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
-  host?: string;
+  hostname?: string;
+  owner?: string = 'Luis Caballero';
+  ownerMail?: string = 'fakeemail@example.com';
 
   constructor( ) { }
   
   ngAfterViewInit() {
-    this.host = window.location.host;
+    this.hostname = window.location.host;
   }
 
 }

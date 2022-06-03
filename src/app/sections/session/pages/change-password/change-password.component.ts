@@ -27,7 +27,7 @@ export class ChangePasswordComponent implements OnInit {
   formatReactiveForm() {
     this.reactiveForm = this.formBuilder.group(
       {
-        password: ['']
+        password: [''] // TODO: confirm password field
       }
     );
   }

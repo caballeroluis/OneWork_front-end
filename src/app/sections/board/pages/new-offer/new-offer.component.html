@@ -3,33 +3,38 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
     <label>
-        <p>salary</p>
+        <p>salary: </p>
         <input type="number" placeholder="Offer salary" formControlName="salary">
     </label><br>
     
     <label>
-        <p>title</p>
+        <p>title: </p>
         <textarea placeholder="Offer title" formControlName="title" rows="1"></textarea>
     </label><br>
     
     <label>
-        <p>requirements</p>
+        <p>requirements: </p>
         <textarea placeholder="Offer requirements" formControlName="requirements" rows="8"></textarea>
     </label><br>
   
     <label>
-        <span>technicianChecked</span>
+        <span>technicianChecked: </span>
         <input type="checkbox" formControlName="technicianChecked"><br>
     </label>
     
     <label>
-        <p>workplaceAddress</p>
+        <p>workplaceAddress: </p>
         <textarea placeholder="Offer workplaceAddress" formControlName="workplaceAddress" rows="2"></textarea>
     </label><br>
 
     <label>
-        <p>videoCallLink</p>
-        <textarea placeholder="Offer videoCallLink" formControlName="videoCallLink" rows="1"></textarea>
+        <p>videoCallLink: </p>
+        <input type="text" placeholder="Offer videoCallLink" formControlName="videoCallLink">
+    </label><br>
+
+    <label>
+        <p>Job offer link: </p>
+        <input type="text" placeholder="Offer offerLink" formControlName="offerLink">
     </label><br>
     
     <mat-datepicker #picker></mat-datepicker>
@@ -42,7 +47,7 @@
     <br>
 
     <label>
-        <p>description</p>
+        <p>description: </p>
         <textarea placeholder="Offer description" formControlName="description" rows="8"></textarea>
     </label><br>
 

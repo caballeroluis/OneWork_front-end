@@ -43,6 +43,7 @@ export class EditOfferComponent implements OnInit {
         technicianChecked: [false],
         workplaceAddress: [''],
         videoCallLink: [''],
+        offerLink: [''],
         videoCallDate: [''],
         videoCallHour: [''],
         description: [''],

@@ -48,6 +48,7 @@ export class NewOfferComponent implements OnInit {
         technicianChecked: [false],
         workplaceAddress: [''],
         videoCallLink: [''],
+        offerLink: [''],
         videoCallDate: [new Date()], // TODO: probar https://www.htmlelements.com/docs/datetimepicker
         videoCallHour: [new Date().getHours() + ':' + new Date().getMinutes()],
         description: [''],

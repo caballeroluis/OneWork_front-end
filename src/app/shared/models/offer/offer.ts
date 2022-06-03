@@ -11,6 +11,7 @@ export class Offer {
   technicianChecked?: boolean;
   workplaceAddress?: string;
   videoCallLink?: string;
+  offerLink?: string;
   videoCallDate?: string;
   videoCallHour?: string;
   description?: string;

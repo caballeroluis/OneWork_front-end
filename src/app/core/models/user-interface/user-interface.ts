@@ -1,3 +1,5 @@
+import { environment } from '@env/environment';
+
 export class UserInterface {
 
   smallScreen: boolean;
@@ -9,7 +11,7 @@ export class UserInterface {
     this.smallScreen = window.innerWidth < 480;
     this.showLoader = false;
     this.coreSidenavClosed = this.smallScreen;
-    this.showDevTools = false;
+    this.showDevTools = environment.showDevTools;
   }
 
 }

@@ -1,3 +1,10 @@
+$tool-bar-heigth: 64px; // TODO: llevar a variables globales
+$app-padding: 12px;
+
+.app-summary {
+  padding-bottom: $tool-bar-heigth;
+}
+
 .bottomLink {
   position: fixed;
   right: 15px;

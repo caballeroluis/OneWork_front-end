@@ -59,6 +59,7 @@ export class SessionStoreService {
             refreshToken: response.refreshToken? response.refreshToken : this.stateSS.session.refreshToken, // TODO: acomodar esto tras ver qué pasa con la API y el refreshtoken
             token: response.token
           };
+          this.notificationService.showError('The expired session has been renewed. Please try againn');
         }
       },
       (error: any) => {

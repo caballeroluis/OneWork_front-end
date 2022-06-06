@@ -25,11 +25,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       retry(0),
       catchError((errorResponse: HttpErrorResponse) => {
         if (errorResponse.status === 401) {
-          if (errorResponse.error.msg === 'jwt expired' || errorResponse.error.msg === 'You are not authorized to perform this action') { // TODO: acomodar esto tras ver qué pasa con la API y el refreshtoken
+          if (errorResponse.error.msg.includes('expired')) {
             this.stateSS.session = {
-            ...this.stateSS.session,
-            token: ''
-          };
+              ...this.stateSS.session,
+              token: ''
+            };
             this.sessionSS.refreshToken();
           } else {
             notifier.showError(errorResponse.error.msg);

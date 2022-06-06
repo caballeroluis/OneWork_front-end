@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { User } from '@shared/models';
+import { Session } from '@sections/session/models';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,15 @@ export class SessionService {
     return this.http.post(
       environment.apiUrl + '/api/session/login',
       user
+    );
+  }
+
+  refreshToken(session: Session): Observable<any> {
+    return this.http.post(
+      environment.apiUrl + '/api/session/refreshToken',
+      {
+        refreshToken: session.refreshToken
+      }
     );
   }
 

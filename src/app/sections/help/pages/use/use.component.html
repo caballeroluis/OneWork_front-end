@@ -1,4 +1,30 @@
-<p>To create an offer, you must <a routerLink="/session/register">create an account</a> of role Recruiter and login with it. Next, you need to go to the user list and select a worker user to create an offer.</p>
-
-<p>Validated users will have a blue badge.</p>
-<p>To validate your username, contact the administrators.</p>
+<div class="app-use">
+    <article>
+        <div>
+            <header>
+                <h1>How to use</h1>
+            </header>
+        </div>
+    
+        <hr>
+    
+        <div>
+            <ol>
+                <li>
+                    <h3><strong>Sign up</strong></h3>
+                    <p>To create an offer, you must <a routerLink="/session/register">create an account</a> of role Recruiter and login with it. Next, you need to navigate to the <a routerLink="/users">user list</a> and select a Worker user to create an offer.</p>
+                    <p>To be available as a Worker, you will need <a routerLink="/session/register">to create a Worker role account</a>.</p>
+                </li>
+                <li>
+                    <h3><strong>Validated account</strong></h3>
+                    <p>Validated users have a blue badge.</p>
+                    <p>To validate your username, contact the administrators by the following email address: <a [href]="'mailto:' + ownerMail">{{ ownerMail }}</a>.</p>
+                </li>
+                <li>
+                    <h3><strong>Delete account</strong></h3>
+                    <p>You can delete your account by clicking on the corresponding button in the <a routerLink="/users">user list</a> after logging in with your account.</p>
+                </li>
+            </ol>
+        </div>
+    </article>
+</div>

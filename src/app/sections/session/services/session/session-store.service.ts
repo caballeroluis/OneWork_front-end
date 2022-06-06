@@ -108,6 +108,7 @@ export class SessionStoreService {
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
         this.notificationService.showSuccess('Username has been updated');
+        this.offerSS.getOffers();
         this.userSS.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
       },
       (error: any) => {

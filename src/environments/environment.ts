@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  showDevTools: true,
   apiUrl: 'http://localhost:3000',
   mock: false
 };

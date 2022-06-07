@@ -11,10 +11,6 @@
             <!-- <p>Contact Data: <span >{{ user.contactData }}</span></p> -->
             <p *ngIf="user?.role === 'worker'">Pseudonym: <span >{{ user.name }}</span></p>
             <p *ngIf="user?.role === 'recruiter'">Pseudonym: <span >{{ user.recruiterName }}</span></p>
-            <p *ngIf="user?.role === 'recruiter'">Description corporate: <span >{{ user.descriptionCorporate }}</span></p>
-            <p *ngIf="user?.role === 'recruiter'">International: <span >{{ user.international }}</span></p>
-            <p *ngIf="user?.role === 'recruiter'">Corporation name: <span >{{ user.corporationName }}</span></p>
-            <p>Creation date: <span >{{ user.creationDate | date }}</span></p>
             
             <button mat-raised-button *ngIf="user?.role === 'worker' && (stateSS.session$ | async)?.user?.role === 'recruiter'" routerLink="/offers/new-offer/{{user._id}}">
                 Make an offer

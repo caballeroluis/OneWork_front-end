@@ -30,7 +30,8 @@ export class AuthInterceptor implements HttpInterceptor {
       request = req.clone({
         setHeaders: {
           authorization: `Bearer ${ token }`
-        }
+        },
+        url: (request.method !== 'GET' && this.stateSS.session.user.role === 'admin') ? request.url.replace('api/', 'api/admin/') : request.url
       });
     }
     

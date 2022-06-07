@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '@shared/models';
-import { SessionStoreService } from '@sections/session/services';
 import { StateStoreService } from '@core/services';
+import { UserStoreService } from '@shared/services';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    public sessionSS: SessionStoreService,
+    public userSS: UserStoreService,
     public stateSS: StateStoreService
   ) { }
 
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
     } 
 
     if (this.reactiveForm.valid) {
-      this.sessionSS.updateUserProfile(user);
+      this.userSS.updateUser(user);
     } else {
       throw new Error('Form error');
     }

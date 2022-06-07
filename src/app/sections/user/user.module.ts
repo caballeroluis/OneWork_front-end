@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
-import { UserComponent } from './pages/dashboard/user.component';
+import { UserComponent } from './pages/user/user.component';
 import { EditUserComponent, FooterComponent, HeaderComponent } from '@sections/user/components';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';

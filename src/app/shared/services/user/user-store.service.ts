@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '@shared/models';
-import { UserService } from '@shared/services';
+import { UserService, OfferStoreService } from '@shared/services';
 import { NotificationService, StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
 
@@ -12,6 +12,7 @@ export class UserStoreService {
   constructor(
     private userService: UserService,
     private stateSS: StateStoreService,
+    private offerSS: OfferStoreService,
     private notificationService: NotificationService
   ) { }
   
@@ -51,4 +52,54 @@ export class UserStoreService {
       }
     );
   }
+
+  updateUser(user: User) {
+    this.userService.updateUser(user).subscribe(
+      (response: CustomResponses) => {
+        this.stateSS.session.user = response.result as User;
+
+        this.stateSS.users[
+          this.stateSS.users.findIndex(_user => _user._id === user._id)
+        ] = user;
+        this.notificationService.showSuccess('Profile has been updated');
+        this.offerSS.getOffers();
+        this.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
+      },
+      (error: any) => {
+      }
+    );
+  }
+  
+  changePassword(user: User) {
+    this.userService.changePassword(user).subscribe(
+      (response: CustomResponses) => {
+        this.stateSS.session.user = response.result as User;
+        
+        this.stateSS.users[
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
+        ] = user;
+        this.notificationService.showSuccess('Password has been updated');
+      },
+      (error: any) => {
+      }
+    );
+  }
+  
+  changeEmail(user: User) {
+    this.userService.changeEmail(user).subscribe(
+      (response: CustomResponses) => {
+        this.stateSS.session.user = response.result as User;
+
+        this.stateSS.users[
+          this.stateSS.users.findIndex(_user => _user._id == user._id)
+        ] = user;
+        this.notificationService.showSuccess('Username has been updated');
+        this.offerSS.getOffers();
+        this.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
+      },
+      (error: any) => {
+      }
+    );
+  }
+
 }

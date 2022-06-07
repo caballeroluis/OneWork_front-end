@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '@shared/models';
-import { SessionStoreService } from '@sections/session/services';
+import { UserStoreService } from '@shared/services';
 import { StateStoreService } from '@core/services';
 
 @Component({
@@ -16,7 +16,7 @@ export class ChangePasswordComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private sessionSS: SessionStoreService,
+    private userSS: UserStoreService,
     private stateSS: StateStoreService
   ) { }
 
@@ -39,7 +39,7 @@ export class ChangePasswordComponent implements OnInit {
     user._id = this.stateSS.session?.user._id
 
     if (this.reactiveForm.valid) {
-      this.sessionSS.changePassword(user);
+      this.userSS.changePassword(user);
     } else {
       throw new Error('Form error');
     }

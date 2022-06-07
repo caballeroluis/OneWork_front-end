@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SessionStoreService } from '@sections/session/services';
+import { UserStoreService } from '@shared/services';
 import { User } from '@shared/models';
 import { StateStoreService } from '@core/services';
 
@@ -17,7 +17,7 @@ export class ChangeEmailComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private stateSS: StateStoreService,
-    private sessionSS: SessionStoreService
+    private userSS: UserStoreService
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class ChangeEmailComponent implements OnInit {
     user._id = this.stateSS.session?.user?._id
 
     if (this.reactiveForm.valid) {
-      this.sessionSS.changeEmail(user);
+      this.userSS.changeEmail(user);
     } else {
       throw new Error('Form error');
     }

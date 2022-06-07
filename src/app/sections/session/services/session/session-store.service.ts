@@ -16,7 +16,6 @@ export class SessionStoreService {
     private router: Router,
     private sessionService: SessionService,
     private userSS: UserStoreService,
-    private offerSS: OfferStoreService,
     private stateSS: StateStoreService,
     private notificationService: NotificationService
   ) { }
@@ -84,52 +83,4 @@ export class SessionStoreService {
     );
   }
 
-  updateUserProfile(user: User) {
-    this.sessionService.updateUserProfile(user).subscribe(
-      (response: CustomResponses) => {
-        this.stateSS.session.user = response.result as User;
-
-        this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user._id === user._id)
-        ] = user;
-        this.notificationService.showSuccess('Profile has been updated');
-        this.offerSS.getOffers();
-        this.userSS.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
-      },
-      (error: any) => {
-      }
-    );
-  }
-  
-  changePassword(user: User) {
-    this.sessionService.changePassword(user).subscribe(
-      (response: CustomResponses) => {
-        this.stateSS.session.user = response.result as User;
-        
-        this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user._id == user._id)
-        ] = user;
-        this.notificationService.showSuccess('Password has been updated');
-      },
-      (error: any) => {
-      }
-    );
-  }
-  
-  changeEmail(user: User) {
-    this.sessionService.changeEmail(user).subscribe(
-      (response: CustomResponses) => {
-        this.stateSS.session.user = response.result as User;
-
-        this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user._id == user._id)
-        ] = user;
-        this.notificationService.showSuccess('Username has been updated');
-        this.offerSS.getOffers();
-        this.userSS.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
-      },
-      (error: any) => {
-      }
-    );
-  }
 }

@@ -7,11 +7,11 @@ import { Observable, of, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  selector: 'app-offer',
+  templateUrl: './offer.component.html',
+  styleUrls: ['./offer.component.scss']
 })
-export class BoardComponent implements OnInit {
+export class OfferComponent implements OnInit {
 
   private offersSubscription!: Subscription;
 

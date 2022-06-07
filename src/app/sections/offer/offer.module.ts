@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BoardRoutingModule } from './board-routing.module';
-import { BoardComponent } from './pages/board/board.component';
+import { OfferRoutingModule } from './offer-routing.module';
+import { OfferComponent } from './pages/offer/offer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FooterComponent, HeaderComponent } from '@sections/board/components';
+import { FooterComponent, HeaderComponent } from '@sections/offer/components';
 import { NewOfferComponent } from './pages/new-offer/new-offer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,7 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
-    BoardComponent,
+    OfferComponent,
     HeaderComponent,
     FooterComponent,
     NewOfferComponent,
@@ -26,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   imports: [
     CommonModule,
-    BoardRoutingModule,
+    OfferRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -39,4 +39,4 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule
   ]
 })
-export class BoardModule { }
+export class OfferModule { }

@@ -21,7 +21,7 @@ export class OfferStoreService {
     this.offerService.getOffers().subscribe(
       (response: CustomResponses) => {
         this.stateSS.offers = response.results as Offer[];
-        // this.notificationService.showSuccess('The board has been updated'); // Todo: arreglar que los snackbars de success "tapen" (hagan desaparecer) a los de error
+        // this.notificationService.showSuccess('The offers have been updated'); // Todo: arreglar que los snackbars de success "tapen" (hagan desaparecer) a los de error
         // this.stateSS.offers.forEach(offer => {
         //   offer = {
         //     ...offer,
@@ -71,7 +71,7 @@ export class OfferStoreService {
       (response: CustomResponses) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
         this.notificationService.showSuccess('Offer has been updated');
-        this.router.navigate(['board']);
+        this.router.navigate(['offers']);
       },
       (error: any) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea

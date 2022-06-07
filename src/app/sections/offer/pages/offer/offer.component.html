@@ -1,4 +1,4 @@
-<board-header></board-header>
+<offer-header></offer-header>
 
 <main>
     <div class="list-grid" cdkDropListGroup>
@@ -60,7 +60,7 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
                             <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
@@ -126,7 +126,7 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
                             <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
@@ -192,7 +192,7 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
                             <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
@@ -258,7 +258,7 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
                             <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
@@ -324,7 +324,7 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
                             <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>
@@ -339,11 +339,11 @@
             
                     <span class="spacer"></span>
             
-                    <button title="Update the board" mat-icon-button (click)="getOffers()">
+                    <button title="Update the offers" mat-icon-button (click)="getOffers()">
                         <mat-icon>sync</mat-icon>
                     </button>
             
-                    <button title="Add an offer" mat-icon-button routerLink="/board/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
+                    <button title="Add an offer" mat-icon-button routerLink="/offers/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                     
@@ -404,7 +404,7 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/board/edit-offer/{{offer._id}}">DETAIL</button>
+                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
                             <button mat-button (click)="deleteOffer(offer)">DELETE</button>
                         </mat-card-actions>
                     </mat-card>

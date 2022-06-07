@@ -33,6 +33,7 @@ export class EditUserComponent implements OnInit {
     this.reactiveForm = this.formBuilder.group(
       {
         name: [''],
+        email: [''],
         surname1: [''],
         surname2: [''],
         recruiterName: [''],

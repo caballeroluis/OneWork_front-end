@@ -58,22 +58,37 @@ $app-padding: 12px;
 
 .accepted {
   grid-area: accepted;
+  .mat-chip {
+    background-color: #6699cc;
+  }
 }
 
 .technician-checked {
   grid-area: technician-checked;
+  .mat-chip {
+    background-color: #8ddee7;
+  }
 }
 
 .video-set {
   grid-area: video-set;
+  .mat-chip {
+    background-color: #ed9121;
+  }
 }
 
 .ready {
   grid-area: ready;
+  .mat-chip {
+    background-color: #3cb371;
+  }
 }
 
 .in-progress {
   grid-area: in-progress;
+  .mat-chip {
+    background-color: #9400d3;
+  }
 }
 
 .backlog {

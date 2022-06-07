@@ -5,7 +5,9 @@
         <div class="list accepted">
             <div class="list-header">
                 <mat-toolbar>
-                    <span mat-menu-item>Accepted</span>
+                    <mat-chip-list>
+                        <mat-chip selected>Accepted</mat-chip>
+                    </mat-chip-list>
                 </mat-toolbar>
             </div>
             <div
@@ -71,7 +73,9 @@
         <div class="list technician-checked">
             <div class="list-header">
                 <mat-toolbar>
-                    <span mat-menu-item>Technician checked</span>
+                    <mat-chip-list>
+                        <mat-chip selected>Technician checked</mat-chip>
+                    </mat-chip-list>
                 </mat-toolbar>
             </div>
             <div
@@ -137,7 +141,9 @@
         <div class="list video-set">
             <div class="list-header">
                 <mat-toolbar>
-                    <span mat-menu-item>Video set</span>
+                    <mat-chip-list>
+                        <mat-chip selected>Video set</mat-chip>
+                    </mat-chip-list>
                 </mat-toolbar>
             </div>
             <div
@@ -203,7 +209,9 @@
         <div class="list in-progress">
             <div class="list-header">
                 <mat-toolbar>
-                    <span mat-menu-item>In Progress</span>
+                    <mat-chip-list>
+                        <mat-chip selected>In Progress</mat-chip>
+                    </mat-chip-list>
                 </mat-toolbar>
             </div>
             <div
@@ -269,7 +277,9 @@
         <div class="list ready">
             <div class="list-header">
                 <mat-toolbar>
-                    <span mat-menu-item>Ready</span>
+                    <mat-chip-list>
+                        <mat-chip selected>Ready</mat-chip>
+                      </mat-chip-list>
                 </mat-toolbar>
             </div>
             <div
@@ -335,8 +345,9 @@
         <div class="list backlog">
             <div class="list-header">
                 <mat-toolbar>
-                    <span mat-menu-item>Backlog</span>
-            
+                    <mat-chip-list>
+                        <mat-chip>Backlog</mat-chip>
+                    </mat-chip-list>            
                     <span class="spacer"></span>
             
                     <button title="Update the offers" mat-icon-button (click)="getOffers()">

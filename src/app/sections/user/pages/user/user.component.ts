@@ -34,4 +34,9 @@ export class UserComponent {
     this.userSS.deleteUser(user);
   }
 
+  verifiedUser(user: User) {
+    user.verified = !user.verified;
+    this.userSS.verifiedUser(user);
+  }
+
 }

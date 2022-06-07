@@ -53,6 +53,18 @@ export class UserStoreService {
     );
   }
 
+  verifiedUser(user: User) {
+    this.userService.verifiedUser(user).subscribe(
+      (response: CustomResponses) => {
+        this.notificationService.showSuccess('User has been verified');
+        this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
+      },
+      (error: any) => {
+        this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
+      }
+    );
+  }
+
   updateUser(user: User) {
     this.userService.updateUser(user).subscribe(
       (response: CustomResponses) => {

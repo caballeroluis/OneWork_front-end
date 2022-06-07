@@ -16,7 +16,7 @@
           <p *ngIf="user?.role === 'recruiter'">Corporation name: <span >{{ user.corporationName }}</span></p>
           <p>Creation date: <span >{{ user.creationDate | date }}</span></p>
           
-          <button mat-raised-button *ngIf="user?.role === 'worker' && (stateSS.session$ | async)?.user?.role === 'recruiter'" routerLink="/board/new-offer/{{user._id}}">
+          <button mat-raised-button *ngIf="user?.role === 'worker' && (stateSS.session$ | async)?.user?.role === 'recruiter'" routerLink="/offers/new-offer/{{user._id}}">
               Make an offer
           </button>
   
@@ -25,6 +25,8 @@
           </button>
           
           <button mat-raised-button title="Delete account" (click)="deleteUser(user)" *ngIf="
+              !((stateSS.session$ | async)?.token === '') &&
+              (stateSS.session$ | async)?.user?._id === user._id ||
               (stateSS.session$ | async)?.user?.role === 'admin'
           ">
             Delete account

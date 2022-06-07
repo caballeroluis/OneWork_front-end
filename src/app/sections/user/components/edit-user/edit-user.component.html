@@ -27,11 +27,11 @@
         <input type="checkbox" formControlName="international"><br>
     </label>
   
-    <button mat-raised-button color="secondary" type="submit">
+    <button mat-raised-button *ngIf="!((stateSS.session$ | async)?.token === '')" color="secondary" type="submit">
         Update
     </button><br><br>
 
-    <p>
+    <p *ngIf="!((stateSS.session$ | async)?.token === '')">
         <a routerLink="/users">Delete account...</a>.
     </p>
 </form>

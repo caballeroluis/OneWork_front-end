@@ -1,4 +1,4 @@
-import { User } from "@shared/models";
+import { User } from '@shared/models';
 
 export class CustomResponses {
 

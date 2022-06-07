@@ -1,1 +1,21 @@
-<p>edit-user works!</p>
+<admin-header></admin-header>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
+    <label>
+        <span>Username (Visible to the public): </span>
+        <input type="text" placeholder="Your username" formControlName="email">
+    </label><br>
+    
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>Worker</mat-label>
+        <mat-select formControlName="workerAssignedId">
+            <mat-option [value]="worker._id" *ngFor="let worker of (stateSS.workers$ | async); trackBy: getIdTrackFn" class="example-header-image">
+                {{ worker.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field><br> -->
+  
+    <button *ngIf="((stateSS.session$ | async)?.token !== '')" mat-raised-button color="secondary" type="submit">
+        Update
+    </button><br><br><br>
+</form>

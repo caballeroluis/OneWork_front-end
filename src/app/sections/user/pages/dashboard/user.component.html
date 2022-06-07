@@ -1,4 +1,5 @@
-<div class="app-admin">
+<div class="app-user">
+  <user-header></user-header>
 
   <button title="Update the list" mat-icon-button (click)="getUsers()">
       <mat-icon>sync</mat-icon>
@@ -24,13 +25,11 @@
               Make an offer
           </button>
           
-          <button mat-raised-button title="Delete account" (click)="deleteUser(user)" *ngIf="
-              (stateSS.session$ | async)?.user?.role === 'admin'
+          <button mat-raised-button title="Delete my account" (click)="deleteUser(user)" *ngIf="
+              !((stateSS.session$ | async)?.token === '') &&
+              (stateSS.session$ | async)?.user?._id === user._id
           ">
-            Delete account
-          </button>
-          <button mat-raised-button routerLink="/admin/edit-user/{{user._id}}">
-          Edit
+              Delete my account
           </button>
       </div><br>
   </div>

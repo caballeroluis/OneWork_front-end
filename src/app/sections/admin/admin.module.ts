@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './pages/dashboard/admin.component';
 import { EditUserComponent, FooterComponent, HeaderComponent } from '@sections/admin/components';
@@ -18,7 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     AdminRoutingModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

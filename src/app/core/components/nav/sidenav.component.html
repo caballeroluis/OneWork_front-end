@@ -7,6 +7,7 @@
                 <p><button mat-raised-button routerLink="/help">Help</button></p>
                 <p><button mat-raised-button routerLink="/project">The project</button></p>
                 <p routerLink="/terms-of-service" class="bottomLink">Terms of service</p>
+                <p><button mat-raised-button routerLink="/admin" *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">Admin</button></p>
             </div>
     
             <ng-template #buttonsWithoutToggleMenu>
@@ -15,6 +16,7 @@
                 <p><button mat-raised-button routerLink="/help">Help</button></p>
                 <p><button mat-raised-button routerLink="/project">The project</button></p>
                 <p routerLink="/terms-of-service" class="bottomLink">Terms of service</p>
+                <p><button mat-raised-button routerLink="/admin" *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'">Admin</button></p>
             </ng-template>
         </nav>
     </mat-drawer>

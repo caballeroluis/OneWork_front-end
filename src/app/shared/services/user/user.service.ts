@@ -32,7 +32,7 @@ export class UserService {
   }
 
   verifiedUser(user: User): Observable<any> {
-    return this.http.put(
+    return this.http.patch(
       environment.apiUrl + '/api/users/' + user._id,
       // user
       {

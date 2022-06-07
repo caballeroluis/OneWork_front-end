@@ -36,9 +36,17 @@
             </button>
 
             <button mat-raised-button title="Verified account" (click)="verifiedUser(user)" *ngIf="
-                (stateSS.session$ | async)?.user?.role === 'admin'
+                (stateSS.session$ | async)?.user?.role === 'admin' &&
+                !(stateSS.session$ | async)?.user?.verified
             ">
                 Verified account
+            </button>
+
+            <button mat-raised-button title="Verified account" (click)="verifiedUser(user)" *ngIf="
+                (stateSS.session$ | async)?.user?.role === 'admin' &&
+                (stateSS.session$ | async)?.user?.verified
+            ">
+                Unverified account
             </button>
       </div><br>
   </div>

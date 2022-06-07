@@ -41,7 +41,7 @@ export class SessionStoreService {
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
           
-          this.router.navigate(['board']);
+          this.router.navigate(['offers']);
         }
         this.notificationService.showSuccess('User has been loged');
       },

@@ -53,12 +53,12 @@ export class EditUserComponent implements OnInit {
 
     const user: User = this.reactiveForm.getRawValue();
     user._id = this.user._id;
-    if (this.stateSS.session.user?.role === 'recruiter') {
+    if (this.user.role === 'recruiter') {
       delete user.name;
       delete user.surname1;
       delete user.surname2;
     }
-    if (this.stateSS.session.user?.role === 'worker') {
+    if (this.user.role === 'worker') {
       delete user.recruiterName;
       delete user.recruiterSurname1;
       delete user.recruiterSurname2;

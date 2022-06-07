@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { User } from '@shared/models';
+import { ActivatedRoute } from '@angular/router';
 import { StateStoreService } from '@core/services';
+import { User } from '@shared/models';
 import { UserStoreService } from '@shared/services';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class EditUserComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
-  
+  public user: User = this.stateSS.users.find(
+    user => user._id === this.route.snapshot.paramMap.get('_id')
+  ) as User;
+
   constructor(
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    public userSS: UserStoreService,
-    public stateSS: StateStoreService
+    public stateSS: StateStoreService,
+    public userSS: UserStoreService
   ) { }
 
   ngOnInit(): void {
@@ -40,14 +45,14 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.stateSS.session.user);
+    this.reactiveForm.patchValue(this.user);
   }
-
+  
   submitForm() {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.stateSS.session?.user._id;
+    user._id = this.user._id;
     if (this.stateSS.session.user?.role === 'recruiter') {
       delete user.name;
       delete user.surname1;
@@ -68,5 +73,5 @@ export class ProfileComponent implements OnInit {
       throw new Error('Form error');
     }
   }
-  
+
 }

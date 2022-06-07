@@ -38,4 +38,21 @@ export class HeaderComponent {
     this.stateSS.clear();
   }
 
+  fakeLogin() {
+    this.sessionSS.login({
+      password: 'localadmin',
+      _id: '629e6e68a3ed5db57d8768c7',
+      contactData: '',
+      corporationName: '',
+      creationDate: '2022-06-06T21:15:20.523Z',
+      descriptionCorporate: '',
+      email: 'localadmin',
+      international: false,
+      recruiterName: '',
+      recruiterSurname1: '',
+      recruiterSurname2: '',
+      verified: false
+    });
+  }
+
 }

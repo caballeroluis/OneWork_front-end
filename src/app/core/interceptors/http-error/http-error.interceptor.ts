@@ -4,8 +4,8 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { NotificationService } from '@core/services';
-import { StateStoreService } from '@core/services';
+import { NotificationService, StateStoreService } from '@core/services';
+import { SessionStoreService } from '@sections/session/services';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   
   constructor(
     private injector: Injector,
-    private stateSS: StateStoreService
+    private stateSS: StateStoreService,
+    private sessionSS: SessionStoreService
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -24,8 +25,16 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       retry(0),
       catchError((errorResponse: HttpErrorResponse) => {
         if (errorResponse.status === 401) {
-          notifier.showError(errorResponse.error.msg);
-          return throwError(errorResponse);
+          if (errorResponse.error.msg.includes('expired')) {
+            this.stateSS.session = {
+              ...this.stateSS.session,
+              token: ''
+            };
+            this.sessionSS.refreshToken();
+          } else {
+            notifier.showError(errorResponse.error.msg);
+            return throwError(errorResponse);
+          }
         }
 
         if (errorResponse.error instanceof ErrorEvent) {

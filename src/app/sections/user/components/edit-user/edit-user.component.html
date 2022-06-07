@@ -1,0 +1,37 @@
+<user-header></user-header>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
+  
+    <label *ngIf="user?.role === 'worker'">
+        <span>Pseudonym: </span>
+        <input type="text" placeholder="Your name" formControlName="name"><br>
+    </label>
+  
+    <label *ngIf="user?.role === 'recruiter'">
+        <span>Pseudonym: </span>
+        <input type="text" placeholder="Your name" formControlName="recruiterName"><br>
+    </label>
+  
+    <label *ngIf="user?.role === 'recruiter'">
+        <span>Corporation name: </span>
+        <input type="text" placeholder="Your corporation name" formControlName="corporationName"><br>
+    </label>
+
+    <label *ngIf="user?.role === 'recruiter'">
+        <span>Description corporate: </span><br>
+        <textarea placeholder="Your description corporate" formControlName="descriptionCorporate" rows="2"></textarea>
+    </label><br>
+  
+    <label *ngIf="user?.role === 'recruiter'">
+        <span>Is international: </span>
+        <input type="checkbox" formControlName="international"><br>
+    </label>
+  
+    <button mat-raised-button color="secondary" type="submit">
+        Update
+    </button><br><br>
+
+    <p>
+        <a routerLink="/users">Delete account...</a>.
+    </p>
+</form>

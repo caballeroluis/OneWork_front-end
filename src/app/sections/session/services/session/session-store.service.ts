@@ -16,7 +16,6 @@ export class SessionStoreService {
     private router: Router,
     private sessionService: SessionService,
     private userSS: UserStoreService,
-    private offerSS: OfferStoreService,
     private stateSS: StateStoreService,
     private notificationService: NotificationService
   ) { }
@@ -35,15 +34,32 @@ export class SessionStoreService {
   }
 
   login(user: User) {
+    this.stateSS.clear();
     this.sessionService.login(user).subscribe(
       (response: Session) => {
-        this.stateSS.clear();
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
           
-          this.router.navigate(['board']);
+          this.router.navigate(['offers']);
         }
         this.notificationService.showSuccess('User has been loged');
+      },
+      (error: any) => {
+      }
+    );
+  }
+
+  refreshToken() {
+    this.sessionService.refreshToken(this.stateSS.session).subscribe(
+      (response: Session) => {
+        if (response.token?.length > 0) {
+          this.stateSS.session = {
+            ...this.stateSS.session,
+            refreshToken: response.refreshToken? response.refreshToken : this.stateSS.session.refreshToken, // TODO: acomodar esto tras ver qué pasa con la API y el refreshtoken
+            token: response.token
+          };
+          this.notificationService.showError('The expired session has been renewed. Please try againn');
+        }
       },
       (error: any) => {
       }
@@ -67,52 +83,4 @@ export class SessionStoreService {
     );
   }
 
-  updateUserProfile(user: User) {
-    this.sessionService.updateUserProfile(user).subscribe(
-      (response: CustomResponses) => {
-        this.stateSS.session.user = response.result as User;
-
-        this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user._id === user._id)
-        ] = user;
-        this.notificationService.showSuccess('Profile has been updated');
-        this.offerSS.getOffers();
-        this.userSS.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
-      },
-      (error: any) => {
-      }
-    );
-  }
-  
-  changePassword(user: User) {
-    this.sessionService.changePassword(user).subscribe(
-      (response: CustomResponses) => {
-        this.stateSS.session.user = response.result as User;
-        
-        this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user._id == user._id)
-        ] = user;
-        this.notificationService.showSuccess('Password has been updated');
-      },
-      (error: any) => {
-      }
-    );
-  }
-  
-  changeEmail(user: User) {
-    this.sessionService.changeEmail(user).subscribe(
-      (response: CustomResponses) => {
-        this.stateSS.session.user = response.result as User;
-
-        this.stateSS.users[
-          this.stateSS.users.findIndex(_user => _user._id == user._id)
-        ] = user;
-        this.notificationService.showSuccess('Username has been updated');
-        this.offerSS.getOffers();
-        this.userSS.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
-      },
-      (error: any) => {
-      }
-    );
-  }
 }

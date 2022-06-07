@@ -20,7 +20,7 @@
         <p>Please don't use personal information, use acronyms instead.</p>
 
         <label>
-            <span>Username: </span>
+            <span>Username (Visible to the public): </span>
             <input type="text" placeholder="Your username" formControlName="email">
         </label><br>
         
@@ -32,8 +32,8 @@
 
     <div *ngIf="user.role === 'recruiter'">
         <label>
-            <span>Pseudonym (Visible in the app): </span>
-            <input type="text" placeholder="Your name" formControlName="recruiterName">
+            <span>Pseudonym (Visible to the public): </span>
+            <input type="text" placeholder="Your pseudonym" formControlName="recruiterName">
         </label><br>
   
         <label>

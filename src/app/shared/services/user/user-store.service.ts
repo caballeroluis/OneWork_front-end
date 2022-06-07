@@ -31,6 +31,7 @@ export class UserStoreService {
     this.userService.editUser(user).subscribe(
       (response: CustomResponses) => {
         this.notificationService.showSuccess('User has been updated');
+        this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
       },
       (error: any) => {
       }

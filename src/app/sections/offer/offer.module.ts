@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { EditOfferComponent } from './pages/edit-offer/edit-offer.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips'; 
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     DragDropModule,
     MatSelectModule,
     MatDatepickerModule, // TODO: reemplazar quizá mejor por @angular-material-components/datetime-picker
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule
   ]
 })
 export class OfferModule { }

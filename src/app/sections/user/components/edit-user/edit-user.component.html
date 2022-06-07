@@ -3,8 +3,12 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
     <p>Creation date: <span >{{ user.creationDate | date }}</span></p>
-    <p>Username: @<span>{{ user.email }}</span><img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
     <p>Role: <span >{{ user.role }}</span></p>
+
+    <label>
+        <span>Username: </span>
+        <input type="text" placeholder="Your username" formControlName="email"><img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!">
+    </label><br>
 
     <label *ngIf="user?.role === 'worker'">
         <span>Pseudonym: </span>

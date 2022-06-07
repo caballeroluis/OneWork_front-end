@@ -6,7 +6,7 @@
   
   <div *ngFor="let user of (stateSS.users$ | async)">
       <div [ngClass]="{'recruiter-background': user?.role === 'recruiter', 'worker-background': user?.role === 'worker'}">
-            <p *ngIf="user?.role === 'recruiter'">Username: @<span>{{ user.email }}</span><img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
+            <p>Username: @<span>{{ user.email }}</span><img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
             <p>Role: <span >{{ user.role }}</span></p>
             <!-- <p>Contact Data: <span >{{ user.contactData }}</span></p> -->
             <p *ngIf="user?.role === 'worker'">Pseudonym: <span >{{ user.name }}</span></p>
@@ -37,14 +37,14 @@
 
             <button mat-raised-button title="Verified account" (click)="verifiedUser(user)" *ngIf="
                 (stateSS.session$ | async)?.user?.role === 'admin' &&
-                !(stateSS.session$ | async)?.user?.verified
+                !user.verified
             ">
                 Verified account
             </button>
 
             <button mat-raised-button title="Verified account" (click)="verifiedUser(user)" *ngIf="
                 (stateSS.session$ | async)?.user?.role === 'admin' &&
-                (stateSS.session$ | async)?.user?.verified
+                user.verified
             ">
                 Unverified account
             </button>

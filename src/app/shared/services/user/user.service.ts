@@ -34,9 +34,9 @@ export class UserService {
   verifiedUser(user: User): Observable<any> {
     return this.http.patch(
       environment.apiUrl + '/api/users/' + user._id,
-      // user
       {
-        verified: user.verified
+        verified: user.verified,
+        role: user.role
       }
     );
   }

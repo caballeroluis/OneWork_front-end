@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
 
     const user: User = this.reactiveForm.getRawValue();
     user._id = this.stateSS.session?.user._id;
+    user.role = this.stateSS.session?.user.role;
     if (this.stateSS.session.user?.role === 'recruiter') {
       delete user.name;
       delete user.surname1;

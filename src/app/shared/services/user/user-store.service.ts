@@ -68,7 +68,9 @@ export class UserStoreService {
   updateUser(user: User) {
     this.userService.updateUser(user).subscribe(
       (response: CustomResponses) => {
-        this.stateSS.session.user = response.result as User;
+        if (this.stateSS.session.user.role !== 'admin') {
+          this.stateSS.session.user = response.result as User;
+        }
 
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id === user._id)

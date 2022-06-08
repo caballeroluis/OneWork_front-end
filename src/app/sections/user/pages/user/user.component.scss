@@ -1,6 +1,11 @@
 $tool-bar-heigth: 64px; // TODO: llevar a variables globales
 $app-padding: 12px;
 
+.user {
+  padding: 10px;
+  border-radius: 4px;
+}
+
 .recruiter-background {
   background-color: blanchedalmond;
 }

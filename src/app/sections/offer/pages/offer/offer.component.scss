@@ -16,6 +16,9 @@ $app-padding: 12px;
     height: $tool-bar-heigth;
     border-radius: 15px 15px 0 0;
   }
+  .mat-chip-list {
+    pointer-events: none;
+  }
 }
 
 .list-body {
@@ -59,35 +62,35 @@ $app-padding: 12px;
 .accepted {
   grid-area: accepted;
   .mat-chip {
-    background-color: #6699cc;
+    background-color: #ed7676;
   }
 }
 
 .technician-checked {
   grid-area: technician-checked;
   .mat-chip {
-    background-color: #8ddee7;
+    background-color: #6699cc;
   }
 }
 
 .video-set {
   grid-area: video-set;
   .mat-chip {
-    background-color: #ed9121;
+    background-color: #e39b42;
   }
 }
 
 .ready {
   grid-area: ready;
   .mat-chip {
-    background-color: #3cb371;
+    background-color: #56c688;
   }
 }
 
 .in-progress {
   grid-area: in-progress;
   .mat-chip {
-    background-color: #9400d3;
+    background-color: #ac67ca;
   }
 }
 

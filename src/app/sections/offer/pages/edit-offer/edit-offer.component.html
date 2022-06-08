@@ -4,6 +4,8 @@
 
     <label>
         <p>Creation date: {{offer.creationDate | date}}</p>
+        <p>Recruiter: {{ offer.recruiterAssigned?.recruiterName }} (@{{ offer.recruiterAssigned?.email }}) <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!"></p>
+        <p>Worker: {{ offer.workerAssigned?.name }} (@{{ offer.workerAssigned?.email }}) <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!"></p>
     </label><br>
 
     <label>
@@ -32,12 +34,12 @@
     </label><br>
 
     <label>
-        <p>Videocall link: </p>
+        <p><a href="{{offer.videoCallLink}}" target="_blank">Videocall link</a>: </p>
         <input type="text" placeholder="Offer videoCallLink" formControlName="videoCallLink">
     </label><br>
 
     <label>
-        <p>Job offer link: </p>
+        <p><a href="{{offer.offerLink}}" target="_blank">Job offer link</a>: </p>
         <input type="text" placeholder="Offer offerLink" formControlName="offerLink">
     </label><br>
     

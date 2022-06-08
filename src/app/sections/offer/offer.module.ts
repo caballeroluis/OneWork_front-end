@@ -8,14 +8,15 @@ import { FooterComponent, HeaderComponent } from '@sections/offer/components';
 import { NewOfferComponent } from './pages/new-offer/new-offer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
 import { EditOfferComponent } from './pages/edit-offer/edit-offer.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatChipsModule } from '@angular/material/chips'; 
+import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSelectModule,
     MatDatepickerModule, // TODO: reemplazar quizá mejor por @angular-material-components/datetime-picker
     MatNativeDateModule,
-    MatChipsModule
+    MatChipsModule,
+    MatMenuModule
   ]
 })
 export class OfferModule { }

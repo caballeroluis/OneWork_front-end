@@ -38,32 +38,26 @@
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }} (@{{ offer.recruiterAssigned?.email }}) <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
+                                Recruiter: @{{ offer.recruiterAssigned?.email }} <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
                             </p>
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                Worker: {{ offer.workerAssigned?.name }} (@{{ offer.workerAssigned?.email }}) <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
+                                Worker: @{{ offer.workerAssigned?.email }} <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
                             </p>
                         </mat-card-content>
-                        <mat-card-content>
+                        <mat-card-content *ngIf="offer.videoCallLink!">
                             <p>
-                                Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content><p>
-                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                <a href="{{offer.offerLink}}" target="_blank">Job offer</a>
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <mat-menu #menuDelete="matMenu">
+                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                            </mat-menu>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -106,32 +100,26 @@
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }} (@{{ offer.recruiterAssigned?.email }}) <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
+                                Recruiter: @{{ offer.recruiterAssigned?.email }} <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
                             </p>
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                Worker: {{ offer.workerAssigned?.name }} (@{{ offer.workerAssigned?.email }}) <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
+                                Worker: @{{ offer.workerAssigned?.email }} <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
                             </p>
                         </mat-card-content>
-                        <mat-card-content>
+                        <mat-card-content *ngIf="offer.videoCallLink!">
                             <p>
-                                Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content><p>
-                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                <a href="{{offer.offerLink}}" target="_blank">Job offer</a>
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <mat-menu #menuDelete="matMenu">
+                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                            </mat-menu>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -174,32 +162,26 @@
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }} (@{{ offer.recruiterAssigned?.email }}) <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
+                                Recruiter: @{{ offer.recruiterAssigned?.email }} <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
                             </p>
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                Worker: {{ offer.workerAssigned?.name }} (@{{ offer.workerAssigned?.email }}) <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
+                                Worker: @{{ offer.workerAssigned?.email }} <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
                             </p>
                         </mat-card-content>
-                        <mat-card-content>
+                        <mat-card-content *ngIf="offer.videoCallLink!">
                             <p>
-                                Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content><p>
-                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                <a href="{{offer.offerLink}}" target="_blank">Job offer</a>
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <mat-menu #menuDelete="matMenu">
+                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                            </mat-menu>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -242,32 +224,26 @@
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }} (@{{ offer.recruiterAssigned?.email }}) <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
+                                Recruiter: @{{ offer.recruiterAssigned?.email }} <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
                             </p>
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                Worker: {{ offer.workerAssigned?.name }} (@{{ offer.workerAssigned?.email }}) <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
+                                Worker: @{{ offer.workerAssigned?.email }} <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
                             </p>
                         </mat-card-content>
-                        <mat-card-content>
+                        <mat-card-content *ngIf="offer.videoCallLink!">
                             <p>
-                                Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content><p>
-                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                <a href="{{offer.offerLink}}" target="_blank">Job offer</a>
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <mat-menu #menuDelete="matMenu">
+                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                            </mat-menu>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -310,32 +286,26 @@
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }} (@{{ offer.recruiterAssigned?.email }}) <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
+                                Recruiter: @{{ offer.recruiterAssigned?.email }} <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
                             </p>
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                Worker: {{ offer.workerAssigned?.name }} (@{{ offer.workerAssigned?.email }}) <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
+                                Worker: @{{ offer.workerAssigned?.email }} <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
                             </p>
                         </mat-card-content>
-                        <mat-card-content>
+                        <mat-card-content *ngIf="offer.videoCallLink!">
                             <p>
-                                Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content><p>
-                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                <a href="{{offer.offerLink}}" target="_blank">Job offer</a>
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <mat-menu #menuDelete="matMenu">
+                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                            </mat-menu>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -350,16 +320,16 @@
                     </mat-chip-list>            
                     <span class="spacer"></span>
             
-                    <button title="Update the offers" mat-icon-button (click)="getOffers()">
-                        <mat-icon>sync</mat-icon>
-                    </button>
-            
                     <button title="Add an offer" mat-icon-button routerLink="/offers/new-offer" *ngIf="(stateSS.session$ | async)?.user?.role === 'recruiter'">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                     
                     <button title="Add an offer" mat-icon-button routerLink="/session" *ngIf="!((stateSS.session$ | async)?.token !== '')">
                         <mat-icon>add_circle</mat-icon>
+                    </button>
+            
+                    <button title="Update the offers" mat-icon-button (click)="getOffers()">
+                        <mat-icon>sync</mat-icon>
                     </button>
                 </mat-toolbar>
             </div>
@@ -391,32 +361,26 @@
                         </mat-card-header>
                         <mat-card-content>
                             <p>
-                                Recruiter: {{ offer.recruiterAssigned?.recruiterName }} (@{{ offer.recruiterAssigned?.email }}) <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
+                                Recruiter: @{{ offer.recruiterAssigned?.email }} <img src="assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.recruiterAssigned?.verified!">
                             </p>
                         </mat-card-content>
                         <mat-card-content>
                             <p>
-                                Worker: {{ offer.workerAssigned?.name }} (@{{ offer.workerAssigned?.email }}) <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
+                                Worker: @{{ offer.workerAssigned?.email }} <img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 2px; height: 20px; width: 20px" *ngIf="offer.workerAssigned?.verified!">
                             </p>
                         </mat-card-content>
-                        <mat-card-content>
+                        <mat-card-content *ngIf="offer.videoCallLink!">
                             <p>
-                                Address: {{ offer.workplaceAddress }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content><p>
-                                <a href="{{offer.videoCallLink}}" target="_blank">Videocall</a> {{ offer.videoCallDate | date }}
+                                Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
-                            </p>
-                        </mat-card-content>
-                        <mat-card-content>
-                            <p>
-                                <a href="{{offer.offerLink}}" target="_blank">Job offer</a>
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button (click)="deleteOffer(offer)">DELETE</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <mat-menu #menuDelete="matMenu">
+                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                            </mat-menu>
                         </mat-card-actions>
                     </mat-card>
                 </div>

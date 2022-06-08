@@ -19,14 +19,20 @@
             <button mat-raised-button  *ngIf="user?.role === 'worker' && !((stateSS.session$ | async)?.token !== '')" routerLink="/session/login">
                 Make an offer
             </button>
-            
-            <button mat-raised-button title="Delete account" (click)="deleteUser(user)" *ngIf="
+
+            <button mat-button [matMenuTriggerFor]="menuDelete" *ngIf="
                 !((stateSS.session$ | async)?.token === '') &&
                 (stateSS.session$ | async)?.user?._id === user._id ||
-                (stateSS.session$ | async)?.user?.role === 'admin'
-            ">
+                (stateSS.session$ | async)?.user?.role === 'admin'"
+            >
                 Delete account
             </button>
+            <mat-menu #menuDelete="matMenu">
+                <button mat-raised-button color="warn" title="Delete account" (click)="deleteUser(user)">
+                    Delete account
+                </button>
+            </mat-menu>
+
             <button mat-raised-button routerLink="/users/edit-user/{{user._id}}">
                 Detail
             </button>

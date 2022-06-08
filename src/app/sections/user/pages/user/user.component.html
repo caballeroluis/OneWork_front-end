@@ -20,7 +20,7 @@
                 Make an offer
             </button>
             
-            <button mat-raised-button title="Delete account" (click)="deleteUser(user)" *ngIf="
+            <button mat-raised-button color="warn" title="Delete account" (click)="deleteUser(user)" *ngIf="
                 !((stateSS.session$ | async)?.token === '') &&
                 (stateSS.session$ | async)?.user?._id === user._id ||
                 (stateSS.session$ | async)?.user?.role === 'admin'

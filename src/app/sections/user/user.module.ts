@@ -8,6 +8,7 @@ import { EditUserComponent, FooterComponent, HeaderComponent } from '@sections/u
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatMenuModule } from '@angular/material/menu';
     UserRoutingModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
     MatMenuModule

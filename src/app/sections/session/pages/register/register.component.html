@@ -45,11 +45,6 @@
             <span>Corporate description: </span><br>
             <textarea placeholder="Your description corporate" formControlName="descriptionCorporate" rows="2"></textarea>
         </label><br>
-      
-        <label>
-            <span>Is international: </span>
-            <input type="checkbox" formControlName="international">
-        </label><br>
     </div>
 
     <div *ngIf="user.role === 'worker'">

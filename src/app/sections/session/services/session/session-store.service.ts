@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from '@shared/models';
 import { SessionService } from '@sections/session/services';
 import { Session } from '@sections/session/models';
 import { NotificationService, StateStoreService } from '@core/services';
 import { CustomResponses } from '@core/models';
 import { OfferStoreService, UserStoreService } from '@shared/services';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,10 @@ import { OfferStoreService, UserStoreService } from '@shared/services';
 export class SessionStoreService {
 
   constructor(
-    private router: Router,
+    private location: Location,
     private sessionService: SessionService,
     private userSS: UserStoreService,
+    private offerSS: OfferStoreService,
     private stateSS: StateStoreService,
     private notificationService: NotificationService
   ) { }
@@ -25,8 +26,8 @@ export class SessionStoreService {
       (response: CustomResponses) => {
         this.userSS.getUsers(); // this.stateSS.users.push(response.result as User); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
 
-        // this.router.navigate(['session', 'profile']);
         this.notificationService.showSuccess('User has been registered');
+        this.login(user);
       },
       (error: any) => {
       }
@@ -40,7 +41,7 @@ export class SessionStoreService {
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
           
-          this.router.navigate(['offers']);
+          this.location.back();
         }
         this.notificationService.showSuccess('User has been loged');
       },
@@ -72,13 +73,12 @@ export class SessionStoreService {
         this.stateSS.clear();
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
-          
-          // this.router.navigate(['session/login']);
         }
         this.notificationService.showSuccess('Session has been closed');
+        this.userSS.getUsers();
+        this.offerSS.getOffers();
       },
       (error: any) => {
-        this.stateSS.clear(); // TODO: pendiente quitar esta línea cuando funcione en la API
       }
     );
   }

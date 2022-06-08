@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Offer } from '@shared/models';
 import { OfferService } from '@shared/services';
 import { NotificationService, StateStoreService } from '@core/services';
@@ -11,7 +11,7 @@ import { CustomResponses } from '@core/models';
 export class OfferStoreService {
 
   constructor(
-    private router: Router,
+    private location: Location,
     private offerService: OfferService,
     private stateSS: StateStoreService,
     private notificationService: NotificationService
@@ -41,7 +41,6 @@ export class OfferStoreService {
           response.result as Offer
         ];
         
-        // this.router.navigate(['session', 'profile']);
         this.notificationService.showSuccess('Offer has been created');
       },
       (error: any) => {
@@ -71,7 +70,7 @@ export class OfferStoreService {
       (response: CustomResponses) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
         this.notificationService.showSuccess('Offer has been updated');
-        this.router.navigate(['offers']);
+        this.location.back();
       },
       (error: any) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea

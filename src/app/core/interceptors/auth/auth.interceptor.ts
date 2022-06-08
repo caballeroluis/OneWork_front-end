@@ -31,7 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
         setHeaders: {
           authorization: `Bearer ${ token }`
         },
-        url: (request.method !== 'GET' && this.stateSS.session.user.role === 'admin') ? request.url.replace('api/', 'api/admin/') : request.url
+        url: (req.method !== 'GET' && this.stateSS.session.user.role === 'admin' && !req.url.includes('logout')) ? request.url.replace('api/', 'api/admin/') : request.url
       });
     }
     

@@ -26,6 +26,11 @@
         <span>Is international: </span>
         <input type="checkbox" formControlName="international"><br>
     </label>
+
+    <label *ngIf="(stateSS.session$ | async)?.user?.role === 'worker'">
+        <span>Skills: </span>
+        <textarea placeholder="Your skills" formControlName="skills" rows="2"></textarea>
+    </label>
   
     <button mat-raised-button color="secondary" type="submit">
         Update

@@ -14,6 +14,11 @@
         <span>Pseudonym: </span>
         <input type="text" placeholder="Your name" formControlName="name"><br>
     </label>
+
+    <label *ngIf="user?.role === 'worker'">
+        <span>Skills: </span>
+        <textarea placeholder="Your skills" formControlName="skills" rows="2"></textarea>
+    </label>
   
     <label *ngIf="user?.role === 'recruiter'">
         <span>Pseudonym: </span>
@@ -35,11 +40,7 @@
         <input type="checkbox" formControlName="international"><br>
     </label>
   
-    <button mat-raised-button *ngIf="!((stateSS.session$ | async)?.token === '')" color="secondary" type="submit">
+    <button mat-raised-button *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'" color="secondary" type="submit">
         Update
     </button><br><br>
-
-    <p *ngIf="!((stateSS.session$ | async)?.token === '')">
-        <a routerLink="/users">Delete account...</a>.
-    </p>
 </form>

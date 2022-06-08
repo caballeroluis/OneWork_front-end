@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 import { User } from '@shared/models';
 import { SessionStoreService } from '@sections/session/services';
+import { StateStoreService } from '@core/services';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,11 +15,16 @@ export class LoginComponent implements OnInit {
   public isSubmitted = false;
   
   constructor(
+    private location: Location,
     private sessionSS: SessionStoreService,
+    private stateSS: StateStoreService,
     private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+    if (this.stateSS.session.token !== '') {
+      this.location.back();
+    }
     this.formatReactiveForm();
   }
 

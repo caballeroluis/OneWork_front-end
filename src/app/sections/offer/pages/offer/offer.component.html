@@ -53,10 +53,14 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete"
+                                *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')"
+                            >
+                                DELETE
+                            </button>
                             <mat-menu #menuDelete="matMenu">
-                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                                <button mat-button (click)="deleteOffer(offer)" color="warn">DELETE</button>
                             </mat-menu>
                         </mat-card-actions>
                     </mat-card>
@@ -115,10 +119,14 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete"
+                                *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')"
+                            >
+                                DELETE
+                            </button>
                             <mat-menu #menuDelete="matMenu">
-                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                                <button mat-button (click)="deleteOffer(offer)" color="warn">DELETE</button>
                             </mat-menu>
                         </mat-card-actions>
                     </mat-card>
@@ -177,10 +185,14 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete"
+                                *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')"
+                            >
+                                DELETE
+                            </button>
                             <mat-menu #menuDelete="matMenu">
-                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                                <button mat-button (click)="deleteOffer(offer)" color="warn">DELETE</button>
                             </mat-menu>
                         </mat-card-actions>
                     </mat-card>
@@ -239,10 +251,14 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete"
+                                *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')"
+                            >
+                                DELETE
+                            </button>
                             <mat-menu #menuDelete="matMenu">
-                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                                <button mat-button (click)="deleteOffer(offer)" color="warn">DELETE</button>
                             </mat-menu>
                         </mat-card-actions>
                     </mat-card>
@@ -301,10 +317,14 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete"
+                                *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')"
+                            >
+                                DELETE
+                            </button>
                             <mat-menu #menuDelete="matMenu">
-                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                                <button mat-button (click)="deleteOffer(offer)" color="warn">DELETE</button>
                             </mat-menu>
                         </mat-card-actions>
                     </mat-card>
@@ -376,10 +396,14 @@
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button routerLink="/offers/edit-offer/{{offer._id}}">DETAIL</button>
-                            <button mat-button [matMenuTriggerFor]="menuDelete">DELETE</button>
+                            <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
+                            <button mat-button [matMenuTriggerFor]="menuDelete"
+                                *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')"
+                            >
+                                DELETE
+                            </button>
                             <mat-menu #menuDelete="matMenu">
-                                <button mat-button (click)="deleteOffer(offer)" *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')" color="warn">DELETE</button>
+                                <button mat-button (click)="deleteOffer(offer)" color="warn">DELETE</button>
                             </mat-menu>
                         </mat-card-actions>
                     </mat-card>

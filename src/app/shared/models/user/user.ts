@@ -10,6 +10,7 @@ export class User {
   descriptionCorporate?: string;
   international?: boolean;
   recruiterName?: string;
+  skills?: string;
   recruiterSurname1?: string;
   recruiterSurname2?: string;
   active?: boolean;

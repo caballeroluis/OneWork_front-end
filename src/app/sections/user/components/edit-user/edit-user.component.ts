@@ -40,6 +40,7 @@ export class EditUserComponent implements OnInit {
         recruiterSurname1: [''],
         recruiterSurname2: [''],
         contactData: [''],
+        skills: [''],
         corporationName: [''],
         descriptionCorporate: [''],
         international: [false],

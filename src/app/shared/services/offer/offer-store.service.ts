@@ -21,7 +21,7 @@ export class OfferStoreService {
     this.offerService.getOffers().subscribe(
       (response: CustomResponses) => {
         this.stateSS.offers = response.results as Offer[];
-        // this.notificationService.showSuccess('The offers have been updated'); // Todo: arreglar que los snackbars de success "tapen" (hagan desaparecer) a los de error
+        // this.notificationService.showSuccess('The offers have been updated.'); // Todo: arreglar que los snackbars de success "tapen" (hagan desaparecer) a los de error
         // this.stateSS.offers.forEach(offer => {
         //   offer = {
         //     ...offer,
@@ -41,7 +41,7 @@ export class OfferStoreService {
           response.result as Offer
         ];
         
-        this.notificationService.showSuccess('Offer has been created in column "' + (response.result as Offer).status + '"');
+        this.notificationService.showSuccess('Offer has been created in column "' + (response.result as Offer).status + '".');
       },
       (error: any) => {
       }
@@ -57,7 +57,7 @@ export class OfferStoreService {
 
         // this.stateSS.offers = this.stateSS.offers;
         this.getOffers();
-        this.notificationService.showSuccess('Offer has been updated');
+        this.notificationService.showSuccess('Offer has been updated.');
       },
       (error: any) => {
         this.getOffers(); // TODO: hacer quizá que no sea necesario esto
@@ -69,7 +69,7 @@ export class OfferStoreService {
     this.offerService.editOffer(offer).subscribe(
       (response: CustomResponses) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea
-        this.notificationService.showSuccess('Offer has been updated');
+        this.notificationService.showSuccess('Offer has been updated.');
         this.location.back();
       },
       (error: any) => {
@@ -82,7 +82,7 @@ export class OfferStoreService {
     this.offerService.deleteOffer(offer).subscribe(
       (response: CustomResponses) => {
         this.stateSS.offers = this.stateSS.offers.filter(_offer => _offer._id !== offer._id);
-        this.notificationService.showSuccess('Offer has been deleted');
+        this.notificationService.showSuccess('Offer has been deleted.');
       },
       (error: any) => {
         this.getOffers(); // TODO: hacer sincro del state y borrar esta línea

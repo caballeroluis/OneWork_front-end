@@ -14,7 +14,7 @@ $app-padding: 12px;
 .list-header {
   mat-toolbar {
     height: $tool-bar-heigth;
-    border-radius: 15px 15px 0 0;
+    border-radius: 4px 4px 0 0;
   }
   .mat-chip-list {
     pointer-events: none;
@@ -32,6 +32,7 @@ $app-padding: 12px;
 /* Material card */
 
 .mat-card {
+  border-radius: 4px;
   width: 100%;
   p {
     width: 100%;
@@ -140,4 +141,14 @@ $app-padding: 12px;
   cursor: grab;
   width: 24px;
   height: 24px;
+}
+
+/* buttons */
+
+.mat-button {
+  border-radius: 4px;
+}
+
+.mat-menu {
+  border-radius: 4px;
 }

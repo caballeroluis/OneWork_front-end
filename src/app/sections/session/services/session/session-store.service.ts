@@ -26,7 +26,7 @@ export class SessionStoreService {
       (response: CustomResponses) => {
         this.userSS.getUsers(); // this.stateSS.users.push(response.result as User); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
 
-        this.notificationService.showSuccess('User has been registered');
+        this.notificationService.showSuccess('User has been registered.');
         this.login(user);
       },
       (error: any) => {
@@ -43,7 +43,7 @@ export class SessionStoreService {
           
           this.location.back();
         }
-        this.notificationService.showSuccess('User has been loged');
+        this.notificationService.showSuccess('Welcom @' + response.user.email + '. You are logged in.');
       },
       (error: any) => {
       }
@@ -59,7 +59,7 @@ export class SessionStoreService {
             refreshToken: response.refreshToken? response.refreshToken : this.stateSS.session.refreshToken, // TODO: acomodar esto tras ver qué pasa con la API y el refreshtoken
             token: response.token
           };
-          this.notificationService.showError('The expired session has been renewed. Please try againn');
+          this.notificationService.showError('The expired session has been renewed. Please try againn.');
         }
       },
       (error: any) => {
@@ -74,7 +74,7 @@ export class SessionStoreService {
         if (response.token?.length > 0) {
           this.stateSS.session = response as Session;
         }
-        this.notificationService.showSuccess('Session has been closed');
+        this.notificationService.showSuccess('Session has been closed.');
         this.userSS.getUsers();
         this.offerSS.getOffers();
       },

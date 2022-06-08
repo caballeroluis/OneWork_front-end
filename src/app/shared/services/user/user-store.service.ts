@@ -20,7 +20,7 @@ export class UserStoreService {
     this.userService.getUsers().subscribe(
       (response: CustomResponses) => {
         this.stateSS.users = response.results as User[];
-        // this.notificationService.showSuccess('User list has been updated');
+        // this.notificationService.showSuccess('User list has been updated.');
       },
       (error: any) => {
       }
@@ -30,7 +30,7 @@ export class UserStoreService {
   editUser(user: User) {
     this.userService.editUser(user).subscribe(
       (response: CustomResponses) => {
-        this.notificationService.showSuccess('User has been updated');
+        this.notificationService.showSuccess('User has been updated.');
         this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
       },
       (error: any) => {
@@ -46,7 +46,8 @@ export class UserStoreService {
         if (this.stateSS.session.user._id === user._id) {
           this.stateSS.clear();
         }
-        this.notificationService.showSuccess('User has been deleted');
+        this.notificationService.showSuccess('User has been deleted.');
+        this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
       },
       (error: any) => {
         this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
@@ -57,7 +58,7 @@ export class UserStoreService {
   verifiedUser(user: User) {
     this.userService.verifiedUser(user).subscribe(
       (response: CustomResponses) => {
-        this.notificationService.showSuccess('User has been verified');
+        this.notificationService.showSuccess('User has been verified.');
         this.getUsers(); // TODO: hacer sincro del state y borrar esta línea
       },
       (error: any) => {
@@ -76,7 +77,7 @@ export class UserStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id === user._id)
         ] = user;
-        this.notificationService.showSuccess('Profile has been updated');
+        this.notificationService.showSuccess('Profile has been updated.');
         this.offerSS.getOffers();
         this.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
       },
@@ -93,7 +94,7 @@ export class UserStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
-        this.notificationService.showSuccess('Password has been updated');
+        this.notificationService.showSuccess('Password has been updated.');
       },
       (error: any) => {
       }
@@ -108,7 +109,7 @@ export class UserStoreService {
         this.stateSS.users[
           this.stateSS.users.findIndex(_user => _user._id == user._id)
         ] = user;
-        this.notificationService.showSuccess('Username has been updated');
+        this.notificationService.showSuccess('Username has been updated.');
         this.offerSS.getOffers();
         this.getUsers(); // TODO: pensar otra solución de si un usuario se registra antes de cargar página /users
       },

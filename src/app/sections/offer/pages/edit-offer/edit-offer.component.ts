@@ -14,9 +14,8 @@ export class EditOfferComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
-  public offer: Offer = this.stateSS.offers.find(
-    offer => offer._id === this.route.snapshot.paramMap.get('_id')
-  ) as Offer;
+  private urlId = this.route.snapshot.paramMap.get('_id');
+  public offer?: Offer;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +29,7 @@ export class EditOfferComponent implements OnInit {
     if (!this.stateSS.users || this.stateSS.users.length === 0) {
       this.userSS.getUsers();
     }
-
+    
     this.formatReactiveForm();
   }
 
@@ -51,15 +50,22 @@ export class EditOfferComponent implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.offer);
+    this.reactiveForm.invalid;
 
-    // this.reactiveForm.controls.videoCallHour.setValue(
-    //   this.offer.videoCallDate?.substring(11,16) // TODO: reenplazar por this.datePipe.transform(this.offer.videoCallDate, 'HH:mm')
-    // );
+    this.offerSS.getOffer({_id: this.urlId} as Offer).then((_offer) => {
+      this.offer = _offer;
+      this.reactiveForm.patchValue(this.offer);
     
-    this.reactiveForm.controls.workerAssignedId.setValue(
-      this.offer.workerAssigned?._id
-    );
+      this.reactiveForm.valid;
+
+      // this.reactiveForm.controls.videoCallHour.setValue(
+      //   this.offer.videoCallDate?.substring(11,16) // TODO: reenplazar por this.datePipe.transform(this.offer.videoCallDate, 'HH:mm')
+      // );
+      
+      this.reactiveForm.controls.workerAssignedId.setValue(
+        this.offer.workerAssigned?._id
+      );
+    });
   }
 
   submitForm() {
@@ -81,7 +87,7 @@ export class EditOfferComponent implements OnInit {
     offer.videoCallDate = isoUTCOutputDateTime.toISOString();
 
     offer.workerAssignedId = this.reactiveForm.controls.workerAssignedId.value; // TODO: hacer cuando cambie la api
-    offer.recruiterAssignedId = this.offer.recruiterAssigned?._id;
+    offer.recruiterAssignedId = this.offer?.recruiterAssigned?._id;
 
     delete offer.videoCallHour;
     

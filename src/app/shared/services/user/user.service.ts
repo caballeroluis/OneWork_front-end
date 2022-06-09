@@ -18,6 +18,12 @@ export class UserService {
     );
   }
 
+  getUser(user: User): Observable<any> {
+    return this.http.get(
+      environment.apiUrl + '/api/users/' + user._id
+    );
+  }
+
   editUser(user: User): Observable<any> {
     return this.http.put(
       environment.apiUrl + '/api/users/' + user._id,

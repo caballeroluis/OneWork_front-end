@@ -2,8 +2,8 @@
 
 <form [formGroup]="reactiveForm" (ngSubmit)="submitForm()" novalidate>
 
-    <p>Creation date: <span >{{ user.creationDate | date }}</span></p>
-    <p>Role: <span >{{ user.role }}</span></p>
+    <p>Creation date: <span >{{ user?.creationDate | date }}</span></p>
+    <p>Role: <span >{{ user?.role }}</span></p>
 
     <label>
         <span>Username: </span>
@@ -42,5 +42,9 @@
   
     <button mat-raised-button *ngIf="(stateSS.session$ | async)?.user?.role === 'admin'" color="secondary" type="submit">
         Update
-    </button><br><br>
+    </button>
 </form>
+  
+<a *ngIf="user?.role === 'worker'" routerLink="/offers/new-offer/{{user?._id}}">
+    Make an offer
+</a><br><br>

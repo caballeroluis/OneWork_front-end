@@ -19,6 +19,12 @@ export class OfferService {
     );
   }
 
+  getOffer(offer: Offer): Observable<any> {
+    return this.http.get(
+      environment.apiUrl + '/api/offers/' + offer._id
+    );
+  }
+
   newOffer(offer: Offer): Observable<any> {
     return this.http.post(
       environment.apiUrl +

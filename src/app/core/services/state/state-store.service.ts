@@ -88,6 +88,11 @@ export class StateStoreService {
     this.session = new Session();
     this.users = [];
     this.offers = [];
+    this.userInterface = {
+      ...this.userInterface,
+      userSelected: this.userInterface.userSelected,
+      offerSelected: this.userInterface.offerSelected
+    };
   }
 
 }

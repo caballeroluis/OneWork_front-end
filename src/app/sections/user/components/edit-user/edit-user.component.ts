@@ -25,6 +25,10 @@ export class EditUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.urlId) {
+      this.stateSS.userInterface.userSelected = {_id: this.urlId} as User;
+    }
+    
     this.formatReactiveForm();
   }
 

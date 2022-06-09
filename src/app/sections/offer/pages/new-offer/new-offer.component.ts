@@ -16,7 +16,9 @@ export class NewOfferComponent implements OnInit {
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
   public workerAssigned?: User;
-  public workerAssignedId? = this.route.snapshot.paramMap.get('workerAssignedId');
+  public workerAssignedId? =
+    this.route.snapshot.paramMap.get('workerAssignedId') ||
+    this.stateSS.userInterface.userSelected?._id;
 
   constructor(
     private router: Router,
@@ -58,9 +60,15 @@ export class NewOfferComponent implements OnInit {
         videoCallDate: [new Date()], // TODO: probar https://www.htmlelements.com/docs/datetimepicker
         videoCallHour: [new Date().getHours() + ':' + new Date().getMinutes()],
         description: [''],
-        worker: null
+        workerAssignedId: ['']
       }
     );
+      
+    if (this.workerAssignedId) {
+      this.reactiveForm.controls.workerAssignedId.setValue(
+        this.workerAssignedId
+      );
+    }
   }
 
   submitForm() {
@@ -77,13 +85,9 @@ export class NewOfferComponent implements OnInit {
     
     offer.recruiterAssigned = this.stateSS.session.user;
 
-    if (this.workerAssignedId) {
-      offer.workerAssigned = this.workerAssigned;
-    } else {
-      offer.workerAssigned = this.stateSS.users.find(
-        user => user._id === this.reactiveForm.controls.worker.value._id
-      )
-    }
+    offer.workerAssigned = this.stateSS.users.find(
+      user => user._id === this.reactiveForm.controls.workerAssignedId.value
+    )
     
     if (this.reactiveForm.valid) {
       this.offerSS.newOffer(offer);

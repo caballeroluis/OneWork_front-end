@@ -58,6 +58,7 @@ export class OfferStoreService {
         ];
         
         this.notificationService.showSuccess('Offer has been created in column "' + (response.result as Offer).status + '".');
+        this.getOffers();
       },
       (error: any) => {
       }

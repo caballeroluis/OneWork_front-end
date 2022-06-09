@@ -1,4 +1,5 @@
 import { environment } from '@env/environment';
+import { Offer, User } from '@shared/models';
 
 export class UserInterface {
 
@@ -6,6 +7,8 @@ export class UserInterface {
   showLoader: boolean;
   coreSidenavClosed: boolean;
   showDevTools: boolean;
+  userSelected?: User;
+  offerSelected?: Offer;
 
   constructor() {
     this.smallScreen = window.innerWidth < 480;

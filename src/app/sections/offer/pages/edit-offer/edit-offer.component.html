@@ -58,7 +58,7 @@
     </label><br>
 
     <mat-form-field appearance="fill">
-        <mat-label>Worker</mat-label>
+        <mat-label>Worker selected: </mat-label>
         <mat-select formControlName="workerAssignedId">
             <mat-option [value]="worker._id" *ngFor="let worker of (stateSS.workers$ | async); trackBy: getIdTrackFn" class="example-header-image">
                 {{ worker.name }}

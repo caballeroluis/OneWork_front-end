@@ -46,10 +46,10 @@
         <textarea placeholder="Offer description" formControlName="description" rows="4"></textarea>
     </label><br>
 
-    <mat-form-field *ngIf="!workerAssignedId" appearance="fill">
-        <mat-label>Worker</mat-label>
-        <mat-select formControlName="worker">
-            <mat-option [value]="worker" *ngFor="let worker of (stateSS.workers$ | async); trackBy: getIdTrackFn" class="example-header-image">
+    <mat-form-field appearance="fill">
+        <mat-label>Worker selected: </mat-label>
+        <mat-select formControlName="workerAssignedId">
+            <mat-option [value]="worker._id" *ngFor="let worker of (stateSS.workers$ | async); trackBy: getIdTrackFn" class="example-header-image">
                 {{ worker.name }}
             </mat-option>
         </mat-select>

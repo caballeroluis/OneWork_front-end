@@ -26,6 +26,22 @@ export class UserStoreService {
       }
     );
   }
+  
+  getUser(user: User): Promise<User> {
+    return new Promise<User>((resolve) => {
+      this.userService.getUser(user).subscribe(
+        (response: CustomResponses) => {
+          this.stateSS.users[
+            this.stateSS.users.findIndex(_user => _user._id === user._id)
+          ] = response.result as User;
+          resolve(response.result as User);
+        },
+        (error: any) => {
+          resolve(new User());
+        }
+      );
+    });
+  }
 
   editUser(user: User) {
     this.userService.editUser(user).subscribe(

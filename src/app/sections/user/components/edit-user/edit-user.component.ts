@@ -14,9 +14,8 @@ export class EditUserComponent implements OnInit {
 
   public reactiveForm!: FormGroup;
   public isSubmitted = false;
-  public user: User = this.stateSS.users.find(
-    user => user._id === this.route.snapshot.paramMap.get('_id')
-  ) as User;
+  private urlId = this.route.snapshot.paramMap.get('_id');
+  public user?: User;
 
   constructor(
     private route: ActivatedRoute,
@@ -47,21 +46,28 @@ export class EditUserComponent implements OnInit {
       }
     );
 
-    this.reactiveForm.patchValue(this.user);
+    this.reactiveForm.invalid;
+
+    this.userSS.getUser({_id: this.urlId} as User).then((_user) => {
+      this.user = _user;
+      this.reactiveForm.patchValue(this.user);
+
+      this.reactiveForm.valid;
+    });
   }
   
   submitForm() {
     this.isSubmitted = true;
 
     const user: User = this.reactiveForm.getRawValue();
-    user._id = this.user._id;
-    user.role = this.user.role;
-    if (this.user.role === 'recruiter') {
+    user._id = this.user?._id;
+    user.role = this.user?.role;
+    if (this.user?.role === 'recruiter') {
       delete user.name;
       delete user.surname1;
       delete user.surname2;
     }
-    if (this.user.role === 'worker') {
+    if (this.user?.role === 'worker') {
       delete user.recruiterName;
       delete user.recruiterSurname1;
       delete user.recruiterSurname2;

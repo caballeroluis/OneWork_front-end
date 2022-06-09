@@ -32,6 +32,22 @@ export class OfferStoreService {
       }
     );
   }
+  
+  getOffer(offer: Offer): Promise<Offer> {
+    return new Promise<Offer>((resolve) => {
+      this.offerService.getOffer(offer).subscribe(
+        (response: CustomResponses) => {
+          this.stateSS.offers[
+            this.stateSS.offers.findIndex(_offer => _offer._id === offer._id)
+          ] = response.result as Offer;
+          resolve(response.result as Offer);
+        },
+        (error: any) => {
+          resolve(new Offer());
+        }
+      );
+    });
+  }
 
   newOffer(offer: Offer) {
     this.offerService.newOffer(offer).subscribe(

@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StateStoreService } from '@core/services';
 import { Offer, User } from '@shared/models';
 import { OfferStoreService, UserStoreService } from '@shared/services';
@@ -18,6 +19,7 @@ export class NewOfferComponent implements OnInit {
   public workerAssignedId? = this.route.snapshot.paramMap.get('workerAssignedId');
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private offerSS: OfferStoreService,
@@ -26,6 +28,10 @@ export class NewOfferComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.stateSS.session?.token === '') {
+      this.router.navigate(['session', 'login']);
+    }
+
     if (!this.stateSS.users || this.stateSS.users.length === 0) {
       this.userSS.getUsers();
     }

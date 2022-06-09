@@ -8,17 +8,12 @@
         <mat-card [ngClass]="{'recruiter-background': user?.role === 'recruiter', 'worker-background': user?.role === 'worker'}" class="user">
             <mat-card-content>
                 <p>Username: @<span>{{ user.email }}</span><img src="/assets/images/verified_badge.svg" title="Verified account" alt="Verified account" style="padding-left: 5px; height: 20px; width: 20px" *ngIf="user?.verified!"></p>
-                <p>Role: <span >{{ user.role }}</span></p>
                 <!-- <p>Contact Data: <span >{{ user.contactData }}</span></p> -->
                 <p *ngIf="user?.role === 'worker'">Pseudonym: <span >{{ user.name }}</span></p>
                 <p *ngIf="user?.role === 'recruiter'">Pseudonym: <span >{{ user.recruiterName }}</span></p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button *ngIf="user?.role === 'worker' && (stateSS.session$ | async)?.user?.role === 'recruiter'" routerLink="/offers/new-offer/{{user._id}}">
-                    Make an offer
-                </button>
-
-                <button mat-button  *ngIf="user?.role === 'worker' && !((stateSS.session$ | async)?.token !== '')" routerLink="/session/login">
+                <button mat-button *ngIf="user?.role === 'worker'" routerLink="/offers/new-offer/{{user._id}}">
                     Make an offer
                 </button>
 

@@ -7,6 +7,9 @@
                 <mat-toolbar>
                     <mat-chip-list>
                         <mat-chip selected>Accepted</mat-chip>
+                        <mat-chip-avatar>
+                            {{ (acceptedList$ | async)?.length }}
+                        </mat-chip-avatar>
                     </mat-chip-list>
                 </mat-toolbar>
             </div>
@@ -73,6 +76,9 @@
                 <mat-toolbar>
                     <mat-chip-list>
                         <mat-chip selected>Technician checked</mat-chip>
+                        <mat-chip-avatar>
+                            {{ (technicianCheckedList$ | async)?.length }}
+                        </mat-chip-avatar>
                     </mat-chip-list>
                 </mat-toolbar>
             </div>
@@ -139,6 +145,9 @@
                 <mat-toolbar>
                     <mat-chip-list>
                         <mat-chip selected>Video set</mat-chip>
+                        <mat-chip-avatar>
+                            {{ (videoSetList$ | async)?.length }}
+                        </mat-chip-avatar>
                     </mat-chip-list>
                 </mat-toolbar>
             </div>
@@ -205,6 +214,9 @@
                 <mat-toolbar>
                     <mat-chip-list>
                         <mat-chip selected>In Progress</mat-chip>
+                        <mat-chip-avatar>
+                            {{ (inProgressList$ | async)?.length }}
+                        </mat-chip-avatar>
                     </mat-chip-list>
                 </mat-toolbar>
             </div>
@@ -271,6 +283,9 @@
                 <mat-toolbar>
                     <mat-chip-list>
                         <mat-chip selected>Ready</mat-chip>
+                        <mat-chip-avatar>
+                            {{ (readyList$ | async)?.length }}
+                        </mat-chip-avatar>
                       </mat-chip-list>
                 </mat-toolbar>
             </div>
@@ -337,6 +352,9 @@
                 <mat-toolbar>
                     <mat-chip-list>
                         <mat-chip>Backlog</mat-chip>
+                        <mat-chip-avatar>
+                            {{ (backlogList$ | async)?.length }}
+                        </mat-chip-avatar>
                     </mat-chip-list>            
                     <span class="spacer"></span>
             

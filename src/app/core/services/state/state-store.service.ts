@@ -89,10 +89,9 @@ export class StateStoreService {
     this.users = [];
     this.offers = [];
     this.userInterface = {
-      ...this.userInterface,
       userSelected: this.userInterface.userSelected,
       offerSelected: this.userInterface.offerSelected
-    };
+    } as UserInterface;
   }
 
 }

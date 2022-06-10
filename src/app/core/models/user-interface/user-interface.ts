@@ -3,10 +3,10 @@ import { Offer, User } from '@shared/models';
 
 export class UserInterface {
 
-  smallScreen: boolean;
-  showLoader: boolean;
-  coreSidenavClosed: boolean;
-  showDevTools: boolean;
+  smallScreen?: boolean;
+  showLoader?: boolean;
+  coreSidenavClosed?: boolean;
+  showDevTools?: boolean;
   userSelected?: User;
   offerSelected?: Offer;
 

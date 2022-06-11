@@ -21,9 +21,12 @@ export class SocketService {
   }
 
   initializeOfferSocket() {
-    this.fetchOffers();
+    // this.fetchOffers();
     this.onFetchOffers().subscribe(
-      (data: any) => this.stateSS.offers = data.offers
+      (data: any) => {
+        console.log("🚀 ~ file: socket.service.ts ~ line 27 ~ SocketService ~ initializeOfferSocket ~ data", data)
+        this.stateSS.offers = data
+      }
     );
   }
 

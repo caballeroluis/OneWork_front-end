@@ -88,10 +88,8 @@ export class StateStoreService {
     this.session = new Session();
     this.users = [];
     this.offers = [];
-    this.userInterface = {
-      userSelected: this.userInterface.userSelected,
-      offerSelected: this.userInterface.offerSelected
-    } as UserInterface;
+    delete this.userInterface.userSelected;
+    delete this.userInterface.offerSelected;
   }
 
 }

@@ -17,6 +17,14 @@ export class NotificationService {
     });
   }
   
+  showSuccessPermanent(message: string) {
+    this.snackBar.open(message, 'OK', {
+      panelClass: ['error'],
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
+  }
+  
   showError(message: string) {
     this.snackBar.open(message, 'OK', {
       panelClass: ['error'],

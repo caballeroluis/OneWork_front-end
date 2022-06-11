@@ -31,11 +31,9 @@ export class OfferComponent implements OnInit {
 
   ngOnInit() { // TODO: arreglar safari ios etc https://developer.chrome.com/blog/url-bar-resizing/
     this.initializeLists();
-    
-    // if (!this.stateSS.offers || this.stateSS.offers.length === 0) {
-    //   this.offerSS.getOffers();
-    // }
+  }
 
+  ngAfterViewInit() {
     this.socketService.initializeOfferSocket();
   }
 
@@ -90,12 +88,8 @@ export class OfferComponent implements OnInit {
         event.currentIndex
       );
       
-      this.offerSS.updateOffer(offer);
+      this.offerSS.changeStateOffer(offer);
     }
-  }
-
-  getOffers() {
-    this.offerSS.getOffers();
   }
 
   deleteOffer(offer: Offer) {
@@ -111,6 +105,10 @@ export class OfferComponent implements OnInit {
     this.videoSetList$.subscribe();
     this.technicianCheckedList$.subscribe();
     this.acceptedList$.subscribe();
+
+    this.offersSubscription.unsubscribe();
+
+    this.socketService.disconnect();
   }
 
   sortBySalary(a: any, b: any) {

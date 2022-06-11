@@ -1,9 +1,11 @@
 <div class="app-user">
-
-  <button title="Update the list" mat-icon-button (click)="getUsers()">
-      <mat-icon>sync</mat-icon>
-  </button>
-  
+    <button title="Update the list" mat-icon-button (click)="getUsers()">
+        <mat-icon>sync</mat-icon>
+    </button>
+                        
+    <button title="Add an user" mat-icon-button routerLink="/session/register" *ngIf="(stateSS.session$ | async)?.token === ''">
+        <mat-icon>add_circle</mat-icon>
+    </button>
   <div *ngFor="let user of (stateSS.users$ | async)">
         <mat-card [ngClass]="{'recruiter-background': user?.role === 'recruiter', 'worker-background': user?.role === 'worker'}" class="user">
             <mat-card-content>

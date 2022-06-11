@@ -19,7 +19,7 @@ export class OfferService {
     );
   }
 
-  getOffer(offer: Offer): Observable<any> {
+  getOfferById(offer: Offer): Observable<any> {
     return this.http.get(
       environment.apiUrl + '/api/offers/' + offer._id
     );
@@ -34,7 +34,7 @@ export class OfferService {
     );
   }
 
-  updateOffer(offer: Offer): Observable<any> {
+  changeStateOffer(offer: Offer): Observable<any> {
     return this.http.patch(
       environment.apiUrl +
         "/api/offers/" + offer._id,

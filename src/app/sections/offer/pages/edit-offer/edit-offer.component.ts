@@ -52,7 +52,7 @@ export class EditOfferComponent implements OnInit {
 
     this.reactiveForm.invalid;
 
-    this.offerSS.getOffer({_id: this.urlId} as Offer).then((_offer) => {
+    this.offerSS.getOfferById({_id: this.urlId} as Offer).then((_offer) => {
       this.offer = _offer;
       this.reactiveForm.patchValue(this.offer);
     

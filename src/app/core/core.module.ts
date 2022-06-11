@@ -4,12 +4,22 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '@core/interceptors';
 import { HttpErrorInterceptor } from '@core/interceptors';
 import { LoaderInterceptor } from '@core/interceptors';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from '@env/environment';
 
 @NgModule({
   declarations: [],
   imports: [
     HttpClientModule,
-    CommonModule
+    CommonModule,
+		SocketIoModule.forRoot(
+      {
+        url: environment.apiUrl,
+        options: {
+          transports: ['websocket']
+        }
+      } as SocketIoConfig
+    )
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

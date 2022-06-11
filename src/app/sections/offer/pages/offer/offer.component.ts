@@ -5,6 +5,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Offer } from '@shared/models';
 import { Observable, of, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SocketService } from '@sections/offer/services/socket/socket.service';
 
 @Component({
   selector: 'app-offer',
@@ -24,15 +25,18 @@ export class OfferComponent implements OnInit {
 
   constructor(
     private offerSS: OfferStoreService,
+    private socketService: SocketService,
     public stateSS: StateStoreService
   ) { }
 
   ngOnInit() { // TODO: arreglar safari ios etc https://developer.chrome.com/blog/url-bar-resizing/
     this.initializeLists();
     
-    if (!this.stateSS.offers || this.stateSS.offers.length === 0) {
-      this.offerSS.getOffers();
-    }
+    // if (!this.stateSS.offers || this.stateSS.offers.length === 0) {
+    //   this.offerSS.getOffers();
+    // }
+
+    this.socketService.initializeOfferSocket();
   }
 
   initializeLists() {

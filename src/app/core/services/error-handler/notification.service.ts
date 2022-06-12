@@ -9,12 +9,17 @@ export class NotificationService {
   constructor(public snackBar: MatSnackBar) { }
   
   showSuccess(message: string) {
-    this.snackBar.open(message, 'X', {
-      panelClass: ['error'],
-      duration: 3 * 1000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
+    setTimeout(
+      () => {
+        this.snackBar.open(message, 'X', {
+          panelClass: ['error'],
+          duration: 3 * 1000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      },
+      12
+    );
   }
   
   showSuccessPermanent(message: string) {
@@ -26,10 +31,15 @@ export class NotificationService {
   }
   
   showError(message: string) {
-    this.snackBar.open(message, 'OK', {
-      panelClass: ['error'],
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
+    setTimeout(
+      () => {
+        this.snackBar.open(message, 'OK', {
+          panelClass: ['error'],
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+      },
+      12
+    );
   }
 }

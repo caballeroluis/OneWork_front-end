@@ -98,6 +98,16 @@ export class OfferComponent implements OnInit {
     }
   }
 
+  increaseSalary(offer: Offer) {
+    if (offer.salary) {
+      let offerEdited: Offer = {
+        ...offer
+      };
+      offerEdited.salary = offer.salary + 25;
+      this.offerSS.editOffer(offerEdited);
+    }
+  }
+
   deleteOffer(offer: Offer) {
     this.offerSS.deleteOffer(offer);
   }

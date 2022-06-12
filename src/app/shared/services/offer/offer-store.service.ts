@@ -66,7 +66,7 @@ export class OfferStoreService {
     this.offerService.editOffer(offer).subscribe(
       (response: CustomResponses) => {
         this.notificationService.showSuccess('Offer has been updated.');
-        this.location.back();
+        // this.location.back();
       },
       (error: any) => {
       }

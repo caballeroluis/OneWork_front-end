@@ -54,7 +54,10 @@ export class SocketService {
 
     this.socket.fromEvent('updateOffer').subscribe(
       (payload: any) => {
-        let offer: Offer = payload.result;
+        let offer: Offer = {
+          ...payload.result
+        };
+
         offer.workerAssignedId = payload.result.workerAssigned;
         offer.recruiterAssignedId = payload.result.recruiterAssigned;
         offer.workerAssigned = this.stateSS.users.filter(_user => _user._id === offer.workerAssignedId)[0] as User;

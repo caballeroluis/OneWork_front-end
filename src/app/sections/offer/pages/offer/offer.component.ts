@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StateStoreService } from '@core/services';
-import { OfferStoreService } from '@shared/services';
+import { OfferStoreService, UserStoreService } from '@shared/services';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Offer } from '@shared/models';
 import { Observable, of, Subscription } from 'rxjs';
@@ -26,7 +26,8 @@ export class OfferComponent implements OnInit {
   constructor(
     private offerSS: OfferStoreService,
     private socketService: SocketService,
-    public stateSS: StateStoreService
+    public stateSS: StateStoreService,
+    public userSS: UserStoreService
   ) { }
 
   ngOnInit() { // TODO: arreglar safari ios etc https://developer.chrome.com/blog/url-bar-resizing/
@@ -35,6 +36,11 @@ export class OfferComponent implements OnInit {
 
   ngAfterViewInit() {
     this.socketService.initializeOfferSocket();
+    if (
+      (!this.stateSS.users || this.stateSS.users.length === 0)
+    ) {
+      this.userSS.getUsers();
+    }
   }
 
   initializeLists() {

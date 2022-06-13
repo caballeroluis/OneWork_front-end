@@ -18,7 +18,7 @@ export class NotificationService {
           verticalPosition: 'bottom',
         });
       },
-      1
+      12
     );
   }
   

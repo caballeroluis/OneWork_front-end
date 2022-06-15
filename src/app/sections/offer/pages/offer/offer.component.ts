@@ -36,6 +36,7 @@ export class OfferComponent implements OnInit {
 
   ngAfterViewInit() {
     this.socketService.initializeOfferSocket();
+    this.offerSS.getOffers();
     if (
       (!this.stateSS.users || this.stateSS.users.length === 0)
     ) {
@@ -123,8 +124,6 @@ export class OfferComponent implements OnInit {
     this.acceptedList$.subscribe();
 
     this.offersSubscription.unsubscribe();
-
-    this.socketService.disconnect();
   }
 
   sortBySalary(a: any, b: any) {

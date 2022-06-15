@@ -20,6 +20,7 @@ export class OfferStoreService {
   getOffers() {
     this.offerService.getOffers().subscribe(
       (response: CustomResponses) => {
+        this.stateSS.offers = response.results as Offer[];
       },
       (error: any) => {
       }
@@ -48,6 +49,7 @@ export class OfferStoreService {
         this.notificationService.showSuccess('Offer has been created in column "' + (response.result as Offer).status + '".');
       },
       (error: any) => {
+        this.getOffers();
       }
     );
   }
@@ -58,6 +60,7 @@ export class OfferStoreService {
         this.notificationService.showSuccess('Offer has been moved.');
       },
       (error: any) => {
+        this.getOffers();
       }
     );
   }
@@ -69,6 +72,7 @@ export class OfferStoreService {
         // this.location.back();
       },
       (error: any) => {
+        this.getOffers();
       }
     );
   }
@@ -79,6 +83,7 @@ export class OfferStoreService {
         this.notificationService.showSuccess('Offer has been deleted.');
       },
       (error: any) => {
+        this.getOffers();
       }
     );
   }

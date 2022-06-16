@@ -3,7 +3,7 @@
         <mat-icon>sync</mat-icon>
     </button>
                         
-    <button title="Add an user" mat-icon-button routerLink="/session/register" *ngIf="(stateSS.session$ | async)?.token === ''">
+    <button title="Add an user" mat-icon-button routerLink="/session/register">
         <mat-icon>add_circle</mat-icon>
     </button>
   <div *ngFor="let user of (stateSS.users$ | async)">

@@ -44,32 +44,35 @@ export class RegisterComponent implements OnInit {
         corporationName: [''],
         descriptionCorporate: [''],
         international: [false],
+        terms: [false],
         role: ['']
       }
     );
   }
 
   submitForm() {
-    this.isSubmitted = true;
+    if (this.reactiveForm.controls.terms.value) { // TODO: hacer mejor cuando estén los forms integrados
+      this.isSubmitted = true;
 
-    this.user = this.reactiveForm.getRawValue();
-    if (this.user?.role === 'recruiter') {
-      delete this.user.name;
-      delete this.user.surname1;
-      delete this.user.surname2;
-    }
-    if (this.user?.role === 'worker') {
-      delete this.user.recruiterName;
-      delete this.user.recruiterSurname1;
-      delete this.user.recruiterSurname2;
-      delete this.user.corporationName;
-      delete this.user.descriptionCorporate;
-      delete this.user.international;
-    } 
-    if (this.reactiveForm.valid) {
-      this.sessionSS.register(this.user);
-    } else {
-      throw new Error('Form error');
+      this.user = this.reactiveForm.getRawValue();
+      if (this.user?.role === 'recruiter') {
+        delete this.user.name;
+        delete this.user.surname1;
+        delete this.user.surname2;
+      }
+      if (this.user?.role === 'worker') {
+        delete this.user.recruiterName;
+        delete this.user.recruiterSurname1;
+        delete this.user.recruiterSurname2;
+        delete this.user.corporationName;
+        delete this.user.descriptionCorporate;
+        delete this.user.international;
+      } 
+      if (this.reactiveForm.valid) {
+        this.sessionSS.register(this.user);
+      } else {
+        throw new Error('Form error');
+      }
     }
   }
 

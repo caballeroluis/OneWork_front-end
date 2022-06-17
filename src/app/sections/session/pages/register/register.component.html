@@ -58,7 +58,11 @@
             <span>Skills: </span>
             <textarea placeholder="Your skills" formControlName="skills" rows="2"></textarea>
         </label><br>
-    </div><br>
+    </div>
+    
+    <label *ngIf="user.role === 'recruiter' || user.role === 'worker'">
+        <span>I have read and accept the <a routerLink="/terms-of-service" target="_blank">terms and conditions </a></span><input type="checkbox" formControlName="terms"><br>
+    </label><br>
       
     <button *ngIf="user.role === 'recruiter' || user.role === 'worker'" mat-raised-button color="secondary" type="submit">
         Register

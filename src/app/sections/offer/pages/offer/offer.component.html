@@ -55,6 +55,11 @@
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
+                        <mat-card-content *ngIf="offer.technicianChecked">
+                            <p title="Technical challenge in progress">
+                                Technical challenge: 🟢
+                            </p>
+                        </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
                             <button mat-button [matMenuTriggerFor]="menuDelete"
@@ -122,6 +127,11 @@
                             <p>
                                 Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content *ngIf="offer.technicianChecked">
+                            <p title="Technical challenge in progress">
+                                Technical challenge: 🟢
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
@@ -193,6 +203,11 @@
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
+                        <mat-card-content *ngIf="offer.technicianChecked">
+                            <p title="Technical challenge in progress">
+                                Technical challenge: 🟢
+                            </p>
+                        </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
                             <button mat-button [matMenuTriggerFor]="menuDelete"
@@ -262,6 +277,11 @@
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
                             </p>
                         </mat-card-content>
+                        <mat-card-content *ngIf="offer.technicianChecked">
+                            <p title="Technical challenge in progress">
+                                Technical challenge: 🟢
+                            </p>
+                        </mat-card-content>
                         <mat-card-actions>
                             <button mat-button routerLink="/offers/offer-detail/{{offer._id}}">DETAIL</button>
                             <button mat-button [matMenuTriggerFor]="menuDelete"
@@ -329,6 +349,11 @@
                             <p>
                                 Videocall date: {{ offer.videoCallDate | date }}
                                 at {{ offer.videoCallDate | date:'HH:mm' }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-content *ngIf="offer.technicianChecked">
+                            <p title="Technical challenge in progress">
+                                Technical challenge: 🟢
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
@@ -409,6 +434,11 @@
                                 *ngIf="((stateSS.session$ | async)?.user?._id === offer.recruiterAssigned?._id) || ((stateSS.session$ | async)?.user?._id === offer.workerAssigned?._id) || ((stateSS.session$ | async)?.user?.role === 'admin')"
                             >
                                 DELETE
+                        <mat-card-content *ngIf="offer.technicianChecked">
+                            <p title="Technical challenge in progress">
+                                Technical challenge: 🟢
+                            </p>
+                        </mat-card-content>
                             </button>
                             <mat-menu #menuDelete="matMenu" yPosition="above">
                                 <button mat-button (click)="deleteOffer(offer)" color="warn">DELETE</button>

@@ -16,6 +16,10 @@ const routes: Routes = [ // TODO: meter role guards
     loadChildren: () => import('./sections/user/user.module').then( m => m.UserModule)
   },
   {
+    path: 'videocall',
+    loadChildren: () => import('./sections/videocall/videocall.module').then( m => m.VideocallModule)
+  },
+  {
     path: 'session',
     loadChildren: () => import('./sections/session/session.module').then( m => m.SessionModule)
   },

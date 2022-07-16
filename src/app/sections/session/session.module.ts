@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SessionRoutingModule } from './session-routing.module';
+import { SessionRoutingModule } from '@sections/session/session-routing.module';
 import { LoginComponent } from '@sections/session/pages';
 import { RegisterComponent } from '@sections/session/pages';
 import { ProfileComponent } from '@sections/session/pages';

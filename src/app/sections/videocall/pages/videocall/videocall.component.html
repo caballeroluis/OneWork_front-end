@@ -1,0 +1,34 @@
+<videocall-header></videocall-header>
+
+<!-- <div id="room-selection-container" class="centered" [ngClass]="{'display-none': room !== ''}">
+    <h1>WebRTC video conference</h1>
+    <label>Enter the number of the room you want to connect</label>
+    <input [value]="roomInput" type="text" />
+    <button (click)="joinRoom()">CONNECT</button>
+</div>
+
+<div id="video-chat-container" class="video-position display-none" [ngClass]="{'display-block': room !== ''}">
+    <video id="local-video" autoplay="autoplay"></video>
+    <video id="remote-video" autoplay="autoplay"></video>
+</div> -->
+
+<div id="room-selection-container" class="centered">
+    <h1>P2P WebRTC video conference</h1>
+    <p>Pleas, use headphones, audio feedback may damage your hearing and device.</p>
+    <label>Enter the number of the room you want to connect: </label>
+    <input id="room-input" type="text" />
+    <button id="connect-button">CONNECT</button>
+  </div>
+
+  <div id="video-chat-container" class="video-position" style="display: none">
+    <video id="local-video" autoplay="autoplay"></video>
+    <video id="remote-video" autoplay="autoplay"></video>
+  </div>
+  
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <!-- <script type="text/javascript" src="client.js"></script> -->
+
+  <div id="socket-io-min-container"></div>
+  <div id="client-container"></div>
+
+

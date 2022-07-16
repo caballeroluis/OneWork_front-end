@@ -23,7 +23,9 @@ const routes: Routes = [
     path: 'change-username', component: ChangeEmailComponent
   },
   {
-    path: '', redirectTo: 'login'
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   }
 ];
 

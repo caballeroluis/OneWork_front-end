@@ -19,10 +19,6 @@ export class User {
   contactData?: string;
   creationDate?: string;
   password?: string;
-  offers?: Offer[];
-
-  constructor() {
-    this.offers = [];
-  }
+  offers?: Offer[] = [];
 
 }

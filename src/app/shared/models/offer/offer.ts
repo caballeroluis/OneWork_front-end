@@ -21,7 +21,4 @@ export class Offer {
   workerAssigned?: User;
   workerAssignedId?: string; // TODO: hacer cuando cambie la api
 
-  constructor() {
-  }
-
 }

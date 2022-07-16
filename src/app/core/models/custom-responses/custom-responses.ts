@@ -8,7 +8,4 @@ export class CustomResponses {
   token!: string;
   refreshToken!: string;
   
-  constructor() {
-  }
-  
 }

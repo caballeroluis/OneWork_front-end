@@ -1,5 +1,3 @@
-// biblio de socket.io y debajo el script del cliente
-
 /*!
  * Socket.IO v2.5.0
  * (c) 2014-2021 Guillermo Rauch
@@ -6740,7 +6738,11 @@ const localVideoComponent = document.getElementById('local-video')
 const remoteVideoComponent = document.getElementById('remote-video')
 
 // Variables.
-const socket = io()
+const socket = io(
+	{
+    allowEIO3: true
+  }  
+)
 const mediaConstraints = {
   audio: true,
   video: { width: 1280, height: 720 },

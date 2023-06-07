@@ -128,7 +128,9 @@ Click the [👁] button on the main screen to view the status in the browser con
 
 _The simulated version of the API integrated into the front-end project has been discontinued and is no longer functional. Therefore, this project can only be executed by setting up the backend and the database. However, if you're interested in seeing an example of the State Management used, you can easily deploy [this another project](https://github.com/caballeroluis/rxjs-state-management-and-json-server) of mine where the front-end API mock is working._
 
+## License
 
+MIT
 
 
 

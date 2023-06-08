@@ -9,8 +9,6 @@ Version control was managed with Git, and project management was done with GitLa
 
 The homemade server was programmed to save power by automatically shutting down each night. This was achieved through a Ubuntu Server configuration and settings in the BIOS.
 
-When the Web App was in production, no user registered except me 'xD but it helped me to keep track of my job offers and also to keep everyone who was interested in my profile informed about the status of my job search.
-
 It's highly likely that the no-ip URLs for the pre-production and production environments are no longer related to this project or do not exist.
 
 [Alberto]: <https://github.com/Elminsterio>
@@ -23,6 +21,8 @@ With this tool, users will be able to:
 - Create an account as a recruiter or worker.
 - Post job Offers.
 - View the Offers on a fully public Kanban board.
+
+_Additionally, there was a plan to create a video call system using WebRTC for conducting interviews, but it was never implemented._
 
 
 ## Tech (Server software)
@@ -53,18 +53,12 @@ Deployed on these technologies:
 
 ## Tech (Server ardware)
 
-- Processor: AMD Ryzen 5 1600 Stepping AF 3.6GHz
-- Storage: WD Green 3D SSD 120GB SATA3
-- Memory (x2): Corsair Value Select DDR4 2133 PC4-17000 8GB CL15
-- Motherboard: MSI A320M-A PRO
-- Graphics: Zotac GeForce GT710 1GB GDDR3
-- Case: Tacens Anima AC016 USB 3.0
-- Extra fan: Tacens Aura II 80x80
-- PSU: Corsair VS450 450W 80 Plus
-- Tools: Crimper
-- Tools: UTP CAT6 cable
-- Tools: UTP Cat.6 RJ45 connector
- 
+<div align="left">
+
+| - Processor: AMD Ryzen 5 1600 Stepping AF 3.6GHz<br>- Storage: WD Green 3D SSD 120GB SATA3<br>- Memory (x2): Corsair Value Select DDR4 2133 PC4-17000 8GB CL15<br>- Motherboard: MSI A320M-A PRO<br>- Graphics: Zotac GeForce GT710 1GB GDDR3<br>- Case: Tacens Anima AC016 USB 3.0<br>- Extra fan: Tacens Aura II 80x80<br>- PSU: Corsair VS450 450W 80 Plus<br>- Tools: Crimper<br>- Tools: UTP CAT6 cable<br>- Tools: UTP Cat.6 RJ45 connector | <img height="250px" alt="Screenshot 2023-06-08 at 11 27 17" src="https://github.com/caballeroluis/OneWork_Front-end/assets/111797757/fcbaefe0-3a60-4960-857d-cc4398d87016"> |
+| --- | --- |
+
+</div>
 
 # User interface demo
 
@@ -93,10 +87,22 @@ Deployed on these technologies:
 
 ![Let's Encrypt certificate](https://github.com/caballeroluis/OneWork_Front-end/blob/main/src/assets/images/demo-screenshots/6-Let's-Encrypt-certificate.gif?raw=true)
 
-
 # Installation (Back-end)
 
-For more help on the API of this project, see the [OneWork_Back-end repository](https://github.com/Elminsterio/OneWork_Back-end) which can be found at [Alberto's account](https://github.com/Elminsterio).
+For more help on the API of this project, see the [OneWork_Back-end repository](https://github.com/Elminsterio/OneWork_Back-end) which can be found at [Alberto's account](https://github.com/Elminsterio?tab=repositories)
+
+or
+
+For more help on the API of this project, see the [OneWork_Back-end repository](https://github.com/caballeroluis/OneWork_Back-end) which can be found at [Luis's account](https://github.com/caballeroluis?tab=repositories).
+
+## Dependencies
+
+Run `npm install` for get dependencies.
+
+## Development server
+
+Run `npm start` for a dev server.
+
 
 # Installation (Front-end)
 
@@ -104,7 +110,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -126,11 +132,8 @@ Run `npm install` for get dependencies.
 
 Click the [👁] button on the main screen to view the status in the browser console.
 
-_The simulated version of the API integrated into the front-end project has been discontinued and is no longer functional. Therefore, this project can only be executed by setting up the backend and the database. However, if you're interested in seeing an example of the State Management used, you can easily deploy [this another project](https://github.com/caballeroluis/rxjs-state-management-and-json-server) of mine where the front-end API mock is working._
+_The simulated version of the API integrated into the front-end project (npm run mockClient) has been discontinued and is no longer functional. Therefore, this project can only be executed by setting up the backend and the database. However, if you're interested in seeing an example of the State Management used, you can easily deploy [this another project](https://github.com/caballeroluis/rxjs-state-management-and-json-server) of mine where the front-end API mock is working._
 
 ## License
 
 MIT
-
-
-
